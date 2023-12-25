@@ -1,7 +1,4 @@
-# !pip install -U --pre matplotlib
 import matplotlib as mpl
-mpl.font_manager.fontManager.addfont('thsarabunnew-webfont.ttf') # 3.2+
-mpl.rc('font', family='TH Sarabun New')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
