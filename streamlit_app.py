@@ -8,7 +8,7 @@ import altair as alt
 import numpy as np
 import pandas as pd
 import streamlit as st
-
+df = pd.DataFrame()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 
@@ -24,4 +24,5 @@ elif '.xlsx' in upload_file.type:
 df.fillna('ไม่ระบุ',inplace=True)
 df.replace('-','ไม่ระบุ',inplace=True)
 
+st.write(df)
 
