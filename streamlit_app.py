@@ -8,7 +8,7 @@ import altair as alt
 import numpy as np
 import pandas as pd
 import streamlit as st
-df = pd.DataFrame()
+#df = pd.DataFrame()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 
