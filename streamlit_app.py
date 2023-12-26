@@ -17,9 +17,9 @@ st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
 if '.csv' in upload_file.name:
-    df = pd.read_csv(io.BytesIO(upload_file)
+    df = pd.read_csv(io.BytesIO(upload_file.read()))
                                 
 elif '.xlsx' in upload_file.name:
-    df = pd.read_excel(io.BytesIO(upload_file)
+    df = pd.read_excel(io.BytesIO(upload_file.read()))
 
 
