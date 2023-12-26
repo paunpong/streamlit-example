@@ -16,6 +16,7 @@ st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 
 upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
-
+df.fillna('ไม่ระบุ',inplace=True)
+df.replace('-','ไม่ระบุ',inplace=True)
 
 
