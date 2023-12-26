@@ -12,7 +12,7 @@ import streamlit as st
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 
-st.titlt('กรุณาใส่ไฟล์ที่เป็น excel')
+st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 
 upload_file = st.file_uploader("Upload File")
 
