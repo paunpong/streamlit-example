@@ -25,4 +25,4 @@ df = pd.DataFrame(upload_file)
 df.fillna('ไม่ระบุ',inplace=True)
 df.replace('-','ไม่ระบุ',inplace=True)
 
-
+print(df)
