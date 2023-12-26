@@ -18,7 +18,7 @@ upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
 if '.csv' in upload_file:
     df = pd.read_csv(io.BytesIO(upload_file.decode()
-else:
+elif'.xlsx' in upload_file:
     df = pd.read_excel(io.BytesIO(upload_file.decode()
 
 
