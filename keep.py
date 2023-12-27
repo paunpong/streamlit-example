@@ -59,11 +59,10 @@ upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
 upload_df = upload(upload_file)
 
-def question(A):
-  list_question = [h for h in upload_df]
+list_question = [h for h in upload_df]
 
-  if ('Times' or 'ประทับเวลา') in list_question[0]:
-    list_question.pop(0)
+if ('Times' or 'ประทับเวลา') in list_question[0]:
+  list_question.pop(0)
 
 for key in question(list_question):
   column = upload_df[key].values.tolist()
