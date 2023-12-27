@@ -25,6 +25,8 @@ def upload(A):
     df.fillna('ไม่ระบุ',inplace=True)
     df.replace('-','ไม่ระบุ',inplace=True)
     list_question = [h for h in df]
+    if ('Times' or 'ประทับเวลา') in list_question[0]:
+      list_question.pop(0)
     st.dataframe(df)  
     return df
     return list_question
@@ -63,8 +65,8 @@ upload_df = upload(upload_file)
 
 #list_question = [h for h in upload_df]
 
-if ('Times' or 'ประทับเวลา') in list_question[0]:
-  list_question.pop(0)
+#if ('Times' or 'ประทับเวลา') in list_question[0]:
+  #list_question.pop(0)
 
 for key in list_question:
   column = upload_df[key].values.tolist()
