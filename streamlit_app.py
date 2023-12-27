@@ -28,7 +28,7 @@ if upload_file is not None :
     #df.fillna('ไม่ระบุ',inplace=True)
     #df.replace('-','ไม่ระบุ',inplace=True)
     'pandas done'
-y = list(upload)[0]    
-df = pd.read_excel(io.BytesIO(upload[y]))
+y = list(upload_file)[0]    
+df = pd.read_excel(io.BytesIO(upload_file[y]))
 st.write(df)
 
