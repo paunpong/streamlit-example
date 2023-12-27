@@ -15,7 +15,7 @@ upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
 if upload_file is not None:
   if upload_file.type == '.csv':
-    df = df = pd.read_csv(upload_file)
+    df = pd.read_csv(upload_file)
   else:
     df = pd.read_excel(upload_file)
 
