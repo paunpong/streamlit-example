@@ -9,6 +9,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 digit = int(2)
 list_pie_chart = {}
 
