@@ -31,6 +31,5 @@ if upload_file is not None :
 
 read_file = pd.read_excel(upload_file)
 
-st.write(df)
 
 
