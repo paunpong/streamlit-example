@@ -22,7 +22,8 @@ go_program = st.button('Hit me')
 if go_program :
     "yes"
 
-#if upload_file is not None :
+if upload_file is not None :
+    'file is here'
 #    if '.xlsx' in upload_file.type:
 #        df = pd.read_excel(io.BytesIO(upload_file.read()))
 #        df.fillna('ไม่ระบุ',inplace=True)
