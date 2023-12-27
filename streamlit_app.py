@@ -30,6 +30,6 @@ for i in upload_file:
     #df.fillna('ไม่ระบุ',inplace=True)
     #df.replace('-','ไม่ระบุ',inplace=True)
     'pandas done'
-df = st.datafram(upload_file)
-
+df = pd.read_csv(upload_file)
+st.write(df)
 
