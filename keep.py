@@ -45,10 +45,10 @@ def stat(A):
 def pie_chart(data,key):
   labels = [str(key) for key in data]
   counts = [data[key]['percent']for key in data]
-  fig, ax = plt.subplots()
+  ax = plt.subplots()
   ax.pie(counts, labels=labels, autopct=f'%.{digit}f')
   ax.set_title(key)
-  st.pyplot(fig)
+  st.pyplot()
   #plt.show()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
