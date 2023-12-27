@@ -29,8 +29,8 @@ def upload(A):
 
 def question(A):
   list_question = [A]
-    if ('Times' or 'ประทับเวลา') in list_question[0]:
-      list_question.pop(0)
+  if ('Times' or 'ประทับเวลา') in list_question[0]:
+    list_question.pop(0)
   return list_question
   
 def count_list(A,removenan=True):
