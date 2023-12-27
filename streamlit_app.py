@@ -32,3 +32,4 @@ y = list(upload_file)[0]
 df = pd.read_excel(io.BytesIO(upload_file[y]))
 st.write(df)
 
+
