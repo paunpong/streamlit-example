@@ -20,7 +20,7 @@ upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 go_program = st.button('Hit me')
 
 if go_program :
-    print("yes")
+    "yes"
 
 #if upload_file is not None :
 #    if '.xlsx' in upload_file.type:
