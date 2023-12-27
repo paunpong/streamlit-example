@@ -69,7 +69,7 @@ if ('Times' or 'ประทับเวลา') in list_question[0]:
   list_question.pop(0)
   
 for key in list_question:
-  column = list_question[key].values.tolist()
+  column = upload_df[key].values.tolist()
   len_column = len(column)
   
   if '*' in key:
