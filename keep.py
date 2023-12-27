@@ -20,6 +20,6 @@ if upload_file is not None:
   elif '.csv' in y:
     df = pd.read_csv(upload_file)
 
-  df.fillna('ไม่ระบุ',inplace=True)
-  df.replace('-','ไม่ระบุ',inplace=True)
+  #df.fillna('ไม่ระบุ',inplace=True)
+  #df.replace('-','ไม่ระบุ',inplace=True)
   st.dataframe(df)
