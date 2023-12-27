@@ -118,10 +118,6 @@ for key in list_question:
     list_pie_chart[key]=True
     continue
 
-  if len(set(column)) < 6:
-    list_pie_chart[key]=True
-    continue
-
   if num_check(column):
     list_boxplot.append(key)
     continue
