@@ -27,12 +27,6 @@ def upload(A):
     st.dataframe(df)  
     return df
 
-def question(A):
-  list_question = [h for h in question(A)]
-  if ('Times' or 'ประทับเวลา') in list_question[0]:
-    list_question.pop(0)
-  return list_question
-  
 def count_list(A,removenan=True):
   if removenan and 'ไม่ระบุ'in A:
     A = [n for n in A if n != 'ไม่ระบุ']
@@ -64,13 +58,16 @@ st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
 upload_df = upload(upload_file)
-list_query = question(upload_df)
+#list_query = question(upload_df)
 
 #list_question = [h for h in upload_df]
 
 #if ('Times' or 'ประทับเวลา') in list_question[0]:
   #list_question.pop(0)
-
+list_question = [h for h in question(A)]
+if ('Times' or 'ประทับเวลา') in list_question[0]:
+  list_question.pop(0)
+  
 for key in list_query:
   column = list_query[key].values.tolist()
   len_column = len(column)
