@@ -24,7 +24,7 @@ if go_program :
 
 if upload_file is not None :
     'pandas done'
-    if '.xlsx' in upload_file:
+    if '.xlsx' in upload_file.type:
         df = pd.read_excel(upload_file)
         'T'
     else:
