@@ -8,6 +8,7 @@ import altair as alt
 import numpy as np
 import pandas as pd
 import streamlit as st
+from matplotlib.font_manager import FontProperties
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
