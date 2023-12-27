@@ -9,11 +9,6 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
-st.title('กรุณาใส่ไฟล์ที่เป็น excel')
-upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
-
-upload(upload_file)
 def upload(A):
   if upload_file is not None:
     y = upload_file.name.split(".")[1].lower()
@@ -25,3 +20,10 @@ def upload(A):
     df.fillna('ไม่ระบุ',inplace=True)
     df.replace('-','ไม่ระบุ',inplace=True)
     st.dataframe(df)
+
+st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
+st.title('กรุณาใส่ไฟล์ที่เป็น excel')
+upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
+
+upload(upload_file)
+
