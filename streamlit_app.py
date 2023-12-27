@@ -16,6 +16,12 @@ st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 
 upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
+try:
+    with open(upload_file):
+        print('The file exists!')
+except FileNotFoundError:
+    print('The file does not exist.')
+
 if '.csv' in upload_file.type:
     df = pd.read_csv(io.BytesIO(upload_file.read()))
 elif '.xlsx' in upload_file.type:
