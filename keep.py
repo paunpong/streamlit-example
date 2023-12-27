@@ -48,7 +48,7 @@ def pie_chart(data,key):
   x,ax = plt.subplots()
   ax.pie(counts, labels=labels, autopct=f'%.{digit}f')
   ax.set_title(key)
-  st.pyplot(x)
+  st.pyplot()
   #plt.show()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
