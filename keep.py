@@ -73,5 +73,5 @@ def question(A):
       list_pie_chart[key]=True
       continue
 
-  for p in list_pie_chart:
-    pie_chart(count_list(upload_df[p].values.tolist()),p)
+for p in list_pie_chart:
+  pie_chart(count_list(upload_df[p].values.tolist()),p)
