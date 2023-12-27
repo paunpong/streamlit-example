@@ -23,8 +23,10 @@ if go_program :
     "yes"
 
 if upload_file is not None :
-    df = pd.read_excel(upload_file)
-    df = pd.read_csv(upload_file)
+    if '.xlsx' in upload_file:
+        df = pd.read_excel(upload_file)
+    else:
+        df = pd.read_csv(upload_file)
     #df.fillna('ไม่ระบุ',inplace=True)
     #df.replace('-','ไม่ระบุ',inplace=True)
     'pandas done'
