@@ -26,7 +26,7 @@ if upload_file is not None :
     'pandas done'
     if '.xlsx' in upload_file.type:
         df = pd.read_excel(upload_file)
-        st.dataframe(df)
+    st.dataframe(df)
     #else:
         #df = pd.read_csv(upload_file)
         #'F'
