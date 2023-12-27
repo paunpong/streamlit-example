@@ -62,7 +62,7 @@ if ('Times' or 'ประทับเวลา') in list_question[0]:
   list_question.pop(0)
 
 for key in list_question:
-  column = df[key].values.tolist()
+  column = upload_df[key].values.tolist()
   len_column = len(column)
   
   if '*' in key:
@@ -70,4 +70,4 @@ for key in list_question:
     continue
 
 for p in list_pie_chart:
-  pie_chart(count_list(df[p].values.tolist()),p)
+  pie_chart(count_list(upload_df[p].values.tolist()),p)
