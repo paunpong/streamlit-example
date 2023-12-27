@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
 
 # Specify the correct path to the "Noto Sans Thai" font file
-font_path = "/path/to/NotoSansThai-Regular.ttf"
+font_path = "/path/to/'thsarabunnew-webfont.ttf'"
 
 # Specify the correct font properties
 font_properties = FontProperties(fname=font_path, size=12)
