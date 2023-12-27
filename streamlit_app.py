@@ -27,9 +27,9 @@ if upload_file is not None :
     if '.xlsx' in upload_file.type:
         df = pd.read_excel(upload_file)
         'T'
-    else:
-        df = pd.read_csv(upload_file)
-        'F'
+    #else:
+        #df = pd.read_csv(upload_file)
+        #'F'
     #df.fillna('ไม่ระบุ',inplace=True)
     #df.replace('-','ไม่ระบุ',inplace=True)
     
