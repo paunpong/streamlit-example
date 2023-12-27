@@ -1,9 +1,12 @@
 import streamlit as st
 import matplotlib.pyplot as plt
+from matplotlib.font_manager import FontProperties
 
-# Install and use a Thai font (e.g., Noto Sans Thai)
-font_path = "/path/to/notosansthai_regular.ttf"  # Replace with the path to your installed font file
-font_properties = {'family': 'Noto Sans Thai', 'weight': 'normal', 'size': 12}
+# Specify the correct path to the "Noto Sans Thai" font file
+font_path = "/path/to/NotoSansThai-Regular.ttf"
+
+# Specify the correct font properties
+font_properties = FontProperties(fname=font_path, size=12)
 
 # Your Streamlit app code goes here...
 
@@ -15,10 +18,11 @@ values = [5, 8, 3, 7, 2]
 plt.bar(labels, values)
 
 # Set Thai font for the plot
-plt.xlabel('แกน X', **font_properties)
-plt.ylabel('แกน Y', **font_properties)
-plt.title('กราฟแท่ง', **font_properties)
+plt.xlabel('แกน X', fontproperties=font_properties)
+plt.ylabel('แกน Y', fontproperties=font_properties)
+plt.title('กราฟแท่ง', fontproperties=font_properties)
 
 # Display the plot in Streamlit
 st.pyplot()
+
 
