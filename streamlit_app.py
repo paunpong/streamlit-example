@@ -25,3 +25,6 @@ if upload_file is not None :
         df.fillna('ไม่ระบุ',inplace=True)
         df.replace('-','ไม่ระบุ',inplace=True)
     st_data_show = st.dataframe(upload_file)
+
+col1, col2 = st.columns(2)
+
