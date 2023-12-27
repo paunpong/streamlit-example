@@ -45,9 +45,9 @@ def stat(A):
 def pie_chart(data,key):
   labels = [str(key) for key in data]
   counts = [data[key]['percent']for key in data]
-  x,ax = plt.subplots()
-  ax.pie(counts, labels=labels, autopct=f'%.{digit}f')
-  ax.set_title(key)
+  #x,ax = plt.subplots()
+  plt.pie(counts, labels=labels, autopct=f'%.{digit}f')
+  plt.set_title(key)
   st.pyplot()
   #plt.show()
 
