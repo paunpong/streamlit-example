@@ -24,9 +24,11 @@ def upload(A):
   
     df.fillna('ไม่ระบุ',inplace=True)
     df.replace('-','ไม่ระบุ',inplace=True)
-    st.dataframe(df)
-    return df
+    list_question = [h for h in df]
     
+    return df
+    return list_question
+st.dataframe(df)    
 def count_list(A,removenan=True):
   if removenan and 'ไม่ระบุ'in A:
     A = [n for n in A if n != 'ไม่ระบุ']
@@ -59,7 +61,7 @@ upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
 upload_df = upload(upload_file)
 
-list_question = [h for h in upload_df]
+#list_question = [h for h in upload_df]
 
 if ('Times' or 'ประทับเวลา') in list_question[0]:
   list_question.pop(0)
