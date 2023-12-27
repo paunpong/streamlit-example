@@ -8,7 +8,10 @@ import altair as alt
 import numpy as np
 import pandas as pd
 import streamlit as st
+
 from matplotlib.font_manager import FontProperties
+font_path = "/path/to/notosansthai_regular.ttf"  # Replace with the path to your installed font file
+font_properties = FontProperties(fname=font_path)
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
