@@ -29,7 +29,8 @@ if upload_file is not None :
     #df.replace('-','ไม่ระบุ',inplace=True)
     'pandas done'
 
-df = pd.read_csv(upload_file)
+read_file = pd.read_excel(upload_file)
+
 st.write(df)
 
 
