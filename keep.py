@@ -22,8 +22,9 @@ def upload(A):
   
     df.fillna('ไม่ระบุ',inplace=True)
     df.replace('-','ไม่ระบุ',inplace=True)
-  return df
     st.dataframe(df)
+  return df
+    
 
 def count_list(A,removenan=True):
   if removenan and 'ไม่ระบุ'in A:
