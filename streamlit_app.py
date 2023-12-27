@@ -26,7 +26,8 @@ if upload_file is not None :
     'pandas done'
     if upload_file.name.endswith('.xlsx'):
         df = pd.read_excel(upload_file)
-    st.dataframe(df)
+        
+    df.fillna('ไม่ระบุ',inplace=True)
     #else:
         #df = pd.read_csv(upload_file)
         #'F'
