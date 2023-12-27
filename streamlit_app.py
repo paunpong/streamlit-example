@@ -30,7 +30,7 @@ if upload_file is not None :
     'pandas done'
 y = list(upload_file)[0]
 for i in y:
-    st.header('My header')
+    st.header(str(i))
 read_file = pd.read_excel(upload_file)
 
 
