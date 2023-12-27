@@ -16,7 +16,7 @@ list_pie_chart = {}
 
 def upload(A):
   if upload_file is not None:
-    y = upload_file.name.split(".")[1].lower()
+    y = upload_file.name.split(".")[1]
     if 'xlsx' in y:
       df = pd.read_excel(upload_file)
     elif 'csv' in y:
