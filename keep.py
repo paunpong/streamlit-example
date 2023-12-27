@@ -30,7 +30,7 @@ def upload(A):
 
 def num_check(A):
   for i in set(A):
-    if type(i) is str and != 'ไม่ระบุ':
+    if type(i) is str and i != 'ไม่ระบุ':
       return False
     else:
       continue
