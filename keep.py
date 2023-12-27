@@ -65,13 +65,13 @@ def question(A):
   if ('Times' or 'ประทับเวลา') in list_question[0]:
     list_question.pop(0)
 
-  for key in list_question:
-    column = upload_df[key].values.tolist()
-    len_column = len(column)
+for key in question(list_question):
+  column = upload_df[key].values.tolist()
+  len_column = len(column)
   
-    if '*' in key:
-      list_pie_chart[key]=True
-      continue
+  if '*' in key:
+    list_pie_chart[key]=True
+    continue
 
 for p in list_pie_chart:
   pie_chart(count_list(upload_df[p].values.tolist()),p)
