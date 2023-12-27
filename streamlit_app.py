@@ -26,7 +26,7 @@ if upload_file is not None :
     'pandas done'
     if '.xlsx' in upload_file.type:
         df = pd.read_excel(upload_file)
-        'T'
+        st.dataframe(df)
     #else:
         #df = pd.read_csv(upload_file)
         #'F'
@@ -34,4 +34,4 @@ if upload_file is not None :
     #df.replace('-','ไม่ระบุ',inplace=True)
     
 
-st.dataframe(df)
+
