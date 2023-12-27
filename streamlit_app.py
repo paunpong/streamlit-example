@@ -27,5 +27,4 @@ if upload_file is not None :
     st_data_show = st.dataframe(upload_file)
 
 col1, col2 = st.columns(2)
-for i in df:
-    st.header(i)
+list_question = [x for x in df]
