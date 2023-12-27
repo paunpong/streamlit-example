@@ -25,3 +25,4 @@ if go_program:
         df.fillna('ไม่ระบุ',inplace=True)
         df.replace('-','ไม่ระบุ',inplace=True)
 
+print(df)
