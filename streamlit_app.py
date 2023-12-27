@@ -29,6 +29,8 @@ if upload_file is not None :
     #df.replace('-','ไม่ระบุ',inplace=True)
     'pandas done'
 y = list(upload_file)[0]
+
+st.hearder(y)
 read_file = pd.read_excel(upload_file)
 
 
