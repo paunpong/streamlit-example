@@ -25,10 +25,10 @@ def upload(A):
     df.fillna('ไม่ระบุ',inplace=True)
     df.replace('-','ไม่ระบุ',inplace=True)
     list_question = [h for h in df]
-    
+    st.dataframe(df)  
     return df
     return list_question
-st.dataframe(df)    
+  
 def count_list(A,removenan=True):
   if removenan and 'ไม่ระบุ'in A:
     A = [n for n in A if n != 'ไม่ระบุ']
