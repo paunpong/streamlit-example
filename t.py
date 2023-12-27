@@ -1,25 +1,28 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
+from matplotlib.font_manager import FontProperties
 
-# Find the font file for 'Noto Sans Thai'
-font_path = fm.findfont(fm.FontProperties(family='Noto Sans Thai'))
-
-# Check if the font was found
-if font_path:
-    st.success(f"Found font at: {font_path}")
-else:
-    st.error("Font not found. Make sure 'Noto Sans Thai' is installed on your system.")
+# Specify the Thai font properties
+font_properties = {'family': 'TH Sarabun New', 'weight': 'normal', 'size': 12}
 
 # Example data
 labels = ['ก', 'ข', 'ค', 'ง', 'จ']
 values = [5, 8, 3, 7, 2]
 
-# Create a bar plot without specifying font
-plt.bar(labels, values)
+# Create a bar plot with specified font
+fig, ax = plt.subplots()
+ax.bar(labels, values)
+
+# Set font properties for the plot
+for label in ax.get_xticklabels() + ax.get_yticklabels():
+    label.set_fontproperties(FontProperties(**font_properties))
+
+ax.set_xlabel('แกน X', **font_properties)
+ax.set_ylabel('แกน Y', **font_properties)
+ax.set_title('กราฟแท่ง', **font_properties)
 
 # Display the plot in Streamlit
-st.pyplot()
+st.pyplot(fig)
 
 
 
