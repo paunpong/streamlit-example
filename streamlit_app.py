@@ -23,6 +23,7 @@ if go_program :
     "yes"
 
 if upload_file is not None :
+    'pandas done'
     if '.xlsx' in upload_file:
         df = pd.read_excel(upload_file)
         'T'
@@ -31,6 +32,6 @@ if upload_file is not None :
         'F'
     #df.fillna('ไม่ระบุ',inplace=True)
     #df.replace('-','ไม่ระบุ',inplace=True)
-    'pandas done'
+    
 
 st.dataframe(df)
