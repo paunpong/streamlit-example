@@ -23,7 +23,7 @@ def upload(A):
     df.fillna('ไม่ระบุ',inplace=True)
     df.replace('-','ไม่ระบุ',inplace=True)
     #st.dataframe(df)
-  return df
+    return df
     
 
 def count_list(A,removenan=True):
