@@ -31,7 +31,7 @@ if upload_file is not None :
 y = list(upload_file)[0]
 for i in y:
     st.header(str(i))
-read_file = pd.read_excel(io.BytesIO(uploaded[y]))
+read_file = pd.read_excel(io.BytesIO(upload_file[y]))
 
 
 
