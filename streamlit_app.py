@@ -24,12 +24,11 @@ if go_program :
 
 if upload_file is not None :
     'file is here'
-for i in upload_file:
-    i
     #df = pd.read_excel(upload_file)
     #df.fillna('ไม่ระบุ',inplace=True)
     #df.replace('-','ไม่ระบุ',inplace=True)
     'pandas done'
+    
 df = pd.read_csv(upload_file)
 st.write(df)
 
