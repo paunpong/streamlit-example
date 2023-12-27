@@ -28,7 +28,7 @@ def upload(A):
     return df
 
 def question(A):
-  list_question = [A]
+  list_question = [h for h in question(A)]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
     list_question.pop(0)
   return list_question
