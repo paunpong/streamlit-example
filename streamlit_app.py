@@ -29,8 +29,6 @@ if upload_file is not None :
     #df.replace('-','ไม่ระบุ',inplace=True)
     'pandas done'
 y = list(upload_file)[0]
-for i in y:
-    st.header(str(i))
 read_file = pd.read_excel(io.BytesIO(upload_file[y]))
 
 
