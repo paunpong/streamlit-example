@@ -13,6 +13,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 digit = int(2)
 list_pie_chart = {}
+list_boxplot=[]
 
 def upload(A):
   if upload_file is not None:
@@ -26,6 +27,14 @@ def upload(A):
     df.replace('-','ไม่ระบุ',inplace=True)
     st.dataframe(df)  
     return df
+
+def num_check(A):
+  for i in set(A):
+    if type(i) is str and != 'ไม่ระบุ':
+      return False
+    else:
+      continue
+  return True
 
 def count_list(A,removenan=True):
   if removenan and 'ไม่ระบุ'in A:
@@ -53,6 +62,39 @@ def pie_chart(data,key):
   st.pyplot()
   #plt.show()
 
+def boxplot(data,key):
+  plt.boxplot(data,showmeans=True)
+  q1 = np.percentile(data,25)
+  q3 = np.percentile(data,75)
+  #mean = stat.mean(data)
+  median = np.median(data)
+  average = np.mean(data)
+  outlier_above = q3+(q3-q1)*1.5
+  outlier_below = q1-(q3-q1)*1.5
+  c = [x for x in data if (x < outlier_below or x > outlier_above)]
+  c = list(set(c))
+  c.sort()
+  if len(c) > 0:
+    for i in range(len(c)):
+      plt.text(1.1,c[i],f"Outlier_{i+1}:{c[i]:.{digit}f}")
+      data = [x for x in data if x not in c]
+      max = np.max(data)
+      min = np.min(data)
+      plt.text(1.1,max,f'Max:{max:.{digit}f}')
+      plt.text(1.1,min,f'Min:{min:.{digit}f}')
+  else:
+    max = np.max(data)
+    min = np.min(data)
+    plt.text(1.1,max,f'Max:{max:.{digit}f}')
+    plt.text(1.1,min,f'Min:{min:.{digit}f}')
+    
+  plt.text(1.1,q1,f'Q1: {q1:.{digit}f}')
+  plt.text(1.1,q3,f'Q3: {q3:.{digit}f}')
+  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
+  plt.text(1.22, average, f'Average: {average:.{digit}f}')
+  plt.title(key)
+  st.pyplot()
+
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
@@ -76,5 +118,17 @@ for key in list_question:
     list_pie_chart[key]=True
     continue
 
+  if len(set(column)) < 6:
+    list_pie_chart[key]=True
+    continue
+
+  if num_check(column):
+    list_boxplot.append(key)
+    continue
+  
+
 for p in list_pie_chart:
   pie_chart(count_list(upload_df[p].values.tolist()),p)
+
+for b in list_boxplot:
+  boxplot(upload_df[b].values.tolist(),b)
