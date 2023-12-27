@@ -24,7 +24,8 @@ if upload_file is not None :
         df = pd.read_excel(io.BytesIO(upload_file.read()))
         df.fillna('ไม่ระบุ',inplace=True)
         df.replace('-','ไม่ระบุ',inplace=True)
-    st_data_show = st.dataframe(upload_file)
+        print('Yes')
+  
 
 col1, col2 = st.columns(2)
 list_question = [x for x in df]
