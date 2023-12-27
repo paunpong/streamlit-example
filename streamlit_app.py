@@ -29,6 +29,4 @@ if upload_file is not None :
     #df.replace('-','ไม่ระบุ',inplace=True)
     'pandas done'
 
-
-
-
+st.dataframe(df)
