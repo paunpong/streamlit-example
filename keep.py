@@ -25,7 +25,6 @@ def upload(A):
     st.dataframe(df)
     return df
     
-
 def count_list(A,removenan=True):
   if removenan and 'ไม่ระบุ'in A:
     A = [n for n in A if n != 'ไม่ระบุ']
@@ -46,9 +45,10 @@ def stat(A):
 def pie_chart(data,key):
   labels = [str(key) for key in data]
   counts = [data[key]['percent']for key in data]
-  plt.pie(counts,labels = labels,autopct = f'%.{digit}f')
-  plt.title(key)
-  st.pyplot()
+  fig,ax.plt.subplots()
+  ax.pie(counts,labels = labels,autopct = f'%.{digit}f')
+  ax.title(key)
+  st.pyplot(fig)
   #plt.show()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
