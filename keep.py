@@ -48,7 +48,8 @@ def pie_chart(data,key):
   counts = [data[key]['percent']for key in data]
   plt.pie(counts,labels = labels,autopct = f'%.{digit}f')
   plt.title(key)
-  plt.show()
+  st.pyplot()
+  #plt.show()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 st.title('กรุณาใส่ไฟล์ที่เป็น excel')
