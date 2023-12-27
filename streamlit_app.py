@@ -28,6 +28,7 @@ if upload_file is not None :
         df = pd.read_excel(upload_file)
         
     df.fillna('ไม่ระบุ',inplace=True)
+    df.replace('-','ไม่ระบุ',inplace=True)
     st.dataframe(df)
     #else:
         #df = pd.read_csv(upload_file)
