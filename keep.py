@@ -56,7 +56,9 @@ upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
 upload(upload_file)
 
-list_question = [h for h in df]
+upload_df = upload(A)
+
+list_question = [h for h in upload_df]
 
 if ('Times' or 'ประทับเวลา') in list_question[0]:
   list_question.pop(0)
