@@ -75,7 +75,7 @@ def stat(A):
 def change_num_to_text(A):
   x = []
   dict_change_num_to_text = {5:'มากที่สุด', 4:'มาก', 3:'ปานกลาง', 2:"น้อย", 1:"ควรปรับปรุง",'ไม่ระบุ':'- ไม่ระบุ'}
-  for i in uplode_file[A].values.tolist():
+  for i in uplode_df[A].values.tolist():
     x.append(dict_change_num_to_text[i])
   return x
 
