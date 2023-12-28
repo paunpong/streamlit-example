@@ -240,6 +240,7 @@ for i in list_stack_num:
   topic_word, sub_word = i.split(' [')[:2]
   topic_word = topic_word.strip()
   sub_word = sub_word.strip().replace(']','')
+  A_l = count_list(upload_df[i].values.tolist())
   for k in A_l:
     A_l[k] = A_l[k]['percent']
   if topic_word not in dict_num_stack:
