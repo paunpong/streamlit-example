@@ -18,7 +18,6 @@ list_bar_chart=[]
 list_comment=[]
 list_stack_str=[]
 list_stack_num=[]
-run_program = st.button('run')
 
 def upload(A):
   if upload_file is not None:
@@ -155,7 +154,9 @@ def stacked_bar(data,key):
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 st.title('กรุณาใส่ไฟล์ที่เป็น excel')
+
 upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
+run_program = st.button('run program')
 
 upload_df = upload(upload_file)
 if run_program:
