@@ -198,7 +198,7 @@ for key in list_question:
     list_comment.append(key)
     continue
 
-  if len(set(column_df)) < 6:
+  if len(set(column)) < 6:
     list_pie_chart[key]=True
   else:
     list_bar_chart.append(key)
