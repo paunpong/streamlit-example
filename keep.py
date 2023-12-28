@@ -45,7 +45,7 @@ def check_comma(A):
   return False
 
 def split_comma(A):
-  submiss = df[A].values.tolist()
+  submiss = upload_df[A].values.tolist()
   res = []
   for i in submiss:
     res = res + i.split(", ")
