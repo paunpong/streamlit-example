@@ -29,7 +29,7 @@ def upload(A):
   
     df.fillna('ไม่ระบุ',inplace=True)
     df.replace('-','ไม่ระบุ',inplace=True)
-    st.dataframe(df)  
+    #st.dataframe(df)  
     return df
 
 def num_check(A):
