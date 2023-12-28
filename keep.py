@@ -14,6 +14,8 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 digit = int(2)
 list_pie_chart = {}
 list_boxplot=[]
+list_bar_chart=[]
+list_comment=[]
 
 def upload(A):
   if upload_file is not None:
@@ -35,6 +37,20 @@ def num_check(A):
     else:
       continue
   return True
+
+def check_comma(A):
+  for i in A:
+    if (', ' in str(i)):
+      return True
+  return False
+
+def split_comma(A):
+  submiss = df[A].values.tolist()
+  res = []
+  for i in submiss:
+    res = res + i.split(", ")
+    del_nan = [n for n in res if n != 'ไม่ระบุ']
+  return res
 
 def count_list(A,removenan=True):
   if removenan and 'ไม่ระบุ'in A:
@@ -95,17 +111,37 @@ def boxplot(data,key):
   plt.title(key)
   st.pyplot()
 
+def bar_chart(data,key):
+  count_more_than = []
+  count_equal = []
+  plt.figure(figsize=(9,6))
+  for i in set(data):
+    if i != 'ไม่ระบุ':
+      values = data.count(i)
+      if values > 1:
+        count_more_than.append(i)
+      else:
+        count_equal.append(i)
+
+    len_equal = len(count_equal)
+
+    if len_equal > 1:
+      values = [data.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
+      labels = [str(i) for i in count_more_than if i != 'ไม่ระบุ'] + ['อื่นๆ']
+    else:
+      values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
+      labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
+
+  plt.bar(labels, values)
+  plt.title(key)
+  st.pyplot()
+
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
 upload_df = upload(upload_file)
-#list_query = question(upload_df)
 
-#list_question = [h for h in upload_df]
-
-#if ('Times' or 'ประทับเวลา') in list_question[0]:
-  #list_question.pop(0)
 list_question = [h for h in upload_df]
 if ('Times' or 'ประทับเวลา') in list_question[0]:
   list_question.pop(0)
@@ -113,6 +149,10 @@ if ('Times' or 'ประทับเวลา') in list_question[0]:
 for key in list_question:
   column = upload_df[key].values.tolist()
   len_column = len(column)
+
+  if '**' in key:
+    list_bar_chart.append(key)
+    continue
   
   if '*' in key:
     list_pie_chart[key]=True
@@ -121,10 +161,29 @@ for key in list_question:
   if num_check(column):
     list_boxplot.append(key)
     continue
-  
+
+  if check_comma(column):
+    list_bar_chart.append(key)
+    continue
+
+  if column.count('ไม่ระบุ') > .25*len_column:
+    list_comment.append(key)
+    continue
+
+  if len(set(column)) >.50*len_column:
+    list_comment.append(key)
+    continue
 
 for p in list_pie_chart:
   pie_chart(count_list(upload_df[p].values.tolist()),p)
 
 for b in list_boxplot:
   boxplot(upload_df[b].values.tolist(),b)
+
+for a in list_bar_chart:
+  v = split_comma(a)
+  bar_chart(v,a)
+
+for i in list_comment:
+  list_com = upload_df[i].values.tolist()
+  bar_chart(list_com,i)
