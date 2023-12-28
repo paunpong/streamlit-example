@@ -18,7 +18,7 @@ list_bar_chart=[]
 list_comment=[]
 list_stack_str=[]
 list_stack_num=[]
-
+run_program = st.button('run')
 
 def upload(A):
   if upload_file is not None:
@@ -158,94 +158,94 @@ st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
 
 upload_df = upload(upload_file)
-
-list_question = [h for h in upload_df]
-if ('Times' or 'ประทับเวลา') in list_question[0]:
-  list_question.pop(0)
+if run_program:
+  list_question = [h for h in upload_df]
+  if ('Times' or 'ประทับเวลา') in list_question[0]:
+    list_question.pop(0)
+    
+  for key in list_question:
+    column = upload_df[key].values.tolist()
+    len_column = len(column)
   
-for key in list_question:
-  column = upload_df[key].values.tolist()
-  len_column = len(column)
-
-  if '**' in key:
-    list_bar_chart.append(key)
-    continue
+    if '**' in key:
+      list_bar_chart.append(key)
+      continue
+    
+    if '*' in key:
+      list_pie_chart[key]=True
+      continue
   
-  if '*' in key:
-    list_pie_chart[key]=True
-    continue
-
-  if '[' in key:
-    if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-      list_stack_num.append(key)
+    if '[' in key:
+      if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+        list_stack_num.append(key)
+      else:
+        list_stack_str.append(key)
+      continue
+  
+    if check_comma(column):
+      list_bar_chart.append(key)
+      continue
+  
+    if column.count('ไม่ระบุ') > .25*len_column:
+      list_comment.append(key)
+      continue
+  
+    if num_check(column):
+      list_boxplot.append(key)
+      continue
+  
+    if len(set(column)) >.50*len_column:
+      list_comment.append(key)
+      continue
+  
+    if len(set(column)) < 6:
+      list_pie_chart[key]=True
     else:
-      list_stack_str.append(key)
-    continue
-
-  if check_comma(column):
-    list_bar_chart.append(key)
-    continue
-
-  if column.count('ไม่ระบุ') > .25*len_column:
-    list_comment.append(key)
-    continue
-
-  if num_check(column):
-    list_boxplot.append(key)
-    continue
-
-  if len(set(column)) >.50*len_column:
-    list_comment.append(key)
-    continue
-
-  if len(set(column)) < 6:
-    list_pie_chart[key]=True
-  else:
-    list_bar_chart.append(key)
-
-for p in list_pie_chart:
-  pie_chart(count_list(upload_df[p].values.tolist()),p)
-
-for b in list_boxplot:
-  boxplot(upload_df[b].values.tolist(),b)
-
-for a in list_bar_chart:
-  v = split_comma(a)
-  bar_chart(v,a)
-
-for i in list_comment:
-  list_com = upload_df[i].values.tolist()
-  bar_chart(list_com,i)
-
-dict_str_stack = dict()
-dict_num_stack = dict()
-
-for i in list_stack_str:
-  topic_word, sub_word = i.split(' [')[:2]
-  topic_word = topic_word.strip()
-  sub_word = sub_word.strip().replace(']','')
-  A_l = count_list(upload_df[i].values.tolist())
-  for k in A_l:
-    A_l[k] = A_l[k]['percent']
-  if topic_word not in dict_str_stack:
-    dict_str_stack[topic_word] = dict()
-  dict_str_stack[topic_word][sub_word] = A_l
-for i in dict_str_stack:
-  stacked_bar(dict_str_stack[i],i)
-
-for i in list_stack_num:
-  mat = upload_df[i].values.tolist()
-  mean_sd = stat(mat)
-  #a = change_num_to_text(i)
-  topic_word, sub_word = i.split(' [')[:2]
-  topic_word = topic_word.strip()
-  sub_word = sub_word.strip().replace(']','')
-  A_l = count_list(upload_df[i].values.tolist())
-  for k in A_l:
-    A_l[k] = A_l[k]['percent']
-  if topic_word not in dict_num_stack:
-    dict_num_stack[topic_word] = dict()
-  dict_num_stack[topic_word][sub_word] = A_l
-for i in dict_num_stack:
-  stacked_bar(dict_num_stack[i],i)
+      list_bar_chart.append(key)
+  
+  for p in list_pie_chart:
+    pie_chart(count_list(upload_df[p].values.tolist()),p)
+  
+  for b in list_boxplot:
+    boxplot(upload_df[b].values.tolist(),b)
+  
+  for a in list_bar_chart:
+    v = split_comma(a)
+    bar_chart(v,a)
+  
+  for i in list_comment:
+    list_com = upload_df[i].values.tolist()
+    bar_chart(list_com,i)
+  
+  dict_str_stack = dict()
+  dict_num_stack = dict()
+  
+  for i in list_stack_str:
+    topic_word, sub_word = i.split(' [')[:2]
+    topic_word = topic_word.strip()
+    sub_word = sub_word.strip().replace(']','')
+    A_l = count_list(upload_df[i].values.tolist())
+    for k in A_l:
+      A_l[k] = A_l[k]['percent']
+    if topic_word not in dict_str_stack:
+      dict_str_stack[topic_word] = dict()
+    dict_str_stack[topic_word][sub_word] = A_l
+  for i in dict_str_stack:
+    stacked_bar(dict_str_stack[i],i)
+  
+  for i in list_stack_num:
+    mat = upload_df[i].values.tolist()
+    mean_sd = stat(mat)
+    #a = change_num_to_text(i)
+    topic_word, sub_word = i.split(' [')[:2]
+    topic_word = topic_word.strip()
+    sub_word = sub_word.strip().replace(']','')
+    A_l = count_list(upload_df[i].values.tolist())
+    for k in A_l:
+      A_l[k] = A_l[k]['percent']
+    if topic_word not in dict_num_stack:
+      dict_num_stack[topic_word] = dict()
+    dict_num_stack[topic_word][sub_word] = A_l
+  for i in dict_num_stack:
+    stacked_bar(dict_num_stack[i],i)
   
