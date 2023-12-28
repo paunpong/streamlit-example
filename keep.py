@@ -67,8 +67,8 @@ def count_list(A,removenan=True):
   return count_dict
 
 def stat(A):
-  mean = stat.mean(A)
-  sd = stat.stdev(A)
+  mean = np.mean(A)
+  sd = np.std(A)
   mean_sd = {'ค่าเฉลี่ย':round(mean,digit),'ส่วนเบี่บงเบนมาตรฐาน':(sd,digit)}
   return mean_sd
 
