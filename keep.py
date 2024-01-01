@@ -261,7 +261,7 @@ if run_program:
       st.write('อื่นๆ')
       other = True
     else:
-      st.write('\t', '-', k)
+      st.write('\t', '-', k)   
   for i in list_comment:
     list_com = upload_df[i].values.tolist()
     bar_chart(list_com,i)
@@ -282,7 +282,7 @@ if run_program:
     name_top = ''
     st.write('หัวข้อ' , 'จำนวน(เปอร์เซ็นต์)')
     for t in dict_str_stack[s]:
-      name = s+[{t}]
+      name = s+f'[{t}]'
       answer = count_list(upload_df[name].values.tolist())
       if 'ไม่ระบุ' not in answer:
         answer['ไม่ระบุ'] = {'count': round(0,digit), 'percent': round(0,digit)}
