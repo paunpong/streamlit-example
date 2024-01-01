@@ -213,7 +213,7 @@ if run_program:
     for k in values:
       count = values[k]['count']
       percent = values[k]['percent']
-      table_data.append([k, count, percent])
+      #table_data.append([k, count, percent])
       st.write(k , '\t' , count , '\t' , percent)
   #st.table([table_head, *table_data])
   for p in list_pie_chart:
