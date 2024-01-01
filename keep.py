@@ -248,7 +248,7 @@ if run_program:
   other = False
   for c in list_comment:
     x = []
-    st.write(i)
+    st.write(c)
     list_com = upload_df[c].values.tolist()
     del_nan = [n for n in list_com if n != 'ไม่ระบุ']
     set_list = list(set(del_nan))
