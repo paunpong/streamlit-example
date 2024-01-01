@@ -245,7 +245,7 @@ if run_program:
     v = split_comma(a)
     bar_chart(v,a)
 
-  other = Flase
+  other = False
   for c in list_comment:
     x = []
     st.write(i)
