@@ -284,8 +284,8 @@ if run_program:
     for k in dict_str_stack[i]:
       name = i+f'[{k}]'
       st.write(name)
-      answer = count_list(upload_df[Tname].values.tolist())
-      st.write(naswer)
+      answer = count_list(upload_df[k].values.tolist())
+      st.write(answer)
       if 'ไม่ระบุ' not in answer:
         answer['ไม่ระบุ'] = {'count': round(0,digit), 'percent': round(0,digit)}
       if len(answer) > 4:
