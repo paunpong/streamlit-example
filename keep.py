@@ -256,7 +256,7 @@ if run_program:
     counts.sort(key=lambda x: x[1], reverse=True)
   for k, count in counts:
     if count > 1:
-      st.write(k , '[{count}]')
+      st.write(f"({k} '[{count}]')")
     elif not other:
       print('อื่นๆ')
       other = True
