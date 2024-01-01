@@ -204,7 +204,8 @@ if run_program:
     else:
       list_bar_chart.append(key)
 
-st.write(f"{'หัวข้อ':<25} {'จำนวน':<25} {'เปอร์เซ็นต์':<25}")
+  st.write(f"{'หัวข้อ':<25} {'จำนวน':<25} {'เปอร์เซ็นต์':<25}")
+
   for p in list_pie_chart:
     values = count_list(df[p].values.tolist(), list_pie_chart[p])
     for k in values:
