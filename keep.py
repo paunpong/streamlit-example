@@ -302,7 +302,7 @@ if run_program:
         per2 = answer['น้อย']['percent']
         per1 = answer['น้อยที่สุด']['percent']
         per0 = answer['ไม่ระบุ']['percent']
-        st.write(t , count5(per5) , count4(per4) , count3(per3) , count2(per2) , count1(per1) , count0(per0))
+        st.write(f"{t} {count5}{(per5)} {count4}{(per4)} {count3}{(per3)} {count2}{(per2)} {count1}{(per1)} {count0}{(per0)}")
       else:
         if s != name_top:
           st.write(i , 'มาก' , 'ปานกลาง' , 'น้อย' , 'ไม่ระบุ')
@@ -315,7 +315,7 @@ if run_program:
         per3 = answer['ปานกลาง']['percent']
         per2 = answer['น้อย']['percent']
         per0 = answer['ไม่ระบุ']['percent']
-        st.write(t , count4(per4) , count3(per3) , count2(per2) , count0(per0))
+        st.write(f"{t} {count4}{(per4)} {count3}{(per3)} {count2}{(per2)} {count0}{(per0)}")
         for l in answer:
           answer[l].pop('count')
     stacked_bar(dict_str_stack[s],s)
