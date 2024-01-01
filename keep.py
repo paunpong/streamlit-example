@@ -283,9 +283,7 @@ if run_program:
     st.write(f'{"หัวข้อ"} {"จำนวน(เปอร์เซ็นต์)"}')
     for t in dict_str_stack[s]:
       name = s+f' [{t}]'
-      st.write(name)
       answer = count_list(upload_df[name].values.tolist())
-      st.write(answer)
       if 'ไม่ระบุ' not in answer:
         answer['ไม่ระบุ'] = {'count': round(0,digit), 'percent': round(0,digit)}
       if len(answer) > 4:
