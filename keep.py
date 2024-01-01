@@ -1,6 +1,6 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
-import statistics as stat
+#import statistics as stat
 #import io
 #import re
 #import operator
@@ -160,6 +160,7 @@ run_program = st.button('run program')
 
 upload_df = upload(upload_file)
 if run_program:
+  #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
   list_question = [h for h in upload_df]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
     list_question.pop(0)
@@ -203,35 +204,70 @@ if run_program:
       list_pie_chart[key]=True
     else:
       list_bar_chart.append(key)
-  table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
-  table_data = []
-  #st.write('หัวข้อ' , '\t' , 'จำนวน' , '\t' , 'เปอร์เซ็นต์')
+  #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#      
+  #table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+  #table_data = []
+  st.write('หัวข้อ' , '\t' , 'จำนวน' , '\t' , 'เปอร์เซ็นต์')
   for p in list_pie_chart:
     values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
     for k in values:
       count = values[k]['count']
       percent = values[k]['percent']
       table_data.append([k, count, percent])
-      #st.write(k , '\t' , count , '\t' , percent)
-  st.table([table_head, *table_data])
-      
+      st.write(k , '\t' , count , '\t' , percent)
+  #st.table([table_head, *table_data])
   for p in list_pie_chart:
     pie_chart(count_list(upload_df[p].values.tolist()),p)
-  
+
+  st.write('หัวข้อ','ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน')
+  for b in list_boxplot:
+    mean_sd = stst(upload_df[b].values.tolist())
+    mean = mean_sd['ค่าเฉลี่ย']
+    std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+    st.write(b , mean , std)
   for b in list_boxplot:
     boxplot(upload_df[b].values.tolist(),b)
-  
+
+  st.write('หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์')
+  for a in list_bar_chart:
+    list_values = upload_df[a].values.tolist()
+    list_free = []
+    for r in list_values:
+      list_free = list_free + r.split(", ")
+    set_list = list(set(list_free))
+    v = count_list(list_free)
+  st.write(a , len(list_free) , 100)
+  for k in v:
+    count = v[k]['count']
+    percent = v[k]['percent']
+    st.write(k , count ,  percent)
   for a in list_bar_chart:
     v = split_comma(a)
     bar_chart(v,a)
-  
+
+  other = Flase
+  for c in list_comment:
+    x = []
+    st.write(i)
+    list_com = upload_df[c].values.tolist()
+    del_nan = [n for n in list_com if n != 'ไม่ระบุ']
+    set_list = list(set(del_nan))
+    counts = [(k, list_com.count(k))for k in set_list]
+    counts.sort(key=lambda x: x[1], reverse=True)
+  for k, count in counts:
+    if count > 1:
+      st.write(k , '[{count}]')
+    elif not other:
+      print('อื่นๆ')
+      other = True
+    else:
+      print('\t', '-', k)
   for i in list_comment:
     list_com = upload_df[i].values.tolist()
     bar_chart(list_com,i)
   
   dict_str_stack = dict()
   dict_num_stack = dict()
-  
   for i in list_stack_str:
     topic_word, sub_word = i.split(' [')[:2]
     topic_word = topic_word.strip()
@@ -242,9 +278,50 @@ if run_program:
     if topic_word not in dict_str_stack:
       dict_str_stack[topic_word] = dict()
     dict_str_stack[topic_word][sub_word] = A_l
-  for i in dict_str_stack:
-    stacked_bar(dict_str_stack[i],i)
-  
+  for s in dict_str_stack:
+    name_top = ''
+    st.write('หัวข้อ' , 'จำนวน(เปอร์เซ็นต์)')
+    for t in dict_str_stack[s]:
+      name = s+[{t}]
+      answer = count_list(upload_df[name].values.tolist())
+      if 'ไม่ระบุ' not in answer:
+        answer['ไม่ระบุ'] = {'count': round(0,digit), 'percent': round(0,digit)}
+      if len(answer) > 4:
+        if s != name_top:
+          st.write(s , 'มากที่สุด' , 'มาก' , 'ปานกลาง' , 'น้อย' , 'น้อยที่สุด' , 'ไม่ระบุ')
+        name_top = s
+        count5 = answer['มากที่สุด']['count']
+        count4 = answer['มาก']['count']
+        count3 = answer['ปานกลาง']['count']
+        count2 = answer['น้อย']['count']
+        count1 = answer['น้อยที่สุด']['count']
+        count0 = answer['ไม่ระบุ']['count']
+        per5 = answer['มากที่สุด']['percent']
+        per4 = answer['มาก']['percent']
+        per3 = answer['ปานกลาง']['percent']
+        per2 = answer['น้อย']['percent']
+        per1 = answer['น้อยที่สุด']['percent']
+        per0 = answer['ไม่ระบุ']['percent']
+        st.write(t , count5(per5) , count4(per4) , count3(per3) , count2(per2) , count1(per1) , count0(per0))
+      else:
+        if s != name_top:
+          st.write(i , 'มาก' , 'ปานกลาง' , 'น้อย' , 'ไม่ระบุ')
+        name_top = s
+        count4 = answer['มาก']['count']
+        count3 = answer['ปานกลาง']['count']
+        count2 = answer['น้อย']['count']
+        count0 = answer['ไม่ระบุ']['count']
+        per4 = answer['มาก']['percent']
+        per3 = answer['ปานกลาง']['percent']
+        per2 = answer['น้อย']['percent']
+        per0 = answer['ไม่ระบุ']['percent']
+        st.write(t , count4(per4) , count3(per3) , count2(per2) , count0(per0))
+        for l in answer:
+          answer[l].pop('count')
+    stacked_bar(dict_str_stack[s],s)
+
+  st.write('หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน' , 'สรุป')
+  top_name = ''
   for i in list_stack_num:
     mat = upload_df[i].values.tolist()
     mean_sd = stat(mat)
@@ -252,7 +329,23 @@ if run_program:
     topic_word, sub_word = i.split(' [')[:2]
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']','')
+    if topic_word != top_name:
+      st.write(topic_word)
+      top_name = topic_word
     A_l = count_list(upload_df[i].values.tolist())
+    for k in mean_sd:
+      mean = mean_sd['ค่าเฉลี่ย']
+      s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+    if mean >= 4.2:
+      st.write(f"{sub_word} {mean} {s_d} {'มากที่สุด'}")
+    elif mean >= 3.4:
+      st.write(f"{sub_word} {mean} {s_d} {'มาก'}")
+    elif mean >= 2.6:
+      st.write(f"{sub_word} {mean} {s_d} {'ปานกลาง'}")
+    elif mean >= 1.8:
+      st.write(f"{sub_word} {mean} {s_d} {'น้อย'}")
+    elif mean < 1.8:
+      st.write(f"{sub_word} {mean} {s_d} {'น้อยที่สุด'}")
     for k in A_l:
       A_l[k] = A_l[k]['percent']
     if topic_word not in dict_num_stack:
