@@ -278,12 +278,12 @@ if run_program:
     if topic_word not in dict_str_stack:
       dict_str_stack[topic_word] = dict()
     dict_str_stack[topic_word][sub_word] = A_l
-  for s in dict_str_stack:
+  for i in dict_str_stack:
     name_top = ''
-    st.write('หัวข้อ' , 'จำนวน(เปอร์เซ็นต์)')
-    for t in dict_str_stack[s]:
-      name = s + list(set(t))
-      answer = count_list(upload_df[name].values.tolist())
+    st.write(f'{"หัวข้อ"} {"จำนวน(เปอร์เซ็นต์)"}')
+    for k in dict_str_stack[i]:
+      Tname = i+f'[{k}]'
+      answer = count_list(upload_df[Tname].values.tolist())
       if 'ไม่ระบุ' not in answer:
         answer['ไม่ระบุ'] = {'count': round(0,digit), 'percent': round(0,digit)}
       if len(answer) > 4:
