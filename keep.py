@@ -203,7 +203,8 @@ if run_program:
       list_pie_chart[key]=True
     else:
       list_bar_chart.append(key)
-  
+
+st.write(f"{'หัวข้อ':<25} {'จำนวน':<25} {'เปอร์เซ็นต์':<25}")  
   for p in list_pie_chart:
     pie_chart(count_list(upload_df[p].values.tolist()),p)
   
