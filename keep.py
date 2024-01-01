@@ -221,7 +221,7 @@ if run_program:
 
   st.write('หัวข้อ','ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน')
   for b in list_boxplot:
-    mean_sd = stst(upload_df[b].values.tolist())
+    mean_sd = stat(upload_df[b].values.tolist())
     mean = mean_sd['ค่าเฉลี่ย']
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     st.write(b , mean , std)
