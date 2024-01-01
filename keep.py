@@ -204,14 +204,13 @@ if run_program:
     else:
       list_bar_chart.append(key)
 
-  st.write('หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์')
-
+  st.write('หัวข้อ' , '\t' , 'จำนวน' , '\t' , 'เปอร์เซ็นต์')
   for p in list_pie_chart:
     values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
     for k in values:
       count = values[k]['count']
       percent = values[k]['percent']
-      st.write(k , count , percent)
+      st.write(k , '\t' , count , '\t' , percent)
       
   for p in list_pie_chart:
     pie_chart(count_list(upload_df[p].values.tolist()),p)
