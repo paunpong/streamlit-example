@@ -234,13 +234,14 @@ if run_program:
     list_free = []
     for r in list_values:
       list_free = list_free + r.split(", ")
-    set_list = list(set(list_free))
-    v = count_list(list_free)
-  st.write(a , len(list_free) , 100)
-  for k in v:
-    count = v[k]['count']
-    percent = v[k]['percent']
-    st.write(k , count ,  percent)
+    if list_free != 0:
+      set_list = list(set(list_free))
+      v = count_list(list_free)
+    st.write(a , len(list_free) , 100)
+    for k in v:
+      count = v[k]['count']
+      percent = v[k]['percent']
+      st.write(k , count ,  percent)
   for a in list_bar_chart:
     v = split_comma(a)
     bar_chart(v,a)
