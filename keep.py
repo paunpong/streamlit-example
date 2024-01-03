@@ -240,10 +240,10 @@ if run_program:
     else:
       list_bar_chart.append(key)
 
- for i in list_pie_chart:
-  st.write(i)
+for i in list_pie_chart:
+ st.write(i)
 
- st.write('end.....................')
+st.write('end.....................')
 
 for i in list_boxplot:
  print(i)
