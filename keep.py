@@ -182,13 +182,7 @@ run_program = st.button('run program')
 
 upload_df = upload(upload_file)
 
-number_loop = 0
-if run_program:
- number_loop = number_loop + 1
 
-st.write(number_loop)
-
-if number_loop == 1:
   #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
   list_question = [h for h in upload_df]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
@@ -357,3 +351,14 @@ for i in dict_num_stack:
   
 st.write('เกรด')
 boxplot(upload_df['เกรด'].values.tolist(),'เกรด')
+
+
+number_loop = 0
+while number_loop<10:
+ st.write(number_loop)
+ run_program2 = st.button('run program2')
+ if run_program2:
+  st.write('xxx')
+  number_loop = number_loop+1
+ 
+
