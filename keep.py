@@ -203,7 +203,8 @@ if run_program:
   for key in list_question:
     column = upload_df[key].values.tolist()
     len_column = len(column)
-  
+  '''
+  ##########################################################################################################
     if '**' in key:
       list_bar_chart.append(key)
       continue
@@ -211,7 +212,8 @@ if run_program:
     if '*' in key:
       list_pie_chart[key]=True
       continue
-  
+##############################################################################################################      
+  '''
     if '[' in key:
       if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
         list_stack_num.append(key)
@@ -246,7 +248,7 @@ for i in list_pie_chart:
 st.write('end.....................')
 
 for i in list_boxplot:
- print(i)
+ st.write(i)
   #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#      
 table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data = []
