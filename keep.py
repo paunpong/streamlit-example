@@ -45,7 +45,7 @@ def upload(A):
   df.fillna('ไม่ระบุ',inplace=True)
   df.replace('-','ไม่ระบุ',inplace=True)
    #st.dataframe(df)  
- return df
+  return df
 
 def num_check(A):
  for i in set(A):
