@@ -216,7 +216,7 @@ if upload_file is not None:
 if upload_file is not None:
  table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
  table_data = []
- st.table([table_head, *table_data])
+ st.table([table_head, *table_data]) 
 for p in list_pie_chart:
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  for k in values:
