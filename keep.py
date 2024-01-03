@@ -119,10 +119,10 @@ def pie_chart(data, key):
   text.set_fontproperties(thai_font_prop)
  #ax.legend(wedges, labels, title="Legend", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
- st.pyplot(fig)
+ st.pyplot()
 
 def boxplot(data,key):
- fig, ax = plt.subplots()
+ #fig, ax = plt.subplots()
  plt.boxplot(data,showmeans=True)
  q1 = np.percentile(data,25)
  q3 = np.percentile(data,75)
@@ -153,7 +153,7 @@ def boxplot(data,key):
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
  plt.text(1.22, average, f'Average: {average:.{digit}f}')
  plt.title(key)
- st.pyplot(fig)
+ st.pyplot()
 
 def bar_chart(data,key):
   count_more_than = []
