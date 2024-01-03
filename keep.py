@@ -213,9 +213,9 @@ if upload_file is not None:
    list_bar_chart.append(key)
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
 #st.write('หัวข้อ' , '\t' , 'จำนวน' , '\t' , 'เปอร์เซ็นต์')
-if upload_file is not None:
- table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
- table_data = []
+#if upload_file is not None:
+table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+table_data = []
 for p in list_pie_chart:
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  for k in values:
