@@ -18,6 +18,16 @@ thai_font_path = os.path.join("Sarabun-Regular.ttf")
  
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
+
+def add_font_thai():
+ # Set Thai font for Matplotlib
+ for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] +ax.get_xticklabels() + ax.get_yticklabels()):
+  item.set_fontproperties(thai_font_prop)
+ 
+ ax.legend(prop=thai_font_prop)
+
+
+
 digit = int(2)
 list_pie_chart = {}
 list_boxplot=[]
@@ -90,6 +100,7 @@ def pie_chart(data,key):
   counts = [data[key]['percent']for key in data]
   #x,ax = plt.subplots()
   plt.pie(counts, labels=labels, autopct=f'%.{digit}f')
+  add_font_thai()
   plt.title(key)
   st.pyplot()
   #plt.show()
