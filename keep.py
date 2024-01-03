@@ -2,6 +2,7 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import os
 from matplotlib import font_manager as fm
+from matplotlib.font_manager import FontProperties
 #import statistics as stat
 #import io
 #import re
@@ -11,7 +12,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+#st.set_option('deprecation.showPyplotGlobalUse', False)
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 thai_font_path = os.path.join("Sarabun-Regular.ttf")
@@ -95,7 +96,7 @@ def stat(A):
     #x.append(dict_change_num_to_text[i])
   #return x
 
-def pie_chart(data,key):
+'''def pie_chart(data,key):
   labels = [str(key) for key in data]
   counts = [data[key]['percent']for key in data]
   x,ax = plt.subplots()
@@ -108,7 +109,18 @@ def pie_chart(data,key):
   plt.title(key)
   
   st.pyplot(x)
-  #plt.show()
+  #plt.show()'''
+
+def pie_chart(data, key):
+ labels = [str(key) for key in data]
+ counts = [data[key]['percent'] for key in data]
+ fig, ax = plt.subplots()
+ wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ for text in texts + autotexts:
+  text.set_fontproperties(thai_font_prop)
+ ax.legend(wedges, labels, title="Legend", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
+ plt.title(key, fontproperties=thai_font_prop)
+ st.pyplot(fig)
 
 def boxplot(data,key):
   plt.boxplot(data,showmeans=True)
