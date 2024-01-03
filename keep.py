@@ -9,12 +9,12 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-thai_font_path = os.path.join("LEELAWAD.TTF")
+thai_font_path = os.path.join("Sarabun-Regular.ttf")
+ 
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
-
-st.set_option('deprecation.showPyplotGlobalUse', False)
 
 digit = int(2)
 list_pie_chart = {}
