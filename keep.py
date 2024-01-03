@@ -223,7 +223,7 @@ for p in list_pie_chart:
   percent = values[k]['percent']
   table_data.append([k, count, percent])
    #st.write(k , '\t' , count , '\t' , percent)
- st.table([table_head, *table_data])
+st.table([table_head, *table_data])
  for p in list_pie_chart:
   pie_chart(count_list(upload_df[p].values.tolist()),p)
 
