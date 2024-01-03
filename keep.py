@@ -123,37 +123,37 @@ def pie_chart(data, key):
  st.pyplot(fig)
 
 def boxplot(data,key):
-  plt.boxplot(data,showmeans=True)
-  q1 = np.percentile(data,25)
-  q3 = np.percentile(data,75)
+ plt.boxplot(data,showmeans=True)
+ q1 = np.percentile(data,25)
+ q3 = np.percentile(data,75)
   #mean = stat.mean(data)
-  median = np.median(data)
-  average = np.mean(data)
-  outlier_above = q3+(q3-q1)*1.5
-  outlier_below = q1-(q3-q1)*1.5
-  c = [x for x in data if (x < outlier_below or x > outlier_above)]
-  c = list(set(c))
-  c.sort()
-  if len(c) > 0:
-    for i in range(len(c)):
-      plt.text(1.1,c[i],f"Outlier_{i+1}:{c[i]:.{digit}f}")
-      data = [x for x in data if x not in c]
-      max = np.max(data)
-      min = np.min(data)
-      plt.text(1.1,max,f'Max:{max:.{digit}f}')
-      plt.text(1.1,min,f'Min:{min:.{digit}f}')
+ median = np.median(data)
+ average = np.mean(data)
+ outlier_above = q3+(q3-q1)*1.5
+ outlier_below = q1-(q3-q1)*1.5
+ c = [x for x in data if (x < outlier_below or x > outlier_above)]
+ c = list(set(c))
+ c.sort()
+ if len(c) > 0:
+  for i in range(len(c)):
+   plt.text(1.1,c[i],f"Outlier_{i+1}:{c[i]:.{digit}f}")
+   data = [x for x in data if x not in c]
+   max = np.max(data)
+   min = np.min(data)
+   plt.text(1.1,max,f'Max:{max:.{digit}f}')
+   plt.text(1.1,min,f'Min:{min:.{digit}f}')
   else:
-    max = np.max(data)
-    min = np.min(data)
-    plt.text(1.1,max,f'Max:{max:.{digit}f}')
-    plt.text(1.1,min,f'Min:{min:.{digit}f}')
+   max = np.max(data)
+   min = np.min(data)
+   plt.text(1.1,max,f'Max:{max:.{digit}f}')
+   plt.text(1.1,min,f'Min:{min:.{digit}f}')
     
-  plt.text(1.1,q1,f'Q1: {q1:.{digit}f}')
-  plt.text(1.1,q3,f'Q3: {q3:.{digit}f}')
-  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
-  plt.text(1.22, average, f'Average: {average:.{digit}f}')
-  plt.title(key)
-  st.pyplot()
+ plt.text(1.1,q1,f'Q1: {q1:.{digit}f}')
+ plt.text(1.1,q3,f'Q3: {q3:.{digit}f}')
+ plt.text(1.1, median, f'Q2: {median:.{digit}f}')
+ plt.text(1.22, average, f'Average: {average:.{digit}f}')
+ plt.title(key)
+ st.pyplot()
 
 def bar_chart(data,key):
   count_more_than = []
