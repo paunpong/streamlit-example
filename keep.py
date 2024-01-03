@@ -261,7 +261,8 @@ if run_program:
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     st.write(b , mean , std)
   for b in list_boxplot:
-    boxplot(upload_df[b].values.tolist(),b)
+   st.write(b)
+   boxplot(upload_df[b].values.tolist(),b)
 
   st.write('หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์')
   for a in list_bar_chart:
