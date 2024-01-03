@@ -354,11 +354,12 @@ boxplot(upload_df['เกรด'].values.tolist(),'เกรด')
 
 
 number_loop = 0
-while number_loop<10:
+while number_loop < 10 :
  st.write(number_loop)
  run_program2 = st.button('run program2')
  if run_program2:
   st.write('xxx')
   number_loop = number_loop+1
+  run_prgram_2 = False
  
 
