@@ -354,10 +354,10 @@ boxplot(upload_df['เกรด'].values.tolist(),'เกรด')
 
 d =st.radio(
     "What's your favorite movie genre",
-    [":rainbow[Comedy]", "***Drama***", "Documentary :movie_camera:"],
+    list_pie_chart,
     index=2,
 )
 
 
-st.write(d)
+st.write(1)
 
