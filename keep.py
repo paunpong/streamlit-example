@@ -101,7 +101,7 @@ def pie_chart(data,key):
   x,ax = plt.subplots()
   ax.pie(counts, labels=labels, autopct=f'%.{digit}f')
   
-  for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] + ax.get_xticklabels() + ax.get_yticklabels()):
+  for item in ([ax.title, ax.xaxis.label, ax.yaxis.label, ax.labels] + ax.get_xticklabels() + ax.get_yticklabels()):
    item.set_fontproperties(thai_font_prop)
   ax.legend()
   ax.legend(prop=thai_font_prop)
