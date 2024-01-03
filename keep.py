@@ -299,14 +299,14 @@ for c in list_comment:
   set_list = list(set(del_nan))
   counts = [(k, list_com.count(k))for k in set_list]
   counts.sort(key=lambda x: x[1], reverse=True)
-for k, count in counts:
-  if count > 1:
-    st.write(f"{k} [{count}]")
-  elif not other:
-    st.write('อื่นๆ')
-    other = True
-  else:
-    st.write('\t', '-', k)   
+  for k, count in counts:
+    if count > 1:
+      st.write(f"{k} [{count}]")
+    elif not other:
+      st.write('อื่นๆ')
+      other = True
+    else:
+      st.write('\t', '-', k)   
 for i in list_comment:
   list_com = upload_df[i].values.tolist()
   bar_chart(list_com,i)
