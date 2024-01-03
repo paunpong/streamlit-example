@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-#st.set_option('deprecation.showPyplotGlobalUse', False)
+st.set_option('deprecation.showPyplotGlobalUse', False)
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 thai_font_path = os.path.join("Sarabun-Regular.ttf")
@@ -24,7 +24,6 @@ def add_font_thai():
  # Set Thai font for Matplotlib
  for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] +ax.get_xticklabels() + ax.get_yticklabels()):
   item.set_fontproperties(thai_font_prop)
- 
  ax.legend(prop=thai_font_prop)
 
 
@@ -123,6 +122,7 @@ def pie_chart(data, key):
  st.pyplot(fig)
 
 def boxplot(data,key):
+ fig, ax = plt.subplots()
  plt.boxplot(data,showmeans=True)
  q1 = np.percentile(data,25)
  q3 = np.percentile(data,75)
@@ -153,7 +153,7 @@ def boxplot(data,key):
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
  plt.text(1.22, average, f'Average: {average:.{digit}f}')
  plt.title(key)
- st.pyplot()
+ st.pyplot(fig)
 
 def bar_chart(data,key):
   count_more_than = []
