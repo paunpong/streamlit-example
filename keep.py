@@ -101,7 +101,7 @@ def pie_chart(data,key):
   x,ax = plt.subplots()
   ax.pie(counts, labels=labels, autopct=f'%.{digit}f')
  
-  ax.title(key)
+  plt.title(key)
   st.pyplot(x)
   #plt.show()
 
