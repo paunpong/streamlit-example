@@ -142,11 +142,11 @@ def boxplot(data,key):
    min = np.min(data)
    plt.text(1.1,max,f'Max:{max:.{digit}f}')
    plt.text(1.1,min,f'Min:{min:.{digit}f}')
-  else:
-   max = np.max(data)
-   min = np.min(data)
-   plt.text(1.1,max,f'Max:{max:.{digit}f}')
-   plt.text(1.1,min,f'Min:{min:.{digit}f}')
+ else:
+  max = np.max(data)
+  min = np.min(data)
+  plt.text(1.1,max,f'Max:{max:.{digit}f}')
+  plt.text(1.1,min,f'Min:{min:.{digit}f}')
     
  plt.text(1.1,q1,f'Q1: {q1:.{digit}f}')
  plt.text(1.1,q3,f'Q3: {q3:.{digit}f}')
