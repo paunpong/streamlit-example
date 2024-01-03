@@ -18,14 +18,11 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 thai_font_path = os.path.join("Sarabun-Regular.ttf")
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
-
 def add_font_thai():
  fig,ax = plt.subplots()
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
-
-
 
 digit = int(2)
 list_pie_chart = {}
@@ -229,33 +226,33 @@ for p in list_pie_chart:
 for p in list_pie_chart:
   pie_chart(count_list(upload_df[p].values.tolist()),p)
 
-st.write('หัวข้อ','ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน')
+#st.write('หัวข้อ','ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน')
 for b in list_boxplot:
-  mean_sd = stat(upload_df[b].values.tolist())
-  mean = mean_sd['ค่าเฉลี่ย']
-  std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
-  st.write(b , mean , std)
+ mean_sd = stat(upload_df[b].values.tolist())
+ mean = mean_sd['ค่าเฉลี่ย']
+ std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+ st.write(b , mean , std)
 for b in list_boxplot:
  st.write(b)
  boxplot(upload_df[b].values.tolist(),b)
 
-st.write('หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์')
+#st.write('หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์')
 for a in list_bar_chart:
-  list_values = upload_df[a].values.tolist()
-  list_free = []
-  for r in list_values:
-    list_free = list_free + r.split(", ")
-  if list_free != 0:
-    set_list = list(set(list_free))
-    v = count_list(list_free)
-  st.write(a , len(list_free) , 100)
-  for k in v:
-    count = v[k]['count']
-    percent = v[k]['percent']
-    st.write(k , count ,  percent)
+ list_values = upload_df[a].values.tolist()
+ list_free = []
+ for r in list_values:
+  list_free = list_free + r.split(", ")
+ if list_free != 0:
+  set_list = list(set(list_free))
+  v = count_list(list_free)
+ st.write(a , len(list_free) , 100)
+ for k in v:
+  count = v[k]['count']
+  percent = v[k]['percent']
+  st.write(k , count ,  percent)
 for a in list_bar_chart:
-  v = split_comma(a)
-  bar_chart(v,a)
+ v = split_comma(a)
+ bar_chart(v,a)
 
 other = False
 for c in list_comment:
@@ -300,7 +297,7 @@ for s in dict_str_stack:
 
   stacked_bar(dict_str_stack[s],s)
 
-st.write('หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน' , 'สรุป')
+#st.write('หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน' , 'สรุป')
 top_name = ''
 for i in list_stack_num:
   mat = upload_df[i].values.tolist()
