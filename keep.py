@@ -352,7 +352,11 @@ for i in dict_num_stack:
 st.write('เกรด')
 boxplot(upload_df['เกรด'].values.tolist(),'เกรด')
 
-d = st.radio('Pick one:', ['nose','ear'])
+d =st.radio(
+    "What's your favorite movie genre",
+    [":rainbow[Comedy]", "***Drama***", "Documentary :movie_camera:"],
+    index=2,
+)
 
 
 st.write(d)
