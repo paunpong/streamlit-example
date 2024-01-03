@@ -21,10 +21,10 @@ thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
 
 def add_font_thai():
- # Set Thai font for Matplotlib
- for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] +ax.get_xticklabels() + ax.get_yticklabels()):
-  item.set_fontproperties(thai_font_prop)
- ax.legend(prop=thai_font_prop)
+ fig,ax = plt.subplots()
+ wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ for text in texts + autotexts:
+  text.set_fontproperties(thai_font_prop)
 
 
 
@@ -37,65 +37,62 @@ list_stack_str=[]
 list_stack_num=[]
 
 def upload(A):
-  if upload_file is not None:
-    y = upload_file.name.split(".")[1]
-    if 'xlsx' in y:
-      df = pd.read_excel(upload_file)
-    elif 'csv' in y:
-      df = pd.read_csv(upload_file)
-  
-    df.fillna('ไม่ระบุ',inplace=True)
-    df.replace('-','ไม่ระบุ',inplace=True)
-    #st.dataframe(df)  
-    return df
+ if upload_file is not None:
+  y = upload_file.name.split(".")[1]
+  if 'xlsx' in y:
+   df = pd.read_excel(upload_file)
+  elif 'csv' in y:
+   df = pd.read_csv(upload_file)
+ df.fillna('ไม่ระบุ',inplace=True)
+ df.replace('-','ไม่ระบุ',inplace=True)
+   #st.dataframe(df)  
+ return df
 
 def num_check(A):
-  for i in set(A):
-    if type(i) is str and i != 'ไม่ระบุ':
-      return False
-    else:
-      continue
-  return True
+ for i in set(A):
+  if type(i) is str and i != 'ไม่ระบุ':
+   return False
+  else:
+   continue
+ return True
 
 def check_comma(A):
-  for i in A:
-    if (', ' in str(i)):
-      return True
-  return False
+ for i in A:
+   if (', ' in str(i)):
+     return True
+ return False
 
 def split_comma(A):
-  submiss = upload_df[A].values.tolist()
-  res = []
-  for i in submiss:
-    res = res + i.split(", ")
-    del_nan = [n for n in res if n != 'ไม่ระบุ']
-  return res
+ submiss = upload_df[A].values.tolist()
+ res = []
+ for i in submiss:
+  res = res + i.split(", ")
+  del_nan = [n for n in res if n != 'ไม่ระบุ']
+ return res
 
 def count_list(A,removenan=True):
-  if removenan and 'ไม่ระบุ'in A:
-    A = [n for n in A if n != 'ไม่ระบุ']
-  list_A = list(set(A))
-  count_dict = dict()
-  len_A = len(A)
-  for c in list_A:
-    per = (A.count(c)/len_A)*100
-    count_dict[c] = {"count":A.count(c),"percent":round(per,digit)}
-  return count_dict
+ if removenan and 'ไม่ระบุ'in A:
+  A = [n for n in A if n != 'ไม่ระบุ']
+ list_A = list(set(A))
+ count_dict = dict()
+ len_A = len(A)
+ for c in list_A:
+  per = (A.count(c)/len_A)*100
+  count_dict[c] = {"count":A.count(c),"percent":round(per,digit)}
+ return count_dict
 
 def stat(A):
-  mean = np.mean(A)
-  sd = np.std(A)
-  mean_sd = {'ค่าเฉลี่ย':round(mean,digit),'ส่วนเบี่ยงเบนมาตรฐาน':round(sd,digit)}
-  return mean_sd
+ mean = np.mean(A)
+ sd = np.std(A)
+ mean_sd = {'ค่าเฉลี่ย':round(mean,digit),'ส่วนเบี่ยงเบนมาตรฐาน':round(sd,digit)}
+ return mean_sd
 
-#def change_num_to_text(A):
-  #x = []
-  #dict_change_num_to_text = {5:'มากที่สุด', 4:'มาก', 3:'ปานกลาง', 2:"น้อย", 1:"ควรปรับปรุง",'ไม่ระบุ':'- ไม่ระบุ'}
-  #for i in uplode_df[A].values.tolist():
-    #x.append(dict_change_num_to_text[i])
-  #return x
-
-
+def change_num_to_text(A):
+ x = []
+ dict_change_num_to_text = {5:'มากที่สุด', 4:'มาก', 3:'ปานกลาง', 2:"น้อย", 1:"ควรปรับปรุง",'ไม่ระบุ':'- ไม่ระบุ'}
+ for i in uplode_df[A].values.tolist():
+  x.append(dict_change_num_to_text[i])
+ return x
 
 def pie_chart(data, key):
  labels = [str(key) for key in data]
@@ -177,13 +174,12 @@ def stacked_bar(data,key):
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 
-upload_file = st.file_uploader("Upload File",type=["csv", "xlsx"])
+upload_file = st.file_uploader(type=["csv", "xlsx"])
 run_program = st.button('run program')
 
 upload_df = upload(upload_file)
-
-if i in upload_df:
-  #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
+if upload_df != None:
+ #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
  list_question = [h for h in upload_df]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
     list_question.pop(0)
