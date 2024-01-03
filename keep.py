@@ -188,7 +188,7 @@ if run_program:
 
 st.write(number_loop)
 
-if number_loop = 1:
+if number_loop == 1:
   #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
   list_question = [h for h in upload_df]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
