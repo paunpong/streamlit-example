@@ -113,7 +113,7 @@ def stat(A):
 def pie_chart(data, key):
  labels = [str(key) for key in data]
  counts = [data[key]['percent'] for key in data]
- ax = plt.subplots()
+ fig,ax = plt.subplots()
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
