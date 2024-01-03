@@ -239,6 +239,14 @@ if run_program:
       list_pie_chart[key]=True
     else:
       list_bar_chart.append(key)
+
+ for i in list_pie_chart:
+  st.write(i)
+
+ st.write('end.....................')
+
+for i in list_boxplot:
+ print(i)
   #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#      
   table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
   table_data = []
