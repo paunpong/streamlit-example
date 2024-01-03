@@ -36,16 +36,15 @@ list_stack_str=[]
 list_stack_num=[]
 
 def upload(A):
- if upload_file is not None:
-  y = upload_file.name.split(".")[1]
-  if 'xlsx' in y:
-   df = pd.read_excel(upload_file)
-  elif 'csv' in y:
-   df = pd.read_csv(upload_file)
-  df.fillna('ไม่ระบุ',inplace=True)
-  df.replace('-','ไม่ระบุ',inplace=True)
+ y = upload_file.name.split(".")[1]
+ if 'xlsx' in y:
+  df = pd.read_excel(upload_file)
+ elif 'csv' in y:
+  df = pd.read_csv(upload_file)
+ df.fillna('ไม่ระบุ',inplace=True)
+ df.replace('-','ไม่ระบุ',inplace=True)
    #st.dataframe(df)  
-  return df
+ return df
 
 def num_check(A):
  for i in set(A):
@@ -174,10 +173,10 @@ st.header('โปรแกรมสร้างรายงานสรุปผ
 st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 
 upload_file = st.file_uploader(" ",type=["csv", "xlsx"])
-run_program = st.button('run program')
+#run_program = st.button('run program')
 
 upload_df = upload(upload_file)
-if upload_df != None:
+if upload_df is not None:
  #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
  list_question = [h for h in upload_df]
  if ('Times' or 'ประทับเวลา') in list_question[0]:
