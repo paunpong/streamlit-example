@@ -122,7 +122,6 @@ def pie_chart(data, key):
  st.pyplot()
 
 def boxplot(data,key):
- add_font_thai()
  #fig, ax = plt.subplots()
  plt.boxplot(data,showmeans=True)
  q1 = np.percentile(data,25)
