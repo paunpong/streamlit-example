@@ -181,48 +181,40 @@ upload_df = upload(upload_file)
 if upload_df != None:
  #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
  list_question = [h for h in upload_df]
-  if ('Times' or 'ประทับเวลา') in list_question[0]:
-    list_question.pop(0)
-    
-  for key in list_question:
-    column = upload_df[key].values.tolist()
-    len_column = len(column)
- 
-    if '**' in key:
-      list_bar_chart.append(key)
-      continue
-    
-    if '*' in key:
-      list_pie_chart[key]=True
-      continue
-
-    if '[' in key:
-      if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-        list_stack_num.append(key)
-      else:
-        list_stack_str.append(key)
-      continue
+ if ('Times' or 'ประทับเวลา') in list_question[0]:
+  list_question.pop(0)
   
-    if check_comma(column):
-      list_bar_chart.append(key)
-      continue
+ for key in list_question:
+  column = upload_df[key].values.tolist()
+  len_column = len(column)
   
-    if column.count('ไม่ระบุ') > .25*len_column:
-      list_comment.append(key)
-      continue
+  if '[' in key:
+   if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+    list_stack_num.append(key)
+   else:
+    list_stack_str.append(key)
+   continue
+   
+  if check_comma(column):
+   list_bar_chart.append(key)
+   continue
+   
+  if column.count('ไม่ระบุ') > .25*len_column:
+   list_comment.append(key)
+   continue
   
-    if num_check(column):
-      list_boxplot.append(key)
-      continue
+  if num_check(column):
+   list_boxplot.append(key)
+   continue
   
-    if len(set(column)) >.50*len_column:
-      list_comment.append(key)
-      continue
+  if len(set(column)) >.50*len_column:
+   list_comment.append(key)
+   continue
   
-    if len(set(column)) < 6:
-      list_pie_chart[key]=True
-    else:
-      list_bar_chart.append(key)
+  if len(set(column)) < 6:
+   list_pie_chart[key]=True
+  else:
+   list_bar_chart.append(key)
 
 
   #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#      
