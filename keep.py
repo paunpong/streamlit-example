@@ -16,7 +16,6 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 thai_font_path = os.path.join("Sarabun-Regular.ttf")
- 
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
 
@@ -174,7 +173,7 @@ def stacked_bar(data,key):
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 
-upload_file = st.file_uploader(type=["csv", "xlsx"])
+upload_file = st.file_uploader(" ",type=["csv", "xlsx"])
 run_program = st.button('run program')
 
 upload_df = upload(upload_file)
