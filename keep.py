@@ -36,11 +36,11 @@ list_stack_str=[]
 list_stack_num=[]
 
 def upload(A):
- y = upload_file.name.split(".")[1]
+ y = A.name.split(".")[1]
  if 'xlsx' in y:
-  df = pd.read_excel(upload_file)
+  df = pd.read_excel(A)
  elif 'csv' in y:
-  df = pd.read_csv(upload_file)
+  df = pd.read_csv(A)
  df.fillna('ไม่ระบุ',inplace=True)
  df.replace('-','ไม่ระบุ',inplace=True)
    #st.dataframe(df)  
