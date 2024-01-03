@@ -95,20 +95,7 @@ def stat(A):
     #x.append(dict_change_num_to_text[i])
   #return x
 
-'''def pie_chart(data,key):
-  labels = [str(key) for key in data]
-  counts = [data[key]['percent']for key in data]
-  x,ax = plt.subplots()
-  ax.pie(counts, labels=labels, autopct=f'%.{digit}f')
-  
-  for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] + ax.get_xticklabels() + ax.get_yticklabels()):
-   item.set_fontproperties(thai_font_prop)
-   
-  ax.legend(prop=thai_font_prop)
-  plt.title(key)
-  
-  st.pyplot(x)
-  #plt.show()'''
+
 
 def pie_chart(data, key):
  labels = [str(key) for key in data]
@@ -240,13 +227,7 @@ if run_program:
     else:
       list_bar_chart.append(key)
 
-for i in list_pie_chart:
- st.write(i)
 
-st.write('end.....................')
-
-for i in list_boxplot:
- st.write(i)
   #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#      
 table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data = []
