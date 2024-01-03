@@ -182,9 +182,9 @@ run_program = st.button('run program')
 
 upload_df = upload(upload_file)
 
-if run_program:
+if i in upload_df:
   #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
-  list_question = [h for h in upload_df]
+ list_question = [h for h in upload_df]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
     list_question.pop(0)
     
