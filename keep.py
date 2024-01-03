@@ -333,7 +333,7 @@ for i in dict_num_stack:
  
 d =st.radio(
     "What's your favorite movie genre",
-    ['a','b','c'],
+    list_pie_chart,
     index=1)
 
 
