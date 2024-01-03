@@ -367,3 +367,5 @@ for i in list_stack_num:
 for i in dict_num_stack:
   stacked_bar(dict_num_stack[i],i)
   
+st.write('เกรด')
+boxplot(upload_df['เกรด'].values.tolist(),'เกรด')
