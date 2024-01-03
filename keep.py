@@ -288,6 +288,16 @@ if run_program:
       #st.write(answer)
       if 'ไม่ระบุ' not in answer:
         answer['ไม่ระบุ'] = {'count': round(0,digit), 'percent': round(0,digit)}
+      if 'มากที่สุด' not in answer:
+        answer['มากที่สุด'] = {'count': round(0,digit), 'percent': round(0,digit)}
+      if 'มาก' not in answer:
+        answer['มาก'] = {'count': round(0,digit), 'percent': round(0,digit)}
+      if 'ปานกลาง' not in answer:
+        answer['ปานกลาง'] = {'count': round(0,digit), 'percent': round(0,digit)}
+      if 'น้อย' not in answer:
+        answer['น้อย'] = {'count': round(0,digit), 'percent': round(0,digit)}
+      if 'น้อยที่สุด' not in answer:
+        answer['น้อยที่สุด'] = {'count': round(0,digit), 'percent': round(0,digit)}
       if len(answer) > 4:
         if s != name_top:
           st.write(s , 'มากที่สุด' , 'มาก' , 'ปานกลาง' , 'น้อย' , 'น้อยที่สุด' , 'ไม่ระบุ')
