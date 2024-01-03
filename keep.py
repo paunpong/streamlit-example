@@ -213,9 +213,9 @@ if upload_file is not None:
    list_bar_chart.append(key)
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
 #st.write('หัวข้อ' , '\t' , 'จำนวน' , '\t' , 'เปอร์เซ็นต์')
-#if upload_file is not None:
-table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
-table_data = []
+if upload_file is not None:
+ table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+ table_data = []
 for p in list_pie_chart:
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  for k in values:
@@ -224,8 +224,8 @@ for p in list_pie_chart:
   table_data.append([k, count, percent])
    #st.write(k , '\t' , count , '\t' , percent)
  st.table([table_head, *table_data])
- for p in list_pie_chart:
-  pie_chart(count_list(upload_df[p].values.tolist()),p)
+for p in list_pie_chart:
+ pie_chart(count_list(upload_df[p].values.tolist()),p)
 
 #st.write('หัวข้อ','ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน')
 for b in list_boxplot:
