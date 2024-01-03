@@ -93,10 +93,7 @@ def change_num_to_text(A):
 def pie_chart(data, key):
  labels = [str(key) for key in data]
  counts = [data[key]['percent'] for key in data]
- fig,ax = plt.subplots()
- wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- for text in texts + autotexts:
-  text.set_fontproperties(thai_font_prop)
+ add_font_thai()
  #ax.legend(wedges, labels, title="Legend", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
