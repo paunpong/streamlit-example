@@ -348,10 +348,7 @@ for i in list_stack_num:
   dict_num_stack[topic_word][sub_word] = A_l
 for i in dict_num_stack:
   stacked_bar(dict_num_stack[i],i)
-  
-st.write('เกรด')
-boxplot(upload_df['เกรด'].values.tolist(),'เกรด')
-
+ 
 d =st.radio(
     "What's your favorite movie genre",
     ['a','b','c'],
