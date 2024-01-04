@@ -13,7 +13,6 @@ import pandas as pd
 import streamlit as st
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
-
 script_dir = os.path.dirname(os.path.abspath(__file__))
 thai_font_path = os.path.join("Sarabun-Regular.ttf")
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
@@ -102,6 +101,7 @@ def pie_chart(data, key):
  st.pyplot()
 
 def boxplot(data,key):
+ fig,ax = plt.subplots()
  plt.boxplot(data,showmeans=True)
  q1 = np.percentile(data,25)
  q3 = np.percentile(data,75)
@@ -131,16 +131,16 @@ def boxplot(data,key):
  plt.text(1.1,q3,f'Q3: {q3:.{digit}f}')
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
  plt.text(1.22, average, f'Average: {average:.{digit}f}',ha='left')
- fig,ax = plt.subplots()
+ plt.title(key,fontproperties=thai_font_prop)
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
- plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
 def bar_chart(data,key):
  count_more_than = []
  count_equal = []
+ fig,ax = plt.subplots()
  plt.figure(figsize=(9,6))
  for i in set(data):
    if i != 'ไม่ระบุ':
@@ -157,11 +157,10 @@ def bar_chart(data,key):
      values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
      labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
  plt.bar(labels, values)
- fig,ax = plt.subplots()
+ plt.title(key,fontproperties=thai_font_prop)
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
- plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
 def stacked_bar(data,key):
@@ -169,10 +168,10 @@ def stacked_bar(data,key):
  d_f = pd.DataFrame(data.values(),index=name)
  d_f.plot.barh(stacked=True, figsize=(9,4)).legend(loc='upper right');
  fig,ax = plt.subplots()
+ plt.title(key,fontproperties=thai_font_prop)
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
- plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
@@ -245,7 +244,6 @@ for b in list_boxplot:
 for b in list_boxplot:
  #st.write(b)
  boxplot(upload_df[b].values.tolist(),b)
-
 #st.write('หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์')
 for a in list_bar_chart:
  list_values = upload_df[a].values.tolist()
