@@ -96,7 +96,6 @@ def pie_chart(data, key):
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
- #ax.legend(wedges, labels, title="Legend", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
@@ -152,8 +151,8 @@ def bar_chart(data,key):
    values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
    labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
  fig,ax = plt.subplots(figsize=(9,6))
- ax.bar(labels, values)
- wedges, texts, autotexts = ax.pie(values, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ #ax.bar(labels, values)
+ wedges, texts, autotexts = ax.bar(values, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
  ax.set_title(key, fontproperties=thai_font_prop)
