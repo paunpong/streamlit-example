@@ -151,7 +151,7 @@ def bar_chart(data,key):
    values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
    labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
  fig,ax = plt.subplots(figsize=(9,6))
- ax.bar(labels, values, textprops={'fontproperties': thai_font_prop})
+ ax.bar(labels, values)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
@@ -250,7 +250,7 @@ for a in list_bar_chart:
   
 for a in list_bar_chart:
  v = split_comma(a)
- bar_chart(v,a,'')
+ bar_chart(v,a)
 
 other = False
 for c in list_comment:
