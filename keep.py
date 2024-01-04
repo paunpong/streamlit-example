@@ -250,7 +250,7 @@ for a in list_bar_chart:
   
 for a in list_bar_chart:
  v = split_comma(a)
- bar_chart(v,a,None)
+ bar_chart(v,a,'')
 
 other = False
 for c in list_comment:
