@@ -243,7 +243,7 @@ for b in list_boxplot:
  std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
  st.write(b , mean , std)
 for b in list_boxplot:
- st.write(b)
+ #st.write(b)
  boxplot(upload_df[b].values.tolist(),b)
 
 #st.write('หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์')
