@@ -215,7 +215,7 @@ for p in list_pie_chart:
   table_data.append([k, count, percent])
   #st.write(k , '\t' , count , '\t' , percent)
 if upload_file is not None:
- st.table([table_head, *list_pie_chart]) 
+ st.table([table_head, list_pie_chart]) 
 for p in list_pie_chart:
  pie_chart(count_list(upload_df[p].values.tolist()),p)
 
