@@ -155,9 +155,8 @@ def bar_chart(data,key):
  wedges, texts, autotexts = ax.pie(values, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
- fig, ax = plt.subplots(figsize=(9, 6))
  ax.bar(labels, values)
- ax.set_title(key, fontproperties=thai_font_prop)
+ plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
 def stacked_bar(data,key):
