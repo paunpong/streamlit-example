@@ -102,7 +102,10 @@ def pie_chart(data, key):
  st.pyplot()
 
 def boxplot(data,key):
- #fig, ax = plt.subplots()
+ fig,ax = plt.subplots()
+ wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ for text in texts + autotexts:
+  text.set_fontproperties(thai_font_prop)
  plt.boxplot(data,showmeans=True)
  q1 = np.percentile(data,25)
  q3 = np.percentile(data,75)
@@ -131,41 +134,46 @@ def boxplot(data,key):
  plt.text(1.1,q1,f'Q1: {q1:.{digit}f}')
  plt.text(1.1,q3,f'Q3: {q3:.{digit}f}')
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
- plt.text(1.22, average, f'Average: {average:.{digit}f}')
- plt.title(key)
+ plt.text(1.22, average, f'Average: {average:.{digit}f}',ha='left')
+ plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
 def bar_chart(data,key):
-  count_more_than = []
-  count_equal = []
-  plt.figure(figsize=(9,6))
-  for i in set(data):
-    if i != 'ไม่ระบุ':
-      values = data.count(i)
-      if values > 1:
-        count_more_than.append(i)
-      else:
-        count_equal.append(i)
-
-    len_equal = len(count_equal)
-
-    if len_equal > 1:
-      values = [data.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
-      labels = [str(i) for i in count_more_than if i != 'ไม่ระบุ'] + ['อื่นๆ']
-    else:
-      values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
-      labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
-
-  plt.bar(labels, values)
-  plt.title(key)
-  st.pyplot()
+ count_more_than = []
+ count_equal = []
+ fig,ax = plt.subplots()
+ wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ for text in texts + autotexts:
+  text.set_fontproperties(thai_font_prop)
+ plt.figure(figsize=(9,6))
+ for i in set(data):
+   if i != 'ไม่ระบุ':
+     values = data.count(i)
+     if values > 1:
+       count_more_than.append(i)
+     else:
+       count_equal.append(i)
+   len_equal = len(count_equal)
+   if len_equal > 1:
+     values = [data.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
+     labels = [str(i) for i in count_more_than if i != 'ไม่ระบุ'] + ['อื่นๆ']
+   else:
+     values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
+     labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
+ plt.bar(labels, values)
+ plt.title(key,fontproperties=thai_font_prop)
+ st.pyplot()
 
 def stacked_bar(data,key):
-  name = data.keys()
-  d_f = pd.DataFrame(data.values(),index=name)
-  d_f.plot.barh(stacked=True, figsize=(9,4)).legend(loc='upper right');
-  plt.title(key)
-  st.pyplot()
+ fig,ax = plt.subplots()
+ wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ for text in texts + autotexts:
+  text.set_fontproperties(thai_font_prop)
+ name = data.keys()
+ d_f = pd.DataFrame(data.values(),index=name)
+ d_f.plot.barh(stacked=True, figsize=(9,4)).legend(loc='upper right');
+ plt.title(key)
+ st.pyplot()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 st.title('กรุณาใส่ไฟล์ที่เป็น excel')
