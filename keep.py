@@ -102,10 +102,6 @@ def pie_chart(data, key):
  st.pyplot()
 
 def boxplot(data,key):
- fig,ax = plt.subplots()
- wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- for text in texts + autotexts:
-  text.set_fontproperties(thai_font_prop)
  plt.boxplot(data,showmeans=True)
  q1 = np.percentile(data,25)
  q3 = np.percentile(data,75)
@@ -135,16 +131,16 @@ def boxplot(data,key):
  plt.text(1.1,q3,f'Q3: {q3:.{digit}f}')
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
  plt.text(1.22, average, f'Average: {average:.{digit}f}',ha='left')
+ fig,ax = plt.subplots()
+ wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ for text in texts + autotexts:
+  text.set_fontproperties(thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
 def bar_chart(data,key):
  count_more_than = []
  count_equal = []
- fig,ax = plt.subplots()
- wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- for text in texts + autotexts:
-  text.set_fontproperties(thai_font_prop)
  plt.figure(figsize=(9,6))
  for i in set(data):
    if i != 'ไม่ระบุ':
@@ -161,18 +157,22 @@ def bar_chart(data,key):
      values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
      labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
  plt.bar(labels, values)
- plt.title(key,fontproperties=thai_font_prop)
- st.pyplot()
-
-def stacked_bar(data,key):
  fig,ax = plt.subplots()
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
+ plt.title(key,fontproperties=thai_font_prop)
+ st.pyplot()
+
+def stacked_bar(data,key):
  name = data.keys()
  d_f = pd.DataFrame(data.values(),index=name)
  d_f.plot.barh(stacked=True, figsize=(9,4)).legend(loc='upper right');
- plt.title(key)
+ fig,ax = plt.subplots()
+ wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ for text in texts + autotexts:
+  text.set_fontproperties(thai_font_prop)
+ plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
