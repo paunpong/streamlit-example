@@ -137,8 +137,6 @@ def boxplot(data,key):
 def bar_chart(data,key):
  count_more_than = []
  count_equal = []
- fig,ax = plt.subplots()
- plt.figure(figsize=(9,6))
  for i in set(data):
    if i != 'ไม่ระบุ':
      values = data.count(i)
@@ -153,7 +151,12 @@ def bar_chart(data,key):
    else:
      values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
      labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
- plt.bar(labels, values)
+ fig,ax = plt.subplots()
+ wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ for text in texts + autotexts:
+  text.set_fontproperties(thai_font_prop)
+ ax.figure(figsize=(9,6))
+ ax.bar(labels, values)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
