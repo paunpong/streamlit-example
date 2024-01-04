@@ -155,9 +155,6 @@ def bar_chart(data,key):
      labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
  plt.bar(labels, values)
  plt.title(key,fontproperties=thai_font_prop)
- wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- for text in texts + autotexts:
-  text.set_fontproperties(thai_font_prop)
  st.pyplot()
 
 def stacked_bar(data,key):
