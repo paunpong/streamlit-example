@@ -132,9 +132,6 @@ def boxplot(data,key):
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
  plt.text(1.22, average, f'Average: {average:.{digit}f}',ha='left')
  plt.title(key,fontproperties=thai_font_prop)
- wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- for text in texts + autotexts:
-  text.set_fontproperties(thai_font_prop)
  st.pyplot()
 
 def bar_chart(data,key):
