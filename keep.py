@@ -17,12 +17,6 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 thai_font_path = os.path.join("Sarabun-Regular.ttf")
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
-def add_font_thai():
- fig,ax = plt.subplots()
- wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- for text in texts + autotexts:
-  text.set_fontproperties(thai_font_prop)
-
 digit = int(2)
 list_pie_chart = {}
 list_boxplot=[]
@@ -172,7 +166,7 @@ upload_file = st.file_uploader(" ",type=["csv", "xlsx"])
 
 upload_df = upload(upload_file)
 if upload_file is not None:
- #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
+#-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
  list_question = [h for h in upload_df]
  if ('Times' or 'ประทับเวลา') in list_question[0]:
   list_question.pop(0)
@@ -213,7 +207,7 @@ if upload_file is not None:
 if upload_file is not None:
  table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
  table_data = []
-for p in list_pie_chart:
+for p in list_pie_chart: 
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  for k in values:
   count = values[k]['count']
@@ -221,7 +215,7 @@ for p in list_pie_chart:
   table_data.append([k, count, percent])
   #st.write(k , '\t' , count , '\t' , percent)
 if upload_file is not None:
- st.table([table_head, *table_data]) 
+ st.table([table_head, *list_pie_chart,*table_data]) 
 for p in list_pie_chart:
  pie_chart(count_list(upload_df[p].values.tolist()),p)
 
