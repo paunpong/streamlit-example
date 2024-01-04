@@ -138,19 +138,19 @@ def bar_chart(data,key):
  count_more_than = []
  count_equal = []
  for i in set(data):
-   if i != 'ไม่ระบุ':
-     values = data.count(i)
-     if values > 1:
-       count_more_than.append(i)
-     else:
-       count_equal.append(i)
-   len_equal = len(count_equal)
-   if len_equal > 1:
-     values = [data.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
-     labels = [str(i) for i in count_more_than if i != 'ไม่ระบุ'] + ['อื่นๆ']
+  if i != 'ไม่ระบุ':
+   values = data.count(i)
+   if values > 1:
+    count_more_than.append(i)
    else:
-     values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
-     labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
+    count_equal.append(i)
+  len_equal = len(count_equal)
+  if len_equal > 1:
+   values = [data.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
+   labels = [str(i) for i in count_more_than if i != 'ไม่ระบุ'] + ['อื่นๆ']
+  else:
+   values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
+   labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
  fig,ax = plt.subplots(figsize=(9,6))
  ax.bar(labels, values)
  wedges, texts, autotexts = ax.pie(values, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
