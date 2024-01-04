@@ -151,19 +151,16 @@ def bar_chart(data,key):
    values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
    labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
  fig,ax = plt.subplots(figsize=(9,6))
- ax.bar(labels, values, textprops={'fontproperties': thai_font_prop})
+ ax.bar(labels, values, ,fontproperties=thai_font_prop)
  ax.set_title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
 def stacked_bar(data,key):
  name = data.keys()
- d_f = pd.DataFrame(data.values(),index=name)
+ d_f = pd.DataFrame(data.values(),index=name,fontproperties=thai_font_prop)
  d_f.plot.barh(stacked=True, figsize=(9,4)).legend(loc='upper right');
  fig,ax = plt.subplots()
  plt.title(key,fontproperties=thai_font_prop)
- wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- for text in texts + autotexts:
-  text.set_fontproperties(thai_font_prop)
  st.pyplot()
 
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
