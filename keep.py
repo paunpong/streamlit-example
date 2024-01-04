@@ -151,7 +151,7 @@ def bar_chart(data,key):
    values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
    labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
  fig,ax = plt.subplots(figsize=(9,6))
- wedges, texts, autotexts = ax.bar(values, labels,  textprops={'fontproperties': thai_font_prop})
+ wedges, texts, autotexts = ax.bar(labels, values, textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
  ax.set_title(key, fontproperties=thai_font_prop)
