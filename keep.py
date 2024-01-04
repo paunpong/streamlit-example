@@ -206,8 +206,10 @@ if upload_file is not None:
 #st.write('หัวข้อ' , '\t' , 'จำนวน' , '\t' , 'เปอร์เซ็นต์')
 if upload_file is not None:
  table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+ name_query = []
  table_data = []
-for p in list_pie_chart: 
+for p in list_pie_chart:
+ len_p = len(p)
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  for k in values:
   count = values[k]['count']
@@ -215,7 +217,7 @@ for p in list_pie_chart:
   table_data.append([k, count, percent])
   #st.write(k , '\t' , count , '\t' , percent)
 if upload_file is not None:
- st.table([table_head, list_pie_chart'\n']) 
+ st.table([table_head,]) 
 for p in list_pie_chart:
  pie_chart(count_list(upload_df[p].values.tolist()),p)
 
