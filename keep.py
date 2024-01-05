@@ -152,6 +152,9 @@ def bar_chart(data,key,orther_number=1):
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
+
+
+
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
