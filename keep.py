@@ -151,11 +151,11 @@ def bar_chart(data,key):
  st.pyplot()
 
 def stacked_bar(data,key):
+ fig,ax = plt.subplots()
  name = data.keys()
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data.values(),index=name)
  d_f.plot.barh(stacked=True, figsize=(9,4)).legend(loc='upper right');
- fig,ax = plt.subplots()
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
