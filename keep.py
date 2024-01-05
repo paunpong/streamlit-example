@@ -375,4 +375,11 @@ b = (
     .set_global_opts(
         title_opts=opts.TitleOpts(
             title="Top cloud providers 2018", subtitle="2017-2018 Revenue"
-        )
+        ),
+        toolbox_opts=opts.ToolboxOpts(),
+    )
+)
+st_pyecharts(
+    b, key="echarts"
+)  # Add key argument to not remount component at every Streamlit run
+st.button("Randomize data")
