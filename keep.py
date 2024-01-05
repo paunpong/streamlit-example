@@ -337,7 +337,7 @@ st.write(d)
 Dic_type_chart = dict()
 
 run_one_time1 = True
-if run_on_time1:
+if run_one_time1:
  for i in range(10):
   st.write(i)
  run_one_time1 = False
@@ -348,7 +348,7 @@ for topic in list_pie_chart:
 
 
 run_one_time = True
-if run_on_time:
+if run_one_time:
  for topic in Dic_type_chart:
   st.write(topic, Dic_type_chart[topic])
  run_one_time = False  
