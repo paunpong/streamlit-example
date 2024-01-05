@@ -154,7 +154,6 @@ def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
  data = data.values()
- ax.set_xticklabels(data, fontproperties=thai_font_prop)
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data,index=name)
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax)
