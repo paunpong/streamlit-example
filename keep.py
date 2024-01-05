@@ -340,7 +340,7 @@ Dic_type_chart = dict()
 for topic in list_pie_chart:
  Dic_type_chart[topic] = st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
 
-st.stop()
+
 
 
 run_one_time = True
