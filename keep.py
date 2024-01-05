@@ -349,4 +349,21 @@ if run_one_time:
   st.write(topic, Dic_type_chart[topic])
  run_one_time = False  
 
+modal = st.expander("Advanced options")
 
+option_1 = modal.checkbox("Option 1")
+option_2 = modal.checkbox("Option 2")
+option_3 = modal.checkbox("Option 3")
+option_4 = modal.checkbox("Option 4")
+
+if option_1:
+   st.write("Hello world 1")
+
+if option_2:
+   st.write("Hello world 2")
+
+if option_3:
+   st.write("Hello world 3")
+
+if option_4:
+   st.write("Hello world 4")
