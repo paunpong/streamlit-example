@@ -379,7 +379,3 @@ b = (
         toolbox_opts=opts.ToolboxOpts(),
     )
 )
-st_pyecharts(
-    b, key="echarts"
-)  # Add key argument to not remount component at every Streamlit run
-st.button("Randomize data")
