@@ -334,3 +334,7 @@ d =st.radio("What's your favorite movie genre",list_pie_chart,index=1)
 
 st.write(d)
 
+
+for topic in list_pie_chart:
+ st.radio(topic, ["pie_chart", "bar_chart"], key=0, horizontal=True)
+
