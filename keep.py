@@ -204,7 +204,7 @@ if upload_file is not None:
    continue
   
   if len(set(column)) < 6:
-   list_pie_chart[key]=False
+   list_pie_chart[key]=True
   else:
    list_bar_chart.append(key)
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
