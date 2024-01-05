@@ -204,7 +204,7 @@ if upload_file is not None:
    continue
   
   if len(set(column)) < 6:
-   list_pie_chart[key]=True
+   list_pie_chart[key]=False
   else:
    list_bar_chart.append(key)
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
@@ -215,7 +215,7 @@ if upload_file is not None:
  table_data = []
 for p in list_pie_chart:
  len_p = len(p)
- values = count_list(upload_df[p].values.tolist(), list_pie_chart[p],False)
+ values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  for k in values:
   count = values[k]['count']
   percent = values[k]['percent']
