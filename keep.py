@@ -334,7 +334,7 @@ d =st.radio("What's your favorite movie genre",list_pie_chart,index=1)
 
 st.write(d)
 
-Dic_tyoe_chart = dict()
+Dic_type_chart = dict()
 
 for topic in list_pie_chart:
  Dic_type_chart[topic] = st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
