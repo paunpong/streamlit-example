@@ -214,8 +214,10 @@ if upload_file is not None:
  name_query = []
  table_data = []
 for p in list_pie_chart:
- len_p = len(p)
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
+ table_data.append([p, sum([values[key]['count'] for key in values]), 100])
+
+ 
  for k in values:
   count = values[k]['count']
   percent = values[k]['percent']
