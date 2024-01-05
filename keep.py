@@ -1,3 +1,4 @@
+
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import os
@@ -214,6 +215,7 @@ if upload_file is not None:
  table_data = []
 for p in list_pie_chart:
  len_p = len(p)
+ table_data.append([p, upload_df[p], 100])
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  for k in values:
   count = values[k]['count']
