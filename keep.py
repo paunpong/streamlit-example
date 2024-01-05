@@ -90,6 +90,7 @@ def pie_chart(data, key):
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
+ ax.legend(wedges, labels, title="Legend", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
@@ -329,11 +330,7 @@ for i in list_stack_num:
 for i in dict_num_stack:
   stacked_bar(dict_num_stack[i],i)
  
-d =st.radio(
-    "What's your favorite movie genre",
-    list_pie_chart,
-    index=1)
-
+d =st.radio("What's your favorite movie genre",list_pie_chart,index=1)
 
 st.write(d)
 
