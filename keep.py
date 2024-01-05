@@ -336,5 +336,5 @@ st.write(d)
 
 
 for topic in list_pie_chart:
- st.radio(topic, ["pie_chart", "bar_chart"], key=0, horizontal=True)
+ st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
 
