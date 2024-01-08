@@ -263,7 +263,7 @@ for a in list_bar_chart_comma:
   
 for a in list_bar_chart:
  v = split_comma(a)
- bar_chart(v,a)
+ bar_chart(v,a,True)
 
 other = False
 for c in list_bar_chart:
