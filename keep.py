@@ -259,10 +259,9 @@ for a in list_bar_chart_comma:
   percent = v[k]['percent']
   table_data.append([k,count,percent])
  st.table([table_head,*table_data])
-  
 for a in list_bar_chart_comma:
  v = split_comma(a)
- count = count(v)
+ count = count(v.values.tolist())
  bar_chart(count,a)
 
 other = False
