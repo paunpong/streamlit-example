@@ -253,7 +253,7 @@ for a in list_bar_chart_comma:
  if list_free != 0:
   st.write(list_free)
   set_list = list(set(list_free))
-  v = count(list_free)
+  v = count_list(list_free)
  table_data.append([a, sum([v[key]['count'] for key in v]), 100]) 
  for k in v:
   count = v[k]['count']
