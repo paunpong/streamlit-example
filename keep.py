@@ -1,4 +1,3 @@
-
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import os
@@ -148,29 +147,17 @@ def bar_chart(data,key,orther_number=1):
  if 'ไม่ระบุ' in data:
   values.append(data['ไม่ระบุ']['count'])
   labels.append('ไม่ระบุ')
-  
- for i in set(data):
-  if i != 'ไม่ระบุ':
-   values = data.count(i)
-   if values > orther_number:
-    count_more_than.append(i)
-   else:
-    count_equal.append(i)
-  len_equal = len(count_equal)
-  if len_equal > orther_number:
-   values = [data.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
-   labels = [str(i) for i in count_more_than if i != 'ไม่ระบุ'] + ['อื่นๆ']
-  else:
-   values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
-   labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
+ bar_dict = dict()
+ all_number = sum(values)
+ for i in range(len(labels)):
+  per = values[i]*100/all_number
+  bar_dict[labels[i]]={'count':values[i], 'percent': round(per, digit)}
+ return bar_dict
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.bar(labels, values)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
-
-
-
 
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
@@ -211,53 +198,53 @@ if upload_file is not None:
    list_bar_chart.append(key)
    continue
    
-  if column.count('ไม่ระบุ') > .25*len_column:
-   list_comment.append(key)
-   continue
+  #if column.count('ไม่ระบุ') > .25*len_column:
+   #list_comment.append(key)
+   #continue
   
   if num_check(column):
    list_boxplot.append(key)
    continue
   
-  if len(set(column)) >.50*len_column:
-   list_comment.append(key)
-   continue
+  #if len(set(column)) >.50*len_column:
+   #list_comment.append(key)
+   #continue
   
   if len(set(column)) < 6:
    list_pie_chart[key]=True
   else:
    list_bar_chart.append(key)
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
-#st.write('หัวข้อ' , '\t' , 'จำนวน' , '\t' , 'เปอร์เซ็นต์')
 if upload_file is not None:
  table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
- name_query = []
  table_data = []
 for p in list_pie_chart:
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  table_data.append([p, sum([values[key]['count'] for key in values]), 100])
-
- 
  for k in values:
   count = values[k]['count']
   percent = values[k]['percent']
   table_data.append([k, count, percent])
-  #st.write(k , '\t' , count , '\t' , percent)
 if upload_file is not None:
  st.table([table_head,*table_data]) 
 for p in list_pie_chart:
  pie_chart(count_list(upload_df[p].values.tolist()),p)
 
-#st.write('หัวข้อ','ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน')
+if upload_file is not None:
+ table_head = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
+ table_data = []
 for b in list_boxplot:
  mean_sd = stat(upload_df[b].values.tolist())
  mean = mean_sd['ค่าเฉลี่ย']
  std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
- st.write(b , mean , std)
+ table_data.append(b,mean,std)
+ st.table([table_head,*table_data])
 for b in list_boxplot:
- #st.write(b)
  boxplot(upload_df[b].values.tolist(),b)
-#st.write('หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์')
+
+if upload_file is not None:
+ table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+ table_data = []
 for a in list_bar_chart:
  list_values = upload_df[a].values.tolist()
  list_free = []
