@@ -252,7 +252,7 @@ for a in list_bar_chart_comma:
   list_free = list_free + r.split(", ")
  if list_free != 0:
   set_list = list(set(list_free))
-  v = count(list_free)
+  v = count(list_free,True)
  table_data.append([a, sum([v[key]['count'] for key in v]), 100]) 
  for k in v:
   count = v[k]['count']
@@ -268,8 +268,7 @@ for c in list_bar_chart:
   x = []
   st.write(c)
   list_com = upload_df[c].values.tolist()
-  del_nan = [n for n in list_com if n != 'ไม่ระบุ']
-  set_list = list(set(del_nan))
+  set_list = list(set(list_com))
   counts = [(k, list_com.count(k))for k in set_list]
   counts.sort(key=lambda x: x[1], reverse=True)
   for k, count in counts:
