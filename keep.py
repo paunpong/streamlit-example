@@ -239,7 +239,6 @@ for b in list_boxplot:
  mean = mean_sd['ค่าเฉลี่ย']
  std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
  table_data1.append([b,mean,std])
-
 for b in list_boxplot:
  boxplot(upload_df[b].values.tolist(),b)
 
@@ -263,7 +262,8 @@ for a in list_bar_chart_comma:
   
 for a in list_bar_chart_comma:
  v = split_comma(a)
- bar_chart(v,a,True)
+ count = count(v,True)
+ bar_chart(count,a)
 
 other = False
 for c in list_bar_chart:
