@@ -232,12 +232,12 @@ for p in list_pie_chart:
 
 if upload_file is not None:
  table_head = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
- table_data = []
+ table_data1 = []
 for b in list_boxplot:
  mean_sd = stat(upload_df[b].values.tolist())
  mean = mean_sd['ค่าเฉลี่ย']
  std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
- table_data.append(b,mean,std)
+ table_data1.append(b,mean,std)
  st.table([table_head,*table_data])
 for b in list_boxplot:
  boxplot(upload_df[b].values.tolist(),b)
