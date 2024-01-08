@@ -60,6 +60,15 @@ def split_comma(A):
   del_nan = [n for n in res if n != 'ไม่ระบุ']
  return res
 
+def count(A,removenan=True):
+ if removenan and 'ไม่ระบุ' in A:
+  A = [n for n in A if n != 'ไม่ระบุ']
+ list_A = list(set(A))
+ count = dict()
+ for i in list_A:
+  count[i] = {'count':A.count(i)}
+ return count
+
 def count_list(A,removenan=True):
  if removenan and 'ไม่ระบุ'in A:
   A = [n for n in A if n != 'ไม่ระบุ']
@@ -130,8 +139,16 @@ def boxplot(data,key):
  st.pyplot()
 
 def bar_chart(data,key,orther_number=1):
- count_more_than = []
- count_equal = []
+ values = [data[key]['count'] for key in data if (data[key]['count'] > orther_number ) and (key != "ไม่ระบุ")]
+ values_orther =  [data[key]['count'] for key in data if (data[key]['count'] <= orther_number ) and (key != "ไม่ระบุ")]
+ labels = [key for key in data if (data[key]['count'] > orther_number ) and (key != "ไม่ระบุ")]
+ if len(values_orther)>0:
+  values.append(sum(values_orther))
+  labels.append('อื่น ๆ')
+ if 'ไม่ระบุ' in data:
+  values.append(data['ไม่ระบุ']['count'])
+  labels.append('ไม่ระบุ')
+  
  for i in set(data):
   if i != 'ไม่ระบุ':
    values = data.count(i)
