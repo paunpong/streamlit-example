@@ -248,11 +248,12 @@ if upload_file is not None:
 for a in list_bar_chart_comma:
  list_values = upload_df[a].values.tolist()
  list_free = []
+ st.write(list_free)
  for r in list_values:
   list_free = list_free + r.split(", ")
  if list_free != 0:
   set_list = list(set(list_free))
-  v = count(list_free,True)
+  v = count(list_free)
  table_data.append([a, sum([v[key]['count'] for key in v]), 100]) 
  for k in v:
   count = v[k]['count']
