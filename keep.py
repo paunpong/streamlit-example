@@ -20,6 +20,7 @@ thai_font_prop = fm.FontProperties(fname=thai_font_path)
 digit = int(2)
 list_pie_chart = {}
 list_boxplot=[]
+list_bar_chart_comma=[]
 list_bar_chart=[]
 list_comment=[]
 list_stack_str=[]
@@ -195,7 +196,7 @@ if upload_file is not None:
    continue
    
   if check_comma(column):
-   list_bar_chart.append(key)
+   list_bar_chart_comma.append(key)
    continue
    
   #if column.count('ไม่ระบุ') > .25*len_column:
@@ -237,8 +238,8 @@ for b in list_boxplot:
  mean_sd = stat(upload_df[b].values.tolist())
  mean = mean_sd['ค่าเฉลี่ย']
  std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
- #table_data1.append(b,mean,std)
- st.table([table_head1,*table_data1])
+ table_data1.append(b,mean,std)
+st.table([table_head1,*table_data1])
 for b in list_boxplot:
  boxplot(upload_df[b].values.tolist(),b)
 
