@@ -262,7 +262,7 @@ for a in list_bar_chart_comma:
   
 for a in list_bar_chart_comma:
  v = split_comma(a)
- count = count(v,True)
+ count = count(v)
  bar_chart(count,a)
 
 other = False
