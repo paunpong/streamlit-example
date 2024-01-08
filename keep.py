@@ -261,8 +261,7 @@ for a in list_bar_chart_comma:
  st.table([table_head,*table_data])
 for a in list_bar_chart_comma:
  v = split_comma(a)
- count = count(v.values.tolist())
- bar_chart(count,a)
+ bar_chart(v,a)
 
 other = False
 for c in list_bar_chart:
