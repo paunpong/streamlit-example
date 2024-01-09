@@ -265,8 +265,8 @@ if upload_file is not None:
 for b in list_boxplot:
  boxplot(upload_df[b].values.tolist(),b)
 
-table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
-table_data = []
+table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+table_data2 = []
 for a in list_bar_chart_comma:
  list_values = upload_df[a].values.tolist()
  list_free = []
@@ -275,19 +275,19 @@ for a in list_bar_chart_comma:
  if list_free != 0:
   set_list = list(set(list_free))
   v = count_list(list_free)
-  table_data.append([a, sum([v[key]['count'] for key in v]), 100]) 
+  table_data2.append([a, sum([v[key]['count'] for key in v]), 100]) 
  for k in v:
   count = v[k]['count']
   percent = v[k]['percent']
-  table_data.append([k,count,percent])
- st.table([table_head,*table_data])
+  table_data2.append([k,count,percent])
+ st.table([table_head2,*table_data2])
 for a in list_bar_chart_comma:
  v = split_comma(a)
  bar_chart(v,a)
 
 other = False
-table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
-table_data = []
+table_head3 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+table_data3 = []
 for c in list_bar_chart:
  x = []
  list_com = upload_df[c].values.tolist()
@@ -302,17 +302,17 @@ for c in list_bar_chart:
    other = True
   else:
    x.append(['',k])
- table_data.extend(x)
+ table_data3.extend(x)
 if upload_file is not None:
- st.table([table_head,*table_data]) 
+ st.table([table_head3,*table_data3]) 
 for i in list_bar_chart:
  list_com = upload_df[i].values.tolist()
  bar_chart(list_com,i)
   
 dict_str_stack = dict()
 dict_num_stack = dict()
-#table_head = ['หัวข้อ' , 'จำนวน'('เปอร์เซ็นต์')]
-table_data = []
+#table_head4 = ['หัวข้อ' , 'จำนวน'('เปอร์เซ็นต์')]
+table_data4 = []
 for i in list_stack_str:
   topic_word, sub_word = i.split(' [')[:2]
   topic_word = topic_word.strip()
@@ -327,9 +327,12 @@ for s in dict_str_stack:
  for t in dict_str_stack[s]:
   name = s+f' [{t}]'
   answer = count_list(upload_df[name].values.tolist())
-  table_data.append([t,answer,''])
-st.table([table_head,*table_data])
-stacked_bar(dict_str_stack[s],s)
+  for k in answer:
+  count = values[k]['count']
+  percent = values[k]['percent']
+  table_data4.append([t,count,percent])
+ st.table([table_head4,*table_data4])
+ stacked_bar(dict_str_stack[s],s)
 
 #st.write('หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน' , 'สรุป')
 top_name = ''
