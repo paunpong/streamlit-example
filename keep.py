@@ -318,7 +318,7 @@ for a in list_bar_chart_comma:
   percent = 100*v[k]['count']/all_number
   table_data2.append([k,count,percent])
 
-table_barchart_comma[a]=table_data2.[1:]
+table_barchart_comma[a]=table_data2[1:]
 st.table([table_head2,*table_data2])
 
 
