@@ -163,20 +163,20 @@ def bar_chart(data,key):
  count_more_than = []
  count_equal = []
  plt.figure(figsize=(9,6))
- for i in set(A):
+ for i in set(data):
   if i != 'ไม่ระบุ':
-   values = A.count(i)
+   values = data.count(i)
    if values > 1:
     count_more_than.append(i)
    else:
     count_equal.append(i)
   len_equal = len(count_equal)
   if len_equal > 1:
-   values = [A.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
+   values = [data.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
    labels = [str(i) for i in count_more_than if i != 'ไม่ระบุ'] + ['อื่นๆ']
   else:
-   values = [A.count(i) for i in set(A) if i != 'ไม่ระบุ']
-   labels = [str(i) for i in set(A) if i != 'ไม่ระบุ']
+   values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
+   labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.bar(labels, values)
