@@ -66,7 +66,7 @@ def Count(A,removenan=True):
  list_A = list(set(A))
  counta = dict()
  for i in list_A:
-  counta[i] = {'count':A.count(i)}
+  counta[i] = A.count(i)
  return counta
 
 def count_list(A,removenan=True):
