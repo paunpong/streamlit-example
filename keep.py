@@ -307,7 +307,7 @@ if upload_file is not None:
  st.table([table_head,*table_data]) 
 for i in list_bar_chart:
  list_com = upload_df[i].values.tolist()
- bar_chart1(list_com,i)
+ bar_chart(list_com,i)
   
 dict_str_stack = dict()
 dict_num_stack = dict()
