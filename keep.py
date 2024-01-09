@@ -334,7 +334,6 @@ for s in dict_str_stack:
  st.table([table_head4,*table_data4])
  stacked_bar(dict_str_stack[s],s)
 
-#st.write('หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน' , 'สรุป')
 top_name = ''
 table_head5 = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
 table_data5 = []
