@@ -324,7 +324,6 @@ for i in list_stack_str:
     dict_str_stack[topic_word] = dict()
   dict_str_stack[topic_word][sub_word] = A_l
 for s in dict_str_stack:
- name_top = ''
  for t in dict_str_stack[s]:
   name = s+f' [{t}]'
   answer = count_list(upload_df[name].values.tolist())
