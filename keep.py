@@ -307,10 +307,12 @@ if upload_file is not None:
  st.table([table_head,*table_data]) 
 for i in list_bar_chart:
  list_com = upload_df[i].values.tolist()
- bar_chart(list_com,i)
+ bar_chart1(list_com,i)
   
 dict_str_stack = dict()
 dict_num_stack = dict()
+table_head = ['หัวข้อ' , 'จำนวน'('เปอร์เซ็นต์')]
+table_data = []
 for i in list_stack_str:
   topic_word, sub_word = i.split(' [')[:2]
   topic_word = topic_word.strip()
@@ -322,13 +324,12 @@ for i in list_stack_str:
     dict_str_stack[topic_word] = dict()
   dict_str_stack[topic_word][sub_word] = A_l
 for s in dict_str_stack:
-  name_top = ''
-  st.write(f'{"หัวข้อ"} {"จำนวน(เปอร์เซ็นต์)"}')
-  for t in dict_str_stack[s]:
-    name = s+f' [{t}]'
-    answer = count_list(upload_df[name].values.tolist())
-    #st.write(answer)
-
+ name_top = ''
+ for t in dict_str_stack[s]:
+  name = s+f' [{t}]'
+  answer = count_list(upload_df[name].values.tolist())
+  table_data.append([t,answer,''])
+st.table([table_head,*table_data]) 
   stacked_bar(dict_str_stack[s],s)
 
 #st.write('หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน' , 'สรุป')
