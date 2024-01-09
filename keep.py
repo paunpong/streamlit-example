@@ -328,7 +328,7 @@ st.table([table_head2,*table_data2])
 for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  v = split_comma(A)
- count_v = Count(v)
+ count_v = Count(v,False)
  data = bar_list_count(count_v,20)
  bar_chart_new(data,a)
 
