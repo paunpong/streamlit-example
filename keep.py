@@ -280,12 +280,12 @@ if upload_file is not None:
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 
 st.sidebar.code(
- for topic in list_pie_chart:
-  x = st.radio(topic, ["Reomve_nan", "Add_nan"], horizontal=True ,index=0)
-  if x =="Reomve_nan":
-   list_pie_chart[topic]=True
-  else:
-   list_pie_chart[topic]=False)
+for topic in list_pie_chart:
+ x = st.radio(topic, ["Reomve_nan", "Add_nan"], horizontal=True ,index=0)
+ if x =="Reomve_nan":
+  list_pie_chart[topic]=True
+ else:
+  list_pie_chart[topic]=False)
 
 
 
