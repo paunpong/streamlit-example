@@ -138,7 +138,7 @@ def boxplot(data,key):
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
-def bar_chart(data,key,orther_number=1):
+def bar_chart1(data,key,orther_number=1):
  values = [data[key]['count'] for key in data if (data[key]['count'] > orther_number ) and (key != "ไม่ระบุ")]
  values_orther =  [data[key]['count'] for key in data if (data[key]['count'] <= orther_number ) and (key != "ไม่ระบุ")]
  labels = [key for key in data if (data[key]['count'] > orther_number ) and (key != "ไม่ระบุ")]
@@ -153,6 +153,30 @@ def bar_chart(data,key,orther_number=1):
  for i in range(len(labels)):
   per = values[i]*100/all_number
   bar_dict[labels[i]]={'count':values[i], 'percent': round(per, digit)}
+ fig,ax = plt.subplots(figsize=(9,6))
+ ax.set_xticklabels(labels, fontproperties=thai_font_prop)
+ ax.bar(labels, values)
+ plt.title(key, fontproperties=thai_font_prop)
+ st.pyplot()
+
+def bar_chart(data,key):
+ count_more_than = []
+ count_equal = []
+ plt.figure(figsize=(9,6))
+ for i in set(A):
+  if i != 'ไม่ระบุ':
+   values = A.count(i)
+   if values > 1:
+    count_more_than.append(i)
+   else:
+    count_equal.append(i)
+  len_equal = len(count_equal)
+  if len_equal > 1:
+   values = [A.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
+   labels = [str(i) for i in count_more_than if i != 'ไม่ระบุ'] + ['อื่นๆ']
+  else:
+   values = [A.count(i) for i in set(A) if i != 'ไม่ระบุ']
+   labels = [str(i) for i in set(A) if i != 'ไม่ระบุ']
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.bar(labels, values)
@@ -259,7 +283,7 @@ for a in list_bar_chart_comma:
  st.table([table_head,*table_data])
 for a in list_bar_chart_comma:
  v = split_comma(a)
- bar_chart(v,a,0)
+ bar_chart(v,a)
 
 other = False
 for c in list_bar_chart:
