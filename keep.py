@@ -20,7 +20,7 @@ thai_font_prop = fm.FontProperties(fname=thai_font_path)
 digit = int(2)
 list_pie_chart = {}
 list_boxplot=[]
-list_bar_chart_comma=[]
+list_bar_chart_comma={}
 list_bar_chart=[]
 list_comment=[]
 list_stack_str=[]
@@ -254,7 +254,7 @@ if upload_file is not None:
    continue
    
   if check_comma(column):
-   list_bar_chart_comma.append(key)
+   list_bar_chart_comma[key] = {'removenan':True,'orther_number':1}
    continue
    
   #if column.count('ไม่ระบุ') > .25*len_column:
@@ -328,8 +328,8 @@ st.table([table_head2,*table_data2])
 for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  v = split_comma(A)
- count_v = Count(v,False)
- data = bar_list_count(count_v,20)
+ count_v = Count(v,list_bar_chart_comma[a]['removenan'])
+ data = bar_list_count(count_v,list_bar_chart_comma[a]['other_number'])
  bar_chart_new(data,a)
 
 other = False
