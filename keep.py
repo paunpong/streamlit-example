@@ -288,6 +288,7 @@ for b in list_boxplot:
 
 table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data2 = []
+table_barchart_comma = dict()
 for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  all_number = len(A)
@@ -299,6 +300,9 @@ for a in list_bar_chart_comma:
   count = v[k]['count']
   percent = 100*v[k]['count']/all_number
   table_data2.append([k,count,percent])
+for i in table_data2:
+ st.write(i)
+#table_barchart_comma[a]=table_data2.[1:]
 st.table([table_head2,*table_data2])
 
 for a in list_bar_chart_comma:
