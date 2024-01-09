@@ -311,7 +311,7 @@ for i in list_bar_chart:
   
 dict_str_stack = dict()
 dict_num_stack = dict()
-table_head = ['หัวข้อ' , 'จำนวน'('เปอร์เซ็นต์')]
+#table_head = ['หัวข้อ' , 'จำนวน'('เปอร์เซ็นต์')]
 table_data = []
 for i in list_stack_str:
   topic_word, sub_word = i.split(' [')[:2]
@@ -328,6 +328,7 @@ for s in dict_str_stack:
   name = s+f' [{t}]'
   answer = count_list(upload_df[name].values.tolist())
   table_data.append([t,answer,''])
+table_head = ['หัวข้อ' , 'จำนวน'('เปอร์เซ็นต์')]  
 st.table([table_head,*table_data])
 stacked_bar(dict_str_stack[s],s)
 
