@@ -238,7 +238,8 @@ for b in list_boxplot:
  mean = mean_sd['ค่าเฉลี่ย']
  std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
  table_data1.append([b,mean,std])
-st.table([table_head1,*table_data1]) 
+if upload_file is not None:
+ st.table([table_head1,*table_data1]) 
 for b in list_boxplot:
  boxplot(upload_df[b].values.tolist(),b)
 
