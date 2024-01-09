@@ -151,7 +151,7 @@ def bar_list_count(data,orther_number=1):
  if 'ไม่ระบุ' in data:
   values.append(data['ไม่ระบุ'])
   labels.append('ไม่ระบุ')
- return [valuse, labels]
+ return [labels, values]
  
 
 
@@ -203,6 +203,20 @@ def bar_chart(data,key):
  ax.bar(labels, values)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
+
+
+
+def bar_chart_new(data,key):
+ labels = data[0]
+ values = data[1]
+ fig,ax = plt.subplots(figsize=(9,6))
+ ax.set_xticklabels(labels, fontproperties=thai_font_prop)
+ ax.bar(labels, values)
+ plt.title(key, fontproperties=thai_font_prop)
+ st.pyplot()
+
+
+
 
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
@@ -286,6 +300,9 @@ if upload_file is not None:
 for b in list_boxplot:
  boxplot(upload_df[b].values.tolist(),b)
 
+
+
+#---------------------------------------------------------------------------------- comma 
 table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data2 = []
 table_barchart_comma = dict()
@@ -300,15 +317,20 @@ for a in list_bar_chart_comma:
   count = v[k]['count']
   percent = 100*v[k]['count']/all_number
   table_data2.append([k,count,percent])
-for i in table_data2:
- st.write(i)
-#table_barchart_comma[a]=table_data2.[1:]
+
+table_barchart_comma[a]=table_data2.[1:]
 st.table([table_head2,*table_data2])
+
+
+
+
 
 for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  v = split_comma(A)
- bar_chart(v,a)
+ count_v = Count(v)
+ data = bar_list_count(count_v)
+ bar_chart_new(data,a)
 
 other = False
 table_head3 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
