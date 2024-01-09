@@ -311,7 +311,7 @@ for p in list_pie_chart:
 if upload_file is not None:
  st.table([table_head,*table_data]) 
 for p in list_pie_chart:
- pie_chart(count_list(upload_df[p].values.tolist()),p)
+ pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
 
 
 
@@ -326,9 +326,6 @@ if upload_file is not None:
  st.table([table_head1,*table_data1]) 
 for b in list_boxplot:
  boxplot(upload_df[b].values.tolist(),b)
-
-
-
 #---------------------------------------------------------------------------------- comma 
 table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data2 = []
@@ -344,14 +341,8 @@ for a in list_bar_chart_comma:
   count = v[k]['count']
   percent = 100*v[k]['count']/all_number
   table_data2.append([k,count,percent])
-
 table_barchart_comma[a]=table_data2[1:]
 st.table([table_head2,*table_data2])
-
-
-
-
-
 for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  v = split_comma(A)
