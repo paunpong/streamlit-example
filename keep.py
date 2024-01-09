@@ -270,19 +270,15 @@ for b in list_boxplot:
 table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data2 = []
 for a in list_bar_chart_comma:
- list_values = upload_df[a].values.tolist()
- list_free = []
- for r in list_values:
-  list_free = list_free + r.split(", ")
- if list_free != 0:
-  set_list = list(set(list_free))
-  v = count_list(list_free)
-  table_data2.append([a, sum([v[key]['count'] for key in v]), 100]) 
+ list_free = split_comma(a)
+ set_list = list(set(list_free))
+ v = count_list(list_free)
+ table_data2.append([a, sum([v[key]['count'] for key in v]), 100]) 
  for k in v:
   count = v[k]['count']
   percent = v[k]['percent']
   table_data2.append([k,count,percent])
- st.table([table_head2,*table_data2])
+st.table([table_head2,*table_data2])
 for a in list_bar_chart_comma:
  v = split_comma(a)
  bar_chart(v,a)
