@@ -331,10 +331,13 @@ for s in dict_str_stack:
    count = answer[k]['count']
    percent = answer[k]['percent']
   table_data4.append([t,f'{count} {[percent]}'])
+  st.table([table_head4,*table_data4])
  stacked_bar(dict_str_stack[s],s)
 
 #st.write('หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน' , 'สรุป')
 top_name = ''
+table_head5 = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
+table_data5 = []
 for i in list_stack_num:
   mat = upload_df[i].values.tolist()
   mean_sd = stat(mat)
@@ -343,27 +346,29 @@ for i in list_stack_num:
   topic_word = topic_word.strip()
   sub_word = sub_word.strip().replace(']','')
   if topic_word != top_name:
-    st.write(topic_word)
+    table_head5.append([topic_word])
     top_name = topic_word
   A_l = count_list(upload_df[i].values.tolist())
   for k in mean_sd:
     mean = mean_sd['ค่าเฉลี่ย']
     s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
   if mean >= 4.2:
-    st.write(f"{sub_word} {mean} {s_d} {'มากที่สุด'}")
+    table_head5.append([sub_word,mean ,s_d, 'มากที่สุด'])
   elif mean >= 3.4:
-    st.write(f"{sub_word} {mean} {s_d} {'มาก'}")
+    table_head5.append([sub_word,mean ,s_d, 'มาก'])
   elif mean >= 2.6:
-    st.write(f"{sub_word} {mean} {s_d} {'ปานกลาง'}")
+    table_head5.append([sub_word,mean ,s_d, 'ปานกลาง'])
   elif mean >= 1.8:
-    st.write(f"{sub_word} {mean} {s_d} {'น้อย'}")
+    table_head5.append([sub_word,mean ,s_d, 'น้อย'])
   elif mean < 1.8:
-    st.write(f"{sub_word} {mean} {s_d} {'น้อยที่สุด'}")
+    table_head5.append([sub_word,mean ,s_d, 'น้อยที่สุด'])
   for k in A_l:
     A_l[k] = A_l[k]['percent']
   if topic_word not in dict_num_stack:
     dict_num_stack[topic_word] = dict()
   dict_num_stack[topic_word][sub_word] = A_l
+if upload_file is not None:
+ st.table([table_head5,*table_data5])
 for i in dict_num_stack:
   stacked_bar(dict_num_stack[i],i)
  
