@@ -60,14 +60,14 @@ def split_comma(A):
   del_nan = [n for n in res if n != 'ไม่ระบุ']
  return res
 
-def count(A,removenan=True):
+def Count(A,removenan=True):
  if removenan and 'ไม่ระบุ' in A:
   A = [n for n in A if n != 'ไม่ระบุ']
  list_A = list(set(A))
- count = dict()
+ counta = dict()
  for i in list_A:
-  count[i] = {'count':A.count(i)}
- return count
+  counta[i] = {'count':A.count(i)}
+ return counta
 
 def count_list(A,removenan=True):
  if removenan and 'ไม่ระบุ'in A:
