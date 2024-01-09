@@ -332,6 +332,7 @@ for s in dict_str_stack:
    percent = answer[k]['percent']
   table_data4.append([t,f'{count} {[percent]}'])
 st.table([table_head4,*table_data4])
+for s in dict_str_stack:
  stacked_bar(dict_str_stack[s],s)
 
 top_name = ''
