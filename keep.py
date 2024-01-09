@@ -345,7 +345,7 @@ for i in list_stack_num:
   topic_word = topic_word.strip()
   sub_word = sub_word.strip().replace(']','')
   if topic_word != top_name:
-    table_data5.append([topic_word])
+    table_data5.append([topic_word,'',''])
     top_name = topic_word
   A_l = count_list(upload_df[i].values.tolist())
   for k in mean_sd:
@@ -362,7 +362,7 @@ for i in list_stack_num:
    level = 'น้อย'
   elif mean < 1.8:
    level = 'น้อยที่สุด'
-  table_data5.append([f'{topic_word}{[sub_word]}',mean,s_d,level]) 
+  table_data5.append([sub_word,mean,s_d,level]) 
   for k in A_l:
     A_l[k] = A_l[k]['percent']
   if topic_word not in dict_num_stack:
