@@ -139,20 +139,22 @@ def boxplot(data,key):
  st.pyplot()
 
 def bar_chart1(data,key,orther_number=1):
- values = [data[key]['count'] for key in data if (data[key]['count'] > orther_number ) and (key != "ไม่ระบุ")]
- values_orther =  [data[key]['count'] for key in data if (data[key]['count'] <= orther_number ) and (key != "ไม่ระบุ")]
- labels = [key for key in data if (data[key]['count'] > orther_number ) and (key != "ไม่ระบุ")]
+ values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
+ values_orther =  [data[key] for key in data if (data[key] <= orther_number ) and (key != "ไม่ระบุ")]
+ labels = [key for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
  if len(values_orther)>0:
   values.append(sum(values_orther))
   labels.append('อื่น ๆ')
  if 'ไม่ระบุ' in data:
-  values.append(data['ไม่ระบุ']['count'])
+  values.append(data['ไม่ระบุ'])
   labels.append('ไม่ระบุ')
  bar_dict = dict()
  all_number = sum(values)
+ '''
  for i in range(len(labels)):
   per = values[i]*100/all_number
   bar_dict[labels[i]]={'count':values[i], 'percent': round(per, digit)}
+ '''
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.bar(labels, values)
