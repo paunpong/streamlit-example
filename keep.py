@@ -52,12 +52,14 @@ def check_comma(A):
      return True
  return False
 
+def delete_nan(A):
+ del_nan = [n for n in A if n != 'ไม่ระบุ']
+ return del_nan
+
 def split_comma(A):
- submiss = upload_df[A].values.tolist()
  res = []
- for i in submiss:
+ for i in A:
   res = res + i.split(", ")
-  del_nan = [n for n in res if n != 'ไม่ระบุ']
  return res
 
 def Count(A,removenan=True):
@@ -287,17 +289,21 @@ for b in list_boxplot:
 table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data2 = []
 for a in list_bar_chart_comma:
- list_free = split_comma(a)
+ A = upload_df[a].values.tolist()
+ all_number = len(A)
+ list_free = split_comma(A)
  set_list = list(set(list_free))
  v = count_list(list_free)
- table_data2.append([a, sum([v[key]['count'] for key in v]), 100]) 
+ table_data2.append([a, all_number, 100]) 
  for k in v:
   count = v[k]['count']
-  percent = v[k]['percent']
+  percent = 100*v[k]['count']/all_number
   table_data2.append([k,count,percent])
 st.table([table_head2,*table_data2])
+
 for a in list_bar_chart_comma:
- v = split_comma(a)
+ A = upload_df[a].values.tolist()
+ v = split_comma(A)
  bar_chart(v,a)
 
 other = False
