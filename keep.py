@@ -329,7 +329,7 @@ for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  v = split_comma(A)
  count_v = Count(v,list_bar_chart_comma[a]['removenan'])
- data = bar_list_count(count_v,list_bar_chart_comma[a]['other_number'])
+ data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
  bar_chart_new(data,a)
 
 other = False
