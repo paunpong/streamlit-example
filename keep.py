@@ -273,6 +273,26 @@ if upload_file is not None:
    list_pie_chart[key]=True
   else:
    list_bar_chart.append(key)
+
+
+#--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
+
+#pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
+
+for topic in list_pie_chart:
+ list_pie_chart[topic] = st.radio(topic, ["Reomver_nan", "Add_nan"], horizontal=True ,index=0)
+
+
+
+
+
+
+
+
+
+
+
+
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
 table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data = []
