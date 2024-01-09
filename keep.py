@@ -138,6 +138,23 @@ def boxplot(data,key):
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
+
+def bar_list_count(data,orther_number=1):
+ values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
+ values_orther =  [data[key] for key in data if (data[key] <= orther_number ) and (key != "ไม่ระบุ")]
+ labels = [key for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
+ if len(values_orther)>0:
+  values.append(sum(values_orther))
+  labels.append('อื่น ๆ')
+ if 'ไม่ระบุ' in data:
+  values.append(data['ไม่ระบุ'])
+  labels.append('ไม่ระบุ')
+ return [valuse, labels]
+ 
+
+
+
+
 def bar_chart1(data,key,orther_number=1):
  values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
  values_orther =  [data[key] for key in data if (data[key] <= orther_number ) and (key != "ไม่ระบุ")]
