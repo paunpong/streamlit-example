@@ -329,7 +329,8 @@ for s in dict_str_stack:
   name = s+f' [{t}]'
   answer = count_list(upload_df[name].values.tolist())
   table_data.append([t,answer,''])
-st.table([table_head,*table_data]) 
+st.table([table_head,*table_data])
+if table_data != 0:
   stacked_bar(dict_str_stack[s],s)
 
 #st.write('หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน' , 'สรุป')
