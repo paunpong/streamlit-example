@@ -153,7 +153,6 @@ def bar_chart(data,key,orther_number=1):
  for i in range(len(labels)):
   per = values[i]*100/all_number
   bar_dict[labels[i]]={'count':values[i], 'percent': round(per, digit)}
- return bar_dict
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.bar(labels, values)
@@ -253,8 +252,8 @@ for a in list_bar_chart_comma:
   list_free = list_free + r.split(", ")
  if list_free != 0:
   set_list = list(set(list_free))
-  v = count(list_free)
- table_data.append([a, sum([v[key]['count'] for key in v]), 100]) 
+  v = count_list(list_free)
+  table_data.append([a, sum([v[key]['count'] for key in v]), 100]) 
  for k in v:
   count = v[k]['count']
   percent = v[k]['percent']
