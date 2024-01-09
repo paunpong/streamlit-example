@@ -328,7 +328,6 @@ for s in dict_str_stack:
   name = s+f' [{t}]'
   answer = count_list(upload_df[name].values.tolist())
   table_data.append([t,answer,''])
-table_head = ['หัวข้อ' , 'จำนวน'('เปอร์เซ็นต์')]  
 st.table([table_head,*table_data])
 stacked_bar(dict_str_stack[s],s)
 
