@@ -329,7 +329,7 @@ for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  v = split_comma(A)
  count_v = Count(v)
- data = bar_list_count(count_v,16)
+ data = bar_list_count(count_v,20)
  bar_chart_new(data,a)
 
 other = False
