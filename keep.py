@@ -330,9 +330,9 @@ for s in dict_str_stack:
   for k in answer:
    count = answer[k]['count']
    percent = answer[k]['percent']
-   table_data4.append([t,count,percent])
- st.table([table_head4,*table_data4])
- stacked_bar(dict_str_stack[s],s)
+   table_data4.append([t,f'{count} {(percent)}'])
+st.table([table_head4,*table_data4])
+stacked_bar(dict_str_stack[s],s)
 
 #st.write('หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน' , 'สรุป')
 top_name = ''
