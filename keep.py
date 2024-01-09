@@ -286,24 +286,26 @@ for a in list_bar_chart_comma:
  bar_chart(v,a)
 
 other = False
+table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+table_data = []
 for c in list_bar_chart:
-  x = []
-  st.write(c)
-  list_com = upload_df[c].values.tolist()
-  set_list = list(set(list_com))
-  counts = [(k, list_com.count(k))for k in set_list]
-  counts.sort(key=lambda x: x[1], reverse=True)
-  for k, count in counts:
-    if count > 1:
-      st.write(f"{k} [{count}]")
-    elif not other:
-      st.write('อื่นๆ')
-      other = True
-    else:
-      st.write('\t', '-', k)   
-for i in list_comment:
-  list_com = upload_df[i].values.tolist()
-  bar_chart(list_com,i)
+ x = []
+ table_data.append([a, sum([v[key]['count'] for key in v]), 100])
+ list_com = upload_df[c].values.tolist()
+ set_list = list(set(list_com))
+ counts = [(k, list_com.count(k))for k in set_list]
+ counts.sort(key=lambda x: x[1], reverse=True)
+ for k, count in counts:
+  if count > 1:
+   st.write(f"{k} [{count}]")
+  elif not other:
+   st.write('อื่นๆ')
+   other = True
+  else:
+   st.write('\t', '-', k)   
+for i in list_bar_chart:
+ list_com = upload_df[i].values.tolist()
+ bar_chart(list_com,i)
   
 dict_str_stack = dict()
 dict_num_stack = dict()
