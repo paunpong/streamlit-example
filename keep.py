@@ -298,6 +298,7 @@ table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ�
 table_data = []
 for p in list_pie_chart:
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
+ st.write(p,list_pie_chart[p])
  table_data.append([p, sum([values[key]['count'] for key in values]), 100])
  for k in values:
   count = values[k]['count']
@@ -307,6 +308,8 @@ if upload_file is not None:
  st.table([table_head,*table_data]) 
 for p in list_pie_chart:
  pie_chart(count_list(upload_df[p].values.tolist()),p)
+
+
 
 table_head1 = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
 table_data1 = []
