@@ -350,18 +350,20 @@ for i in list_stack_num:
     top_name = topic_word
   A_l = count_list(upload_df[i].values.tolist())
   for k in mean_sd:
-    mean = mean_sd['ค่าเฉลี่ย']
-    s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+   mean = mean_sd['ค่าเฉลี่ย']
+   s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+  level = '' 
   if mean >= 4.2:
-    table_head5.append([sub_word,mean ,s_d, 'มากที่สุด'])
+   level = 'มากที่สุด'
   elif mean >= 3.4:
-    table_head5.append([sub_word,mean ,s_d, 'มาก'])
+   level = 'มาก'
   elif mean >= 2.6:
-    table_head5.append([sub_word,mean ,s_d, 'ปานกลาง'])
+   level = 'ปานกลาง'
   elif mean >= 1.8:
-    table_head5.append([sub_word,mean ,s_d, 'น้อย'])
+   level = 'น้อย'
   elif mean < 1.8:
-    table_head5.append([sub_word,mean ,s_d, 'น้อยที่สุด'])
+   level = 'น้อยที่สุด'
+  table_data5.append([f'{topic_word}{[sub_word]}',mean,s_d,level]) 
   for k in A_l:
     A_l[k] = A_l[k]['percent']
   if topic_word not in dict_num_stack:
