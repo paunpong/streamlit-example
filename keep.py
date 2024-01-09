@@ -215,9 +215,8 @@ if upload_file is not None:
   else:
    list_bar_chart.append(key)
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
-if upload_file is not None:
- table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
- table_data = []
+table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+table_data = []
 for p in list_pie_chart:
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  table_data.append([p, sum([values[key]['count'] for key in values]), 100])
@@ -242,9 +241,8 @@ if upload_file is not None:
 for b in list_boxplot:
  boxplot(upload_df[b].values.tolist(),b)
 
-if upload_file is not None:
- table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
- table_data = []
+table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+table_data = []
 for a in list_bar_chart_comma:
  list_values = upload_df[a].values.tolist()
  list_free = []
@@ -261,7 +259,7 @@ for a in list_bar_chart_comma:
  st.table([table_head,*table_data])
 for a in list_bar_chart_comma:
  v = split_comma(a)
- bar_chart(v,a)
+ bar_chart(v,a,0)
 
 other = False
 for c in list_bar_chart:
