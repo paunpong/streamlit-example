@@ -279,11 +279,11 @@ if upload_file is not None:
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
- a = {}
- for key in list_pie_chart:
-  a = st.radio(key, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
- for key in a:
-  st.write(topic, a[key])
+ Dic_type_chart = dict()
+ for topic in list_pie_chart:
+  Dic_type_chart[topic] = st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
+ for topic in Dic_type_chart:
+  st.write(topic, Dic_type_chart[topic])
  x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
  if x =="Reomve_nan":
   list_pie_chart[topic]=True
