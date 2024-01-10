@@ -248,7 +248,7 @@ if upload_file is not None:
    continue
    
   if check_comma(column):
-   list_bar_chart_comma[key] = {'removenan':True,'orther_number':1}
+   list_bar_chart_comma[key] = {'removenan':True,'orther_number':21}
    continue
    
   #if column.count('ไม่ระบุ') > .25*len_column:
@@ -342,7 +342,7 @@ for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  v = split_comma(A)
  count_v = Count(v,list_bar_chart_comma[a]['removenan'])
- data = bar_list_count(count_v,list_bar_chart_comma[a],21)
+ data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
  bar_chart_new(data,a)
 #-------------------------------------------------barchart not comma----------------------------------------------------#
 table_head3 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
