@@ -324,14 +324,14 @@ for c in list_bar_chart:
  list_com = Count(upload_df[c].values.tolist())
  set_list = list(set(list_com))
  counts = [(k, list_com)for k in set_list]
- for k,count1 in counts:
-  if count1 > 1:
-   table_data3.append([k,count1])
+ for k,countq in counts:
+  if countq > 2:
+   table_data3.append([k,countq])
   elif not other:
    table_data3.append(['อื่น ๆ','',''])
    other = True
   else:
-   table_data3.append(['*',k,'count1'])
+   table_data3.append(['*',k,countq])
  table_data3.append(table_data3)
 if upload_file is not None:
  st.table([table_head3,*table_data3]) 
