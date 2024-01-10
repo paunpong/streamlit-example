@@ -272,7 +272,7 @@ if upload_file is not None:
   if len(set(column)) < 6:
    list_pie_chart[key]=True
   else:
-   list_bar_chart.[key] = {'removenan':True,'orther_number':1}
+   list_bar_chart[key] = {'removenan':True,'orther_number':1}
 
 
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
