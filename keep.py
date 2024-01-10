@@ -324,7 +324,6 @@ for c in list_bar_chart:
  list_com = Count(upload_df[c].values.tolist())
  set_list = list(set(list_com))
  counts = [(k, list_com)for k in set_list]
- counts.sort(key=lambda x: x[1], reverse=True)
  for k, count1 in counts:
   if count1 > 1:
    table_data3.append(k,count1)
