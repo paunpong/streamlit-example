@@ -21,7 +21,7 @@ digit = int(2)
 list_pie_chart = {}
 list_boxplot=[]
 list_bar_chart_comma={}
-list_bar_chart=[]
+list_bar_chart={}
 list_comment=[]
 list_stack_str=[]
 list_stack_num=[]
@@ -272,7 +272,7 @@ if upload_file is not None:
   if len(set(column)) < 6:
    list_pie_chart[key]=True
   else:
-   list_bar_chart.append(key)
+   list_bar_chart.[key] = {'removenan':True,'orther_number':1}
 
 
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
@@ -282,9 +282,11 @@ if upload_file is not None:
  for key in list_pie_chart:
   a = st.st.radio(key, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
   if a == 'bar_chart':
-   list_bar_chart[key] and del list_pic_chart[key]
-  else:
-   list_pic_chart[key] and del list_bar_chart[key]
+   list_bar_chart[key]
+   if key in list_bar_chart:
+    del list_bar_chart[key]
+   elif key in list_pic_chart:
+    del list_bar_chart[key]
  for topic in list_pie_chart:
   x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
   if x =="Reomve_nan":
