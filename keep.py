@@ -246,7 +246,7 @@ if upload_file is not None:
   Dic_type_chart[topic] = st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
  for topic in Dic_type_chart:
   if Dic_type_chart[topic] == 'bar_chart':
-   list_bar_chart[key] = {'removenan':True,'orther_number':1}
+   list_bar_chart[topic]
    st.write(list_pie_chart)
  x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
  if x =="Reomve_nan":
