@@ -244,16 +244,16 @@ if upload_file is not None:
  Dic_type_chart = dict()
  for topic in list_pie_chart:
   Dic_type_chart[topic] = st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
- for topic in Dic_type_chart:
+ #for topic in Dic_type_chart:
   if Dic_type_chart[topic] == 'bar_chart':
    list_bar_chart[topic]={'removenan':True,'orther_number':1}
    if to in list_bar_chart[topic]:
     del list_pie_chart[to]
-   x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
-   if x =="Reomve_nan":
-    list_pie_chart[topic]=True
-   else:
-    list_pie_chart[topic]=False
+  x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
+  if x =="Reomve_nan":
+   list_pie_chart[topic]=True
+  else:
+   list_pie_chart[topic]=False
 
 
 
