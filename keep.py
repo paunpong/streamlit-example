@@ -256,7 +256,8 @@ if upload_file is not None:
   key = st.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
   if key == 'pie_chart':
    list_pie_chart[key]={'removenan':True}
-   del list_bar_chart[topic] = {'removenan':True,'orther_number':1}
+   if 'orther_number' in list_bar_chart[topic]:
+    del list_bar_chart[topic]['orther_number']
  for topic in list_pie_chart:  
   x = st.sidebar.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
   if x =="Remove_nan":
