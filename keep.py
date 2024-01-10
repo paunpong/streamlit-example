@@ -61,7 +61,7 @@ def split_comma(A):
   res = res + i.split(", ")
  return res
 
-def Count(A,removenan=True,orther_number=1):
+def Count(A,removenan=True):
  if removenan and 'ไม่ระบุ' in A:
   A = [n for n in A if n != 'ไม่ระบุ']
  list_A = list(set(A))
@@ -306,8 +306,6 @@ for a in list_bar_chart_comma:
  for k in v:
   count = v[k]
   percent = 100*v[k]/all_number
-  if count <= orther_number:
-   table_data2.append('อื่น ๆ','','')
   table_data2.append([k,count,percent])
 #table_barchart_comma[a]=table_data2[1:]
 if upload_file is not None:
@@ -321,20 +319,21 @@ for a in list_bar_chart_comma:
 #-------------------------------------------------barchart not comma----------------------------------------------------#
 table_head3 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data3 = []
+other = False
 for c in list_bar_chart:
- list_com = upload_df[c].values.tolist()
+ list_com = Count(upload_df[c].values.tolist())
  set_list = list(set(list_com))
- counts = [(k, list_com.count(k))for k in set_list]
+ counts = [(k, list_com)for k in set_list]
  counts.sort(key=lambda x: x[1], reverse=True)
- for k, count in counts:
-  if count > 1:
-   x.append([k,count])
+ for k, count1 in counts:
+  if count1 > 1:
+   table_data3.append(k,count1)
   elif not other:
-   x.append(['อื่น ๆ',''])
+   table_data3.append(['อื่น ๆ','',''])
    other = True
   else:
-   x.append(['',k])
- table_data3.extend(x)
+   table_data3.append(['*',k,'count1'])
+ table_data3.append(table_data3)
 if upload_file is not None:
  st.table([table_head3,*table_data3]) 
 for i in list_bar_chart:
