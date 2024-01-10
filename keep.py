@@ -324,6 +324,8 @@ for c in list_bar_chart:
  list_com = Count(upload_df[c].values.tolist())
  set_list = list(set(list_com))
  counts = [(k, list_com)for k in set_list]
+ st.write(list_com)
+ st.write(counts)
  for k,countq in counts:
   if countq > 2:
    table_data3.append([k,countq])
