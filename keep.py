@@ -279,7 +279,8 @@ if upload_file is not None:
 
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
- list_pie_chart = ["Reomve_nan", "Add_nan"]
+ for topic in list_pie_chart:
+  list_pie_chart = list_pie_chart[topic]
  x = st.sidebar.radio('',list_pie_chart,horizontal=True)
  if x =="Reomve_nan":
   list_pie_chart[topic]=True
