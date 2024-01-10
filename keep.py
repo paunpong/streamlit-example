@@ -306,6 +306,8 @@ for a in list_bar_chart_comma:
  for k in v:
   count = v[k]
   percent = 100*v[k]/all_number
+  if count <= orther_number:
+   table_data2.append('อื่น ๆ','','')
   table_data2.append([k,count,percent])
 #table_barchart_comma[a]=table_data2[1:]
 if upload_file is not None:
