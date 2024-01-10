@@ -197,7 +197,7 @@ def stacked_bar(data,key):
 st.header('โปรแกรมสร้างรายงานสรุปผลจากฟอร์มออนไลน์')
 st.title('กรุณาใส่ไฟล์ที่เป็น excel')
 
-upload_file = st.file_uploader(" ",type=["csv", "xlsx"])
+upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
 #run_program = st.button('run program')
 
 upload_df = upload(upload_file)
@@ -235,25 +235,41 @@ if upload_file is not None:
    #continue
   
   if len(set(column)) < 6:
-   list_pie_chart[key]=True
+   list_pie_chart[key]={'removenan':True}
   else:
    list_bar_chart[key] = {'removenan':True,'orther_number':1}
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
+ st.write(list_bar_chart)
  Dic_type_chart = dict()
  list_pie_keys = list(list_pie_chart.keys())
+ list_bar_keys = list(list_bar_chart.keys())
+ st.sideber.markdown('##แผนภูมิวงกลม')
  for topic in list_pie_keys:
   Dic_type_chart[topic] = st.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True ,index=0)
   if Dic_type_chart[topic] == 'bar_chart':
    list_bar_chart[topic]={'removenan':True,'orther_number':1}
    del list_pie_chart[topic]
+ st.sideber.markdown('##แผนภูมิแท่ง')  
+ for topic in list_bar_keys:
+  key = st.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True ,index=0)
+  if key == 'pie_chart':
+   list_pie_chart[key]={'removenan':True}
+   del list_bar_chart[topic]
  for topic in list_pie_chart:  
-  x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
-  if x =="Reomve_nan":
+  x = st.sidebar.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
+  if x =="Remove_nan":
    list_pie_chart[topic]=True
   else:
    list_pie_chart[topic]=False
+ for key in list_bar_chart:
+  x = st.sidebar.radio(key,['Remove_nan','Add_nan'],horizontal=True)
+  #y = st.
+  if x == 'Remove_nan':
+   list_bar_chart[key]=True
+  else:
+   list_bar_chart[key]=False
 
 
 
@@ -317,27 +333,7 @@ for a in list_bar_chart_comma:
  data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
  bar_chart_new(data,a)
 #-------------------------------------------------barchart not comma----------------------------------------------------#
-'''table_head3 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
-table_data3 = []
-other = False
-for c in list_bar_chart:
- list_com = Count(upload_df[c].values.tolist())
- set_list = list(set(list_com))
- counts = [(k, list_com)for k in set_list]
- #st.write(list_com)
- #st.write(counts)
- for k,countq in counts:
-  st.write(countq[k])
-  if countq[k] > 1:
-   table_data3.append([k,countq])
-  elif not other:
-   table_data3.append(['อื่น ๆ','',''])
-   other = True
-  else:
-   table_data3.append(['*',k,countq])
- table_data3.append(table_data3)
-if upload_file is not None:
- st.table([table_head3,*table_data3])'''
+
 for i in list_bar_chart:
  list_com = upload_df[i].values.tolist()
  a = Count(list_com,list_bar_chart[i]['removenan'])
