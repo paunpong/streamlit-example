@@ -342,7 +342,7 @@ for i in list_bar_chart:
  list_com = upload_df[i].values.tolist()
  a = Count(list_com,list_bar_chart[i]['removenan'])
  data = bar_list_count(a,list_bar_chart[i]['orther_number'])
- bar_chart(data,a)
+ bar_chart_new(data,i)
 #--------------------------------------------------stack bar str------------------------------------------------#  
 dict_str_stack = dict()
 dict_num_stack = dict()
