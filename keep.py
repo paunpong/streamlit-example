@@ -241,7 +241,7 @@ if upload_file is not None:
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
- #Dic_type_chart = dict()
+ Dic_type_chart = dict()
  for topic in list_pie_chart:
   Dic_type_chart[topic] = st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
   if Dic_type_chart[topic] == 'bar_chart':
