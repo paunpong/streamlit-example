@@ -282,10 +282,12 @@ if upload_file is not None:
  for key in list_pie_chart:
   a = st.radio(key, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
   if a == 'bar_chart':
-   list_bar_chart[key]
-   if key in list_bar_chart:
-    del list_bar_chart[key]
-   elif key in list_pic_chart:
+   list_bar_chart_comma[key]
+   if key in list_bar_chart_comma:
+    del list_pie_chart[key]
+  else:
+   list_pie_chart[key]
+   if key in list_pic_chart:
     del list_bar_chart[key]
  for topic in list_pie_chart:
   x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
@@ -309,7 +311,7 @@ if upload_file is not None:
 table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data = []
 for p in list_pie_chart:
- st.write(p)
+ st.write(p,list_pie_chart[p])
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  table_data.append([p, sum([values[key]['count'] for key in values]), 100])
  for k in values:
