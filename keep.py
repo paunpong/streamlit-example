@@ -284,7 +284,7 @@ if upload_file is not None:
  if x =="Reomve_nan":
   list_pie_chart[topic]=True
  else:
-  list_pie_chart[topic]=False)
+  list_pie_chart[topic]=False
 
 
 
