@@ -278,10 +278,8 @@ if upload_file is not None:
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
-
-st.sidebar.code(
-for topic in list_pie_chart:
- x = st.radio(topic, ["Reomve_nan", "Add_nan"], horizontal=True ,index=0)
+if upload_file is not None:
+ x = st.sidebar.radio(topic for topic in list_pie_chart, ["Reomve_nan", "Add_nan"], horizontal=True ,index=0 )
  if x =="Reomve_nan":
   list_pie_chart[topic]=True
  else:
