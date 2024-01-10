@@ -327,7 +327,7 @@ for c in list_bar_chart:
  #st.write(list_com)
  #st.write(counts)
  for k,countq in counts:
-  st.write(countq)
+  st.write(countq[k])
   if counts[countq] > 1:
    table_data3.append([k,countq])
   elif not other:
