@@ -304,8 +304,8 @@ for a in list_bar_chart_comma:
  v = Count(list_free)
  table_data2.append([a, all_number, 100]) 
  for k in v:
-  count = v[k]['count']
-  percent = 100*v[k]['count']/all_number
+  count = v[k]
+  percent = 100*v[k]/all_number
   table_data2.append([k,count,percent])
 #table_barchart_comma[a]=table_data2[1:]
 if upload_file is not None:
