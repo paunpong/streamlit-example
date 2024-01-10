@@ -281,11 +281,10 @@ if upload_file is not None:
 if upload_file is not None:
  for topic in list_pie_chart:
   x = st.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
-  
- if x =="Reomve_nan":
-  list_pie_chart[topic]=True
- else:
-  list_pie_chart[topic]=False
+  if x =="Reomve_nan":
+   list_pie_chart[topic]=True
+  else:
+   list_pie_chart[topic]=False
 
 
 
