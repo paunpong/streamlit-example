@@ -275,6 +275,7 @@ if upload_file is not None:
   Dic_type_chart[topic] = st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
  for topic in Dic_type_chart:
   if Dic_type_chart[topic] == 'bar_chart':
+   list_bar_chart[key] = {'removenan':True,'orther_number':1}
    st.write(topic, Dic_type_chart[topic])
  x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
  if x =="Reomve_nan":
@@ -344,11 +345,9 @@ for a in list_bar_chart_comma:
  data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
  bar_chart_new(data,a)
 #-------------------------------------------------barchart not comma----------------------------------------------------#
-other = False
 table_head3 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data3 = []
 for c in list_bar_chart:
- x = []
  list_com = upload_df[c].values.tolist()
  set_list = list(set(list_com))
  counts = [(k, list_com.count(k))for k in set_list]
@@ -367,7 +366,7 @@ if upload_file is not None:
 for i in list_bar_chart:
  list_com = upload_df[i].values.tolist()
  bar_chart(list_com,i)
-  
+#--------------------------------------------------stack bar str------------------------------------------------#  
 dict_str_stack = dict()
 dict_num_stack = dict()
 table_head4 = ['หัวข้อ' , 'จำนวน(เปอร์เซ็นต์)']
@@ -393,7 +392,7 @@ for s in dict_str_stack:
 st.table([table_head4,*table_data4])
 for s in dict_str_stack:
  stacked_bar(dict_str_stack[s],s)
-
+#--------------------------------------------------stack bar num------------------------------------------------#
 top_name = ''
 table_head5 = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
 table_data5 = []
