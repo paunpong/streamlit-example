@@ -317,7 +317,7 @@ for a in list_bar_chart_comma:
  data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
  bar_chart_new(data,a)
 #-------------------------------------------------barchart not comma----------------------------------------------------#
-table_head3 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+'''table_head3 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data3 = []
 other = False
 for c in list_bar_chart:
@@ -337,10 +337,12 @@ for c in list_bar_chart:
    table_data3.append(['*',k,countq])
  table_data3.append(table_data3)
 if upload_file is not None:
- st.table([table_head3,*table_data3]) 
+ st.table([table_head3,*table_data3])'''
 for i in list_bar_chart:
  list_com = upload_df[i].values.tolist()
- bar_chart(list_com,i)
+ a = Count(list_com,list_bar_chart[i]['removenan'])
+ data = bar_list_count(a,list_bar_chart[i]['orther_number'])
+ bar_chart(data,a)
 #--------------------------------------------------stack bar str------------------------------------------------#  
 dict_str_stack = dict()
 dict_num_stack = dict()
