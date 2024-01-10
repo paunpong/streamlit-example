@@ -174,32 +174,6 @@ def bar_chart1(data,key,orther_number=1):
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
-def bar_chart(data,key):
- count_more_than = []
- count_equal = []
- plt.figure(figsize=(9,6))
- for i in set(data):
-  if i != 'ไม่ระบุ':
-   values = data.count(i)
-   if values > 1:
-    count_more_than.append(i)
-   else:
-    count_equal.append(i)
-  len_equal = len(count_equal)
-  if len_equal > 1:
-   values = [data.count(i) for i in count_more_than if i != 'ไม่ระบุ'] + [len_equal]
-   labels = [str(i) for i in count_more_than if i != 'ไม่ระบุ'] + ['อื่นๆ']
-  else:
-   values = [data.count(i) for i in set(data) if i != 'ไม่ระบุ']
-   labels = [str(i) for i in set(data) if i != 'ไม่ระบุ']
- fig,ax = plt.subplots(figsize=(9,6))
- ax.set_xticklabels(labels, fontproperties=thai_font_prop)
- ax.bar(labels, values)
- plt.title(key, fontproperties=thai_font_prop)
- st.pyplot()
-
-
-
 def bar_chart_new(data,key):
  labels = data[0]
  values = data[1]
@@ -208,9 +182,6 @@ def bar_chart_new(data,key):
  ax.bar(labels, values)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
-
-
-
 
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
@@ -230,8 +201,8 @@ upload_file = st.file_uploader(" ",type=["csv", "xlsx"])
 #run_program = st.button('run program')
 
 upload_df = upload(upload_file)
-if upload_file is not None:
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
+if upload_file is not None:
  list_question = [h for h in upload_df]
  if ('Times' or 'ประทับเวลา') in list_question[0]:
   list_question.pop(0)
@@ -335,9 +306,12 @@ for a in list_bar_chart_comma:
  for k in v:
   count = v[k]['count']
   percent = 100*v[k]['count']/all_number
+  if count <= bar_list_count(count,list_bar_chart_comma[a]['orther_number']):
+   k = 'อื่น ๆ'
   table_data2.append([k,count,percent])
 #table_barchart_comma[a]=table_data2[1:]
-st.table([table_head2,*table_data2])
+if upload_file is not None:
+ st.table([table_head2,*table_data2])
 for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  v = split_comma(A)
@@ -389,7 +363,8 @@ for s in dict_str_stack:
    count = answer[k]['count']
    percent = answer[k]['percent']
   table_data4.append([t,f'{count} {[percent]}'])
-st.table([table_head4,*table_data4])
+if upload_file is not None:  
+ st.table([table_head4,*table_data4])
 for s in dict_str_stack:
  stacked_bar(dict_str_stack[s],s)
 #--------------------------------------------------stack bar num------------------------------------------------#
