@@ -19,13 +19,11 @@ thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
 digit = int(2)
 list_pie_chart = {}
-list_boxplot=[]
+list_boxplot={}
 list_bar_chart_comma={}
 list_bar_chart={}
-list_comment=[]
-list_stack_str=[]
-list_stack_num=[]
-list = []
+list_stack_str={}
+list_stack_num={}
 
 def upload(A):
  if A is not None:
@@ -141,7 +139,6 @@ def boxplot(data,key):
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
-
 def bar_list_count(data,orther_number=1):
  values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
  values_orther =  [data[key] for key in data if (data[key] <= orther_number ) and (key != "ไม่ระบุ")]
@@ -154,10 +151,6 @@ def bar_list_count(data,orther_number=1):
   labels.append('ไม่ระบุ')
  return [labels, values]
  
-
-
-
-
 def bar_chart1(data,key,orther_number=1):
  values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
  values_orther =  [data[key] for key in data if (data[key] <= orther_number ) and (key != "ไม่ระบุ")]
@@ -249,9 +242,9 @@ if upload_file is not None:
   
   if '[' in key:
    if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-    list_stack_num.append(key)
+    list_stack_num[key] = {'removenan':True}
    else:
-    list_stack_str.append(key)
+    list_stack_str[key] = {'removenan':True}
    continue
    
   if check_comma(column):
@@ -263,7 +256,7 @@ if upload_file is not None:
    #continue
   
   if num_check(column):
-   list_boxplot.append(key)
+   list_boxplot[key] = True
    continue
   
   #if len(set(column)) >.50*len_column:
@@ -274,8 +267,6 @@ if upload_file is not None:
    list_pie_chart[key]=True
   else:
    list_bar_chart[key] = {'removenan':True,'orther_number':1}
-
-
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
@@ -283,7 +274,8 @@ if upload_file is not None:
  for topic in list_pie_chart:
   Dic_type_chart[topic] = st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
  for topic in Dic_type_chart:
-  st.write(topic, Dic_type_chart[topic])
+  if Dic_type_chart[topic] == 'bar_chart':
+   st.write(topic, Dic_type_chart[topic])
  x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
  if x =="Reomve_nan":
   list_pie_chart[topic]=True
@@ -316,9 +308,7 @@ if upload_file is not None:
  st.table([table_head,*table_data]) 
 for p in list_pie_chart:
  pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
-
-
-
+#--------------------------------------------------boxplot-------------------------------------------------------------#
 table_head1 = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
 table_data1 = []
 for b in list_boxplot:
@@ -330,7 +320,7 @@ if upload_file is not None:
  st.table([table_head1,*table_data1]) 
 for b in list_boxplot:
  boxplot(upload_df[b].values.tolist(),b)
-#---------------------------------------------------------------------------------- comma 
+#--------------------------------------------------- comma ------------------------------------------------------------#
 table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data2 = []
 table_barchart_comma = dict()
@@ -345,7 +335,7 @@ for a in list_bar_chart_comma:
   count = v[k]['count']
   percent = 100*v[k]['count']/all_number
   table_data2.append([k,count,percent])
-table_barchart_comma[a]=table_data2[1:]
+#table_barchart_comma[a]=table_data2[1:]
 st.table([table_head2,*table_data2])
 for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
@@ -353,7 +343,7 @@ for a in list_bar_chart_comma:
  count_v = Count(v,list_bar_chart_comma[a]['removenan'])
  data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
  bar_chart_new(data,a)
-
+#-------------------------------------------------barchart not comma----------------------------------------------------#
 other = False
 table_head3 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data3 = []
