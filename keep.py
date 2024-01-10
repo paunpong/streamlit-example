@@ -61,7 +61,7 @@ def split_comma(A):
   res = res + i.split(", ")
  return res
 
-def Count(A,removenan=True):
+def Count(A,removenan=True,orther_number=1):
  if removenan and 'ไม่ระบุ' in A:
   A = [n for n in A if n != 'ไม่ระบุ']
  list_A = list(set(A))
