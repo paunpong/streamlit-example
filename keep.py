@@ -280,7 +280,7 @@ if upload_file is not None:
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
  for key in list_pie_chart:
-  a = st.st.radio(key, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
+  a = st.radio(key, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
   if a == 'bar_chart':
    list_bar_chart[key]
    if key in list_bar_chart:
