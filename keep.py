@@ -285,10 +285,6 @@ if upload_file is not None:
    list_bar_chart_comma[key]
    if key in list_bar_chart_comma:
     del list_pie_chart[key]
-  else:
-   list_pie_chart[key]
-   if key in list_pic_chart:
-    del list_bar_chart[key]
  for topic in list_pie_chart:
   x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
   if x =="Reomve_nan":
