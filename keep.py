@@ -25,7 +25,7 @@ list_bar_chart={}
 list_comment=[]
 list_stack_str=[]
 list_stack_num=[]
-list = {}
+list = []
 
 def upload(A):
  if A is not None:
@@ -277,13 +277,12 @@ if upload_file is not None:
 
 
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
-
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
  for key in list_pie_chart:
   a = st.radio(key, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
   if a == 'bar_chart':
-   list[key]
+   list.append(key)
    if key in list:
     del list_pie_chart[key]
  st.write(list_pie_chart)
