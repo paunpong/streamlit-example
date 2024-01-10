@@ -325,10 +325,9 @@ for c in list_bar_chart:
  set_list = list(set(list_com))
  counts = [(k, list_com)for k in set_list]
  #st.write(list_com)
- st.write(counts)
+ #st.write(counts)
  for k,countq in counts:
-  st.write(k,countq)
-  if countq > 2:
+  if counts[countq] > 1:
    table_data3.append([k,countq])
   elif not other:
    table_data3.append(['อื่น ๆ','',''])
