@@ -25,6 +25,7 @@ list_bar_chart={}
 list_comment=[]
 list_stack_str=[]
 list_stack_num=[]
+list = {}
 
 def upload(A):
  if A is not None:
@@ -282,9 +283,11 @@ if upload_file is not None:
  for key in list_pie_chart:
   a = st.radio(key, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
   if a == 'bar_chart':
-   list_bar_chart_comma[key]
-   if key in list_bar_chart_comma:
+   list[key]
+   if key in list:
     del list_pie_chart[key]
+ st.write(list_pie_chart)
+ st.write(list)
  for topic in list_pie_chart:
   x = st.sidebar.radio(topic, ["Reomve_nan", "add_nan"], horizontal=True ,index=0)
   if x =="Reomve_nan":
