@@ -279,6 +279,7 @@ if upload_file is not None:
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
+ a = {}
  for key in list_pie_chart:
   a = st.radio(key, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
  for key in a:
