@@ -219,7 +219,7 @@ if upload_file is not None:
    continue
    
   if check_comma(column):
-   list_bar_chart_comma[key] = {'removenan':True,'orther_number':21}
+   list_bar_chart_comma[key] = {'removenan':True,'orther_number':1}
    continue
    
   #if column.count('ไม่ระบุ') > .25*len_column:
@@ -270,8 +270,8 @@ if upload_file is not None:
   c = Count(upload_df[key].values.tolist())
   st.write(c)
   y = st.sidebar.radio(key,['Remove_nan','Add_nan'],horizontal=True)
-  orther_number = st.sidebar.slider(key,1,10,1,1)
-  list_bar_chart[key] = {'orther_number':1}
+  z = st.sidebar.slider(key,1,10,1,1)
+  list_bar_chart[key] = {'orther_number':z}
   if y == 'Remove_nan':
    list_bar_chart[key]=True
   else:
