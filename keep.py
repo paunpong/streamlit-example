@@ -268,8 +268,8 @@ if upload_file is not None:
  st.sidebar.markdown('ปรับแต่งแผนภูมิแท่ง') 
  for key in list_bar_chart:
   c = Count(upload_df[key].values.tolist())
-  y = st.sidebar.radio(key,['Remove_nan','Add_nan'],horizontal=True)
-  z = st.sidebar.slider(key,1,max(c.values(),1,1)                      
+  y = st.sidebar.radio(key, ['Remove_nan', 'Add_nan'], horizontal=True)
+  z = st.sidebar.slider(key, 1, max(c.values()), 1, 1)  # Fixed the syntax error here
   list_bar_chart[key] = {'removenan': True if y == 'Remove_nan' else False, 'orther_number': z}
 
 
