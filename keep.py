@@ -270,7 +270,8 @@ if upload_file is not None:
   c = Count(upload_df[key].values.tolist())
   st.write(c)
   y = st.sidebar.radio(key,['Remove_nan','Add_nan'],horizontal=True)
-  #orther_number = st.sidebar.slider(key,1,10,1,1)
+  orther_number = st.sidebar.slider(key,1,10,1,1)
+  list_bar_chart[key] = {'orther_number':1}
   if y == 'Remove_nan':
    list_bar_chart[key]=True
   else:
@@ -342,7 +343,7 @@ for i in list_bar_chart:
  st.write(list_bar_chart)
  list_com = upload_df[i].values.tolist()
  a = Count(list_com,list_bar_chart[i])
- data = bar_list_count(a,list_bar_chart[i]['orther_number'])
+ data = bar_list_count(a,list_bar_chart[i])
  bar_chart_new(data,i)
 #--------------------------------------------------stack bar str------------------------------------------------#  
 dict_str_stack = dict()
