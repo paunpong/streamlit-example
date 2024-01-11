@@ -222,18 +222,10 @@ if upload_file is not None:
   if check_comma(column):
    list_bar_chart_comma[key] = {'removenan':True,'orther_number':1}
    continue
-   
-  #if column.count('ไม่ระบุ') > .25*len_column:
-   #list_comment.append(key)
-   #continue
   
   if num_check(column):
    list_boxplot[key] = True
    continue
-  
-  #if len(set(column)) >.50*len_column:
-   #list_comment.append(key)
-   #continue
   
   if len(set(column)) < 6:
    list_pie_chart[key]={'removenan':True}
@@ -251,8 +243,17 @@ if upload_file is not None:
   p = st.sidebar.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True)
   if p == 'bar_chart':
    list_bar_chart[topic]={'removenan':True,'orther_number':1}
-   del list_pie_chart[topic] 
+   del list_pie_chart[topic]
+ for topic in list_box_keys:
+  box =  
  st.sidebar.markdown('# :rainbow[แผนภูมิแท่ง]')  
+ tab1, tab2 = st.sidebar.tabs(["Tab 1", "Tab2"])
+ tab1.write("this is tab 1")
+ tab2.write("this is tab 2")
+
+# You can also use "with" notation:
+>>> with tab1:
+>>>   st.radio('Select one:', [1, 2])
  for topic in list_bar_keys:
   key = st.sidebar.radio(topic, ['bar_chart','pie_chart'], horizontal=True)
   if key == 'pie_chart':
