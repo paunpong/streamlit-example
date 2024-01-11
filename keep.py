@@ -243,7 +243,7 @@ if upload_file is not None:
 if upload_file is not None:
  Dic_type_chart = dict()
  list_pie_keys = list(list_pie_chart.keys())
- list_box_keys = list(list_boxplot.keys()
+ list_box_keys = list(list_boxplot.keys())
  list_bar_keys = list(list_bar_chart.keys())
  #st.sidebar.markdown('แผนภูมิวงกลม')
  for topic in list_pie_keys:
