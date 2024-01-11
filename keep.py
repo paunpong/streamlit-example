@@ -189,7 +189,7 @@ def stacked_bar(data,key):
  data = data.values()
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data,index=name)
- d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(loc='upper right', bbox_to_anchor=(1, 0, 0.5, 1),prop=thai_font_prop)
+ d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(loc='upper right', bbox_to_anchor=(0.1, 0, 0, 0),prop=thai_font_prop)
  #stacked_plot.legend(loc='upper right', fontproperties=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
@@ -251,18 +251,18 @@ if upload_file is not None:
   if p == 'bar_chart':
    list_bar_chart[topic]={'removenan':True,'orther_number':1}
    del list_pie_chart[topic] 
- st.sidebar.markdown('แผนภูมิแท่ง')  
+ st.sidebar.markdown('# :rainbow[แผนภูมิแท่ง]')  
  for topic in list_bar_keys:
   key = st.sidebar.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
   if key == 'pie_chart':
    list_pie_chart[topic]={'removenan':True}
    if 'orther_number' in list_bar_chart[topic]:
     del list_bar_chart[topic]
- st.sidebar.markdown('ปรับแต่งแผนภูมิวงกลม')
+ st.sidebar.markdown('# :rainbow[ปรับแต่งแผนภูมิวงกลม]')
  for topic in list_pie_chart:  
   x = st.sidebar.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
   list_pie_chart[topic] = {'removenan': True if x == 'Remove_nan' else False}
- st.sidebar.markdown('ปรับแต่งแผนภูมิแท่ง') 
+ st.sidebar.markdown('# :rainbow[ปรับแต่งแผนภูมิแท่ง]') 
  for key in list_bar_chart:
   c = Count(upload_df[key].values.tolist())
   y = st.sidebar.radio(key, ['Remove_nan', 'Add_nan'], horizontal=True)
