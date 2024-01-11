@@ -254,7 +254,7 @@ if upload_file is not None:
  st.write(list_pie_chart) 
  #st.sidebar.markdown('แผนภูมิแท่ง')  
  for topic in list_bar_keys:
-  key = st.radio(topic, ['pie_chart','bar_chart'], horizontal=True ,index=0)
+  key = st.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
   if key != 'bar_chart':
    list_pie_chart[topic]={'removenan':True}
    if 'orther_number' in list_bar_chart[topic]:
