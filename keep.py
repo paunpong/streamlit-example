@@ -322,7 +322,7 @@ for a in list_bar_chart_comma:
  all_number = len(A)
  list_free = split_comma(A)
  set_list = list(set(list_free))
- v = Count(list_free,True)
+ v = Count(list_free,list_bar_chart_comma[a]['removenan'])
  table_data2.append([a, all_number, 100]) 
  for k in v:
   count = v[k]
