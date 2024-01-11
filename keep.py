@@ -101,7 +101,7 @@ def pie_chart(data, key):
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  for text in texts + autotexts:
   text.set_fontproperties(thai_font_prop)
- ax.legend(wedges, labels, title="Legend", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
+ #ax.legend(wedges, labels, title="Legend", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
@@ -243,18 +243,19 @@ if upload_file is not None:
 if upload_file is not None:
  Dic_type_chart = dict()
  list_pie_keys = list(list_pie_chart.keys())
+ list_box_keys = list(list_boxplot.keys()
  list_bar_keys = list(list_bar_chart.keys())
  #st.sidebar.markdown('แผนภูมิวงกลม')
  for topic in list_pie_keys:
   Dic_type_chart[topic] = st.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True ,index=0)
   if Dic_type_chart[topic] == 'bar_chart':
-   list_bar_chart[topic]={'removenan':True,'orther_number':16}
+   list_bar_chart[topic]={'removenan':True,'orther_number':1}
    del list_pie_chart[topic]
  st.write(list_pie_chart) 
  #st.sidebar.markdown('แผนภูมิแท่ง')  
  for topic in list_bar_keys:
-  key = st.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
-  if key == 'pie_chart':
+  key = st.radio(topic, ['pie_chart','bar_chart'], horizontal=True ,index=0)
+  if key != 'bar_chart':
    list_pie_chart[topic]={'removenan':True}
    if 'orther_number' in list_bar_chart[topic]:
     del list_bar_chart[topic]
@@ -265,10 +266,10 @@ if upload_file is not None:
    list_pie_chart[topic]=True
   else:
    list_pie_chart[topic]=False
- #for key in list_bar_chart:
+ for key in list_bar_chart:
   #c = Count(upload_df[key])
   #x = st.sidebar.radio(key,['Remove_nan','Add_nan'],horizontal=True)
-  #y = st.sidebar.slidre(key,1,max(c.values()),1,1)
+  orther_number = st.sidebar.slidre(key,1,max(c.values()),1,1)
   #if x == 'Remove_nan':
    #list_bar_chart[key]=True
   #else:
@@ -289,7 +290,6 @@ if upload_file is not None:
 table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data = []
 for p in list_pie_chart:
- st.write(list_pie_chart)
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  table_data.append([p, sum([values[key]['count'] for key in values]), 100])
  for k in values:
