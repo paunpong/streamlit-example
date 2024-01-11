@@ -270,7 +270,7 @@ if upload_file is not None:
   c = Count(upload_df[key].values.tolist())
   st.write(c)
   y = st.sidebar.radio(key,['Remove_nan','Add_nan'],horizontal=True)
-  #orther_number = st.sidebar.slidre(key,1,max(c.values()),1,1)
+  orther_number = st.sidebar.slidre(key,1,max(c.values()),1,1)
   if y == 'Remove_nan':
    list_bar_chart[key]=True
   else:
