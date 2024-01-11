@@ -271,11 +271,11 @@ if upload_file is not None:
   st.write(c)
   y = st.sidebar.radio(key,['Remove_nan','Add_nan'],horizontal=True)
   z = st.sidebar.slider(key,1,10,1,1)
-  list_bar_chart[key] = {'orther_number':z}
-  if y == 'Remove_nan':
-   list_bar_chart[key]=True
-  else:
-   list_bar_chart[key]=False
+  list_bar_chart[key] = {'removenan': True if y == 'Remove_nan' else False,'orther_number':z}
+  #if y == 'Remove_nan':
+   #list_bar_chart[key]=True
+  #else:
+   #list_bar_chart[key]=False
 
 
 
@@ -342,34 +342,12 @@ for a in list_bar_chart_comma:
 for i in list_bar_chart:
  st.write(list_bar_chart)
  list_com = upload_df[i].values.tolist()
- a = Count(list_com,list_bar_chart[i])
- data = bar_list_count(a,list_bar_chart[i])
+ a = Count(list_com,list_bar_chart[i]['removenan'])
+ data = bar_list_count(a,list_bar_chart[i]['orther_number'])
  bar_chart_new(data,i)
 #--------------------------------------------------stack bar str------------------------------------------------#  
 dict_str_stack = dict()
 dict_num_stack = dict()
-table_head4 = ['หัวข้อ' , 'จำนวน(เปอร์เซ็นต์)']
-table_data4 = []
-for i in list_stack_str:
-  topic_word, sub_word = i.split(' [')[:2]
-  topic_word = topic_word.strip()
-  sub_word = sub_word.strip().replace(']','')
-  A_l = count_list(upload_df[i].values.tolist())
-  for k in A_l:
-    A_l[k] = A_l[k]['percent']
-  if topic_word not in dict_str_stack:
-    dict_str_stack[topic_word] = dict()
-  dict_str_stack[topic_word][sub_word] = A_l
-for s in dict_str_stack:
- for t in dict_str_stack[s]:
-  name = s+f' [{t}]'
-  answer = count_list(upload_df[name].values.tolist())
-  for k in answer:
-   count = answer[k]['count']
-   percent = answer[k]['percent']
-  table_data4.append([t,f'{count} {[percent]}'])
-if upload_file is not None:  
- st.table([table_head4,*table_data4])
 for s in dict_str_stack:
  stacked_bar(dict_str_stack[s],s)
 #--------------------------------------------------stack bar num------------------------------------------------#
