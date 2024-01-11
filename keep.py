@@ -247,13 +247,13 @@ if upload_file is not None:
  list_bar_keys = list(list_bar_chart.keys())
  st.sidebar.markdown('# :rainbow[แผนภูมิวงกลม]')
  for topic in list_pie_keys:
-  p = st.sidebar.radio(**topic, ['pie_chart', 'bar_chart'], horizontal=True ,index=0)
+  p = st.sidebar.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True)
  if p == 'bar_chart':
   list_bar_chart[topic]={'removenan':True,'orther_number':1}
   del list_pie_chart[topic] 
  st.sidebar.markdown('# :rainbow[แผนภูมิแท่ง]')  
  for topic in list_bar_keys:
-  key = st.sidebar.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
+  key = st.sidebar.radio(topic, ['bar_chart','pie_chart'], horizontal=True)
   if key == 'pie_chart':
    list_pie_chart[topic]={'removenan':True}
    if 'orther_number' in list_bar_chart[topic]:
