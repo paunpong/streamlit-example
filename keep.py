@@ -241,19 +241,19 @@ if upload_file is not None:
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
- Dic_type_chart = dict()
+ #Dic_type_chart = dict()
  list_pie_keys = list(list_pie_chart.keys())
  list_box_keys = list(list_boxplot.keys())
  list_bar_keys = list(list_bar_chart.keys())
  #st.sidebar.markdown('แผนภูมิวงกลม')
  for topic in list_pie_keys:
-  Dic_type_chart[topic] = st.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True ,index=0)
-  if Dic_type_chart[topic] == 'bar_chart':
+  p = st.sidebar.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True ,index=0)
+  if p == 'bar_chart':
    list_bar_chart[topic]={'removenan':True,'orther_number':1}
    del list_pie_chart[topic] 
  #st.sidebar.markdown('แผนภูมิแท่ง')  
  for topic in list_bar_keys:
-  key = st.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
+  key = st.sidebar.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
   if key == 'pie_chart':
    list_pie_chart[topic]={'removenan':True}
    if 'orther_number' in list_bar_chart[topic]:
@@ -261,10 +261,7 @@ if upload_file is not None:
  st.sidebar.markdown('ปรับแต่งแผนภูมิวงกลม')
  for topic in list_pie_chart:  
   x = st.sidebar.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
-  if x == 'Remove_nan':
-   list_pie_chart[topic]={'removenan': True}
-  else:
-   list_pie_chart[topic]={'removenan': False}
+  list_pie_chart[topic] = {'removenan': True if y == 'Remove_nan' else False}
  st.sidebar.markdown('ปรับแต่งแผนภูมิแท่ง') 
  for key in list_bar_chart:
   c = Count(upload_df[key].values.tolist())
@@ -334,7 +331,6 @@ for a in list_bar_chart_comma:
  bar_chart_new(data,a)
 #-------------------------------------------------barchart not comma----------------------------------------------------#
 for i in list_bar_chart:
- st.write(list_bar_chart)
  list_com = upload_df[i].values.tolist()
  a = Count(list_com,list_bar_chart[i]['removenan'])
  data = bar_list_count(a,list_bar_chart[i]['orther_number'])
@@ -342,6 +338,16 @@ for i in list_bar_chart:
 #--------------------------------------------------stack bar str------------------------------------------------#  
 dict_str_stack = dict()
 dict_num_stack = dict()
+for i in list_stack_str:
+ topic_word, sub_word = i.split(' [')[:2]
+ topic_word = topic_word.strip()
+ sub_word = sub_word.strip().replace(']','')
+ A_l = count_list(upload_df[i].values.tolist())
+ for k in A_l:
+  A_l[k] = A_l[k]['percent']
+ if topic_word not in dict_str_stack:
+  dict_str_stack[topic_word] = dict()
+ dict_str_stack[topic_word][sub_word] = A_l
 for s in dict_str_stack:
  stacked_bar(dict_str_stack[s],s)
 #--------------------------------------------------stack bar num------------------------------------------------#
@@ -384,41 +390,5 @@ if upload_file is not None:
 for i in dict_num_stack:
   stacked_bar(dict_num_stack[i],i)
  
-d =st.radio("What's your favorite movie genre",list_pie_chart,index=1)
 
-st.write(d)
-
-Dic_type_chart = dict()
-
-
-for topic in list_pie_chart:
- Dic_type_chart[topic] = st.radio(topic, ["pie_chart", "bar_chart"], horizontal=True ,index=0)
-
-
-
-
-run_one_time = True
-if run_one_time:
- for topic in Dic_type_chart:
-  st.write(topic, Dic_type_chart[topic])
- run_one_time = False  
-
-modal = st.expander("Advanced options")
-
-option_1 = modal.checkbox("Option 1")
-option_2 = modal.checkbox("Option 2")
-option_3 = modal.checkbox("Option 3")
-option_4 = modal.checkbox("Option 4")
-
-if option_1:
-   st.write("Hello world 1")
-
-if option_2:
-   st.write("Hello world 2")
-
-if option_3:
-   st.write("Hello world 3")
-
-if option_4:
-   st.write("Hello world 4")
 
