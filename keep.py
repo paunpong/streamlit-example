@@ -261,7 +261,7 @@ if upload_file is not None:
  st.sidebar.markdown('ปรับแต่งแผนภูมิวงกลม')
  for topic in list_pie_chart:  
   x = st.sidebar.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
-  list_ pie_chart[topic] = {'removenan': True if x == 'Remove_nan' else False}
+  list_pie_chart[topic] = {'removenan': True if x == 'Remove_nan' else False}
  st.sidebar.markdown('ปรับแต่งแผนภูมิแท่ง') 
  for key in list_bar_chart:
   c = Count(upload_df[key].values.tolist())
