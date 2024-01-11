@@ -244,8 +244,7 @@ if upload_file is not None:
   if p == 'bar_chart':
    list_bar_chart[topic]={'removenan':True,'orther_number':1}
    del list_pie_chart[topic]
- for topic in list_box_keys:
-  box =  
+ #for topic in list_box_keys:  
  st.sidebar.markdown('# :rainbow[แผนภูมิแท่ง]')  
  tab1, tab2 = st.sidebar.tabs(["Tab 1", "Tab2"])
  tab1.write("this is tab 1")
