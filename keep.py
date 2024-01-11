@@ -267,14 +267,14 @@ if upload_file is not None:
   c = Count(upload_df[topic].values.tolist())
   y = st.sidebar.radio(topic, ['Remove_nan', 'Add_nan'], horizontal=True)
   z = st.sidebar.slider(topic, 1, max(c.values()), 1, 1) 
-  list_bar_chart[key] = {'removenan': True if y == 'Remove_nan' else False, 'orther_number': z}
+  list_bar_chart[topic] = {'removenan': True if y == 'Remove_nan' else False, 'orther_number': z}
  for topic in list_bar_chart_comma:
   A = upload_df[topic].values.tolist()
   a = split_comma(A)
   b = Count(a)
   x = st.sidebar.radio(topic, ['Remove_nan', 'Add_nan'], horizontal=True)
   y = st.sidebar.slider(topic, 1, max(b.values()), 1, 1) 
-  list_bar_chart[key] = {'removenan': True if x == 'Remove_nan' else False, 'orther_number': y}
+  list_bar_chart_comma[topic] = {'removenan': True if x == 'Remove_nan' else False, 'orther_number': y}
   
 
 
