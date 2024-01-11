@@ -255,7 +255,7 @@ if upload_file is not None:
  for topic in list_bar_keys:
   key = st.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
   if key == 'pie_chart':
-   list_pie_chart[key]={'removenan':True}
+   list_pie_chart[topic]={'removenan':True}
    if 'orther_number' in list_bar_chart[topic]:
     del list_bar_chart[topic]
  st.write(list_bar_chart)   
