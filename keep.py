@@ -34,6 +34,7 @@ def upload(A):
    df = pd.read_csv(A)
   df.fillna('ไม่ระบุ',inplace=True)
   df.replace('-','ไม่ระบุ',inplace=True)
+  df.replace(' ','ไม่ระบุ',inplace=True)
    #st.dataframe(df)  
   return df
 
