@@ -241,7 +241,6 @@ if upload_file is not None:
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
- st.write(list_bar_chart)
  Dic_type_chart = dict()
  list_pie_keys = list(list_pie_chart.keys())
  list_bar_keys = list(list_bar_chart.keys())
@@ -251,13 +250,15 @@ if upload_file is not None:
   if Dic_type_chart[topic] == 'bar_chart':
    list_bar_chart[topic]={'removenan':True,'orther_number':16}
    del list_pie_chart[topic]
+ st.write(list_pie_chart) 
  #st.sidebar.markdown('แผนภูมิแท่ง')  
  for topic in list_bar_keys:
   key = st.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
   if key == 'pie_chart':
    list_pie_chart[key]={'removenan':True}
    if 'orther_number' in list_bar_chart[topic]:
-    del list_bar_chart[topic]['orther_number']
+    del list_bar_chart[topic]
+ st.write(list_bar_chart)   
  for topic in list_pie_chart:  
   x = st.sidebar.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
   if x =="Remove_nan":
@@ -288,6 +289,7 @@ if upload_file is not None:
 table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data = []
 for p in list_pie_chart:
+ st.write(list_pie_chart)
  values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  table_data.append([p, sum([values[key]['count'] for key in values]), 100])
  for k in values:
@@ -335,8 +337,8 @@ for a in list_bar_chart_comma:
  data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
  bar_chart_new(data,a)
 #-------------------------------------------------barchart not comma----------------------------------------------------#
-
 for i in list_bar_chart:
+ st.write(list_bar_chart)
  list_com = upload_df[i].values.tolist()
  a = Count(list_com,list_bar_chart[i]['removenan'])
  data = bar_list_count(a,list_bar_chart[i]['orther_number'])
