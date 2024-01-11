@@ -245,13 +245,13 @@ if upload_file is not None:
  list_pie_keys = list(list_pie_chart.keys())
  list_box_keys = list(list_boxplot.keys())
  list_bar_keys = list(list_bar_chart.keys())
- #st.sidebar.markdown('แผนภูมิวงกลม')
+ st.sidebar.markdown('# :rainbow[แผนภูมิวงกลม'])
  for topic in list_pie_keys:
   p = st.sidebar.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True ,index=0)
   if p == 'bar_chart':
    list_bar_chart[topic]={'removenan':True,'orther_number':1}
    del list_pie_chart[topic] 
- #st.sidebar.markdown('แผนภูมิแท่ง')  
+ st.sidebar.markdown('แผนภูมิแท่ง')  
  for topic in list_bar_keys:
   key = st.sidebar.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
   if key == 'pie_chart':
@@ -261,7 +261,7 @@ if upload_file is not None:
  st.sidebar.markdown('ปรับแต่งแผนภูมิวงกลม')
  for topic in list_pie_chart:  
   x = st.sidebar.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
-  list_pie_chart[topic] = {'removenan': True if y == 'Remove_nan' else False}
+  list_pie_chart[topic] = {'removenan': True if x == 'Remove_nan' else False}
  st.sidebar.markdown('ปรับแต่งแผนภูมิแท่ง') 
  for key in list_bar_chart:
   c = Count(upload_df[key].values.tolist())
