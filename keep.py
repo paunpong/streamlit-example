@@ -250,8 +250,7 @@ if upload_file is not None:
   Dic_type_chart[topic] = st.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True ,index=0)
   if Dic_type_chart[topic] == 'bar_chart':
    list_bar_chart[topic]={'removenan':True,'orther_number':1}
-   del list_pie_chart[topic]
- st.write(list_pie_chart) 
+   del list_pie_chart[topic] 
  #st.sidebar.markdown('แผนภูมิแท่ง')  
  for topic in list_bar_keys:
   key = st.radio(topic, ['bar_chart','pie_chart'], horizontal=True ,index=0)
@@ -259,23 +258,15 @@ if upload_file is not None:
    list_pie_chart[topic]={'removenan':True}
    if 'orther_number' in list_bar_chart[topic]:
     del list_bar_chart[topic]
- st.write(list_bar_chart)   
+ st.sidebar.markdown('ปรับแต่งแผนภูมิวงกลม')
  for topic in list_pie_chart:  
   x = st.sidebar.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
-  if x =="Remove_nan":
-   list_pie_chart[topic]=True
-  else:
-   list_pie_chart[topic]=False
+  list_ pie_chart[topic] = {'removenan': True if x == 'Remove_nan' else False}
  for key in list_bar_chart:
   c = Count(upload_df[key].values.tolist())
-  st.write(c)
   y = st.sidebar.radio(key,['Remove_nan','Add_nan'],horizontal=True)
-  z = st.sidebar.slider(key,1,10,1,1)
+  z = st.sidebar.slider(key,1,max(c.values(),1,1)
   list_bar_chart[key] = {'removenan': True if y == 'Remove_nan' else False,'orther_number':z}
-  #if y == 'Remove_nan':
-   #list_bar_chart[key]=True
-  #else:
-   #list_bar_chart[key]=False
 
 
 
