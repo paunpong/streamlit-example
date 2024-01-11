@@ -251,8 +251,8 @@ if upload_file is not None:
  tab2.write("this is tab 2")
 
 # You can also use "with" notation:
->>> with tab1:
->>>   st.radio('Select one:', [1, 2])
+ with tab1:
+  st.radio('Select one:', [1, 2])
  for topic in list_bar_keys:
   key = st.sidebar.radio(topic, ['bar_chart','pie_chart'], horizontal=True)
   if key == 'pie_chart':
