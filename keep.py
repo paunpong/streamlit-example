@@ -7,6 +7,7 @@ from matplotlib.font_manager import FontProperties
 #import io
 #import re
 #import operator
+from PIL import Image
 import altair as alt
 import numpy as np
 import pandas as pd
