@@ -13,6 +13,8 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+<a href="t" target='_self'>Week 1: t</a>
+
 st.set_option('deprecation.showPyplotGlobalUse', False)
 script_dir = os.path.dirname(os.path.abspath(__file__))
 thai_font_path = os.path.join("Sarabun-Regular.ttf")
