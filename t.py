@@ -6,6 +6,8 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 
+st.set_page_config(page_title="t", layout="wide"
+
 font_list = fm.createFontList(['THSarabunNew.ttf'])
 fm.fontManager.ttflist.extend(font_list)
 
