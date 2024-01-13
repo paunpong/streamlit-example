@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+st.set_page_config(page_title="keep",layout="wide")
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 script_dir = os.path.dirname(os.path.abspath(__file__))
