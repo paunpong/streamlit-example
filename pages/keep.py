@@ -148,7 +148,7 @@ def boxplot(data,key):
  plt.text(1.1,q1,f'Q1: {q1:.{digit}f}')
  plt.text(1.1,q3,f'Q3: {q3:.{digit}f}')
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
- plt.text(-0.0001, average, f'Average: {average:.{digit}f}')
+ plt.text(average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
