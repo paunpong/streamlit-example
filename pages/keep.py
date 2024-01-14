@@ -253,11 +253,10 @@ if upload_file is not None:
  #for topic in list_box_keys:
  #st.sidebar.markdown('# :rainbow[แผนภูมิแท่ง]')
  
- tab1, tab2 = st.sidebar.tabs(['# : rainbow[ประเภทแผนภูมิ]', '# : rainbow[ปรับแต่งรายระเอียดแผนภูมิ]'])
- tab1.write("# : red[ประเภทแผนภูมิ]")
- tab2.write("# : blue[ปรับแต่งรายระเอียดแผนภูมิ]")
+ tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
+ tab1.write("ประเภทแผนภูมิ")
+ tab2.write("ปรับแต่งรายระเอียดแผนภูมิ")
 # You can also use "with" notation:
- 
  with tab1:
   for topic in list_pie_keys:
    p = st.sidebar.radio(topic, ['pie_chart', 'bar_chart'], horizontal=True)
@@ -271,22 +270,22 @@ if upload_file is not None:
     if 'orther_number' in list_bar_chart[topic]:
      del list_bar_chart[topic]
  with tab2:    
-  st.sidebar.markdown('# :red[ปรับแต่งแผนภูมิวงกลม]')
+  st.markdown('# :red[ปรับแต่งแผนภูมิวงกลม]')
   for topic in list_pie_chart:  
-   x = st.sidebar.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
+   x = st.radio(topic, ["Remove_nan", "Add_nan"], horizontal=True ,index=0)
    list_pie_chart[topic] = {'removenan': True if x == 'Remove_nan' else False}
-  st.sidebar.markdown('# :red[ปรับแต่งแผนภูมิแท่ง]') 
+  st.markdown('# :red[ปรับแต่งแผนภูมิแท่ง]') 
   for topic in list_bar_chart:
    c = Count(upload_df[topic].values.tolist())
-   y = st.sidebar.radio(topic, ['Remove_nan', 'Add_nan'], horizontal=True)
-   z = st.sidebar.slider(topic, 1, max(c.values()), 1, 1) 
+   y = st.radio(topic, ['Remove_nan', 'Add_nan'], horizontal=True)
+   z = st.slider(topic, 1, max(c.values()), 1, 1) 
    list_bar_chart[topic] = {'removenan': True if y == 'Remove_nan' else False, 'orther_number': z}
   for topic in list_bar_chart_comma:
    A = upload_df[topic].values.tolist()
    a = split_comma(A)
    b = Count(a)
-   x = st.sidebar.radio(topic, ['Remove_nan', 'Add_nan'], horizontal=True)
-   y = st.sidebar.slider(topic, 1, max(b.values()), 1, 1) 
+   x = st.radio(topic, ['Remove_nan', 'Add_nan'], horizontal=True)
+   y = st.slider(topic, 1, max(b.values()), 1, 1) 
    list_bar_chart_comma[topic] = {'removenan': True if x == 'Remove_nan' else False, 'orther_number': y}
   
 
