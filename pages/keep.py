@@ -248,6 +248,7 @@ if upload_file is not None:
  list_pie_keys = list(list_pie_chart.keys())
  list_box_keys = list(list_boxplot.keys())
  list_bar_keys = list(list_bar_chart.keys())
+ list_comma_keys = list(list_bar_chart_comma.keys())
  
  #st.sidebar.markdown('# :rainbow[แผนภูมิวงกลม]')
  #for topic in list_box_keys:
@@ -261,6 +262,8 @@ if upload_file is not None:
    if p == 'แผนภูมิแท่ง':
     list_bar_chart[topic]={'removenan':True,'orther_number':1}
     del list_pie_chart[topic]
+  for topic in list_comma_keys:
+   comma = st.radio(topic,'แผนภูมิแท่ง')
   for topic in list_bar_keys:
    key = st.radio(topic, ['แผนภูมิแท่ง','แผนภูมิวงกลม'], horizontal=True)
    if key == 'แผนภูมิวงกลม':
