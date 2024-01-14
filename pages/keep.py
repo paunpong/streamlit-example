@@ -216,7 +216,8 @@ if upload_file is not None:
  for key in list_question:
   column = upload_df[key].values.tolist()
   len_column = len(column)
-  
+  x = Count(column)
+  st.write(x)
   if '[' in key:
    if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
     list_stack_num[key] = {'removenan':True}
@@ -230,10 +231,6 @@ if upload_file is not None:
   
   if num_check(column):
    list_boxplot[key] = True
-   continue
-
-  if Count(column) < 2:
-   list_comment[key]={'removenan':True}
    continue
   
   if len(set(column)) < 6:
