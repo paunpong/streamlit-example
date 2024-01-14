@@ -43,6 +43,12 @@ def upload(A):
    #st.dataframe(df)  
   return df
 
+def check_count(A):
+ for i in A:
+  if A[i] > 1 :
+   return False
+ return True
+
 def num_check(A):
  for i in set(A):
   if type(i) is str and i != 'ไม่ระบุ':
@@ -217,7 +223,10 @@ if upload_file is not None:
   column = upload_df[key].values.tolist()
   len_column = len(column)
   x = Count(column)
-  st.write(x)
+  if check_count(x):
+   list_comment[key] = {'removenan':True}
+   continue
+   
   if '[' in key:
    if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
     list_stack_num[key] = {'removenan':True}
