@@ -263,7 +263,7 @@ if upload_file is not None:
     list_bar_chart[topic]={'removenan':True,'orther_number':1}
     del list_pie_chart[topic]
   for topic in list_comma_keys:
-   comma = st.radio(topic,'แผนภูมิแท่ง')
+   comma = st.radio(topic,'[แผนภูมิแท่ง]')
   for topic in list_bar_keys:
    key = st.radio(topic, ['แผนภูมิแท่ง','แผนภูมิวงกลม'], horizontal=True)
    if key == 'แผนภูมิวงกลม':
