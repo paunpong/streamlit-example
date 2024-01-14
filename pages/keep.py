@@ -12,8 +12,9 @@ import altair as alt
 import numpy as np
 import pandas as pd
 import streamlit as st
+from streamlit_option_menu import option_menu
 
-st.set_page_config(page_title="keep",layout="wide")
+st.set_page_config(page_title="อัปโหลดไฟล์",layout="wide")
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 script_dir = os.path.dirname(os.path.abspath(__file__))
