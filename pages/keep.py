@@ -251,7 +251,7 @@ if upload_file is not None:
  list_bar_keys = list(list_bar_chart.keys())
  list_comma_keys = list(list_bar_chart_comma.keys())
   
- tab1, tab2 = st.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
+ tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
  with tab1:
   for topic in list_pie_keys:
    p = st.radio(topic, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
@@ -296,7 +296,7 @@ if upload_file is not None:
 
 #-----------------------------------------------tab ภาพแผนภูมิ -------------------------------------------------------#
 if upload_file is not None:
- tab1, tab2 = st.sidebar.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
+ tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
  with tab1:
   with st.expander('แผนภูมิวงกลม'):
    for p in list_pie_chart:
