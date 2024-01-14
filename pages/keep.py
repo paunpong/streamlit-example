@@ -14,7 +14,7 @@ import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu
 
-st.set_page_config(page_title="อัปโหลดไฟล์",layout="wide")
+#st.set_page_config(page_title="อัปโหลดไฟล์",layout="wide")
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -28,6 +28,7 @@ list_bar_chart_comma={}
 list_bar_chart={}
 list_stack_str={}
 list_stack_num={}
+list_comment={}
 
 def upload(A):
  if A is not None:
@@ -229,6 +230,10 @@ if upload_file is not None:
   
   if num_check(column):
    list_boxplot[key] = True
+   continue
+
+  if Count(column) < 2:
+   list_comment[key]={'removenan':True}
    continue
   
   if len(set(column)) < 6:
