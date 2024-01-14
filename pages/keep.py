@@ -30,6 +30,7 @@ list_stack_str={}
 list_stack_num={}
 list_comment={}
 
+@st.cache(persist=True)
 def upload(A):
  if A is not None:
   y = A.name.split(".")[1]
@@ -117,9 +118,9 @@ def pie_chart(data, key):
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
-def boxplot(data,key):
+def boxplot(data,key,showmeans=True):
  fig,ax = plt.subplots()
- plt.boxplot(data,showmeans=True)
+ plt.boxplot(data,showmeans)
  q1 = np.percentile(data,25)
  q3 = np.percentile(data,75)
   #mean = stat.mean(data)
@@ -234,7 +235,7 @@ if upload_file is not None:
    continue
   
   if num_check(column):
-   list_boxplot[key] = True
+   list_boxplot[key] = {'showmeans':True}
    continue
   
   if len(set(column)) < 6:
@@ -244,24 +245,21 @@ if upload_file is not None:
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if upload_file is not None:
- #Dic_type_chart = dict()
+ 
  list_pie_keys = list(list_pie_chart.keys())
  list_box_keys = list(list_boxplot.keys())
  list_bar_keys = list(list_bar_chart.keys())
  list_comma_keys = list(list_bar_chart_comma.keys())
- 
- #st.sidebar.markdown('# :rainbow[แผนภูมิวงกลม]')
- #for topic in list_box_keys:
- #st.sidebar.markdown('# :rainbow[แผนภูมิแท่ง]')
- 
+  
  tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
-# You can also use "with" notation:
  with tab1:
   for topic in list_pie_keys:
    p = st.radio(topic, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
    if p == 'แผนภูมิแท่ง':
     list_bar_chart[topic]={'removenan':True,'orther_number':1}
     del list_pie_chart[topic]
+  for topic in list_boxplot:
+   box = st.radio(topic,['แผนภาพกล่อง'])
   for topic in list_comma_keys:
    comma = st.radio(topic,['แผนภูมิแท่ง'])
   for topic in list_bar_keys:
@@ -271,29 +269,54 @@ if upload_file is not None:
     if 'orther_number' in list_bar_chart[topic]:
      del list_bar_chart[topic]
  with tab2:    
-  st.markdown(' :green[ปรับแต่งแผนภูมิวงกลม]')
+  st.markdown(':brown[ปรับแต่งแผนภูมิวงกลม]')
   for topic in list_pie_chart:  
-   x = st.radio(topic, ["ลบไม่ระบุ", "เพิ่มไม่ระบุ"], horizontal=True ,index=0)
-   list_pie_chart[topic] = {'removenan': True if x == 'ลบไม่ระบุ' else False}
-  st.markdown(' :green[ปรับแต่งแผนภูมิแท่ง]') 
+   pie = st.radio(topic, ["ลบไม่ระบุ", "เพิ่มไม่ระบุ"], horizontal=True )
+   list_pie_chart[topic] = {'removenan': True if pie == 'ลบไม่ระบุ' else False}
+  st.markdown(':beown[ปรับแท่งแผนภาพกล่อง]')
+  for topic in list_boxplot:
+   box = st.radio(topic,['เพิ่มค่าเฉลี่ย','ลบค่าเฉลี่ย'],horizontal=True)
+   list_boxplot[topic]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}   
+  st.markdown(':brown[ปรับแต่งแผนภูมิแท่ง]') 
   for topic in list_bar_chart:
    c = Count(upload_df[topic].values.tolist())
-   y = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+   bar = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
    z = st.slider(topic, 1, max(c.values()), 1, 1) 
-   list_bar_chart[topic] = {'removenan': True if y == 'ลบไม่ระบุ' else False, 'orther_number': z}
+   list_bar_chart[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': z}
   for topic in list_bar_chart_comma:
    A = upload_df[topic].values.tolist()
    a = split_comma(A)
    b = Count(a)
-   x = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+   bar = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
    y = st.slider(topic, 1, max(b.values()), 1, 1) 
-   list_bar_chart_comma[topic] = {'removenan': True if x == 'ลบไม่ระบุ' else False, 'orther_number': y}
+   list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
+   
+
+
+
+#-----------------------------------------------tab ภาพแผนภูมิ -------------------------------------------------------#
+if upload_file is not None:
+ tab1, tab2 = st.sidebar.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
+ with tab1:
+  with st.expander('แผนภูมิวงกลม'):
+   for p in list_pie_chart:
+    pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
+  with st.expander('แผนภาพกล่อง'):
+   for b in list_boxplot:
+    boxplot(upload_df[b].values.tolist(),b)
+  with st.expander('แผนภูมิแท่ง'):
+   for a in list_bar_chart_comma:
+    A = upload_df[a].values.tolist()
+    v = split_comma(A)
+    count_v = Count(v,list_bar_chart_comma[a]['removenan'])
+    data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
+    bar_chart_new(data,a)
+   for i in list_bar_chart:
+    list_com = upload_df[i].values.tolist()
+    a = Count(list_com,list_bar_chart[i]['removenan'])
+    data = bar_list_count(a,list_bar_chart[i]['orther_number'])
+    bar_chart_new(data,i)
   
-
-
-
-
-
 
 
 
@@ -312,8 +335,8 @@ for p in list_pie_chart:
   table_data.append([k, count, percent])
 if upload_file is not None:
  st.table([table_head,*table_data]) 
-for p in list_pie_chart:
- pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
+#for p in list_pie_chart:
+ #pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
 #--------------------------------------------------boxplot-------------------------------------------------------------#
 table_head1 = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
 table_data1 = []
@@ -324,8 +347,8 @@ for b in list_boxplot:
  table_data1.append([b,mean,std])
 if upload_file is not None:
  st.table([table_head1,*table_data1]) 
-for b in list_boxplot:
- boxplot(upload_df[b].values.tolist(),b)
+#for b in list_boxplot:
+ #boxplot(upload_df[b].values.tolist(),b)
 #--------------------------------------------------- comma ------------------------------------------------------------#
 table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data2 = []
@@ -344,18 +367,18 @@ for a in list_bar_chart_comma:
 #table_barchart_comma[a]=table_data2[1:]
 if upload_file is not None:
  st.table([table_head2,*table_data2])
-for a in list_bar_chart_comma:
- A = upload_df[a].values.tolist()
- v = split_comma(A)
- count_v = Count(v,list_bar_chart_comma[a]['removenan'])
- data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
- bar_chart_new(data,a)
+#for a in list_bar_chart_comma:
+ #A = upload_df[a].values.tolist()
+ #v = split_comma(A)
+ #count_v = Count(v,list_bar_chart_comma[a]['removenan'])
+ #data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
+ #bar_chart_new(data,a)
 #-------------------------------------------------barchart not comma----------------------------------------------------#
-for i in list_bar_chart:
- list_com = upload_df[i].values.tolist()
- a = Count(list_com,list_bar_chart[i]['removenan'])
- data = bar_list_count(a,list_bar_chart[i]['orther_number'])
- bar_chart_new(data,i)
+#for i in list_bar_chart:
+ #list_com = upload_df[i].values.tolist()
+ #a = Count(list_com,list_bar_chart[i]['removenan'])
+ #data = bar_list_count(a,list_bar_chart[i]['orther_number'])
+ #bar_chart_new(data,i)
 #--------------------------------------------------stack bar str------------------------------------------------#  
 dict_str_stack = dict()
 dict_num_stack = dict()
