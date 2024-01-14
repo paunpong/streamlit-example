@@ -118,9 +118,9 @@ def pie_chart(data, key):
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
-def boxplot(data,key,showmeans=True):
+def boxplot(data,key):
  fig,ax = plt.subplots()
- plt.boxplot(data,showmeans)
+ plt.boxplot(data,showmeans=True)
  q1 = np.percentile(data,25)
  q3 = np.percentile(data,75)
   #mean = stat.mean(data)
@@ -148,7 +148,7 @@ def boxplot(data,key,showmeans=True):
  plt.text(1.1,q1,f'Q1: {q1:.{digit}f}')
  plt.text(1.1,q3,f'Q3: {q3:.{digit}f}')
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
- plt.text(1.22, average, f'Average: {average:.{digit}f}',ha='left')
+ plt.text(1.22, average, f'Average: {average:.{digit}f}',loc="center left")
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
@@ -235,7 +235,7 @@ if upload_file is not None:
    continue
   
   if num_check(column):
-   list_boxplot[key] = {'showmeans':True}
+   list_boxplot[key] = True
    continue
   
   if len(set(column)) < 6:
