@@ -253,7 +253,7 @@ if upload_file is not None:
  #for topic in list_box_keys:
  #st.sidebar.markdown('# :rainbow[แผนภูมิแท่ง]')
  
- tab1, tab2 = st.sidebar.tabs(["# : rainbow[ประเภทแผนภูมิ]", "# : rainbow[ปรับแต่งรายระเอียดแผนภูมิ]")
+ tab1, tab2 = st.sidebar.tabs(['# : rainbow[ประเภทแผนภูมิ]', '# : rainbow[ปรับแต่งรายระเอียดแผนภูมิ]'])
  tab1.write("# : red[ประเภทแผนภูมิ]")
  tab2.write("# : blue[ปรับแต่งรายระเอียดแผนภูมิ]")
 # You can also use "with" notation:
