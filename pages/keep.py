@@ -254,8 +254,6 @@ if upload_file is not None:
  #st.sidebar.markdown('# :rainbow[แผนภูมิแท่ง]')
  
  tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
- tab1.write("#:blue[ประเภทแผนภูมิ]")
- tab2.write("#:blue[ปรับแต่งรายระเอียดแผนภูมิ]")
 # You can also use "with" notation:
  with tab1:
   for topic in list_pie_keys:
