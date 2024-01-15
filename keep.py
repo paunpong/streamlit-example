@@ -211,7 +211,7 @@ with st.sidebar:
  menu = option_menu(menu_title='เมนู',options=['หน้าแรก','เริ่มต้นโปรแกรม'])
 
 if menu == 'หน้าแรก':
- st.markdown('# : red [โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
+ st.markdown(' :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
 
 if menu == 'เริ่มต้นโปรแกรม':
  upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
@@ -281,7 +281,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    for topic in list_pie_chart:  
     pie = st.radio(topic, ["ลบไม่ระบุ", "เพิ่มไม่ระบุ"], horizontal=True )
     list_pie_chart[topic] = {'removenan': True if pie == 'ลบไม่ระบุ' else False}
-   st.markdown(':beown[ปรับแท่งแผนภาพกล่อง]')
+   st.markdown(':brown[ปรับแต่งงแผนภาพกล่อง]')
    for topic in list_boxplot:
     box = st.radio(topic,['เพิ่มค่าเฉลี่ย','ลบค่าเฉลี่ย'],horizontal=True)
     list_boxplot[topic]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}   
@@ -304,27 +304,28 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 
 #-----------------------------------------------tab ภาพแผนภูมิ -------------------------------------------------------#
-if upload_file is not None:
- tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
- with tab1:
-  with st.expander('แผนภูมิวงกลม'):
-   for p in list_pie_chart:
-    pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
-  with st.expander('แผนภาพกล่อง'):
-   for b in list_boxplot:
-    boxplot(upload_df[b].values.tolist(),b)
-  with st.expander('แผนภูมิแท่ง'):
-   for a in list_bar_chart_comma:
-    A = upload_df[a].values.tolist()
-    v = split_comma(A)
-    count_v = Count(v,list_bar_chart_comma[a]['removenan'])
-    data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
-    bar_chart_new(data,a)
-   for i in list_bar_chart:
-    list_com = upload_df[i].values.tolist()
-    a = Count(list_com,list_bar_chart[i]['removenan'])
-    data = bar_list_count(a,list_bar_chart[i]['orther_number'])
-    bar_chart_new(data,i)
+if menu == 'เริ่มต้นโปรแกรม':
+ if upload_file is not None:
+  tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
+  with tab1:
+   with st.expander('แผนภูมิวงกลม'):
+    for p in list_pie_chart:
+     pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
+   with st.expander('แผนภาพกล่อง'):
+    for b in list_boxplot:
+     boxplot(upload_df[b].values.tolist(),b)
+   with st.expander('แผนภูมิแท่ง'):
+    for a in list_bar_chart_comma:
+     A = upload_df[a].values.tolist()
+     v = split_comma(A)
+     count_v = Count(v,list_bar_chart_comma[a]['removenan'])
+     data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
+     bar_chart_new(data,a)
+    for i in list_bar_chart:
+     list_com = upload_df[i].values.tolist()
+     a = Count(list_com,list_bar_chart[i]['removenan'])
+     data = bar_list_count(a,list_bar_chart[i]['orther_number'])
+     bar_chart_new(data,i)
   
 
 
