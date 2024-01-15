@@ -95,7 +95,7 @@ def count_list(A,removenan=True):
 
 def stat(A):
  text_to_num = []
- dict_text_to_num = {'มากที่สุด':5,'มาก':4,'ปานกลาง':3,'น้อย':2,'น้อยที่สุด':1,'ไม่ระบุ':0}
+ dict_text_to_num = {'มากที่สุด':5,'มาก':4,'ปานกลาง':3,'น้อย':2,'น้อยที่สุด':1}
  for i in A:
   text_to_num.append(dict_text_to_num[i])
  mean = np.mean(text_to_num)
