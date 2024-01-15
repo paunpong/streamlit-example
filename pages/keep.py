@@ -207,8 +207,15 @@ def stacked_bar(data,key):
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
-upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
-upload_df = upload(upload_file)
+with st.sidebar:
+ menu = option_menu(options=['หน้าแรก','เริ่มต้นโปรแกรม'])
+
+if menu == 'หน้าแรก':
+ st.markdown('โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์')
+
+if menu == 'เริ่มต้นโปรแกรม':
+ upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
+ upload_df = upload(upload_file)
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
 if upload_file is not None:
  list_question = [h for h in upload_df]
