@@ -258,6 +258,8 @@ if menu == 'เริ่มต้นโปรแกรม':
   list_box_keys = list(list_boxplot.keys())
   list_bar_keys = list(list_bar_chart.keys())
   list_comma_keys = list(list_bar_chart_comma.keys())
+  list_str_keys = list(list_stack_str.keys())
+  list_num_keys = list(list_stack_num.keys())
   
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
@@ -279,6 +281,11 @@ if menu == 'เริ่มต้นโปรแกรม':
      list_pie_chart[topic]={'removenan':True}
      if 'orther_number' in list_bar_chart[topic]:
       del list_bar_chart[topic]
+   for topic in list_str_keys:
+    str = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน','แผ่นภูมิวงกลม'])
+    if str == 'แผนภูมิวงกลม':
+     list_pie_chart[topic]={'removenan':True}
+     del list_stack_str[topic]
   with tab2:    
    st.markdown(':brown[ปรับแต่งแผนภูมิวงกลม]')
    for topic in list_pie_chart:  
