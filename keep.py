@@ -94,12 +94,9 @@ def count_list(A,removenan=True):
  return count_dict
 
 def stat(A):
- text_to_num = []
- dict_text_to_num = {'มากที่สุด':5,'มาก':4,'ปานกลาง':3,'น้อย':2,'น้อยที่สุด':1}
- for i in A:
-  text_to_num.append(dict_text_to_num[i])
- mean = np.mean(text_to_num)
- sd = np.std(text_to_num)
+ A = [5 if x == 'มากที่สุด'else(4 if x == 'มาก'else (3 if x == 'ปานกลาง' else (2 if x == 'น้อย' else (1 if x == 'น้อยที่สุด' else x)))) for x in A]
+ mean = np.mean(A)
+ sd = np.std(A)
  mean_sd = {'ค่าเฉลี่ย':round(mean,digit),'ส่วนเบี่ยงเบนมาตรฐาน':round(sd,digit)}
  return mean_sd
 
