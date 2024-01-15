@@ -30,7 +30,6 @@ list_stack_str={}
 list_stack_num={}
 list_comment={}
 
-@st.cache(persist=True)
 def upload(A):
  if A is not None:
   y = A.name.split(".")[1]
@@ -108,7 +107,7 @@ def change_num_to_text(A):
  return x
 
 def pie_chart(data, key):
- labels = [str(key) for key in data]
+ labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots(figsize=(9,6))
  wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
