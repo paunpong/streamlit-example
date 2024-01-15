@@ -95,7 +95,7 @@ def count_list(A,removenan=True):
 
 def stat(A):
  text_to_num = []
- dict_text_to_num = {'มากที่สุด':5,'มาก':4,'ปานกลาง':3,'น้อย':2,'น้อยที่สุด':1,'ไม่ระบุ':'ไม่ระบุ'}
+ dict_text_to_num = {'มากที่สุด':5,'มาก':4,'ปานกลาง':3,'น้อย':2,'น้อยที่สุด':1,'ไม่ระบุ':0}
  for i in A:
   text_to_num.append(dict_text_to_num[i])
  mean = np.mean(text_to_num)
@@ -105,7 +105,7 @@ def stat(A):
 
 def change_num_to_text(A):
  x = []
- dict_change_num_to_text = {5:'มากที่สุด', 4:'มาก', 3:'ปานกลาง', 2:"น้อย", 1:"ควรปรับปรุง",'ไม่ระบุ':0}
+ dict_change_num_to_text = {5:'มากที่สุด', 4:'มาก', 3:'ปานกลาง', 2:"น้อย", 1:"ควรปรับปรุง",'ไม่ระบุ':'ไม่ระบุ'}
  for i in uplode_df[A].values.tolist():
   x.append(dict_change_num_to_text[i])
  return x
