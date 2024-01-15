@@ -94,14 +94,18 @@ def count_list(A,removenan=True):
  return count_dict
 
 def stat(A):
- mean = np.mean(A)
- sd = np.std(A)
+ text_to_num = []
+ dict_text_to_num = {'มากที่สุด':5,'มาก':4,'ปานกลาง':3,'น้อย':2,'น้อยที่สุด':1,'ไม่ระบุ':'ไม่ระบุ'}
+ for i in uplode_df[A].values.tolist():
+  text_to_num.append(dict_text_to_num[i])
+ mean = np.mean(text_to_num)
+ sd = np.std(text_to_num)
  mean_sd = {'ค่าเฉลี่ย':round(mean,digit),'ส่วนเบี่ยงเบนมาตรฐาน':round(sd,digit)}
  return mean_sd
 
 def change_num_to_text(A):
  x = []
- dict_change_num_to_text = {5:'มากที่สุด', 4:'มาก', 3:'ปานกลาง', 2:"น้อย", 1:"ควรปรับปรุง",'ไม่ระบุ':'- ไม่ระบุ'}
+ dict_change_num_to_text = {5:'มากที่สุด', 4:'มาก', 3:'ปานกลาง', 2:"น้อย", 1:"ควรปรับปรุง",'ไม่ระบุ':'ไม่ระบุ'}
  for i in uplode_df[A].values.tolist():
   x.append(dict_change_num_to_text[i])
  return x
@@ -284,9 +288,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     str = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิแท่ง'], horizontal=True)
     if str == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
-     st.write(list_bar_chart)
      del list_stack_str[topic]
-     st.write(list_stack_str)
   with tab2:    
    st.markdown(':brown[ปรับแต่งแผนภูมิวงกลม]')
    for topic in list_pie_chart:  
