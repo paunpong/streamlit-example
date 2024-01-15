@@ -266,8 +266,11 @@ if menu == 'เริ่มต้นโปรแกรม':
     if p == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_pie_chart[topic]
-   for topic in list_boxplot:
-    box = st.radio(topic,['แผนภาพกล่อง'])
+   for topic in list_box_keys:
+    box = st.radio(topic,['แผนภาพกล่อง','แผนภูมิแท่ง'], horizontal=True)
+    if box == 'แผนภูมิแท่ง':
+     list_bar_chart[topic]={'removenan':True,'orther_number':1}
+     del list_boxplot[topic]
    for topic in list_comma_keys:
     comma = st.radio(topic,['แผนภูมิแท่ง'])
    for topic in list_bar_keys:
