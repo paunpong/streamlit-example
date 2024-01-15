@@ -208,7 +208,7 @@ def stacked_bar(data,key):
  st.pyplot()
 
 with st.sidebar:
- menu = option_menu(options=['หน้าแรก','เริ่มต้นโปรแกรม'])
+ menu = option_menu(menu_title='เมนู',options=['หน้าแรก','เริ่มต้นโปรแกรม'])
 
 if menu == 'หน้าแรก':
  st.markdown('โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์')
