@@ -211,7 +211,7 @@ with st.sidebar:
  menu = option_menu(menu_title='เมนู',options=['หน้าแรก','เริ่มต้นโปรแกรม'])
 
 if menu == 'หน้าแรก':
- st.markdown(#' :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
+ st.markdown('#: :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
 
 if menu == 'เริ่มต้นโปรแกรม':
  upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
