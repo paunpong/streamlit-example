@@ -285,7 +285,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     if str == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_stack_str[topic]
-    st.write(list_stack_str)
+   st.write(list_bar_chart)
   with tab2:    
    st.markdown(':brown[ปรับแต่งแผนภูมิวงกลม]')
    for topic in list_pie_chart:  
