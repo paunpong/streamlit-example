@@ -343,8 +343,8 @@ for p in list_pie_chart:
   count = values[k]['count']
   percent = values[k]['percent']
   table_data.append([k, count, percent])
-if upload_file is not None:
- st.table([table_head,*table_data]) 
+#if upload_file is not None:
+ #st.table([table_head,*table_data]) 
 #for p in list_pie_chart:
  #pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
 #--------------------------------------------------boxplot-------------------------------------------------------------#
@@ -355,8 +355,8 @@ for b in list_boxplot:
  mean = mean_sd['ค่าเฉลี่ย']
  std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
  table_data1.append([b,mean,std])
-if upload_file is not None:
- st.table([table_head1,*table_data1]) 
+#if upload_file is not None:
+ #st.table([table_head1,*table_data1]) 
 #for b in list_boxplot:
  #boxplot(upload_df[b].values.tolist(),b)
 #--------------------------------------------------- comma ------------------------------------------------------------#
@@ -375,8 +375,8 @@ for a in list_bar_chart_comma:
   percent = 100*v[k]/all_number
   table_data2.append([k,count,percent])
 #table_barchart_comma[a]=table_data2[1:]
-if upload_file is not None:
- st.table([table_head2,*table_data2])
+#if upload_file is not None:
+ #st.table([table_head2,*table_data2])
 #for a in list_bar_chart_comma:
  #A = upload_df[a].values.tolist()
  #v = split_comma(A)
@@ -439,8 +439,8 @@ for i in list_stack_num:
   if topic_word not in dict_num_stack:
     dict_num_stack[topic_word] = dict()
   dict_num_stack[topic_word][sub_word] = A_l
-if upload_file is not None:
- st.table([table_head5,*table_data5])
+#if upload_file is not None:
+ #st.table([table_head5,*table_data5])
 for i in dict_num_stack:
   stacked_bar(dict_num_stack[i],i)
  
