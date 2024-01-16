@@ -263,9 +263,10 @@ if menu == 'เริ่มต้นโปรแกรม':
   
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
+   x = 1000
    for topic in list_pie_keys:
     numberitem = 0
-    head_bulet = str(numberitem+1)+ ". "+topic[:10]
+    head_bulet = str(numberitem+1)+ ". "+topic[:x]
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     st.text("")
     if p == 'แผนภูมิแท่ง':
