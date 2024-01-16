@@ -269,8 +269,8 @@ if menu == 'เริ่มต้นโปรแกรม':
    if topic_long =="ใช่":
      x=10
      endtext = "ฯ"
+   numberitem = 0
    for topic in list_pie_keys:
-    numberitem = 0
     strnumberitem = str(numberitem+1)
     st.write(strnumberitem)
     head_bulet = strnumberitem + topic[:x]+endtext
