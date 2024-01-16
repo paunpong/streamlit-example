@@ -263,14 +263,16 @@ if menu == 'เริ่มต้นโปรแกรม':
   
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
+   number_item = 0
    for topic in list_pie_keys:
-    head_bulet = str(list_pie_keys.index(topic)+1)+"."+topic
+    head_bulet = str(number_item+1)+". "+topic
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     if p == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_pie_chart[topic]
    for topic in list_box_keys:
-    box = st.radio(topic,['แผนภาพกล่อง','แผนภูมิแท่ง'], horizontal=True)
+    head_bulet = str(number_item+1)+". "+topic
+    box = st.radio(head_bulet,['แผนภาพกล่อง','แผนภูมิแท่ง'], horizontal=True)
     if box == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_boxplot[topic]
