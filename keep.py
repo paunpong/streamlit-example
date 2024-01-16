@@ -264,12 +264,14 @@ if menu == 'เริ่มต้นโปรแกรม':
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
    x = 1000
+   endtext =""
    topic_long = st.radio('แสดงหัวข้อแบบย่อ', ['ใช่', 'ไม่ใช่'], horizontal=True)
    if topic_long =="ใช่":
      x=10
+     endtext = "ฯ"
    for topic in list_pie_keys:
     numberitem = 0
-    head_bulet = str(numberitem+1)+ ". "+topic[:x]
+    head_bulet = str(numberitem+1)+ ". "+topic[:x]+endtext
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     st.text("")
     if p == 'แผนภูมิแท่ง':
