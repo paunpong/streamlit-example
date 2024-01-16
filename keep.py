@@ -265,14 +265,14 @@ if menu == 'เริ่มต้นโปรแกรม':
   with tab1:
    
    for topic in list_pie_keys:
-    number_item = 0
-    head_bulet = str(number_item + 1)+". "+topic
+    numberitem = 0
+    head_bulet = str(numberitem + 1)+". "+topic
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     if p == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_pie_chart[topic]
    for topic in list_box_keys:
-    head_bulet = str(number_item+1)+". "+topic
+    head_bulet = str(numberitem+1)+". "+topic
     box = st.radio(head_bulet,['แผนภาพกล่อง','แผนภูมิแท่ง'], horizontal=True)
     if box == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
