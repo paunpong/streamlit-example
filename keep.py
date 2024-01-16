@@ -264,7 +264,7 @@ if menu == 'เริ่มต้นโปรแกรม':
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
    for topic in list_pie_keys:
-    head_bulet = str(list_pie_keys.index(topic))
+    head_bulet = str(list_pie_keys.index(topic)+1)+"."+topic
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     if p == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
