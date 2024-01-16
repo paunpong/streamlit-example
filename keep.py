@@ -266,6 +266,9 @@ if menu == 'เริ่มต้นโปรแกรม':
    x = 1000
    for topic in list_pie_keys:
     numberitem = 0
+    topic_long = st.radio('แสดงหัวข้อแบบย่อ', ['ใช่', 'ไม่ใช่'], horizontal=True)
+    if topic_long =="ใช่":
+     x=10
     head_bulet = str(numberitem+1)+ ". "+topic[:x]
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     st.text("")
