@@ -266,7 +266,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    
    for topic in list_pie_keys:
     numberitem = 0
-    head_bulet = str(numberitem + 1)+". "+topic
+    head_bulet = str(1)+ ". "+topic
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     if p == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
