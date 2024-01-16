@@ -188,8 +188,8 @@ def bar_chart1(data,key,orther_number=1):
  st.pyplot()
 
 def bar_chart_new(data,key):
- labels,values = data
- #values = data[1]
+ labels = data[0]
+ values = data[1]
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.bar(labels, values)
@@ -264,7 +264,7 @@ if menu == 'เริ่มต้นโปรแกรม':
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
    for topic in list_pie_keys:
-    p = st.radio(topic, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
+    p = st.radio(list_pie_keys.index(topic), ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     if p == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_pie_chart[topic]
