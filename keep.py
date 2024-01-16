@@ -333,13 +333,13 @@ if menu == 'เริ่มต้นโปรแกรม':
  if upload_file is not None:
   tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
   with tab1:
-   with st.expander('แผนภูมิวงกลม'):
+   with st.expander('แผนภูมิวงกลม',expanded=True):
     for p in list_pie_chart:
      pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
    with st.expander('แผนภาพกล่อง'):
     for b in list_boxplot:
      boxplot(upload_df[b].values.tolist(),b)
-   with st.expander('แผนภูมิแท่ง'):
+   with st.expander('แผนภูมิแท่ง',expanded=True):
     for a in list_bar_chart_comma:
      A = upload_df[a].values.tolist()
      v = split_comma(A)
