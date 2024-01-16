@@ -272,7 +272,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    for topic in list_pie_keys:
     numberitem = 0
     strnumberitem = str(numberitem+1)
-    st.write(strnumber)
+    st.write(strnumberitem)
     head_bulet = strnumberitem + topic[:x]+endtext
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     st.text("")
