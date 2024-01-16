@@ -289,6 +289,14 @@ if menu == 'เริ่มต้นโปรแกรม':
     elif str == 'แผนภูมิวงกลม':
      list_pie_chart[topic]={'removenan':True}
      del list_stack_str[topic]
+   for topic in list_num_keys:
+    num = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิแท่ง','แผนภูมิวงกลม'], horizontal=True)
+    if num == 'แผนภูมิแท่ง':
+     list_bar_chart[topic]={'removenan':True,'orther_number':1}
+     del list_stack_num[topic]
+    elif num == 'แผนภูมิวงกลม':
+     list_pie_chart[topic]={'removenan':True}
+     del list_stack_num[topic]
   with tab2:    
    st.markdown(':brown[ปรับแต่งแผนภูมิวงกลม]')
    for topic in list_pie_chart:  
