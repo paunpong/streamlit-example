@@ -82,5 +82,5 @@ if upload_file is not None:
 
 st.write('num',list_stack_num)
 st.write('str',list_stack_str)
-st.write(list_stackbar[0])
+st.write(list_stackbar[1])
       
