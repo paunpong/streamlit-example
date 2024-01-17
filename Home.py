@@ -34,7 +34,7 @@ def Count(A,removenan=True):
     counta[i] = A.count(i)
   return counta
 
-def split_(A):
+#def split_(A):
   
   
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
