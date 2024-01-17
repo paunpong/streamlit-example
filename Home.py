@@ -1,5 +1,7 @@
 import streamlit as st
-st.set_page_config(page_title="Home",initial_sidebar_state="expanded",layout="wide")
+import numpy as np
+import pandas as pd
+#st.set_page_config(page_title="Home",initial_sidebar_state="expanded",layout="wide")
 st.write('สวัสดี')
 
 def upload(A):
