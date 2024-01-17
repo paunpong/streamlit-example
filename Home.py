@@ -67,7 +67,8 @@ if upload_file is not None:
       for Topic in list_topic_stackbar:
         col = []
         for key in list_stackbar:
-          st.write(key)
+          if Topic in key:
+            st.write(Topic)
     
             
     
