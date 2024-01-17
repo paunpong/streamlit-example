@@ -82,6 +82,11 @@ if upload_file is not None:
         for topic in colu:
           if topic in key:
             list_stack_num[topic]=True
+    else:
+      for key in list_stackbar:
+        for topic in colu:
+          if topic in key:
+            list_stack_str[topic]=True
 
 st.write(list_stack_num)
       
