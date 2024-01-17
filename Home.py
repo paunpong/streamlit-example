@@ -76,9 +76,9 @@ if upload_file is not None:
     colu = col
     st.write(colu)
     Column = upload_df[colu].values.tolist()
-    st.write(Column)
-      #sum_Column = sum(Column,[])
-      #if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+    sum_Column = sum(Column,[])
+    st.write(sum_Column)
+    if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
         #for key in list_stackbar:
           #for topic in key:
             #list_stack_num[key]=True
