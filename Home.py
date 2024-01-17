@@ -74,19 +74,19 @@ if upload_file is not None:
       if i in n:
         col.append(n)
     colu = col
-    Column = upload_df[colu].values.tolist()
-    sum_Column = sum(Column,[])
-    st.write(sum_Column)
-    if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-      for key in list_stackbar:
-        for topic in colu:
-          if topic in key:
-            list_stack_num[topic]=True
-    else:
-      for key in list_stackbar:
-        for topic in colu:
-          if topic in key:
-            list_stack_str[topic]=True
+  Column = upload_df[colu].values.tolist()
+  sum_Column = sum(Column,[])
+  st.write(sum_Column)
+  if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+    for key in list_stackbar:
+      for topic in colu:
+        if topic in key:
+          list_stack_num[topic]=True
+  else:
+    for key in list_stackbar:
+      for topic in colu:
+        if topic in key:
+          list_stack_str[topic]=True
 
 st.write('num',list_stack_num)
 st.write('str',list_stack_str)
