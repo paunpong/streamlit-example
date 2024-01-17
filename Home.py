@@ -78,7 +78,7 @@ if upload_file is not None:
     if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
       st.write(sum_Column)
       for key in list_stackbar:
-        list_stack_num[key]
+        list_stack_num[key]=true
         for topic in key:
           list_stack_num[key]=True
     else:
