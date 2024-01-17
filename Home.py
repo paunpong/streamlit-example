@@ -29,6 +29,7 @@ def Count(A,removenan=True):
   if removenan and 'ไม่ระบุ' in A:
     A = [n for n in A if n != 'ไม่ระบุ']
   list_A = list(set(A))
+  st.write(list_A)
   counta = dict()
   for i in list_A:
     counta[i] = A.count(i)
@@ -38,7 +39,6 @@ def Split(A):
   for i in A:
     topic_word = i.split(' [')[:1]
     topic = set(topic_word)
-    st.write(topic)
     #topic_word = topic_word.strip() 
   return topic  
   
