@@ -301,7 +301,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    for topic in list_pie_keys:
     numberitem = numberitem+1
     strnumberitem = str(numberitem)
-    head_bulet = strnumberitem + topic[:x]+endtext
+    head_bulet = strnumberitem +". "+ topic[:x]+endtext
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     st.text("")
     if p == 'แผนภูมิแท่ง':
@@ -316,6 +316,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     if box == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_boxplot[topic]
+   st.markdown("""---""")
    for topic in list_comma_keys:
     comma = st.radio(topic,['แผนภูมิแท่ง'])
    for topic in list_bar_keys:
