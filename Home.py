@@ -117,7 +117,6 @@ for i in list_stack_num:
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
     if topic_word != top_name:
-      table_data5.append([topic_word, '', '', ''])
       top_name = topic_word
     A_l = count_list(a)
     for k in A_l:
