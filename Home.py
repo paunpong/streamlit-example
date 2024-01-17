@@ -72,7 +72,8 @@ if upload_file is not None:
     col = []
     for n in list_stackbar:
       if i in n:
-        col.append(n)
+        col.extend(n)
+    st.write(col)
     colu = col
       #Column = upload_df[col].values.tolist()    
       #sum_Column = sum(Column,[])
