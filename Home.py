@@ -71,7 +71,9 @@ if upload_file is not None:
       if i in n:
         col.append(n)
     if num_check(col):
-      st.write(num_chack)
+      for key in list_stackbar:
+        for topic in key:
+          st.write(topic)
     
     
             
