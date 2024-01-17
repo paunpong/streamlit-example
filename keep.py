@@ -28,6 +28,7 @@ list_bar_chart_comma={}
 list_bar_chart={}
 list_stack_str={}
 list_stack_num={}
+list_stack_bar={}
 list_comment={}
 
 def upload(A):
@@ -48,6 +49,11 @@ def check_count(A):
   if A[i] > 1 :
    return False
  return True
+
+def Split(A):
+ for i in A:
+  topic_word = i.split('[')[0]
+ return topic
 
 def num_check(A):
  for i in set(A):
@@ -219,6 +225,8 @@ if menu == 'เริ่มต้นโปรแกรม':
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
 if menu == 'เริ่มต้นโปรแกรม':
  if upload_file is not None:
+  list_topic_stackbar=[]
+  list_stackbar=[]
   list_question = [h for h in upload_df]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
    list_question.pop(0)
@@ -230,12 +238,15 @@ if menu == 'เริ่มต้นโปรแกรม':
    if check_count(x):
     list_comment[key] = {'removenan':True}
     continue
+ 
+   if num_check(column) and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+    list_stack_bar[key] = {'removenan':True}
+    continue
     
    if '[' in key:
-    if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-     list_stack_num[key] = {'removenan':True}
-    else:
-     list_stack_str[key] = {'removenan':True}
+    list_stackbar.append(key)
+    topic = Split(list_stackbar)
+    list_topic_stackbar.append(topic)
     continue
     
    if check_comma(column):
@@ -250,6 +261,24 @@ if menu == 'เริ่มต้นโปรแกรม':
     list_pie_chart[key]={'removenan':True}
    else:
     list_bar_chart[key] = {'removenan':True,'orther_number':1}
+
+ set_topic = set(list_topic_stackbar)
+ for topic in set_topic:
+  col = []
+  for key in list_stackbar:
+   if topic in key:
+    col.append(key)
+  col_df = upload_df[col].values.tolist()
+  sum_col = sum(col_df,[])
+  if num_check(sum_col) and set(sum_col).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+   for key in list_stackbar:
+    for topic in key:
+     list_stack_num[key]={'removenan':True}
+  else:
+   for key in list_stackbar:
+    for topic in key:
+     list_stack_str[key]={'removenan':True}
+ 
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if menu == 'เริ่มต้นโปรแกรม':
