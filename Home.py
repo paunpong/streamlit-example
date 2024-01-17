@@ -60,10 +60,10 @@ if upload_file is not None:
     x = Count(column)
     if '[' in key:
       list_stackbar.append(key)
-      st.write(list_stackbar)
       topic = Split(list_stackbar)
-      list_topic_stackbar.extend(topic)
-      st.write(list_topic_stackbar)
+      list_topic_stackbar.append(topic)
+  st.write(list_topic_stackbar)
+  st.write(set(list_stackbar))
     if list_topic_stackbar in list_stackbar:
       st.write(True)
     if list_topic_stackbar not in list_stackbar:
