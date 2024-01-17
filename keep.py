@@ -502,11 +502,11 @@ for i in list_stack_num:
   elif mean < 1.8:
    level = 'น้อยที่สุด'
   table_data5.append([sub_word,mean,s_d,level]) 
-  for k in A_l:
-   A_l[k] = A_l[k]['percent']
-  if topic_word not in dict_num_stack:
-   dict_num_stack[topic_word] = dict()
-  dict_num_stack[topic_word][sub_word] = A_l
+ for k in A_l:
+  A_l[k] = A_l[k]['percent']
+ if topic_word not in dict_num_stack:
+  dict_num_stack[topic_word] = dict()
+ dict_num_stack[topic_word][sub_word] = A_l
 #if upload_file is not None:
  #st.table([table_head5,*table_data5])
 for i in dict_num_stack:
