@@ -79,7 +79,6 @@ if upload_file is not None:
         st.write(sum_Column,1)
         for key in list_stackbar:
           for topic in key:
-            st.write(topic.items())
             list_stack_num[key]=True
       else:
         for key in list_stackbar:
