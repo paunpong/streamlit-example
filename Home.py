@@ -19,7 +19,18 @@ def upload(A):
   df.replace(' ','ไม่ระบุ',inplace=True)
    #st.dataframe(df)  
   return df
-  
+
+def count_list(A,removenan=True):
+ if removenan and 'ไม่ระบุ'in A:
+  A = [n for n in A if n != 'ไม่ระบุ']
+ list_A = list(set(A))
+ count_dict = dict()
+ len_A = len(A)
+ for c in list_A:
+  per = (A.count(c)/len_A)*100
+  count_dict[c] = {"count":A.count(c),"percent":round(per,digit)}
+ return count_dict
+
 def stat(A):
  A = [5 if x == 'มากที่สุด'else(4 if x == 'มาก'else(3 if x == 'ปานกลาง' else(2 if x == 'น้อย' else(1 if x == 'น้อยที่สุด' else(0 if x == 'ไม่ระบุ' else x))))) for x in A]
  mean = np.mean(A)
