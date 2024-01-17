@@ -52,7 +52,7 @@ def check_count(A):
 
 def Split(A):
  for i in A:
-  topic_word = i.split('[')[0]
+  topic = i.split('[')[0]
  return topic
 
 def num_check(A):
