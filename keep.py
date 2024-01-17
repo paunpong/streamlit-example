@@ -261,21 +261,21 @@ if menu == 'เริ่มต้นโปรแกรม':
     list_pie_chart[key]={'removenan':True}
    else:
     list_bar_chart[key] = {'removenan':True,'orther_number':1}
-
- set_topic = set(list_topic_stackbar)
- for topic in set_topic:
-  col = []
-  for key in list_stackbar:
-   if topic in key:
-    col.append(key)
-  col_df = upload_df[col].values.tolist()
-  sum_col = sum(col_df,[])
-  if num_check(sum_col) and set(sum_col).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-   for key in col:
-    list_stack_num[key]={'removenan':True}
-  else:
-   for key in col:
-    list_stack_str[key]={'removenan':True}
+ 
+  set_topic = set(list_topic_stackbar)
+  for topic in set_topic:
+   col = []
+   for key in list_stackbar:
+    if topic in key:
+     col.append(key)
+   col_df = upload_df[col].values.tolist()
+   sum_col = sum(col_df,[])
+   if num_check(sum_col) and set(sum_col).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+    for key in col:
+     list_stack_num[key]={'removenan':True}
+   else:
+    for key in col:
+     list_stack_str[key]={'removenan':True}
     
  st.write('num',list_stack_num)
  st.write('str',list_stack_str)
