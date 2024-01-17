@@ -278,7 +278,8 @@ if menu == 'เริ่มต้นโปรแกรม':
    for key in list_stackbar:
     for topic in key:
      list_stack_str[key]={'removenan':True}
- 
+ st.write(list_stack_num)
+ st.write(list_stack_str)
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if menu == 'เริ่มต้นโปรแกรม':
