@@ -72,6 +72,7 @@ if upload_file is not None:
     for n in list_stackbar:
       if i in n:
         col.append(n)
+    st.write(col)   
     Column = upload_df[col].values.tolist()    
     sum_Column = sum(Column,[])
     st.write(sum_Column,num_check(sum_Column))
@@ -84,9 +85,7 @@ if upload_file is not None:
         for topic in key:
           list_stack_str[key]=True
           
-    
-st.write('num',list_stack_num)
-st.write('str',list_stack_str)
+
             
     
       
