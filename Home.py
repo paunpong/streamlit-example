@@ -52,10 +52,9 @@ if upload_file is not None:
     column = upload_df[key].values.tolist()
     len_column = len(column)
     x = Count(column)
-    
+    list_topic_stackbar=[]
+    list_stackbar=[]
     if '[' in key:
-      list_topic_stackbar=[]
-      list_stackbar=[]
       list_stackbar.append(key)
       topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
