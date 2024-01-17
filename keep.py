@@ -235,18 +235,19 @@ if menu == 'เริ่มต้นโปรแกรม':
    column = upload_df[key].values.tolist()
    len_column = len(column)
    x = Count(column)
+   
    if check_count(x):
     list_comment[key] = {'removenan':True}
     continue
- 
-   if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-    list_stack_bar[key] = {'removenan':True}
-    continue
-    
+
    if '[' in key:
     list_stackbar.append(key)
     topic = Split(list_stackbar)
     list_topic_stackbar.append(topic)
+    continue
+ 
+   if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+    list_stack_bar[key] = {'removenan':True}
     continue
     
    if check_comma(column):
@@ -263,14 +264,14 @@ if menu == 'เริ่มต้นโปรแกรม':
     list_bar_chart[key] = {'removenan':True,'orther_number':1}
  
   set_topic = set(list_topic_stackbar)
-  for topic in set_topic:
+  for i in set_topic:
    col = []
-   for key in list_stackbar:
-    if topic in key:
-     col.append(key)
-   col_df = upload_df[col].values.tolist()
-   sum_col = sum(col_df,[])
-   if num_check(sum_col) and set(sum_col).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+   for n in list_stackbar:
+    if i in n:
+      col.append(n)
+   Column = upload_df[col].values.tolist()
+   sum_Column = sum(Column,[])
+   if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
     for key in col:
      list_stack_num[key]={'removenan':True}
    else:
