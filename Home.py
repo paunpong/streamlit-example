@@ -78,5 +78,7 @@ if upload_file is not None:
     sum_Column = sum(Column,[])
     st.write(sum_Column)
     if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-      st.write('9999999999999999999999999999')
+      for key in list_stackbar:
+        for topic in key:
+          st.write(key)
       
