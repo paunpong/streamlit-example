@@ -88,6 +88,6 @@ if upload_file is not None:
           if topic in key:
             list_stack_str[topic]=True
 
-st.write(num,list_stack_num)
-st.write(str,list_stack_str)
+st.write('num',list_stack_num)
+st.write('str',list_stack_str)
       
