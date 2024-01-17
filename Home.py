@@ -38,6 +38,7 @@ def Split(A):
   for i in A:
     topic_word = i.split(' [')[:1]
     #topic_word = topic_word.strip()
+  st.write(set(topic_word))  
   return topic_word  
   
   
@@ -60,6 +61,5 @@ if upload_file is not None:
       list_stackbar.append(key)
       topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
-      st.write(set(topic))
       
       
