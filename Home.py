@@ -69,9 +69,8 @@ if upload_file is not None:
       if i in n:
         col.append(n)
     Column = upload_df[col].values.tolist()
-    st.write(i,Column)
-    #if num_check(upload_df[col].values.tolist()) and set(upload_df[col]).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-      #st.write('11')
+    if num_check(Column) and set(Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+      st.write('11')
       #for key in list_stackbar:
         #st.write(key)
         #for topic in key:
