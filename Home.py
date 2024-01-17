@@ -79,6 +79,6 @@ if upload_file is not None:
     sum_Column = sum(Column,[])
     st.write(sum_Column)
     if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-      for i in renge(5):
+      for i in range(5):
         print(i)
       
