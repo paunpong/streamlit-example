@@ -239,7 +239,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     list_comment[key] = {'removenan':True}
     continue
  
-   if num_check(column) and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+   if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
     list_stack_bar[key] = {'removenan':True}
     continue
     
