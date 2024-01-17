@@ -58,7 +58,6 @@ if upload_file is not None:
     column = upload_df[key].values.tolist()
     len_column = len(column)
     x = Count(column)
-    st.write(num_check(column))
     if '[' in key:
       list_stackbar.append(key)
       topic = Split(list_stackbar)
@@ -69,7 +68,7 @@ if upload_file is not None:
     for n in list_stackbar:
       if i in n:
         col.append(n)
-    Column = upload_df[col].values.tolist()
+    st.write(col.values())
     #if num_check(Column) and set(Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
       #st.write('11')
       #for key in list_stackbar:
