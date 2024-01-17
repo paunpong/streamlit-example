@@ -64,8 +64,8 @@ if upload_file is not None:
       topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
     set_topic = set(list_topic_stackbar)
+    col = []
     for i in set_topic:
-      col = []
       for n in list_stackbar:
         if i in n:
           col.append(n)
