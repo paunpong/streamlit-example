@@ -44,8 +44,6 @@ def Split(A):
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
 upload_df = upload(upload_file)
 
-list_topic_stackbar=[]
-list_stackbar=[]
 if upload_file is not None:
   list_question = [h for h in upload_df]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
@@ -56,10 +54,12 @@ if upload_file is not None:
     x = Count(column)
     
     if '[' in key:
+      list_topic_stackbar=[]
+      list_stackbar=[]
       list_stackbar.append(key)
       topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
-st.write(list_topic_stackbar)      
+    st.write(list_topic_stackbar)      
     
       
       
