@@ -271,15 +271,14 @@ if menu == 'เริ่มต้นโปรแกรม':
   col_df = upload_df[col].values.tolist()
   sum_col = sum(col_df,[])
   if num_check(sum_col) and set(sum_col).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-   for key in list_stackbar:
-    for topic in key:
-     list_stack_num[key]={'removenan':True}
+   for key in col:
+    list_stack_num[key]={'removenan':True}
   else:
-   for key in list_stackbar:
-    for topic in key:
-     list_stack_str[key]={'removenan':True}
- st.write(list_stack_num)
- st.write(list_stack_str)
+   for key in col:
+    list_stack_str[key]={'removenan':True}
+    
+ st.write('num',list_stack_num)
+ st.write('str',list_stack_str)
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if menu == 'เริ่มต้นโปรแกรม':
