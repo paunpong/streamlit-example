@@ -79,6 +79,3 @@ if upload_file is not None:
       for topic in col:
         st.write(topic)
         for key in list_stackbar:
-
-
-      
