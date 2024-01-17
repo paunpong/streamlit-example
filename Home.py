@@ -37,9 +37,8 @@ def Count(A,removenan=True):
 def Split(A):
   for i in A:
     topic_word = i.split(' [')[:1]
-    #topic_word = topic_word.strip()
-  st.write(set(topic_word))  
-  return topic_word  
+    #topic_word = topic_word.strip() 
+  return set(topic_word)  
   
   
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
@@ -61,5 +60,6 @@ if upload_file is not None:
       list_stackbar.append(key)
       topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
+      st.write(topic)
       
       
