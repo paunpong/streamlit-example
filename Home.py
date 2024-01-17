@@ -74,13 +74,11 @@ if upload_file is not None:
         col.append(n)
     Column = upload_df[col].values.tolist()
     sum_Column = sum(Column,[])
-    st.write(sum_Column)
+    st.write(num_check(sum_Column))
     if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
       for topic in col:
         st.write(topic)
         for key in list_stackbar:
 
-st.write('num',list_stack_num)
-st.write('str',list_stack_str)
-st.write(list_stackbar[1])
+
       
