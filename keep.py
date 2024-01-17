@@ -277,9 +277,6 @@ if menu == 'เริ่มต้นโปรแกรม':
    else:
     for key in col:
      list_stack_str[key]={'removenan':True}
-    
- st.write('num',list_stack_num)
- st.write('str',list_stack_str)
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if menu == 'เริ่มต้นโปรแกรม':
@@ -367,12 +364,10 @@ if menu == 'เริ่มต้นโปรแกรม':
     z = st.slider(topic, 1, max(c.values()), 1, 1) 
     list_bar_chart[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': z}
   
-   
-
-
-
 #-----------------------------------------------tab ภาพแผนภูมิ -------------------------------------------------------#
 if menu == 'เริ่มต้นโปรแกรม':
+ dict_str_stack = dict()
+ dict_num_stack = dict()
  if upload_file is not None:
   tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
   with tab1:
@@ -394,8 +389,37 @@ if menu == 'เริ่มต้นโปรแกรม':
      a = Count(list_com,list_bar_chart[i]['removenan'])
      data = bar_list_count(a,list_bar_chart[i]['orther_number'])
      bar_chart_new(data,i)
-  
-
+   with st.expander('แผนภูมิแท่งแบบต่อกัน',expanded=True):
+    for i in list_stack_str:
+     topic_word, sub_word = i.split(' [')[:2]
+     topic_word = topic_word.strip()
+     sub_word = sub_word.strip().replace(']','')
+     A_l = count_list(upload_df[i].values.tolist())
+     for k in A_l:
+      A_l[k] = A_l[k]['percent']
+     if topic_word not in dict_str_stack:
+      dict_str_stack[topic_word] = dict()
+     dict_str_stack[topic_word][sub_word] = A_l
+    for s in dict_str_stack:
+     stacked_bar(dict_str_stack[s],s)
+    for i in list_stack_num:
+     mat = upload_df[i].values.tolist()
+     mean_sd = stat(mat)
+     a = change_num_to_text(i)
+     topic_word, sub_word = i.split(' [')[:2]
+     topic_word = topic_word.strip()
+     sub_word = sub_word.strip().replace(']', '')
+     if topic_word != top_name:
+      top_name = topic_word
+     A_l = count_list(a)
+     for k in A_l:
+      A_l[k] = A_l[k]['percent']
+     if topic_word not in dict_num_stack:
+      dict_num_stack[topic_word] = dict()
+     dict_num_stack[topic_word][sub_word] = A_l
+    for i in dict_num_stack:
+      stacked_bar(dict_num_stack[i],i)
+    
 
 
 
@@ -509,8 +533,8 @@ for i in list_stack_num:
  dict_num_stack[topic_word][sub_word] = A_l
 #if upload_file is not None:
  #st.table([table_head5,*table_data5])
-for i in dict_num_stack:
-  stacked_bar(dict_num_stack[i],i)
+#for i in dict_num_stack:
+  #stacked_bar(dict_num_stack[i],i)
  
 
 
