@@ -33,6 +33,9 @@ def Count(A,removenan=True):
   for i in list_A:
     counta[i] = A.count(i)
   return counta
+
+def split_(A):
+  
   
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
 upload_df = upload(upload_file)
@@ -49,5 +52,7 @@ if upload_file is not None:
    len_column = len(column)
    x = Count(column)
    if '[' in key:
-     list_topic_stackbar.append(key.split('[')[0])
+     x = key.split('[')[0]
+     list_stackbar.append(key)
+  st.write(list_stackbar)  
       
