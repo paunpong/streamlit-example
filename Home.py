@@ -58,8 +58,8 @@ if upload_file is not None:
     
     if '[' in key:
       list_stackbar.append(key)
-      topic = set(Split(list_stackbar))
+      topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
-    st.write(topic)
+      st.write(topic)
       
       
