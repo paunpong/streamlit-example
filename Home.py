@@ -62,8 +62,8 @@ if upload_file is not None:
       list_stackbar.append(key)
       topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
-  st.write(list_topic_stackbar)
-  st.write(set(list_stackbar))
+  st.write(set(list_topic_stackbar))
+  st.write(list_stackbar)
     
     
             
