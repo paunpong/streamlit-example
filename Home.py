@@ -65,10 +65,12 @@ if upload_file is not None:
     set_topic = set(list_topic_stackbar)
   st.write(set_topic)
   st.write(list_stackbar)
-  if set_topic in list_stackbar:
-    st.write('11')
-  else:
-    st.write('22')
+  for i in set_topic:
+    for n in list_stackbar:
+      if i in n:
+        True
+      else:
+        False
     
     
             
