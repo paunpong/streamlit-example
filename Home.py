@@ -81,3 +81,5 @@ if upload_file is not None:
       for key in col:
         list_stack_str[key]=True
   
+st.write(list_stack_num,'num')
+st.write(list_stack_str,'str')
