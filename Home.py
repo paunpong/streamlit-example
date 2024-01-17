@@ -80,6 +80,28 @@ if upload_file is not None:
     else:
       for key in col:
         list_stack_str[key]=True
-  
+
+def change_num_to_text(A):
+    x = []
+    dict_change_num_to_text = {5: 'มากที่สุด', 4: 'มาก', 3: 'ปานกลาง', 2: "น้อย", 1: "ควรปรับปรุง", 'ไม่ระบุ': 'ไม่ระบุ'}
+    for i in upload_df[A].values.tolist():  # Corrected variable name
+        x.append(dict_change_num_to_text[i])
+    return x
+
+table_data5 = []  # Assuming you've defined table_data5 somewhere before this code snippet
+top_name = None   # Assuming you've defined top_name somewhere before this code snippet
+
+for i in list_stack_num:
+    mat = upload_df[i].values.tolist()
+    mean_sd = stat(mat)
+    a = change_num_to_text(i)
+    topic_word, sub_word = i.split(' [')[:2]
+    topic_word = topic_word.strip()
+    sub_word = sub_word.strip().replace(']', '')
+    if topic_word != top_name:
+        table_data5.append([topic_word, '', '', ''])
+        top_name = topic_word
+    A_l = count_list(a)
+
 st.write(list_stack_num,'num')
 st.write(list_stack_str,'str')
