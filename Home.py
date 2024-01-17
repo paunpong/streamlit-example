@@ -45,7 +45,7 @@ def split_comma(A):
 
 def Split(A):
   for i in A:
-    topic_word = i.split('[')[0]
+    topic = i.split('[')[0]
   return topic  
   
   
@@ -78,10 +78,12 @@ if upload_file is not None:
       for key in list_stackbar:
         for topic in key:
           list_stack_num[key]=True
+          st.write('11')
     else:
       for key in list_stackbar:
         for topic in key:
           list_stack_str[key]=True
+          st.write('00')
           
     
 st.write(list_stack_num)    
