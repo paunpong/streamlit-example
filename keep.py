@@ -368,6 +368,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 if menu == 'เริ่มต้นโปรแกรม':
  dict_str_stack = dict()
  dict_num_stack = dict()
+ top_name = None
  if upload_file is not None:
   tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
   with tab1:
