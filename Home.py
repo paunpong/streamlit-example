@@ -106,9 +106,9 @@ def change_num_to_text(A):
         x.append(dict_change_num_to_text[i])
     return x
 
-table_data5 = []  # Assuming you've defined table_data5 somewhere before this code snippet
-top_name = None   # Assuming you've defined top_name somewhere before this code snippet
 
+top_name = None  
+dict_num_stack={}
 for i in list_stack_num:
     mat = upload_df[i].values.tolist()
     mean_sd = stat(mat)
