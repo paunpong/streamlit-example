@@ -89,4 +89,5 @@ if upload_file is not None:
             list_stack_str[topic]=True
 
 st.write(list_stack_num)
+st.write(list_stack_str)
       
