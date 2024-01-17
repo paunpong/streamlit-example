@@ -69,7 +69,7 @@ if upload_file is not None:
     col = []
     for n in list_stackbar:
       if i in n:
-        col = col.append(i)
+        col.append(n)
       else:
         st.write(i,'///',n,'///',False)
     
