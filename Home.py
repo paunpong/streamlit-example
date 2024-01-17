@@ -37,6 +37,12 @@ def Count(A,removenan=True):
     counta[i] = A.count(i)
   return counta
 
+def split_comma(A):
+ res = []
+ for i in A:
+  res = res + i.split(", ")
+ return res
+
 def Split(A):
   for i in A:
     topic_word = i.split('[')[0]
@@ -56,7 +62,6 @@ if upload_file is not None:
     list_question.pop(0)
   for key in list_question:
     column = upload_df[key].values.tolist()
-    st.write(upload_df['ความเหมาะสมของกิจกรรม [ระยะเวลาในการจัดปฐมนิเทศของภาควิชา]'].values.tolist())
     len_column = len(column)
     x = Count(column)
     if '[' in key:
@@ -64,14 +69,14 @@ if upload_file is not None:
       topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
   set_topic = set(list_topic_stackbar)
-  Col = []
   for i in set_topic:
     col = []
     for n in list_stackbar:
       if i in n:
         col.append(n)
-    Col = col
-    st.write(upload_df['ความเหมาะสมของกิจกรรม [ระยะเวลาในการจัดปฐมนิเทศของภาควิชา]'].values.tolist())
+    Column = upload_df[col].values.tolist()    
+    sum_Column = sum(Column,[])
+    st.write(sum_Column)
     #if num_check(Column) and set(Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
       #st.write('11')
       #for key in list_stackbar:
