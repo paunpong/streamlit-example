@@ -63,7 +63,7 @@ if upload_file is not None:
       st.write(list_stackbar)
       topic = Split(list_stackbar)
       st.write(topic)
-      list_topic_stackbar.append(set(topic))
+      list_topic_stackbar.extend(topic)
     if list_topic_stackbar in list_stackbar:
       st.write(True)
     if list_topic_stackbar not in list_stackbar:
