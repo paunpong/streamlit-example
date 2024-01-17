@@ -46,7 +46,7 @@ upload_df = upload(upload_file)
 
 list_topic_stackbar=[]
 list_stackbar=[]
-st.write(set(1,1,1,1,1,1,1,1,1,2,2,2,2,2))
+st.write({1,1,1,1,1,1,1,1,1,2,2,2,2,2})
 if upload_file is not None:
   list_question = [h for h in upload_df]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
