@@ -67,7 +67,7 @@ if upload_file is not None:
     if list_topic_stackbar in list_stackbar:
       st.write(True)
     if list_topic_stackbar not in list_stackbar:
-      st.write(โalse)
+      st.write(False)
     
             
     
