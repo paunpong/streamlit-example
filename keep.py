@@ -486,7 +486,7 @@ for i in list_stack_num:
   if topic_word != top_name:
     table_data5.append([topic_word,'','',''])
     top_name = topic_word
-  A_l = count_list(upload_df[a].values.tolist())
+  A_l = count_list(a)
   for k in mean_sd:
    mean = mean_sd['ค่าเฉลี่ย']
    s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
