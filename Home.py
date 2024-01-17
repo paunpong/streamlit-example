@@ -68,9 +68,9 @@ if upload_file is not None:
   for i in set_topic:
     for n in list_stackbar:
       if i in n:
-        st.write(i,n,True)
+        st.write(i,'///',n,'///',True)
       else:
-        st.write(i,n,False)
+        st.write(i,'///',n,'///',False)
     
     
             
