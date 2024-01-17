@@ -4,6 +4,9 @@ import pandas as pd
 #st.set_page_config(page_title="Home",initial_sidebar_state="expanded",layout="wide")
 st.write('สวัสดี')
 
+list_stack_num={}
+list_stack_str={}
+
 def upload(A):
   if A is not None:
     y = A.name.split(".")[1]
@@ -37,9 +40,10 @@ def Count(A,removenan=True):
 def Split(A):
   for i in A:
     topic_word = i.split('[')[:1]
-    topic = set(topic_word)
+    set_topic = list(set(topic_word))
+    st.write(set_topic)
     #topic_word = topic_word.strip() 
-  return topic  
+  return set_topic  
   
   
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
@@ -58,7 +62,21 @@ if upload_file is not None:
     if '[' in key:
       list_stackbar.append(key)
       topic = Split(list_stackbar)
-      list_topic_stackbar.append(topic)     
+      list_topic_stackbar.append(topic)
+    for topic in list_topic_stackbar:
+      Column = []
+      for key in list_stackbar:
+        if topic in key:
+          Column = Column + Column(topic)
+      if num_check(Column):
+        for key in list_stackbar:
+          for topic in key:
+            list_stack_num[key] = True
+      else:
+        for key in list_stackbar:
+          for topic in key:
+            list_stack_str[key] = True
+            
     
       
       
