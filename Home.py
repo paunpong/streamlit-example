@@ -81,7 +81,7 @@ if upload_file is not None:
       for key in list_stackbar:
         for topic in colu:
           if topic in key:
-            list_stack_num[topic]
+            list_stack_num[topic]=True
 
 st.write(list_stack_num)
       
