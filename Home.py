@@ -80,6 +80,10 @@ if upload_file is not None:
       for key in list_stackbar:
         for topic in key:
           list_stack_num[key]=True
+    else:
+      for key in list_stackbar:
+        for topic in key:
+          list_stack_str[key]=True
           
     
 st.write(list_stack_num)    
