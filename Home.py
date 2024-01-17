@@ -66,7 +66,7 @@ if upload_file is not None:
     x = Count(column)
     if '[' in key:
       list_stackbar.append(key)
-      topic = Split(list_stackbar)
+      topic = Split(key)
       list_topic_stackbar.append(topic)
   set_topic = set(list_topic_stackbar)
   for i in set_topic:
