@@ -63,14 +63,13 @@ if upload_file is not None:
       topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
   set_topic = set(list_topic_stackbar)
-  result_dict = {}
+  st.write(list_topic_stackbar)
+  st.write(list_stackbar)
   for i in set_topic:
     col = []
     for n in list_stackbar:
       if i in n:
-        col += n
-    result_dict[i] = col    
-    st.write(result_dict)
+        col += n    
     #if num_check(Column) and set(Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
       #st.write('11')
       #for key in list_stackbar:
