@@ -44,7 +44,7 @@ def Split(A):
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
 upload_df = upload(upload_file)
 
-list_topic_stackbar=set()
+list_topic_stackbar=[]
 list_stackbar=[]
 
 if upload_file is not None:
@@ -57,9 +57,8 @@ if upload_file is not None:
     x = Count(column)
     
     if '[' in key:
-      x = key.split('[')[0]
       list_stackbar.append(key)
-      y = Split(list_stackbar)
-      list_topic_stackbar.append(y)
+      topic = set(Split(list_stackbar))
+      list_topic_stackbar.append(topic)
       st.write(list_topic_stackbar)
       
