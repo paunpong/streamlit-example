@@ -483,20 +483,20 @@ for a in list_bar_chart_comma:
  #data = bar_list_count(a,list_bar_chart[i]['orther_number'])
  #bar_chart_new(data,i)
 #--------------------------------------------------stack bar str------------------------------------------------#  
-dict_str_stack = dict()
-dict_num_stack = dict()
-for i in list_stack_str:
- topic_word, sub_word = i.split(' [')[:2]
- topic_word = topic_word.strip()
- sub_word = sub_word.strip().replace(']','')
- A_l = count_list(upload_df[i].values.tolist())
- for k in A_l:
-  A_l[k] = A_l[k]['percent']
- if topic_word not in dict_str_stack:
-  dict_str_stack[topic_word] = dict()
- dict_str_stack[topic_word][sub_word] = A_l
-for s in dict_str_stack:
- stacked_bar(dict_str_stack[s],s)
+#dict_str_stack = dict()
+#dict_num_stack = dict()
+#for i in list_stack_str:
+ #topic_word, sub_word = i.split(' [')[:2]
+ #topic_word = topic_word.strip()
+ #sub_word = sub_word.strip().replace(']','')
+ #A_l = count_list(upload_df[i].values.tolist())
+ #for k in A_l:
+  #A_l[k] = A_l[k]['percent']
+ #if topic_word not in dict_str_stack:
+  #dict_str_stack[topic_word] = dict()
+ #dict_str_stack[topic_word][sub_word] = A_l
+#for s in dict_str_stack:
+ #stacked_bar(dict_str_stack[s],s)
 #--------------------------------------------------stack bar num------------------------------------------------#
 top_name = ''
 table_head5 = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
