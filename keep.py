@@ -479,7 +479,7 @@ table_data5 = []
 for i in list_stack_num:
   mat = upload_df[i].values.tolist()
   mean_sd = stat(mat)
-  a = change_num_to_text(mat)
+  a = change_num_to_text(i)
   topic_word, sub_word = i.split(' [')[:2]
   topic_word = topic_word.strip()
   sub_word = sub_word.strip().replace(']','')
