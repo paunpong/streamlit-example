@@ -84,8 +84,8 @@ if upload_file is not None:
           list_stack_str[key]=True
           
     
-st.write(num,list_stack_num)
-st.write(str,list_stack_str)
+st.write('num',list_stack_num)
+st.write('str',list_stack_str)
             
     
       
