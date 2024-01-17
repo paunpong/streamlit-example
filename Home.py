@@ -65,6 +65,10 @@ if upload_file is not None:
     set_topic = set(list_topic_stackbar)
   st.write(set_topic)
   st.write(list_stackbar)
+  if set_topic in list_stackbar:
+    st.write('11')
+  else:
+    st.write('22')
     
     
             
