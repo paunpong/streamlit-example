@@ -40,7 +40,7 @@ def Count(A,removenan=True):
 def Split(A):
   for i in A:
     topic_word = i.split('[')[:1]
-    set_topic = list(topic_word +)
+    set_topic = list(topic_word)
     st.write(set_topic)
     #topic_word = topic_word.strip() 
   return set_topic  
