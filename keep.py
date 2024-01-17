@@ -108,8 +108,8 @@ def stat(A):
 
 def change_num_to_text(A):
  x = []
- dict_change_num_to_text = {5:'มากที่สุด', 4:'มาก', 3:'ปานกลาง', 2:"น้อย", 1:"ควรปรับปรุง",'ไม่ระบุ':'ไม่ระบุ'}
- for i in uplode_df[A].values.tolist():
+ dict_change_num_to_text = {5: 'มากที่สุด', 4: 'มาก', 3: 'ปานกลาง', 2: "น้อย", 1: "ควรปรับปรุง", 'ไม่ระบุ': 'ไม่ระบุ'}
+ for i in upload_df[A].values.tolist():
   x.append(dict_change_num_to_text[i])
  return x
 
@@ -477,16 +477,16 @@ top_name = ''
 table_head5 = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
 table_data5 = []
 for i in list_stack_num:
-  mat = upload_df[i].values.tolist()
-  mean_sd = stat(mat)
-  a = change_num_to_text(i)
-  topic_word, sub_word = i.split(' [')[:2]
-  topic_word = topic_word.strip()
-  sub_word = sub_word.strip().replace(']','')
-  if topic_word != top_name:
-    table_data5.append([topic_word,'','',''])
-    top_name = topic_word
-  A_l = count_list(a)
+ mat = upload_df[i].values.tolist()
+ mean_sd = stat(mat)
+ a = change_num_to_text(i)
+ topic_word, sub_word = i.split(' [')[:2]
+ topic_word = topic_word.strip()
+ sub_word = sub_word.strip().replace(']', '')
+ if topic_word != top_name:
+  table_data5.append([topic_word, '', '', ''])
+  top_name = topic_word
+ A_l = count_list(a)
   for k in mean_sd:
    mean = mean_sd['ค่าเฉลี่ย']
    s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
