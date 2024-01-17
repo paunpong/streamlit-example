@@ -25,6 +25,15 @@ def num_check(A):
      continue
   return True
 
+def Count(A,removenan=True):
+  if removenan and 'ไม่ระบุ' in A:
+    A = [n for n in A if n != 'ไม่ระบุ']
+  list_A = list(set(A))
+  counta = dict()
+  for i in list_A:
+    counta[i] = A.count(i)
+  return counta
+  
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
 upload_df = upload(upload_file)
 
