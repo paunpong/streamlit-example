@@ -68,7 +68,7 @@ if upload_file is not None:
       col = []
       for n in list_stackbar:
         if i in n:
-          col.append(n)
+          col = col + col
       st.write(col)
     #if num_check(Column) and set(Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
       #st.write('11')
