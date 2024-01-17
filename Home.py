@@ -68,7 +68,8 @@ if upload_file is not None:
     for n in list_stackbar:
       if i in n:
         col.append(n)
-    st.write(uplode_df[col].values.tolist())
+    w =  uplode_df[col].values.tolist()
+    st.write(w)
     #if num_check(Column) and set(Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
       #st.write('11')
       #for key in list_stackbar:
