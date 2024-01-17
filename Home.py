@@ -31,6 +31,17 @@ def count_list(A,removenan=True):
   count_dict[c] = {"count":A.count(c),"percent":round(per,digit)}
  return count_dict
 
+def stacked_bar(data,key):
+ fig,ax = plt.subplots()
+ name = data.keys()
+ data = data.values()
+ ax.set_yticklabels(name, fontproperties=thai_font_prop)
+ d_f = pd.DataFrame(data,index=name)
+ d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
+ #stacked_plot.legend(loc='upper right', fontproperties=thai_font_prop)
+ plt.title(key,fontproperties=thai_font_prop)
+ st.pyplot()
+
 def stat(A):
  A = [5 if x == 'มากที่สุด'else(4 if x == 'มาก'else(3 if x == 'ปานกลาง' else(2 if x == 'น้อย' else(1 if x == 'น้อยที่สุด' else(0 if x == 'ไม่ระบุ' else x))))) for x in A]
  mean = np.mean(A)
