@@ -56,7 +56,6 @@ if upload_file is not None:
     list_question.pop(0)
   for key in list_question:
     column = upload_df[key].values.tolist()
-    st.write(key,column)
     len_column = len(column)
     x = Count(column)
     if '[' in key:
