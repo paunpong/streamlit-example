@@ -136,7 +136,7 @@ for i in list_stack_num:
       A_l[k] = A_l[k]['percent']
     if topic_word not in dict_num_stack:
       dict_num_stack[topic_word] = dict()
-      dict_num_stack[topic_word][sub_word] = A_l
+    dict_num_stack[topic_word][sub_word] = A_l
     for i in dict_num_stack:
       stacked_bar(dict_num_stack[i],i)
 
