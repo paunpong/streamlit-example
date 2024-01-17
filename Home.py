@@ -40,7 +40,7 @@ def Count(A,removenan=True):
 def Split(A):
   for i in A:
     topic_word = i.split(' [')[:1]
-    set_topic = list(topic_word)
+    set_topic = topic_word
     st.write(set_topic)
     #topic_word = topic_word.strip() 
   return set_topic  
@@ -64,6 +64,10 @@ if upload_file is not None:
       st.write(list_stackbar)
       topic = Split(list_stackbar)
       list_topic_stackbar.append(set(topic))
+    if list_topic_stackbar in list_stackbar:
+      st.write(True)
+    if list_topic_stackbar in list_stackbar:
+      st.write(โalse)
     
             
     
