@@ -59,6 +59,6 @@ if upload_file is not None:
     if '[' in key:
       x = key.split('[')[0]
       list_stackbar.append(key)
-      x = Split(list_stackbar)
-  st.write(x)  
+      y = Split(list_stackbar)
+    st.write(y)  
       
