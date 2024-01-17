@@ -6,7 +6,7 @@ st.write('สวัสดี')
 
 list_stack_num={}
 list_stack_str={}
-
+digit = int(2)
 def upload(A):
   if A is not None:
     y = A.name.split(".")[1]
