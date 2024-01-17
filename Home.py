@@ -70,7 +70,7 @@ if upload_file is not None:
     for n in list_stackbar:
       if i in n:
         col.append(n)
-    if num_chack(col):
+    if num_check(col):
       st.write(num_chack)
     
     
