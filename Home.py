@@ -34,7 +34,7 @@ def Count(A,removenan=True):
     counta[i] = A.count(i)
   return counta
 
-def split_(A):
+def Split(A):
   for i in A:
     topic_word = i.split(' [')[:1]
     topic_word = topic_word.strip()
@@ -59,6 +59,6 @@ if upload_file is not None:
     if '[' in key:
       x = key.split('[')[0]
       list_stackbar.append(key)
-    x = split_(list_stackbar)
+      x = Split(list_stackbar)
   st.write(x)  
       
