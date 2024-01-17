@@ -19,7 +19,14 @@ def upload(A):
   df.replace(' ','ไม่ระบุ',inplace=True)
    #st.dataframe(df)  
   return df
-
+  
+def stat(A):
+ A = [5 if x == 'มากที่สุด'else(4 if x == 'มาก'else(3 if x == 'ปานกลาง' else(2 if x == 'น้อย' else(1 if x == 'น้อยที่สุด' else(0 if x == 'ไม่ระบุ' else x))))) for x in A]
+ mean = np.mean(A)
+ sd = np.std(A)
+ mean_sd = {'ค่าเฉลี่ย':round(mean,digit),'ส่วนเบี่ยงเบนมาตรฐาน':round(sd,digit)}
+ return mean_sd
+  
 def num_check(A):
   for i in set(A):
     if type(i) is str and i != 'ไม่ระบุ':
