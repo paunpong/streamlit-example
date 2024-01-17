@@ -34,7 +34,11 @@ def Count(A,removenan=True):
     counta[i] = A.count(i)
   return counta
 
-#def split_(A):
+def split_(A):
+  for i in A:
+    topic_word = i.split(' [')[:1]
+    topic_word = topic_word.strip()
+  return topic_word  
   
   
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
@@ -48,11 +52,13 @@ if upload_file is not None:
   if ('Times' or 'ประทับเวลา') in list_question[0]:
     list_question.pop(0)
   for key in list_question:
-   column = upload_df[key].values.tolist()
-   len_column = len(column)
-   x = Count(column)
-   if '[' in key:
-     x = key.split('[')[0]
-     list_stackbar.append(key)
-  st.write(list_stackbar)  
+    column = upload_df[key].values.tolist()
+    len_column = len(column)
+    x = Count(column)
+    
+    if '[' in key:
+      x = key.split('[')[0]
+      list_stackbar.append(key)
+    x = split_(list_stackbar)
+  st.write(x)  
       
