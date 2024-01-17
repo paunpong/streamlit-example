@@ -46,9 +46,7 @@ def split_comma(A):
 def Split(A):
   for i in A:
     topic_word = i.split('[')[0]
-    set_topic = topic_word
-    #topic_word = topic_word.strip() 
-  return set_topic  
+  return topic  
   
   
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
