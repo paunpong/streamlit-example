@@ -56,6 +56,7 @@ if upload_file is not None:
     list_question.pop(0)
   for key in list_question:
     column = upload_df[key].values.tolist()
+    st.write(column)
     len_column = len(column)
     x = Count(column)
     if '[' in key:
@@ -68,7 +69,7 @@ if upload_file is not None:
     for n in list_stackbar:
       if i in n:
         col.append(n)
-    st.write(col.values())
+    Col = upload_df[col].values.tolist()
     #if num_check(Column) and set(Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
       #st.write('11')
       #for key in list_stackbar:
