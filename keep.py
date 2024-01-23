@@ -221,7 +221,8 @@ with st.sidebar:
 
 if menu == 'เริ่มต้นโปรแกรม':
  st.markdown('### :rainbow[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
- st.expander('คำแนะนำ',expanded=True)
+ with st.expander('### :red[คำแนะนำ]',expanded=True):
+  st.text('1.โหลดไฟล์ออกจากแบบฟอร์มทำได้ทำการสร้างแบบสอบถาม')
  upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
  upload_df = upload(upload_file)
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
