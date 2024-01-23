@@ -426,6 +426,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      if topic not in dict_stack_bar:
       dict_stack_bar[topic] = dict()
      dict_stack_bar[topic][''] = c
+    for i in dict_stack_bar:
      stacked_bar(dict_stack_bar[i],i) 
     
 
