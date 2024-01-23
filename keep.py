@@ -421,7 +421,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     for i in dict_num_stack:
       stacked_bar(dict_num_stack[i],i)
     for i in list_stack_bar:
-     a = change_num_to_text(i)
+     col = upload_df[i].values.tolist()
+     a = change_num_to_text(col)
      c = count_list(a)
      for k in c:
       c[k] = c[k]['percent']
