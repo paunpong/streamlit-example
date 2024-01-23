@@ -194,7 +194,7 @@ def bar_chart1(data,key,orther_number=1):
  st.pyplot()
 
 def bar_chart_new(data,key):
- labels = range(len(1,data[0])+1)
+ labels = range(1,len(,data[0])+1)
  values = data[1]
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
