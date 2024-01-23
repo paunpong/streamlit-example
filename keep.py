@@ -428,7 +428,6 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_stack_bar[i][''] = c
     for i in dict_stack_bar:
      stacked_bar(dict_stack_bar[i],i) 
-    st.write(dict_stack_bar)
 
 
 
