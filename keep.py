@@ -220,7 +220,8 @@ with st.sidebar:
  #st.markdown('## :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
 
 if menu == 'เริ่มต้นโปรแกรม':
- st.markdown('## :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
+ st.markdown('# :rainbow[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
+ st.expander('# :red[คำแนะนำ]',expanded=True)
  upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
  upload_df = upload(upload_file)
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
