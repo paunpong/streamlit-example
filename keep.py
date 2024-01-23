@@ -194,7 +194,7 @@ def bar_chart1(data,key,orther_number=1):
  st.pyplot()
 
 def bar_chart_new(data,key):
- labels = data[0]
+ labels = len(data[0])
  st.write(labels,'la')
  values = data[1]
  st.write(len(data[0]))
