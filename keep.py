@@ -220,6 +220,7 @@ with st.sidebar:
  #st.markdown('## :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
 
 if menu == 'เริ่มต้นโปรแกรม':
+ st.markdown('## :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
  upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
  upload_df = upload(upload_file)
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
@@ -287,6 +288,7 @@ if menu == 'เริ่มต้นโปรแกรม':
   list_comma_keys = list(list_bar_chart_comma.keys())
   list_str_keys = list(list_stack_str.keys())
   list_num_keys = list(list_stack_num.keys())
+  list_stack_keys = list(list_stack_bar.keys())
   
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
@@ -294,7 +296,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    endtext =""
    topic_long = st.radio('แสดงหัวข้อแบบย่อ', ['ใช่', 'ไม่ใช่'], horizontal=True)
    if topic_long =="ใช่":
-     x=10
+     x=13
      endtext = "ฯ"
    numberitem = 0
    
@@ -307,7 +309,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     if p == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_pie_chart[topic]
-   st.markdown("""---""")
+   if list_pie_keys != list():
+    st.markdown("""---""")
    for topic in list_box_keys:
     numberitem = numberitem+1
     strnumberitem = str(numberitem)
@@ -316,7 +319,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     if box == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_boxplot[topic]
-   st.markdown("""---""")
+   if list_box_keys != list():
+    st.markdown("""---""")
    for topic in list_comma_keys:
     comma = st.radio(topic,['แผนภูมิแท่ง'])
    for topic in list_bar_keys:
@@ -326,21 +330,13 @@ if menu == 'เริ่มต้นโปรแกรม':
      if 'orther_number' in list_bar_chart[topic]:
       del list_bar_chart[topic]
    for topic in list_str_keys:
-    str = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิแท่ง','แผนภูมิวงกลม'], horizontal=True)
-    if str == 'แผนภูมิแท่ง':
-     list_bar_chart[topic]={'removenan':True,'orther_number':1}
-     del list_stack_str[topic]
-    elif str == 'แผนภูมิวงกลม':
-     list_pie_chart[topic]={'removenan':True}
-     del list_stack_str[topic]
+    str = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_num_keys:
-    num = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิแท่ง','แผนภูมิวงกลม'], horizontal=True)
-    if num == 'แผนภูมิแท่ง':
-     list_bar_chart[topic]={'removenan':True,'orther_number':1}
-     del list_stack_num[topic]
-    elif num == 'แผนภูมิวงกลม':
-     list_pie_chart[topic]={'removenan':True}
-     del list_stack_num[topic]
+    num = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+   for topic in list_stack_keys:
+    stack = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    
+    
      
   with tab2:    
    st.markdown(':brown[ปรับแต่งแผนภูมิวงกลม]')
@@ -369,6 +365,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 if menu == 'เริ่มต้นโปรแกรม':
  dict_str_stack = dict()
  dict_num_stack = dict()
+ dict_stack_bar = dict()
  top_name = None
  if upload_file is not None:
   tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
@@ -421,6 +418,15 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_num_stack[topic_word][sub_word] = A_l
     for i in dict_num_stack:
       stacked_bar(dict_num_stack[i],i)
+    for i in list_stack_bar:
+     a = change_num_to_text(i)
+     c = count_list(a)
+     for k in c:
+      c[k] = c[k]['percent']
+     if topic not in dict_stack_bar:
+      dict_stack_bar[topic] = dict()
+     dict_stack_bar[topic] = c
+     stacked_bar(dict_stack_bar[i],i) 
     
 
 
