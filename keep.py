@@ -194,8 +194,8 @@ def bar_chart1(data,key,orther_number=1):
  st.pyplot()
 
 def bar_chart_new(data,key):
- rang = range(1,len(data[0]))
- labels = rang + 1
+ rang = range(1,len(data[0])+1)
+ labels = rang
  label = data[0]
  values = data[1]
  fig,ax = plt.subplots(figsize=(9,6))
