@@ -425,7 +425,7 @@ if menu == 'เริ่มต้นโปรแกรม':
       c[k] = c[k]['percent']
      if topic not in dict_stack_bar:
       dict_stack_bar[topic] = dict()
-     dict_stack_bar[topic] = c
+     dict_stack_bar[topic][''] = c
      stacked_bar(dict_stack_bar[i],i) 
     
 
