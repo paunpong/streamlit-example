@@ -194,12 +194,12 @@ def bar_chart1(data,key,orther_number=1):
  st.pyplot()
 
 def bar_chart_new(data,key):
- labels = range(1,len(data[0])+1)
+ labels = range(len(data[0])+1)
  values = data[1]
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.bar(labels, values)
- ax.legend(labels = f"{labels}: {data[0]}", loc="center left", bbox_to_anchor=(1, 0, 0.16, 1), prop=thai_font_prop)
+ ax.legend(labels = f"{labels}: {data[0]}",bbox_to_anchor=(1, 0, 0.16, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
