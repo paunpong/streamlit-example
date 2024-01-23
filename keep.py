@@ -279,8 +279,6 @@ if menu == 'เริ่มต้นโปรแกรม':
     for key in col:
      list_stack_str[key]={'removenan':True}
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
-st.write(list_bar_chart)
-st.write(list_stack_bar)
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if menu == 'เริ่มต้นโปรแกรม':
  if upload_file is not None:
@@ -425,12 +423,12 @@ if menu == 'เริ่มต้นโปรแกรม':
      c = count_list(a)
      for k in c:
       c[k] = c[k]['percent']
-     if topic not in dict_stack_bar:
-      dict_stack_bar[topic] = dict()
-     dict_stack_bar[topic][''] = c
+     if i not in dict_stack_bar:
+      dict_stack_bar[i] = dict()
+     dict_stack_bar[i][''] = c
     for i in dict_stack_bar:
      stacked_bar(dict_stack_bar[i],i) 
-    
+    st.write(dict_stack_bar)
 
 
 
