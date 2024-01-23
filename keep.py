@@ -279,6 +279,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     for key in col:
      list_stack_str[key]={'removenan':True}
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
+st.write(list_bar_chart)
+st.write(list_stack_bar)
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if menu == 'เริ่มต้นโปรแกรม':
  if upload_file is not None:
