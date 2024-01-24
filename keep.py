@@ -261,7 +261,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     list_stack_bar[key] = {'removenan':True}
     continue
 
-   if not num_check(column) and set(column).issubset({'มากที่สุด',มาก,ปานกลาง,น้อย,น้อยที่สุด,'ไม่ระบุ'}):
+   if set(column).issubset({'มากที่สุด',มาก,ปานกลาง,น้อย,น้อยที่สุด,'ไม่ระบุ'}):
     list_stack_bar[key] = {'removenan':True}
     continue
     
