@@ -431,7 +431,6 @@ if menu == 'เริ่มต้นโปรแกรม':
     for s in dict_str_stack:
      stacked_bar(dict_str_stack[s],s)
     for i in list_stack_num:
-     st.write(list_stack_num)
      mat = upload_df[i].values.tolist()
      mean_sd = stat(mat)
      a = change_num_to_text(i)
