@@ -29,6 +29,7 @@ list_bar_chart={}
 list_stack_str={}
 list_stack_num={}
 list_stack_bar={}
+list_str_stack = {}
 list_comment={}
 list_time=[]
 
@@ -262,7 +263,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     continue
 
    if not num_check(column) and set(column).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
-    list_stack_str[key]={'removenan':True}
+    list_str_stack[key]={'removenan':True}
     continue
     
    if check_comma(column):
@@ -392,6 +393,7 @@ if menu == 'เริ่มต้นโปรแกรม':
  dict_str_stack = dict()
  dict_num_stack = dict()
  dict_stack_bar = dict()
+ dict_stack_str = dict()
  top_name = None
  if upload_file is not None:
   tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
@@ -428,8 +430,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     for s in dict_str_stack:
      stacked_bar(dict_str_stack[s],s)
     for i in list_stack_num:
-     mat = upload_df[i].values.tolist()
-     mean_sd = stat(mat)
+     #mat = upload_df[i].values.tolist()
+     #mean_sd = stat(mat)
      a = change_num_to_text(i)
      topic_word, sub_word = i.split(' [')[:2]
      topic_word = topic_word.strip()
@@ -453,7 +455,16 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_stack_bar[i] = dict()
      dict_stack_bar[i][''] = c
     for i in dict_stack_bar:
-     stacked_bar(dict_stack_bar[i],i) 
+     stacked_bar(dict_stack_bar[i],i)
+    for i in list_str_stack:
+     A_l = count_list(upload_df[i].values.tolist())
+     for k in A_l:
+      A_l[k] = A_l[k]['percent']
+     if i not in dict_stack_str:
+      dict_stack_str[i] = dict()
+     dict_stack_str[i][sub_word] = A_l
+    for s in dict_stack_str:
+     stacked_bar(dict_stack_str[s],s)
 
 
 
