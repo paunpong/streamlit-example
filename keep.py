@@ -467,7 +467,7 @@ if menu == 'เริ่มต้นโปรแกรม':
       A_l[k] = A_l[k]['percent']
      if i not in dict_stack_str:
       dict_stack_str[i] = dict()
-     dict_stack_str[i][sub_word] = A_l
+     dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
      stacked_bar(dict_stack_str[s],s)
 
