@@ -30,6 +30,7 @@ list_stack_str={}
 list_stack_num={}
 list_stack_bar={}
 list_comment={}
+list_time=[]
 
 def upload(A):
  if A is not None:
@@ -241,7 +242,11 @@ if menu == 'เริ่มต้นโปรแกรม':
    column = upload_df[key].values.tolist()
    len_column = len(column)
    x = Count(column)
-   
+
+   if 'time' in list_question:
+    list_time.append(key)
+    continue
+    
    if check_count(x):
     list_comment[key] = {'removenan':True}
     continue
@@ -253,6 +258,10 @@ if menu == 'เริ่มต้นโปรแกรม':
     continue
  
    if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+    list_stack_bar[key] = {'removenan':True}
+    continue
+
+   if not num_check(column) and set(column).issubset({'มากที่สุด',มาก,ปานกลาง,น้อย,น้อยที่สุด,'ไม่ระบุ'}):
     list_stack_bar[key] = {'removenan':True}
     continue
     
@@ -327,19 +336,36 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_box_keys != list():
     st.markdown("""---""")
    for topic in list_comma_keys:
-    comma = st.radio(topic,['แผนภูมิแท่ง'])
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)
+    head_bulet = strnumberitem + topic[:x]+endtext
+    comma = st.radio(head_bulet,['แผนภูมิแท่ง'])
    for topic in list_bar_keys:
-    key = st.radio(topic, ['แผนภูมิแท่ง','แผนภูมิวงกลม'], horizontal=True)
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)
+    head_bulet = strnumberitem + topic[:x]+endtext
+    key = st.radio(head_bulet, ['แผนภูมิแท่ง','แผนภูมิวงกลม'], horizontal=True)
     if key == 'แผนภูมิวงกลม':
      list_pie_chart[topic]={'removenan':True}
      if 'orther_number' in list_bar_chart[topic]:
       del list_bar_chart[topic]
+   if list_bar_keys != list():
+    st.markdown("""---""")
    for topic in list_str_keys:
-    str = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)
+    head_bulet = strnumberitem + topic[:x]+endtext
+    str = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_num_keys:
-    num = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)
+    head_bulet = strnumberitem + topic[:x]+endtext
+    num = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_stack_keys:
-    stack = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)
+    head_bulet = strnumberitem + topic[:x]+endtext
+    stack = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     
     
      
