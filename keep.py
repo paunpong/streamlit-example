@@ -451,7 +451,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_num_stack[topic_word][sub_word] = A_l
     for i in dict_num_stack:
       stacked_bar(dict_num_stack[i],i)
-    for i in list_stack_bar:
+    for i in list_num_stack:
      a = change_num_to_text(i)
      c = count_list(a)
      for k in c:
