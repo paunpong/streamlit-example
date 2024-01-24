@@ -258,11 +258,11 @@ if menu == 'เริ่มต้นโปรแกรม':
     continue
  
    if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-    list_stack_bar[key] = {'removenan':True}
+    list_stack_num[key]={'removenan':True}
     continue
 
    if not num_check(column) and set(column).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
-    list_stack_bar[key] = {'removenan':True}
+    list_stack_str[key]={'removenan':True}
     continue
     
    if check_comma(column):
