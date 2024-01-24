@@ -316,7 +316,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    
    for topic in list_pie_keys:
     numberitem = numberitem+1
-    strnumberitem = str(numberitem)+'.'
+    strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     st.text("")
@@ -327,7 +327,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown("""---""")
    for topic in list_box_keys:
     numberitem = numberitem+1
-    strnumberitem = str(numberitem)
+    strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
     box = st.radio(head_bulet,['แผนภาพกล่อง','แผนภูมิแท่ง'], horizontal=True)
     if box == 'แผนภูมิแท่ง':
@@ -337,12 +337,12 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown("""---""")
    for topic in list_comma_keys:
     numberitem = numberitem+1
-    strnumberitem = str(numberitem)
+    strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
     comma = st.radio(head_bulet,['แผนภูมิแท่ง'])
    for topic in list_bar_keys:
     numberitem = numberitem+1
-    strnumberitem = str(numberitem)
+    strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
     key = st.radio(head_bulet, ['แผนภูมิแท่ง','แผนภูมิวงกลม'], horizontal=True)
     if key == 'แผนภูมิวงกลม':
@@ -352,15 +352,16 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_bar_keys != list():
     st.markdown("""---""")
    for topic in list_str_keys:
+    head_bulet = str(numberitem+1)+')'+topic[:x]+endtext
     str = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_num_keys:
     numberitem = numberitem+1
-    strnumberitem = str(numberitem)
+    strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
     num = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_stack_keys:
     numberitem = numberitem+1
-    strnumberitem = str(numberitem)
+    strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
     stack = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     
