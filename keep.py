@@ -28,8 +28,9 @@ list_bar_chart_comma={}
 list_bar_chart={}
 list_stack_str={}
 list_stack_num={}
-list_stack_bar={}
+#list_stack_bar={}
 list_str_stack = {}
+list_num_stack
 list_comment={}
 list_time=[]
 
@@ -259,7 +260,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     continue
  
    if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-    list_stack_num[key]={'removenan':True}
+    list_num_stack[key]={'removenan':True}
     continue
 
    if not num_check(column) and set(column).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
