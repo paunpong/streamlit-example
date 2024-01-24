@@ -356,7 +356,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown("""---""")
    for topic in list_str_keys:
     head_bulet = topic[:x]+endtext
-    str = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    str = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_num_keys:
     head_bulet = topic[:x]+endtext
     num = st.radio(topic,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
