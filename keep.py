@@ -352,7 +352,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_bar_keys != list():
     st.markdown("""---""")
    for topic in list_str_keys:
-    str = st.radio((numberitem+1)+ topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    str = st.radio(topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_num_keys:
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
