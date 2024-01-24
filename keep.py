@@ -353,13 +353,14 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown("""---""")
    for topic in list_str_keys:
     numberitem = numberitem+1
-    str = st.radio(numberitem+topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    head_bulet = strnumberitem + topic[:x]+endtext
+    str = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_num_keys:
     numberitem = numberitem+1
-    num = st.radio(numberitem+topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    num = st.radio(topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_stack_keys:
     numberitem = numberitem+1
-    stack = st.radio(numberitem+topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    stack = st.radio(topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     
     
      
