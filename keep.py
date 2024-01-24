@@ -304,7 +304,8 @@ if menu == 'เริ่มต้นโปรแกรม':
   list_comma_keys = list(list_bar_chart_comma.keys())
   list_str_keys = list(list_stack_str.keys())
   list_num_keys = list(list_stack_num.keys())
-  list_stack_keys = list(list_stack_bar.keys())
+  list_stackn_keys = list(list_num_stack.keys())
+  list_stacks_keys = list(list_str_stack.keys())
   
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
@@ -360,9 +361,12 @@ if menu == 'เริ่มต้นโปรแกรม':
    for topic in list_num_keys:
     numberitem = numberitem+1
     num = st.radio(topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
-   for topic in list_stack_keys:
+   for topic in list_stackn_keys:
     numberitem = numberitem+1
-    stack = st.radio(topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    stack_num = st.radio(topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+   for topic in list_stacks_keys:
+    numberitem = numberitem+1
+    stack_str = st.radio(topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     
     
      
