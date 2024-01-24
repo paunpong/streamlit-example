@@ -30,9 +30,9 @@ list_stack_str={}
 list_stack_num={}
 #list_stack_bar={}
 list_str_stack = {}
-list_num_stack
+list_num_stack = {}
 list_comment={}
-list_time=[]
+list_time={}
 
 def upload(A):
  if A is not None:
@@ -245,8 +245,8 @@ if menu == 'เริ่มต้นโปรแกรม':
    len_column = len(column)
    x = Count(column)
 
-   if 'time' in list_question:
-    list_time.append(key)
+   if 'time' in key:
+    list_time[key] = True
     continue
     
    if check_count(x):
