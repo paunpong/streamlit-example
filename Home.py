@@ -22,6 +22,11 @@ def upload(A):
    #st.dataframe(df)  
   return df
 
+def Split(A):
+  for i in A:
+    topic = i.split('[')[0]
+  return topic
+
 def Split_sub(A):
   for i in A:
     sub = i.split('[')[1]
@@ -77,12 +82,7 @@ def split_comma(A):
  res = []
  for i in A:
   res = res + i.split(", ")
- return res
-
-def Split(A):
-  for i in A:
-    topic = i.split('[')[0]
-  return topic  
+ return res  
 
 def change_num_to_text(A):
     x = []
@@ -142,13 +142,15 @@ if upload_file is not None:
       sub_word = sub_word.strip().replace(']', '')
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
-      head_bulet = strnumberitem + sub_word
+      head_bulet = strnumberitem + sub_word[:x]
       str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
     for topic in list_num_key:
+      sub_word = topic.split(' [')[1]
+      sub_word = sub_word.strip().replace(']', '')
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
-      head_bulet = strnumberitem + topic
+      head_bulet = strnumberitem + sub_word[:x]
       num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
   
@@ -161,8 +163,9 @@ for i in list_stack_num:
     mat = upload_df[i].values.tolist()
     mean_sd = stat(mat)
     a = change_num_to_text(i)
-    topic_word, sub_word = i.split(' [')[:2]
+    topic_word = Split(i)
     topic_word = topic_word.strip()
+    sub_word = Split_sub(i)
     sub_word = sub_word.strip().replace(']', '')
     if topic_word != top_name:
       top_name = topic_word
