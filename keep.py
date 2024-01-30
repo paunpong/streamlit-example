@@ -550,7 +550,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 #--------------------------------------------------- comma ------------------------------------------------------------#
 #table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 #table_data2 = []
-table_barchart_comma = dict()
+#table_barchart_comma = dict()
 for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
  all_number = len(A)
