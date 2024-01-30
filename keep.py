@@ -565,17 +565,17 @@ if menu == 'เริ่มต้นโปรแกรม':
 #table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 #table_data2 = []
 #table_barchart_comma = dict()
-for a in list_bar_chart_comma:
- A = upload_df[a].values.tolist()
- all_number = len(A)
- list_free = split_comma(A)
- set_list = list(set(list_free))
- v = Count(list_free,list_bar_chart_comma[a]['removenan'])
- table_data2.append([a, all_number, 100]) 
- for k in v:
-  count = v[k]
-  percent = 100*v[k]/all_number
-  table_data2.append([k,count,percent])
+#for a in list_bar_chart_comma:
+ #A = upload_df[a].values.tolist()
+ #all_number = len(A)
+ #list_free = split_comma(A)
+ #set_list = list(set(list_free))
+ #v = Count(list_free,list_bar_chart_comma[a]['removenan'])
+ #table_data2.append([a, all_number, 100]) 
+ #for k in v:
+  #count = v[k]
+  #percent = 100*v[k]/all_number
+  #table_data2.append([k,count,percent])
 #table_barchart_comma[a]=table_data2[1:]
 #if upload_file is not None:
  #st.table([table_head2,*table_data2])
