@@ -536,8 +536,8 @@ if menu == 'เริ่มต้นโปรแกรม':
 #for p in list_pie_chart:
  #pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
 #--------------------------------------------------boxplot-------------------------------------------------------------#
-table_head1 = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
-table_data1 = []
+#table_head1 = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
+#table_data1 = []
 #for b in list_boxplot:
  #mean_sd = stat(upload_df[b].values.tolist())
  #mean = mean_sd['ค่าเฉลี่ย']
@@ -548,8 +548,8 @@ table_data1 = []
 #for b in list_boxplot:
  #boxplot(upload_df[b].values.tolist(),b)
 #--------------------------------------------------- comma ------------------------------------------------------------#
-table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
-table_data2 = []
+#table_head2 = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+#table_data2 = []
 table_barchart_comma = dict()
 for a in list_bar_chart_comma:
  A = upload_df[a].values.tolist()
@@ -594,8 +594,8 @@ for a in list_bar_chart_comma:
  #stacked_bar(dict_str_stack[s],s)
 #--------------------------------------------------stack bar num------------------------------------------------#
 top_name = ''
-table_head5 = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
-table_data5 = []
+#table_head5 = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
+#table_data5 = []
 for i in list_stack_num:
  mat = upload_df[i].values.tolist()
  mean_sd = stat(mat)
