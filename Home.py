@@ -23,10 +23,8 @@ def upload(A):
   return df
 
 def Split_sub(A):
-  st.write(A,'------')
   for i in A:
     sub = i.split('[')[1]
-  st.write(sub)
   return sub
 
 def count_list(A,removenan=True):
@@ -140,10 +138,11 @@ if upload_file is not None:
     numberitem = 0
     
     for topic in list_str_key:
-      Split_sub(list_str_key)
+      sub_word = topic.split(' [')[1]
+      sub_word = sub_word.strip().replace(']', '')
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
-      head_bulet = strnumberitem
+      head_bulet = strnumberitem + sub_word
       str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
     for topic in list_num_key:
