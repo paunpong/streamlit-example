@@ -77,10 +77,6 @@ def check_comma(A):
      return True
  return False
 
-def delete_nan(A):
- del_nan = [n for n in A if n != 'ไม่ระบุ']
- return del_nan
-
 def split_comma(A):
  res = []
  for i in A:
@@ -96,7 +92,7 @@ def Count(A,removenan=True):
   counta[i] = A.count(i)
  return counta
 
-def count_list(A,removenan=False):
+def count_list(A,removenan=True):
  if removenan and 'ไม่ระบุ'in A:
   A = [n for n in A if n != 'ไม่ระบุ']
  list_A = list(set(A))
@@ -398,9 +394,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     for topic_pie in list_pie_chart:  
      Pie = st.radio(topic_pie, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
      if Pie == 'ลบไม่ระบุ':
-      list_pie_chart[topic_pie] = {'removenan': True}
+      list_pie_chart[topic_pie] = True
      else:
-      list_pie_chart[topic_pie] = {'removenan': False}
+      list_pie_chart[topic_pie] = False
      #list_pie_chart[topic] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False,}
      continue
    if Type == 'กล่อง':
@@ -437,6 +433,7 @@ if menu == 'เริ่มต้นโปรแกรม':
   with tab1:
    with st.expander('แผนภูมิวงกลม',expanded=True):
     for p in list_pie_chart:
+     count_list(upload_df[p].values.tolist(),True)
      pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
    with st.expander('แผนภาพกล่อง'):
     for b in list_boxplot:
