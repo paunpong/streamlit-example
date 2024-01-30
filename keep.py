@@ -518,7 +518,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.table([head_amount,*data_box])
     st.markdown("""---""") 
    for comma in list_bar_chart_comma:
-    topic = upload_df[a].values.tolist()
+    topic = upload_df[comma].values.tolist()
     all_number = len(topic)
     list_free = split_comma(topic)
     set_list = list(set(list_free))
