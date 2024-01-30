@@ -23,8 +23,9 @@ def upload(A):
   return df
 
 def Split_sub(A):
+  st.write(A)
   for i in A:
-    sub = i.split('[')[1]
+    sub = i.split('[')[1:2]
   return sub
 
 def count_list(A,removenan=True):
