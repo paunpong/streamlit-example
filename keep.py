@@ -313,7 +313,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    endtext =""
    topic_long = st.radio('แสดงหัวข้อแบบย่อ', ['ใช่', 'ไม่ใช่'], horizontal=True)
    if topic_long =="ใช่":
-     x=35
+     x=32
      endtext = "ฯ"
    numberitem = 0
    
