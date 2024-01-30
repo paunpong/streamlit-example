@@ -96,7 +96,7 @@ def Count(A,removenan=True):
   counta[i] = A.count(i)
  return counta
 
-def count_list(A,removenan=True):
+def count_list(A,removenan=False):
  if removenan and 'ไม่ระบุ'in A:
   A = [n for n in A if n != 'ไม่ระบุ']
  list_A = list(set(A))
@@ -395,12 +395,12 @@ if menu == 'เริ่มต้นโปรแกรม':
    Type = st.radio('ประเภท',['วงกลม','กล่อง','แท่ง','แท่งต่อกัน'],horizontal=True)
    if Type == 'วงกลม':
     st.markdown('ปรับแต่งแผนภูมิวงกลม')
-    for topic in list_pie_chart:  
-     Pie = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+    for topic_pie in list_pie_chart:  
+     Pie = st.radio(topic_pie, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
      if Pie == 'ลบไม่ระบุ':
-      list_pie_chart[topic] = {'removenan': True}
+      list_pie_chart[topic_pie] = {'removenan': True}
      else:
-      list_pie_chart[topic] = {'removenan': False}
+      list_pie_chart[topic_pie] = {'removenan': False}
      #list_pie_chart[topic] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False,}
      continue
    if Type == 'กล่อง':
