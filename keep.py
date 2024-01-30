@@ -390,13 +390,12 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.text("")
      
   with tab2:
-   Numberitem = 0
    Type = st.radio('ประเภท',['วงกลม','กล่อง','แท่ง','แท่งต่อกัน'],horizontal=True)
    st.markdown("""---""")
    if Type == 'วงกลม':
     for topic_pie in list_pie_chart:
-     Numberitem = Numberitem+1
-     strnumberitem = str(Numberitem)+')'
+     numberitem = numberitem+1
+     strnumberitem = str(numberitem)+')'
      head_bulet = strnumberitem + topic_pie[:x]+endtext
      Pie = st.radio(head_bulet, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
      list_pie_chart[topic_pie] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False,}
