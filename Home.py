@@ -60,9 +60,10 @@ def num_check(A):
   return True
 
 def Split_sub(A):
- for i in A:
-  sub = i.split(']')[0]
- return sub
+  for i in A:
+    sub = i.split(']')[0]
+    st.write(sub)
+  return sub
 
 def Count(A,removenan=True):
   if removenan and 'ไม่ระบุ' in A:
