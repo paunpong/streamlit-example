@@ -561,9 +561,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
      data_stack_num.append([sub_word,mean,s_d,level])
-    if list_num_keys != list():
-     st.table([head_re,*data_stack_num])
-     st.markdown("""---""")
+   if list_num_keys != list():
+    st.table([head_re,*data_stack_num])
+    st.markdown("""---""")
 
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
 #table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
