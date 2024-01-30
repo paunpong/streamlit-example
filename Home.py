@@ -140,7 +140,7 @@ if upload_file is not None:
     
     for topic in list_str_key:
       s = Split_sub(topic)
-      st.write(s)
+      st.write(s,'12')
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
       head_bulet = strnumberitem
