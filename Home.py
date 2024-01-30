@@ -134,7 +134,8 @@ if upload_file is not None:
     
     for topic in list_str_key:
       head_bulet = topic[:x]+endtext
-      str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+      str_head = str(head_bulet)
+      str_val = st.radio(str_head,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
     for topic in list_num_key:
       head_bulet = topic[:x]+endtext
