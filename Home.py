@@ -24,7 +24,7 @@ def upload(A):
 
 def Split_sub(A):
   for i in A:
-    sub = i.split('[')[1:2]
+    sub = i.split('[')[1]
   return sub
 
 def count_list(A,removenan=True):
@@ -138,7 +138,8 @@ if upload_file is not None:
     numberitem = 0
     
     for topic in list_str_key:
-      Split_sub(topic)
+      s = Split_sub(topic)
+      st.write(s)
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
       head_bulet = strnumberitem
