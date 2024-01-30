@@ -201,8 +201,8 @@ def bar_chart_new(data,key):
  label = data[0]
  values = data[1]
  st.write(values)
- max = max(values.values())
- st.write(max,'max')
+ max_val = max(values)
+ st.write(max_val,'max')
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.set_xticks(labels)
