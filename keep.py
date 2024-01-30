@@ -390,31 +390,36 @@ if menu == 'เริ่มต้นโปรแกรม':
     head_bulet = strnumberitem + topic[:x]+endtext
     stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
-    
-    
      
-  with tab2:    
-   st.markdown(':brown[ปรับแต่งแผนภูมิวงกลม]')
-   for topic in list_pie_chart:  
-    pie = st.radio(topic, ["ลบไม่ระบุ", "เพิ่มไม่ระบุ"], horizontal=True )
-    list_pie_chart[topic] = {'removenan': True if pie == 'ลบไม่ระบุ' else False}
-   st.markdown(':brown[ปรับแต่งงแผนภาพกล่อง]')
-   for topic in list_boxplot:
-    box = st.radio(topic,['เพิ่มค่าเฉลี่ย','ลบค่าเฉลี่ย'],horizontal=True)
-    list_boxplot[topic]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}   
+  with tab2:
+   Type = st.radio('ประเภท',['วงกลม','กล่อง','แท่ง','แท่งต่อกัน'])
+   if Type == 'วงกลม'
+    st.markdown('ปรับแต่งแผนภูมิวงกลม')
+    for topic in list_pie_chart:  
+     pie = st.radio(topic, ["ลบไม่ระบุ", "เพิ่มไม่ระบุ"], horizontal=True )
+     list_pie_chart[topic] = {'removenan': True if pie == 'ลบไม่ระบุ' else False}
+     continue
+   if Type == 'กล่อง':
+    st.markdown('ปรับแต่งงแผนภาพกล่อง')
+    for topic in list_boxplot:
+     box = st.radio(topic,['เพิ่มค่าเฉลี่ย','ลบค่าเฉลี่ย'],horizontal=True)
+     list_boxplot[topic]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}
+     continue
+   if Type == 'แท่ง':
    st.markdown(':brown[ปรับแต่งแผนภูมิแท่ง]')
-   for topic in list_bar_chart_comma:
-    A = upload_df[topic].values.tolist()
-    a = split_comma(A)
-    b = Count(a)
-    bar = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-    y = st.slider(topic, 1, max(b.values()), 1, 1) 
-    list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
-   for topic in list_bar_chart:
-    c = Count(upload_df[topic].values.tolist())
-    bar = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-    z = st.slider(topic, 1, max(c.values()), 1, 1) 
-    list_bar_chart[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': z}
+    for topic in list_bar_chart_comma:
+     A = upload_df[topic].values.tolist()
+     a = split_comma(A)
+     b = Count(a)
+     bar = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+     y = st.slider(topic, 1, max(b.values()), 1, 1) 
+     list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
+    for topic in list_bar_chart:
+     c = Count(upload_df[topic].values.tolist())
+     bar = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+     z = st.slider(topic, 1, max(c.values()), 1, 1) 
+     list_bar_chart[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': z}
+     continue
   
 #-----------------------------------------------tab ภาพแผนภูมิ -------------------------------------------------------#
 if menu == 'เริ่มต้นโปรแกรม':
