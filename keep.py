@@ -396,8 +396,12 @@ if menu == 'เริ่มต้นโปรแกรม':
    if Type == 'วงกลม':
     st.markdown('ปรับแต่งแผนภูมิวงกลม')
     for topic in list_pie_chart:  
-     pie = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     list_pie_chart[topic] = {'removenan': True if pie == 'ลบไม่ระบุ' else False,}
+     Pie = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+     if Pie == 'ลบไม่ระบุ':
+      list_pie_chart[topic] = {'removenan': True}
+     else:
+      list_pie_chart[topic] = {'removenan': False}
+     #list_pie_chart[topic] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False,}
      continue
    if Type == 'กล่อง':
     st.markdown('ปรับแต่งงแผนภาพกล่อง')
@@ -498,6 +502,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
      stacked_bar(dict_stack_str[s],s)
+     
   with tab2:
    head_quality = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
    head_amount = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
