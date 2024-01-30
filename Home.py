@@ -22,6 +22,12 @@ def upload(A):
    #st.dataframe(df)  
   return df
 
+def Split_sub(A):
+  for i in A:
+    sub = i.split(']'[0])
+  st.write(sub)
+  return sub
+
 def count_list(A,removenan=True):
  if removenan and 'ไม่ระบุ'in A:
   A = [n for n in A if n != 'ไม่ระบุ']
