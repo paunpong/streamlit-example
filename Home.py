@@ -61,7 +61,7 @@ def num_check(A):
 
 def Split_sub(A):
  for i in A:
-  sub = i.split('['[1])
+  sub = i.split('[')[1]
  return sub
 
 def Count(A,removenan=True):
