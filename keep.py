@@ -390,33 +390,43 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.text("")
      
   with tab2:
+   Number = 0
    Type = st.radio('ประเภท',['วงกลม','กล่อง','แท่ง','แท่งต่อกัน'],horizontal=True)
    st.markdown("""---""")
    if Type == 'วงกลม':
     for topic_pie in list_pie_chart:
-     numberitem = numberitem+1
-     strnumberitem = str(numberitem)+')'
+     Number = Number+1
+     strnumberitem = str(Number)+')'
      head_bulet = strnumberitem + topic_pie[:x]+endtext
      Pie = st.radio(head_bulet, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
      list_pie_chart[topic_pie] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False,}
      continue
    if Type == 'กล่อง':
-    for topic in list_boxplot:
-     box = st.radio(topic,['เพิ่มค่าเฉลี่ย','ลบค่าเฉลี่ย'],horizontal=True)
-     list_boxplot[topic]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}
+    for topic_box in list_boxplot:
+     Number = Number+1
+     strnumberitem = str(Number)+')'
+     head_bulet = strnumberitem + topic_box[:x]+endtext
+     box = st.radio(head_bulet,['เพิ่มค่าเฉลี่ย','ลบค่าเฉลี่ย'],horizontal=True)
+     list_boxplot[topic_box]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}
      continue
    if Type == 'แท่ง':
-    for topic in list_bar_chart_comma:
-     A = upload_df[topic].values.tolist()
+    for topic_comma in list_bar_chart_comma:
+     Number = Number+1
+     strnumberitem = str(Number)+')'
+     head_bulet = strnumberitem + topic_comma[:x]+endtext
+     A = upload_df[topic_comma].values.tolist()
      a = split_comma(A)
      b = Count(a)
-     bar = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     y = st.slider(topic, 1, max(b.values()), 1, 1) 
+     bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+     y = st.slider('', 1, max(b.values()), 1, 1) 
      list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
-    for topic in list_bar_chart:
-     c = Count(upload_df[topic].values.tolist())
-     bar = st.radio(topic, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     z = st.slider(topic, 1, max(c.values()), 1, 1) 
+    for topic_bar in list_bar_chart:
+     Number = Number+1
+     strnumberitem = str(Number)+')'
+     head_bulet = strnumberitem + topic_bar[:x]+endtext
+     c = Count(upload_df[topic_bar].values.tolist())
+     bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+     z = st.slider('', 1, max(c.values()), 1, 1) 
      list_bar_chart[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': z}
      continue
   
