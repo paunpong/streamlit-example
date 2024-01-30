@@ -203,7 +203,7 @@ def bar_chart_new(data,key):
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.set_xticks(labels)
- ax.set_yticks([max(values)])
+ ax.set_yticks([max(values)+1])
  ax.bar(labels, values)
  ax.legend(labels =[f'{labels[i]}:{label[i]}' for i in range(len(label))],bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
