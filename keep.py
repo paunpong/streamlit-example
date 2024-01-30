@@ -58,6 +58,12 @@ def Split(A):
   topic = i.split('[')[0]
  return topic
 
+def Split_sub(A):
+ for i in A:
+  sub = i.split(']'[0])
+ st.write(sub)
+ return sub
+
 def num_check(A):
  for i in set(A):
   if type(i) is str and i != 'ไม่ระบุ':
