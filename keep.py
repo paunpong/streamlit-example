@@ -501,9 +501,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
     data_pie.append([p, sum([values[key]['count'] for key in values]), 100])
     for key in values:
-     count = values[k]['count']
-     percent = values[k]['percent']
-     data_pie.append([k, count, percent])
+     count = values[key]['count']
+     percent = values[key]['percent']
+     data_pie.append([key, count, percent])
     if upload_file is not None:
      st.table([head_quality,*table_data])
 
