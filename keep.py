@@ -498,12 +498,12 @@ if menu == 'เริ่มต้นโปรแกรม':
    head_amount = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
    data_pie = []
    for pie in list_pie_chart:
-    values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
-    data_pie.append([p, sum([values[key]['count'] for key in values]), 100])
-    for key in values:
-     count = values[key]['count']
-     percent = values[key]['percent']
-     data_pie.append([key, count, percent])
+    values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie])
+    data_pie.append([pie, sum([values[key]['count'] for key in values]), 100])
+    for ans in values:
+     count = values[ans]['count']
+     percent = values[ans]['percent']
+     data_pie.append([ans, count, percent])
     if upload_file is not None:
      st.table([head_quality,*data_pie])
 
