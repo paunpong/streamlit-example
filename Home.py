@@ -133,7 +133,7 @@ if upload_file is not None:
     endtext =""
     topic_long = st.radio('แสดงหัวข้อแบบย่อ', ['ใช่', 'ไม่ใช่'], horizontal=True)
     if topic_long =="ใช่":
-      x=32
+      x=35
       endtext = "ฯ"
     numberitem = 0
     
@@ -142,7 +142,7 @@ if upload_file is not None:
       sub_word = sub_word.strip().replace(']', '')
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
-      head_bulet = strnumberitem + sub_word[:x]
+      head_bulet = strnumberitem + sub_word[:x] + endtext
       str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
     for topic in list_num_key:
@@ -150,7 +150,7 @@ if upload_file is not None:
       sub_word = sub_word.strip().replace(']', '')
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
-      head_bulet = strnumberitem + sub_word[:x]
+      head_bulet = strnumberitem + sub_word[:x] + endtext
       num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
   
@@ -164,8 +164,8 @@ for i in list_stack_num:
     mean_sd = stat(mat)
     a = change_num_to_text(i)
     topic_word = Split(i)
-    topic_word = topic_word.strip()
     sub_word = Split_sub(i)
+    topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
     if topic_word != top_name:
       top_name = topic_word
