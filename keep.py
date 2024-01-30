@@ -313,7 +313,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    endtext =""
    topic_long = st.radio('แสดงหัวข้อแบบย่อ', ['ใช่', 'ไม่ใช่'], horizontal=True)
    if topic_long =="ใช่":
-     x=13
+     x=35
      endtext = "ฯ"
    numberitem = 0
    
@@ -362,7 +362,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     num = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_stackn_keys:
     head_bulet = topic[:x]+endtext
-    stack_num = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    stack_num = st.radio(topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
    for topic in list_stacks_keys:
     head_bulet = topic[:x]+endtext
     stack_str = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
