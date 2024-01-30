@@ -504,7 +504,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      count = values[ans]['count']
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent])
-   if list_box_keys != list():
+   if list_pie_keys != list():
     st.table([head_quality,*data_pie])
     st.markdown("""---""")
    for box in list_boxplot:
