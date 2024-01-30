@@ -389,6 +389,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      
   with tab2:
    Type = st.radio('ประเภท',['วงกลม','กล่อง','แท่ง','แท่งต่อกัน'],horizontal=True)
+   st.markdown("""---""")
    if Type == 'วงกลม':
     for topic_pie in list_pie_chart:  
      Pie = st.radio(topic_pie, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
