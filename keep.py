@@ -392,7 +392,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.text("")
      
   with tab2:
-   Type = st.radio('ประเภท',['วงกลม','กล่อง','แท่ง','แท่งต่อกัน'])
+   Type = st.radio('ประเภท',['วงกลม','กล่อง','แท่ง','แท่งต่อกัน'],horizontal=True)
    if Type == 'วงกลม':
     st.markdown('ปรับแต่งแผนภูมิวงกลม')
     for topic in list_pie_chart:  
