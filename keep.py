@@ -410,11 +410,11 @@ if menu == 'เริ่มต้นโปรแกรม':
      list_boxplot[topic_box]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}
      continue
    if Type == 'แท่ง':
-    for topic_comma in list_bar_chart_comma:
+    for topic in list_bar_chart_comma:
      Number = Number+1
      strnumberitem = str(Number)+')'
-     head_bulet = strnumberitem + topic_comma[:x]+endtext
-     A = upload_df[topic_comma].values.tolist()
+     head_bulet = strnumberitem + topic[:x]+endtext
+     A = upload_df[topic].values.tolist()
      a = split_comma(A)
      b = Count(a)
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
