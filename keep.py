@@ -424,7 +424,7 @@ if menu == 'เริ่มต้นโปรแกรม':
  dict_stack_str = dict()
  top_name = None
  if upload_file is not None:
-  tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลสรุปแบบตาราง'])
+  tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลแบบตาราง'])
   with tab1:
    with st.expander('แผนภูมิวงกลม',expanded=True):
     for p in list_pie_chart:
@@ -493,6 +493,19 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
      stacked_bar(dict_stack_str[s],s)
+  with tab2:
+   head_quality = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+   head_amount = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
+   data_pie = []
+   for pie in list_pie_chart:
+    values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
+    data_pie.append([p, sum([values[key]['count'] for key in values]), 100])
+    for key in values:
+     count = values[k]['count']
+     percent = values[k]['percent']
+     data_pie.append([k, count, percent])
+    if upload_file is not None:
+     st.table([head_quality,*table_data])
 
 
 
