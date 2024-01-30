@@ -504,8 +504,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      count = values[ans]['count']
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent])
-    if upload_file is not None:
-     st.table([head_quality,*data_pie])
+   if upload_file is not None:
+    st.table([head_quality,*data_pie])
 
 
 
