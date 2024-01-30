@@ -496,6 +496,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    head_quality = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
    head_amount = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
    data_pie = []
+   data_box = []
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     data_pie.append([pie, sum([values[key]['count'] for key in values]), 100])
@@ -506,20 +507,28 @@ if menu == 'เริ่มต้นโปรแกรม':
    if upload_file is not None:
     st.table([head_quality,*data_pie])
     st.markdown("""---""")
-
+   for box in list_boxplot:
+    mean_sd = stat(upload_df[box].values.tolist())
+    mean = mean_sd['ค่าเฉลี่ย']
+    std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+    data_box.append([box,mean,std])
+   if upload_file is not None:
+    st.table([head_amount,*data_box])
+    st.markdown("""---""") 
+    
 
 
 
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
 table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
 table_data = []
-for p in list_pie_chart:
- values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
- table_data.append([p, sum([values[key]['count'] for key in values]), 100])
- for k in values:
-  count = values[k]['count']
-  percent = values[k]['percent']
-  table_data.append([k, count, percent])
+#for p in list_pie_chart:
+ #values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
+ #table_data.append([p, sum([values[key]['count'] for key in values]), 100])
+ #for k in values:
+  #count = values[k]['count']
+  #percent = values[k]['percent']
+  #table_data.append([k, count, percent])
 #if upload_file is not None:
  #st.table([table_head,*table_data]) 
 #for p in list_pie_chart:
@@ -527,11 +536,11 @@ for p in list_pie_chart:
 #--------------------------------------------------boxplot-------------------------------------------------------------#
 table_head1 = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
 table_data1 = []
-for b in list_boxplot:
- mean_sd = stat(upload_df[b].values.tolist())
- mean = mean_sd['ค่าเฉลี่ย']
- std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
- table_data1.append([b,mean,std])
+#for b in list_boxplot:
+ #mean_sd = stat(upload_df[b].values.tolist())
+ #mean = mean_sd['ค่าเฉลี่ย']
+ #std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+ #table_data1.append([b,mean,std])
 #if upload_file is not None:
  #st.table([table_head1,*table_data1]) 
 #for b in list_boxplot:
