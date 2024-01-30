@@ -201,7 +201,7 @@ def bar_chart_new(data,key):
  label = data[0]
  values = data[1]
  st.write(values)
- max = max(values)
+ max = max(values.tolist())
  st.write(max,'max')
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
