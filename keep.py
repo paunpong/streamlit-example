@@ -433,7 +433,7 @@ if menu == 'เริ่มต้นโปรแกรม':
   with tab1:
    with st.expander('แผนภูมิวงกลม',expanded=True):
     for p in list_pie_chart:
-     count_list(upload_df[p].values.tolist(),True)
+     st.write(count_list(upload_df[p].values.tolist(),True))
      pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
    with st.expander('แผนภาพกล่อง'):
     for b in list_boxplot:
