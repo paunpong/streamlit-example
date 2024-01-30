@@ -393,11 +393,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown('ปรับแต่งแผนภูมิวงกลม')
     for topic_pie in list_pie_chart:  
      Pie = st.radio(topic_pie, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
-     if Pie == 'ลบไม่ระบุ':
-      list_pie_chart[topic_pie] = True
-     else:
-      list_pie_chart[topic_pie] = False
-     #list_pie_chart[topic] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False,}
+     list_pie_chart[topic_pie] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False,}
      continue
    if Type == 'กล่อง':
     st.markdown('ปรับแต่งงแผนภาพกล่อง')
@@ -433,8 +429,8 @@ if menu == 'เริ่มต้นโปรแกรม':
   with tab1:
    with st.expander('แผนภูมิวงกลม',expanded=True):
     for p in list_pie_chart:
-     st.write(count_list(upload_df[p].values.tolist(),True))
-     pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]),p)
+     st.write(list_pie_chart[p]['removenan'])
+     pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
    with st.expander('แผนภาพกล่อง'):
     for b in list_boxplot:
      boxplot(upload_df[b].values.tolist(),b)
@@ -506,7 +502,6 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_pie = []
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie])
-    st.write(values)
     data_pie.append([pie, sum([values[key]['count'] for key in values]), 100])
     for ans in values:
      count = values[ans]['count']
