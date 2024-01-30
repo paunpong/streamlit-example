@@ -64,11 +64,6 @@ def num_check(A):
      continue
   return True
 
-def Split_sub(A):
-  for i in A:
-    sub = i.split(']')[0]
-  return sub
-
 def Count(A,removenan=True):
   if removenan and 'ไม่ระบุ' in A:
     A = [n for n in A if n != 'ไม่ระบุ']
@@ -143,10 +138,10 @@ if upload_file is not None:
     numberitem = 0
     
     for topic in list_str_key:
-      
+      Split_sub(topic)
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
-      head_bulet = strnumberitem + Split_sub(list_str_key)
+      head_bulet = strnumberitem
       str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
     for topic in list_num_key:
