@@ -494,11 +494,14 @@ if menu == 'เริ่มต้นโปรแกรม':
      stacked_bar(dict_stack_str[s],s)
      
   with tab2:
+   top_name = ''
    head_quality = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
    head_amount = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
+   head_re = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
    data_pie = []
    data_box = []
    data_comma = []
+   data_stack_num = []
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     data_pie.append([pie, sum([values[key]['count'] for key in values]), 100])
@@ -509,6 +512,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_pie_keys != list():
     st.table([head_quality,*data_pie])
     st.markdown("""---""")
+    
    for box in list_boxplot:
     mean_sd = stat(upload_df[box].values.tolist())
     mean = mean_sd['ค่าเฉลี่ย']
@@ -517,6 +521,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_box_keys != list():
     st.table([head_amount,*data_box])
     st.markdown("""---""") 
+    
    for comma in list_bar_chart_comma:
     topic = upload_df[comma].values.tolist()
     all_number = len(topic)
@@ -530,10 +535,35 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_comma.append([key,count,percent])
     if list_comma_keys != list():
      st.table([head_quality,*data_comma])
-     st.markdown("""---""") 
-    
-
-
+     st.markdown("""---""")
+   
+   for num in list_stack_num:
+    mat = upload_df[num].values.tolist()
+    mean_sd = stat(mat)
+    topic_word, sub_word = num.split(' [')[:2]
+    topic_word = topic_word.strip()
+    sub_word = sub_word.strip().replace(']', '')
+    if topic_word != top_name:
+     data_stack_num.append([topic_word, '', '', ''])
+     top_name = topic_word 
+    for key in mean_sd:
+     mean = mean_sd['ค่าเฉลี่ย']
+     s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+     level = '' 
+     if mean >= 4.2:
+      level = 'มากที่สุด'
+     elif mean >= 3.4:
+      level = 'มาก'
+     elif mean >= 2.6:
+      level = 'ปานกลาง'
+     elif mean >= 1.8:
+      level = 'น้อย'
+     elif mean < 1.8:
+      level = 'น้อยที่สุด'
+     data_stack_num.append([sub_word,mean,s_d,level])
+    if list_num_keys != list():
+     st.table([head_re,*data_stack_num])
+     st.markdown("""---""")
 
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
 #table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
@@ -610,37 +640,37 @@ if menu == 'เริ่มต้นโปรแกรม':
 top_name = ''
 #table_head5 = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
 #table_data5 = []
-for i in list_stack_num:
- mat = upload_df[i].values.tolist()
- mean_sd = stat(mat)
- a = change_num_to_text(i)
- topic_word, sub_word = i.split(' [')[:2]
- topic_word = topic_word.strip()
- sub_word = sub_word.strip().replace(']', '')
- if topic_word != top_name:
-  table_data5.append([topic_word, '', '', ''])
-  top_name = topic_word
- A_l = count_list(a)
- for k in mean_sd:
-  mean = mean_sd['ค่าเฉลี่ย']
-  s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
-  level = '' 
-  if mean >= 4.2:
-   level = 'มากที่สุด'
-  elif mean >= 3.4:
-   level = 'มาก'
-  elif mean >= 2.6:
-   level = 'ปานกลาง'
-  elif mean >= 1.8:
-   level = 'น้อย'
-  elif mean < 1.8:
-   level = 'น้อยที่สุด'
-  table_data5.append([sub_word,mean,s_d,level]) 
- for k in A_l:
-  A_l[k] = A_l[k]['percent']
- if topic_word not in dict_num_stack:
-  dict_num_stack[topic_word] = dict()
- dict_num_stack[topic_word][sub_word] = A_l
+#for i in list_stack_num:
+ #mat = upload_df[i].values.tolist()
+ #mean_sd = stat(mat)
+ #a = change_num_to_text(i)
+ #topic_word, sub_word = i.split(' [')[:2]
+ #topic_word = topic_word.strip()
+ #sub_word = sub_word.strip().replace(']', '')
+ #if topic_word != top_name:
+  #table_data5.append([topic_word, '', '', ''])
+  #top_name = topic_word
+ #A_l = count_list(a)
+ #for k in mean_sd:
+  #mean = mean_sd['ค่าเฉลี่ย']
+  #s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+  #level = '' 
+  #if mean >= 4.2:
+   #level = 'มากที่สุด'
+  #elif mean >= 3.4:
+   #level = 'มาก'
+  #elif mean >= 2.6:
+   #level = 'ปานกลาง'
+  #elif mean >= 1.8:
+   #level = 'น้อย'
+  #elif mean < 1.8:
+   #level = 'น้อยที่สุด'
+  #table_data5.append([sub_word,mean,s_d,level]) 
+ #for k in A_l:
+  #A_l[k] = A_l[k]['percent']
+ #if topic_word not in dict_num_stack:
+  #dict_num_stack[topic_word] = dict()
+ #dict_num_stack[topic_word][sub_word] = A_l
 #if upload_file is not None:
  #st.table([table_head5,*table_data5])
 #for i in dict_num_stack:
