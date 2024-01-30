@@ -103,7 +103,7 @@ def count_list(A,removenan=True):
   count_dict[c] = {"count":A.count(c),"percent":round(per,digit)}
  return count_dict
 
-def stat(A):
+def stat(A,removenan=True):
  A = [5 if x == 'มากที่สุด'else(4 if x == 'มาก'else(3 if x == 'ปานกลาง' else(2 if x == 'น้อย' else(1 if x == 'น้อยที่สุด' else(0 if x == 'ไม่ระบุ' else x))))) for x in A]
  mean = np.mean(A)
  sd = np.std(A)
@@ -539,7 +539,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
-    mean_sd = stat(mat)
+    mean_sd = stat(mat,list_stack_num[num][removenan])
     topic_word, sub_word = num.split(' [')[:2]
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
