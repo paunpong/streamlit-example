@@ -146,7 +146,7 @@ if upload_file is not None:
       
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
-      head_bulet = strnumberitem + Split_sub(topic)
+      head_bulet = strnumberitem + Split_sub(list_str_key)
       str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
     for topic in list_num_key:
