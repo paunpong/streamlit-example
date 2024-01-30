@@ -24,7 +24,7 @@ def upload(A):
 
 def Split_sub(A):
   for i in A:
-    sub = i.split(']')[0]
+    sub = i.split('[')[1]
   return sub
 
 def count_list(A,removenan=True):
