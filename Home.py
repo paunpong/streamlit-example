@@ -91,7 +91,6 @@ def change_num_to_text(A):
         x.append(dict_change_num_to_text[i])
     return x
   
-  
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
 upload_df = upload(upload_file)
 
@@ -163,8 +162,7 @@ for i in list_stack_num:
     mat = upload_df[i].values.tolist()
     mean_sd = stat(mat)
     a = change_num_to_text(i)
-    topic_word = Split(i)
-    sub_word = Split_sub(i)
+    topic_word,sub_word = i.split(' [')[:2]
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
     if topic_word != top_name:
