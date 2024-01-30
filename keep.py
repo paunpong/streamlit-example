@@ -60,8 +60,7 @@ def Split(A):
 
 def Split_sub(A):
  for i in A:
-  sub = i.split(']'[0])
- st.write(sub)
+  sub = i.split('[')[1]
  return sub
 
 def num_check(A):
@@ -364,19 +363,31 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_bar_keys != list():
     st.markdown("""---""")
    for topic in list_str_keys:
-    head_bulet = topic[:x]+endtext
+    sub_word = topic.split(' [')[1]
+    sub_word = sub_word.strip().replace(']', '')
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)+')'
+    head_bulet = strnumberitem + sub_word[:x]+endtext
     str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
    for topic in list_num_keys:
-    head_bulet = topic[:x]+endtext
+    sub_word = topic.split(' [')[1]
+    sub_word = sub_word.strip().replace(']', '')
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)+')'
+    head_bulet = strnumberitem + sub_word[:x]+endtext
     num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
    for topic in list_stackn_keys:
-    head_bulet = topic[:x]+endtext
-    stack_num_val = st.radio(topic[:x]+endtext,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)+')'
+    head_bulet = strnumberitem + topic[:x]+endtext
+    stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
    for topic in list_stacks_keys:
-    head_bulet = topic[:x]+endtext
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)+')'
+    head_bulet = strnumberitem + topic[:x]+endtext
     stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
     
