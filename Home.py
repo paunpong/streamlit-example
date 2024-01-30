@@ -78,6 +78,13 @@ def Split(A):
   for i in A:
     topic = i.split('[')[0]
   return topic  
+
+def change_num_to_text(A):
+    x = []
+    dict_change_num_to_text = {5: 'มากที่สุด', 4: 'มาก', 3: 'ปานกลาง', 2: "น้อย", 1: "ควรปรับปรุง", 'ไม่ระบุ': 'ไม่ระบุ'}
+    for i in upload_df[A].values.tolist():  # Corrected variable name
+        x.append(dict_change_num_to_text[i])
+    return x
   
   
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
@@ -111,13 +118,30 @@ if upload_file is not None:
     else:
       for key in col:
         list_stack_str[key]=True
-
-def change_num_to_text(A):
-    x = []
-    dict_change_num_to_text = {5: 'มากที่สุด', 4: 'มาก', 3: 'ปานกลาง', 2: "น้อย", 1: "ควรปรับปรุง", 'ไม่ระบุ': 'ไม่ระบุ'}
-    for i in upload_df[A].values.tolist():  # Corrected variable name
-        x.append(dict_change_num_to_text[i])
-    return x
+        
+if upload_file is not None:
+  list_num_key = list(list_stack_num.keys())
+  list_str_key = list(list_stack_str.keys())
+  tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
+  with tab1:
+    x = 1000
+    endtext =""
+    topic_long = st.radio('แสดงหัวข้อแบบย่อ', ['ใช่', 'ไม่ใช่'], horizontal=True)
+    if topic_long =="ใช่":
+      x=32
+      endtext = "ฯ"
+    numberitem = 0
+    
+    for topic in list_str_keys:
+      head_bulet = topic[:x]+endtext
+      str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+      st.text("")
+    for topic in list_num_keys:
+      head_bulet = topic[:x]+endtext
+      num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+      st.text("")
+  
+    
 
 
 top_name = None  
@@ -140,5 +164,4 @@ for i in list_stack_num:
     for i in dict_num_stack:
       stacked_bar(dict_num_stack[i],i)
 
-st.write(list_stack_num,'num')
-st.write(list_stack_str,'str')
+
