@@ -390,19 +390,16 @@ if menu == 'เริ่มต้นโปรแกรม':
   with tab2:
    Type = st.radio('ประเภท',['วงกลม','กล่อง','แท่ง','แท่งต่อกัน'],horizontal=True)
    if Type == 'วงกลม':
-    st.markdown('ปรับแต่งแผนภูมิวงกลม')
     for topic_pie in list_pie_chart:  
      Pie = st.radio(topic_pie, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
      list_pie_chart[topic_pie] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False,}
      continue
    if Type == 'กล่อง':
-    st.markdown('ปรับแต่งงแผนภาพกล่อง')
     for topic in list_boxplot:
      box = st.radio(topic,['เพิ่มค่าเฉลี่ย','ลบค่าเฉลี่ย'],horizontal=True)
      list_boxplot[topic]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}
      continue
    if Type == 'แท่ง':
-    st.markdown('ปรับแต่งแผนภูมิแท่ง')
     for topic in list_bar_chart_comma:
      A = upload_df[topic].values.tolist()
      a = split_comma(A)
@@ -429,7 +426,6 @@ if menu == 'เริ่มต้นโปรแกรม':
   with tab1:
    with st.expander('แผนภูมิวงกลม',expanded=True):
     for p in list_pie_chart:
-     st.write(list_pie_chart[p]['removenan'])
      pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
    with st.expander('แผนภาพกล่อง'):
     for b in list_boxplot:
