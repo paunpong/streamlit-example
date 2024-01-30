@@ -505,7 +505,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_pie.append([ans, count, percent])
    if upload_file is not None:
     st.table([head_quality,*data_pie])
-
+    st.markdown("""---""")
 
 
 
