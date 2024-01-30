@@ -23,7 +23,7 @@ def upload(A):
   return df
 
 def Split_sub(A):
-  st.write(A)
+  st.write(A,'11')
   for i in A:
     sub = i.split('[')[1:2]
   return sub
