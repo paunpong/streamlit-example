@@ -132,7 +132,7 @@ if upload_file is not None:
     endtext =""
     topic_long = st.radio('แสดงหัวข้อแบบย่อ', ['ใช่', 'ไม่ใช่'], horizontal=True)
     if topic_long =="ใช่":
-      x=35
+      x=20
       endtext = "ฯ"
     numberitem = 0
     
