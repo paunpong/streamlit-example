@@ -516,7 +516,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_box_keys != list():
     st.table([head_amount,*data_box])
     st.markdown("""---""") 
-   for comma in list_bar_chart_comma:
+   #for comma in list_bar_chart_comma:
     
 
 
