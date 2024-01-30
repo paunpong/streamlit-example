@@ -25,7 +25,7 @@ def upload(A):
 def Split_sub(A):
   st.write(A,'------')
   for i in A:
-    sub = i.split('[')[:1]
+    sub = i.split('[')[0]
   st.write(sub)
   return sub
 
