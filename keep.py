@@ -298,7 +298,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if menu == 'เริ่มต้นโปรแกรม':
- if upload_file is not None:
+ #if upload_file is not None:
   list_pie_keys = list(list_pie_chart.keys())
   list_box_keys = list(list_boxplot.keys())
   list_bar_keys = list(list_bar_chart.keys())
