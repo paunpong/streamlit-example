@@ -140,7 +140,7 @@ if upload_file is not None:
     numberitem = 0
     
     for topic in list_str_key:
-      Split_sub(topic)
+      Split_sub(list_str_key)
       numberitem = numberitem+1
       strnumberitem = str(numberitem)+')'
       head_bulet = strnumberitem
