@@ -522,8 +522,8 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 
 #-------------------------------------------------แสดงข้อมูลและแผนภูมิ----------------------------------------------------#
-table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
-table_data = []
+#table_head = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
+#table_data = []
 #for p in list_pie_chart:
  #values = count_list(upload_df[p].values.tolist(), list_pie_chart[p])
  #table_data.append([p, sum([values[key]['count'] for key in values]), 100])
