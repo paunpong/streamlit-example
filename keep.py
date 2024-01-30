@@ -562,7 +562,7 @@ if menu == 'เริ่มต้นโปรแกรม':
       level = 'น้อย'
      elif mean < 1.8:
       level = 'น้อยที่สุด'
-     data_stack_num.append([sub_word,mean,s_d,level])
+    data_stack_num.append([sub_word,mean,s_d,level])
    if list_num_keys != list():
     st.table([head_re,*data_stack_num])
     st.markdown("""---""")
