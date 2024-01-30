@@ -523,7 +523,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     list_free = split_comma(topic)
     set_list = list(set(list_free))
     val = Count(list_free,list_bar_chart_comma[comma]['removenan'])
-    data_comma.append([topiv, all_number, 100]) 
+    data_comma.append([topic, all_number, 100]) 
     for key in val:
      count = val[key]
      percent = 100*val[key]/all_number
