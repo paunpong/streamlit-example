@@ -512,7 +512,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     mean = mean_sd['ค่าเฉลี่ย']
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     data_box.append([box,mean,std])
-   if upload_file is not None:
+   if list_box_keys != list():
     st.table([head_amount,*data_box])
     st.markdown("""---""") 
     
