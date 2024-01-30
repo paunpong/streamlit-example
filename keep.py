@@ -406,7 +406,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      list_boxplot[topic]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}
      continue
    if Type == 'แท่ง':
-   st.markdown(':brown[ปรับแต่งแผนภูมิแท่ง]')
+    st.markdown('ปรับแต่งแผนภูมิแท่ง')
     for topic in list_bar_chart_comma:
      A = upload_df[topic].values.tolist()
      a = split_comma(A)
