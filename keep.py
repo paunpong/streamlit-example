@@ -539,7 +539,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
-    mean_sd = stat(mat,list_stack_num[num][removenan])
+    mean_sd = stat(mat,True)
     topic_word, sub_word = num.split(' [')[:2]
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
