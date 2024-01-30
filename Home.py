@@ -132,11 +132,11 @@ if upload_file is not None:
       endtext = "ฯ"
     numberitem = 0
     
-    for topic in list_str_keys:
+    for topic in list_str_keyy:
       head_bulet = topic[:x]+endtext
       str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
-    for topic in list_num_keys:
+    for topic in list_num_key:
       head_bulet = topic[:x]+endtext
       num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
