@@ -522,7 +522,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     all_number = len(topic)
     list_free = split_comma(topic)
     set_list = list(set(list_free))
-    val = Count(list_free,list_bar_chart_comma[topic]['removenan'])
+    val = Count(list_free,list_bar_chart_comma[comma]['removenan'])
     data_comma.append([topiv, all_number, 100]) 
     for key in val:
      count = val[key]
