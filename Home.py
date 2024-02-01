@@ -522,9 +522,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     data = bar_list_count(val, list_bar_chart_comma[comma]['orther_number'])
     st.write(data)
     data_comma.append([comma, all_number, 100]) 
-    for key in data:
+    for key in data[1]:
      st.write(key)
-     st.write(data[0][key])
      #count = data[key]
      #percent = 100*count/all_number
      #data_comma.append([key,count,percent])
