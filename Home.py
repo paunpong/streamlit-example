@@ -517,7 +517,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     topic = upload_df[comma].values.tolist()
     all_number = len(topic)
     list_free = split_comma(topic)
-    set_list = list(set(list_free))
+    st.write(list_free)
+    #set_list = list(set(list_free))
     val = Count(list_free,list_bar_chart_comma[comma]['removenan'])
     data = bar_list_count(val, list_bar_chart_comma[comma]['orther_number'])
     data_comma.append([comma, all_number, 100])
@@ -531,8 +532,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      
    for bar in list_bar_chart:
     data = upload_df[bar].values.tolist()
+    st.write(data)
     all_data = len(bar)
-    set = list(set(data))
+    #set = list(set(data))
     val = Count(data,list_bar_chart[bar]['removenan'])
     orther = bar_list_count(val,list_bar_chart['orther_number'])
     data_bar.append([bar,all_data,100])
