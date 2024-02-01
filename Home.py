@@ -409,7 +409,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     for topic_stack in list_num_keys:
      Number = Number+1
      strnumberitem = str(Number)+')'
-     head_bulet = strnumberitem + topic_box[:x]+endtext
+     head_bulet = strnumberitem + topic_stack[:x]+endtext
      num = st.slider(head_bulet,['ข้อมูลเชิงปริมาณ','ข้อมูลเชิงคุณภาพ'], horizontal=True)
      st.text("")
      if num == 'ข้อมูลเชิงคุณภาพ':
