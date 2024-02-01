@@ -525,9 +525,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = 100*key/all_number
      st.write(percent)
      data_comma.append([data[0],data[1],percent])
-    #if list_comma_keys != list():
-     #st.table([head_quality,*data_comma])
-     #st.markdown("""---""")
+    if list_comma_keys != list():
+     st.table([head_quality,*data_comma])
+     st.markdown("""---""")
 
    #for bar in list_bar_chart:
     
