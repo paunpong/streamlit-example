@@ -195,7 +195,6 @@ for i in dict_bar_chart:
 
 
 
-
 top_name = None  
 dict_num_stack={}
 for i in list_stack_num:
