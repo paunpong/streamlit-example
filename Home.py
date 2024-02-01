@@ -523,7 +523,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.write(data)
     data_comma.append([comma, all_number, 100]) 
     for key in data:
-     st.write(key)
+     st.write(key[1])
      #count = data[key]
      #percent = 100*key/all_number
      #st.write(percent)
