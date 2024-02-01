@@ -518,7 +518,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     list_free = split_comma(topic)
     set_list = list(set(list_free))
     val = Count(list_free,list_bar_chart_comma[comma]['removenan'])
+    st.write(val)
     data = bar_list_count(val, list_bar_chart_comma[comma]['orther_number'])
+    st.write(data)
     data_comma.append([comma, all_number, 100]) 
     for key in data:
      count = data[key]
