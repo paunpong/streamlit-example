@@ -491,6 +491,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_pie = []
    data_box = []
    data_comma = []
+   data_bar = []
    data_stack_num = []
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
@@ -527,9 +528,23 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_comma.append([key,data_dict[key],percent])
     if list_comma_keys != list():
      st.table([head_quality,*data_comma])
-     st.markdown("""---""")
+     
 
-   #for bar in list_bar_chart:
+   for bar in list_bar_chart:
+    data = upload_df[bar].values.tolist()
+    all_data = len(bar)
+    set = list(set(data))
+    val = Count(data,list_bar_chat[bar]['removenan'])
+    orther = bar_list_count(val,list_bar_chart['orther_number'])
+    data_bar.append([bar,all_data,100])
+    data_dict = dict(zip(orther[0],orther[1]))
+    for key in data_dict:
+     cou = data_dict[key]
+     percent = 100*cou/all_data
+     data_bar.append([key,data_dict[key],percent])
+    if list_bar_keys != list():
+     st.table([head_qualite,*data_bar])
+     st.markdown("""---""")
     
    
    for num in list_stack_num:
