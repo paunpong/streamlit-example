@@ -520,9 +520,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     val = Count(list_free,list_bar_chart_comma[comma]['removenan'])
     data = bar_list_count(val, list_bar_chart_comma[comma]['orther_number'])
     data_comma.append([comma, all_number, 100]) 
-    for key in val:
-     count = val[key]
-     percent = 100*val[key]/all_number
+    for key in data:
+     count = data[key]
+     percent = 100*count/all_number
      data_comma.append([key,count,percent])
     if list_comma_keys != list():
      st.table([head_quality,*data_comma])
