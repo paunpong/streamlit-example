@@ -522,7 +522,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     data_comma.append([comma, all_number, 100])
     data_dict = dict(zip(data[0],data[1]))
     for key in data:
-     k = key[data[0]]
+     k = data[0]
      st.write(k)
     #for key in data_dict:
      #cou = data_dict[key]
