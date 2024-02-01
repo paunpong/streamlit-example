@@ -525,7 +525,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     for key in data_dict:
      cou = data_dict[key]
      percent = 100*cou/all_number
-     data_comma.append([key,data_dict[key],percent])
+     data_comma.append([key,data_dict[key],round(percent,digit)])
     if list_comma_keys != list():
      st.table([head_quality,*data_comma])
      
@@ -539,7 +539,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     for key in data_dict:
      cou = data_dict[key]
      percent = 100*cou/all_data
-     data_bar.append([key,data_dict[key],percent])
+     data_bar.append([key,data_dict[key],round(percent,digit)])
     if list_bar_keys != list():
      st.table([head_quality,*data_bar])
      st.markdown("""---""")
