@@ -522,14 +522,12 @@ if menu == 'เริ่มต้นโปรแกรม':
     data_comma.append([comma, all_number, 100])
     data_dict = dict(zip(data[0],data[1]))
     for key in data_dict:
-     st.write(key)
      cou = data_dict[key]
-     st.write(cou)
      percent = 100*cou/all_number
      data_comma.append([key,data_dict[key],percent])
-    #if list_comma_keys != list():
-     #st.table([head_quality,*data_comma])
-     #st.markdown("""---""")
+    if list_comma_keys != list():
+     st.table([head_quality,*data_comma])
+     st.markdown("""---""")
 
    #for bar in list_bar_chart:
     
