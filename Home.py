@@ -531,7 +531,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      
    for bar in list_bar_chart:
     data = upload_df[bar].values.tolist()
-    all_data = Count(data)
+    all_data = len(data)
     st.write(all_data)
     #set = list(set(data))
     #Val = Count(data,list_bar_chart[bar]['removenan'])
