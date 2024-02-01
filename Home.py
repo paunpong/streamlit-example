@@ -529,12 +529,11 @@ if menu == 'เริ่มต้นโปรแกรม':
     if list_comma_keys != list():
      st.table([head_quality,*data_comma])
      
-
    for bar in list_bar_chart:
     data = upload_df[bar].values.tolist()
     all_data = len(bar)
     set = list(set(data))
-    val = Count(data,list_bar_chat[bar]['removenan'])
+    val = Count(data,list_bar_chart[bar]['removenan'])
     orther = bar_list_count(val,list_bar_chart['orther_number'])
     data_bar.append([bar,all_data,100])
     data_dict = dict(zip(orther[0],orther[1]))
