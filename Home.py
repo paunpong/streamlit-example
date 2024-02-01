@@ -517,7 +517,6 @@ if menu == 'เริ่มต้นโปรแกรม':
     topic = upload_df[comma].values.tolist()
     all_number = len(topic)
     list_free = split_comma(topic)
-    st.write(list_free)
     #set_list = list(set(list_free))
     val = Count(list_free,list_bar_chart_comma[comma]['removenan'])
     data = bar_list_count(val, list_bar_chart_comma[comma]['orther_number'])
@@ -532,13 +531,12 @@ if menu == 'เริ่มต้นโปรแกรม':
      
    for bar in list_bar_chart:
     data = upload_df[bar].values.tolist()
-    st.write(data)
     all_data = len(bar)
     #set = list(set(data))
-    val = Count(data,list_bar_chart[bar]['removenan'])
-    orther = bar_list_count(val,list_bar_chart['orther_number'])
+    Val = Count(data,list_bar_chart[bar]['removenan'])
+    other = bar_list_count(Val,list_bar_chart[bar]['orther_number'])
     data_bar.append([bar,all_data,100])
-    data_dict = dict(zip(orther[0],orther[1]))
+    data_dict = dict(zip(other[0],other[1]))
     for key in data_dict:
      cou = data_dict[key]
      percent = 100*cou/all_data
