@@ -532,19 +532,17 @@ if menu == 'เริ่มต้นโปรแกรม':
    for bar in list_bar_chart:
     data = upload_df[bar].values.tolist()
     all_data = len(data)
-    st.write(all_data)
-    #set = list(set(data))
-    #Val = Count(data,list_bar_chart[bar]['removenan'])
-    #other = bar_list_count(Val,list_bar_chart[bar]['orther_number'])
-    #data_bar.append([bar,all_data,100])
-    #data_dict = dict(zip(other[0],other[1]))
-    #for key in data_dict:
-     #cou = data_dict[key]
-     #percent = 100*cou/all_data
-     #data_bar.append([key,data_dict[key],percent])
-    #if list_bar_keys != list():
-     #st.table([head_quality,*data_bar])
-     #st.markdown("""---""")
+    Val = Count(data,list_bar_chart[bar]['removenan'])
+    other = bar_list_count(Val,list_bar_chart[bar]['orther_number'])
+    data_bar.append([bar,all_data,100])
+    data_dict = dict(zip(other[0],other[1]))
+    for key in data_dict:
+     cou = data_dict[key]
+     percent = 100*cou/all_data
+     data_bar.append([key,data_dict[key],percent])
+    if list_bar_keys != list():
+     st.table([head_quality,*data_bar])
+     st.markdown("""---""")
     
    
    for num in list_stack_num:
