@@ -525,7 +525,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     for key in data[1]:
      st.write(key)
      #count = data[key]
-     percent = 100*count/all_number
+     percent = 100*key/all_number
      st.write(percent)
      #data_comma.append([key,count,percent])
     #if list_comma_keys != list():
