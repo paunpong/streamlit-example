@@ -200,12 +200,12 @@ def bar_chart1(data,key,orther_number=1):
  st.pyplot()
 
 def bar_chart_new(data,key):
- labels = range(len(data[0])+1)
+ labels = range(1,len(data[0])+1)
  values = data[1]
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
- ax.set_xticks(labels+1)
- ax.bar(labels+1, values)
+ ax.set_xticks(labels)
+ ax.bar(labels, values)
  legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
  ax.legend(labels = legend,bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
