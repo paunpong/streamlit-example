@@ -175,40 +175,16 @@ def bar_list_count(data,orther_number=1):
   values.append(data['ไม่ระบุ'])
   labels.append('ไม่ระบุ')
  return [labels, values]
- 
-def bar_chart1(data,key,orther_number=1):
- values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
- values_orther =  [data[key] for key in data if (data[key] <= orther_number ) and (key != "ไม่ระบุ")]
- labels = [key for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
- if len(values_orther)>0:
-  values.append(sum(values_orther))
-  labels.append('อื่น ๆ')
- if 'ไม่ระบุ' in data:
-  values.append(data['ไม่ระบุ'])
-  labels.append('ไม่ระบุ')
- bar_dict = dict()
- all_number = sum(values)
- '''
- for i in range(len(labels)):
-  per = values[i]*100/all_number
-  bar_dict[labels[i]]={'count':values[i], 'percent': round(per, digit)}
- '''
- fig,ax = plt.subplots(figsize=(9,6))
- ax.set_xticklabels(labels, fontproperties=thai_font_prop)
- ax.bar(labels, values)
- plt.title(key, fontproperties=thai_font_prop)
- st.pyplot()
 
 def bar_chart_new(data,key):
  labels = range(1,len(data[0])+1)
  values = data[1]
  fig,ax = plt.subplots(figsize=(9,6))
- ax.set_xticklabels(labels, fontproperties=thai_font_prop)
  ax.set_xticks(labels)
  legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
- ax.bar(labels, values,label=legend)
- ax.legend(bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
- plt.title(key, fontproperties=thai_font_prop)
+ plt.bar(labels, values,label=legend)
+ ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
+ plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
 def stacked_bar(data,key):
@@ -218,7 +194,6 @@ def stacked_bar(data,key):
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data,index=name)
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
- #stacked_plot.legend(loc='upper right', fontproperties=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
