@@ -8,6 +8,8 @@ st.write('สวัสดี 123456789')
 
 list_stack_num={}
 list_stack_str={}
+dict_bar_chart = {}
+list_pie_chart = {}
 digit = int(2)
 def upload(A):
   if A is not None:
@@ -90,6 +92,30 @@ def change_num_to_text(A):
     for i in upload_df[A].values.tolist():  # Corrected variable name
         x.append(dict_change_num_to_text[i])
     return x
+
+def bar_list_count(data,orther_number=1):
+  values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
+  values_orther =  [data[key] for key in data if (data[key] <= orther_number ) and (key != "ไม่ระบุ")]
+  labels = [key for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
+  if len(values_orther)>0:
+    values.append(sum(values_orther))
+    labels.append('อื่น ๆ')
+  if 'ไม่ระบุ' in data:
+    values.append(data['ไม่ระบุ'])
+    labels.append('ไม่ระบุ')
+  return [labels, values]
+
+def bar_chart_new(data,key):
+  labels = range(1,len(data[0])+1)
+  label = data[0]
+  values = data[1]
+  fig,ax = plt.subplots(figsize=(9,6))
+  ax.set_xticklabels(labels, fontproperties=thai_font_prop)
+  ax.set_xticks(labels)
+  ax.bar(labels, values)
+  ax.legend(labels =[f'{labels[i]}:{label[i]}' for i in range(len(label))],bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
+  plt.title(key, fontproperties=thai_font_prop)
+  st.pyplot()
   
 upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
 upload_df = upload(upload_file)
@@ -108,6 +134,12 @@ if upload_file is not None:
       list_stackbar.append(key)
       topic = Split(list_stackbar)
       list_topic_stackbar.append(topic)
+
+    if len(set(column)) < 6:
+      list_pie_chart[key]={'removenan':True}
+    else:
+      dict_bar_chart[key] = {'removenan':True,'orther_number':1}
+      
   set_topic = set(list_topic_stackbar)
   for i in set_topic:
     col = []
@@ -152,8 +184,16 @@ if upload_file is not None:
       head_bulet = strnumberitem + sub_word[:x] + endtext
       num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
       st.text("")
-  
-    
+
+
+for i in dict_bar_chart:
+     list_com = upload_df[i].values.tolist()
+     a = Count(list_com,dict_bar_chart[i]['removenan'])
+     data = bar_list_count(a,dict_bar_chart[i]['orther_number'])
+     bar_chart_new(data,i)    
+
+
+
 
 
 top_name = None  
