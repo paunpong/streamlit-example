@@ -405,7 +405,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      list_bar_chart[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': z}
      continue
    
-   if Type == 'แท่งแบบต่อกัน':
+   if Type == 'แท่งต่อกัน':
     for topic_stack in list_num_keys:
      Number = Number+1
      strnumberitem = str(Number)+')'
