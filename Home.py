@@ -410,7 +410,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      Number = Number+1
      strnumberitem = str(Number)+')'
      head_bulet = strnumberitem + topic_stack[:x]+endtext
-     num = st.slider(head_bulet,['ข้อมูลเชิงปริมาณ','ข้อมูลเชิงคุณภาพ'], horizontal=True)
+     num = st.radio(head_bulet,['ข้อมูลเชิงปริมาณ','ข้อมูลเชิงคุณภาพ'], horizontal=True)
      st.text("")
      if num == 'ข้อมูลเชิงคุณภาพ':
       list_stack_str[topic_stack]={'removenan':True}
