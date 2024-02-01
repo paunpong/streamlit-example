@@ -185,7 +185,7 @@ def bar_chart_new(data,key):
  plt.bar(labels, values,label=legend)
  ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
- st.pyplot()
+ plt.show()
 
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
