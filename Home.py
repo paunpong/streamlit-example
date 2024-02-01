@@ -542,7 +542,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = 100*cou/all_data
      data_bar.append([key,data_dict[key],percent])
     if list_bar_keys != list():
-     st.table([head_qualite,*data_bar])
+     st.table([head_quality,*data_bar])
      st.markdown("""---""")
     
    
