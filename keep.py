@@ -183,7 +183,7 @@ def bar_chart_new(data,key):
  ax.set_xticks(labels)
  legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
  plt.bar(labels, values,label=legend)
- ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
+ ax.legend()
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
 
