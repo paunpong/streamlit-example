@@ -523,10 +523,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     data_dict = dict(zip(data[0],data[1]))
     for key in data_dict:
      cou = data_dict[key]
-     st.write(cou)
-     #count = data[key]
-     #percent = 100*key/all_number
-     #st.write(percent)
+     percent = 100*cou/all_number
+     st.write(percent)
      #data_comma.append([data[0],data[1],percent])
     #if list_comma_keys != list():
      #st.table([head_quality,*data_comma])
