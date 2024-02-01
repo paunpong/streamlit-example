@@ -525,6 +525,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.write(a)
     st.markdown("""---""")
     st.write(b)
+    percent = 100*b/100
+    st.write(percent)
      #count = data[key]
      #percent = 100*key/all_number
      #st.write(percent)
