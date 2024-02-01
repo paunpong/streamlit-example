@@ -523,12 +523,14 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.write(data)
     data_comma.append([comma, all_number, 100]) 
     for key in data:
-     count = data[key]
-     percent = 100*count/all_number
-     data_comma.append([key,count,percent])
-    if list_comma_keys != list():
-     st.table([head_quality,*data_comma])
-     st.markdown("""---""")
+     st.write(key)
+     st.write(data[key])
+     #count = data[key]
+     #percent = 100*count/all_number
+     #data_comma.append([key,count,percent])
+    #if list_comma_keys != list():
+     #st.table([head_quality,*data_comma])
+     #st.markdown("""---""")
 
    #for bar in list_bar_chart:
     
