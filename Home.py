@@ -572,10 +572,9 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_num_keys != list():
     st.table([head_re,*data_stack_num])
     
-   
    for nums in list_num_stack:
     math = upload_df[nums].values.tolist()
-    mean_sd = stat(mat,True)
+    mean_sd = stat(math,True)
     for key in mean_sd:
      mean = mean_sd['ค่าเฉลี่ย']
      s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
