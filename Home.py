@@ -404,6 +404,20 @@ if menu == 'เริ่มต้นโปรแกรม':
      z = st.slider('', 1, max(c.values()), 1, 1) 
      list_bar_chart[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': z}
      continue
+   
+   if Type == 'แท่งแบบต่อกัน':
+    for topic_stack in list_num_keys:
+     Number = Number+1
+     strnumberitem = str(Number)+')'
+     head_bulet = strnumberitem + topic_box[:x]+endtext
+     num = st.slider(head_bulet,['ข้อมูลเชิงปริมาณ','ข้อมูลเชิงคุณภาพ'], horizontal=True)
+     st.text("")
+     if num == 'ข้อมูลเชิงคุณภาพ':
+      list_stack_str[topic_stack]={'removenan':True}
+      del list_stack_num[topic_stack]
+      
+     
+     
   
 #-----------------------------------------------tab ภาพแผนภูมิ -------------------------------------------------------#
 if menu == 'เริ่มต้นโปรแกรม':
