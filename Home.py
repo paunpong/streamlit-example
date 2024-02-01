@@ -493,6 +493,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_comma = []
    data_bar = []
    data_stack_num = []
+   data_num_stack = []
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     data_pie.append([pie, sum([values[key]['count'] for key in values]), 100])
@@ -544,7 +545,6 @@ if menu == 'เริ่มต้นโปรแกรม':
      st.table([head_quality,*data_bar])
      st.markdown("""---""")
     
-   
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
     mean_sd = stat(mat,True)
@@ -571,4 +571,26 @@ if menu == 'เริ่มต้นโปรแกรม':
     data_stack_num.append([sub_word,mean,s_d,level])
    if list_num_keys != list():
     st.table([head_re,*data_stack_num])
+    
+   
+   for nums in list_num_stack:
+    math = upload_df[nums].values.tolist()
+    mean_sd = stat(mat,True)
+    for key in mean_sd:
+     mean = mean_sd['ค่าเฉลี่ย']
+     s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+     level = '' 
+     if mean >= 4.2:
+      level = 'มากที่สุด'
+     elif mean >= 3.4:
+      level = 'มาก'
+     elif mean >= 2.6:
+      level = 'ปานกลาง'
+     elif mean >= 1.8:
+      level = 'น้อย'
+     elif mean < 1.8:
+      level = 'น้อยที่สุด'
+    data_num_stack.append([nums,mean,s_d,level])
+   if list_stackn_keys != list():
+    st.table([head_re,*data_num_stack])
     st.markdown("""---""")
