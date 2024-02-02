@@ -250,7 +250,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     continue
    
    if num_check(column):
-    list_boxplot[key] = True
+    list_boxplot[key] = {'removenan':True}
     continue
    
    if len(set(column)) < 6:
@@ -524,9 +524,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     mean = mean_sd['ค่าเฉลี่ย']
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     data_box.append([box,mean,std])
-    if list_boxplot != dict():
-     st.table([head_amount,*data_box])
-     st.markdown("""---""") 
+   if list_boxplot != dict() and {'removenan':True}:
+    st.table([head_amount,*data_box])
+    st.markdown("""---""") 
     
    for comma in list_bar_chart_comma:
     topic = upload_df[comma].values.tolist()
@@ -541,8 +541,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      cou = data_dict[key]
      percent = 100*cou/all_number
      data_comma.append([key,data_dict[key],round(percent,digit)])
-    if list_comma_keys != list():
-     st.table([head_quality,*data_comma])
+   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:
+    st.table([head_quality,*data_comma])
      
    for bar in list_bar_chart:
     data = upload_df[bar].values.tolist()
@@ -555,7 +555,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      cou = data_dict[key]
      percent = 100*cou/all_data
      data_bar.append([key,data_dict[key],round(percent,digit)])
-   if list_bar_keys != list():
+   if list_bar_chart != dict() and {'removenan':True,'orther_number':1}:
     st.table([head_quality,*data_bar])
     st.markdown("""---""")
     
@@ -583,7 +583,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
     data_stack_num.append([sub_word,mean,s_d,level])
-   if list_num_keys != list():
+   if list_stack_num != dict() and {'removenan':True}:
     st.table([head_re,*data_stack_num])
     
    for nums in list_num_stack:
@@ -604,6 +604,6 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
     data_num_stack.append([nums,mean,s_d,level])
-   if list_stackn_keys != list():
+   if list_num_stack != dict() and {'removenan':True}:
     st.table([head_re,*data_num_stack])
     st.markdown("""---""")
