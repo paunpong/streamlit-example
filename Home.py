@@ -515,18 +515,18 @@ if menu == 'เริ่มต้นโปรแกรม':
      count = values[ans]['count']
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent])
-   if list_pie_keys != list():
-    st.table([head_quality,*data_pie])
-    st.markdown("""---""")
+    if list_pie_keys != list():
+     st.table([head_quality,*data_pie])
+     st.markdown("""---""")
     
    for box in list_boxplot:
     mean_sd = stat(upload_df[box].values.tolist())
     mean = mean_sd['ค่าเฉลี่ย']
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     data_box.append([box,mean,std])
-   if list_box_keys != list():
-    st.table([head_amount,*data_box])
-    st.markdown("""---""") 
+    if list_box_keys != list():
+     st.table([head_amount,*data_box])
+     st.markdown("""---""") 
     
    for comma in list_bar_chart_comma:
     topic = upload_df[comma].values.tolist()
