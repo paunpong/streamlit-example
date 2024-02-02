@@ -515,7 +515,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      count = values[ans]['count']
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent])
-   if list_pie_chart != dict() and list_pie_chart != {'removenan':True}:
+   if list_pie_chart != dict() and {'removenan':True}:
     st.table([head_quality,*data_pie])
     st.markdown("""---""")
     
@@ -524,7 +524,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     mean = mean_sd['ค่าเฉลี่ย']
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     data_box.append([box,mean,std])
-    if list_box_keys != list():
+    if list_boxplot != dict():
      st.table([head_amount,*data_box])
      st.markdown("""---""") 
     
