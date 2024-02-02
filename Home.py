@@ -407,7 +407,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      #a = st.radio('',[1,3,5,7,max(c.values())], horizontal=True)
      y = st.slider('', 1, max(c.values()), 1, 1) 
      st.write(y)
-     list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': 1}
+     list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
      continue
    
    if Type == 'แท่งต่อกัน':
