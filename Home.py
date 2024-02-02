@@ -364,7 +364,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     head_bulet = strnumberitem + topic[:x]+endtext
     stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
-   st.write(list_bar_chart)
+  st.write(list_bar_chart)
   
      
   with tab2:
