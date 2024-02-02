@@ -515,9 +515,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      count = values[ans]['count']
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent])
-    if list_pie_keys != list():
-     st.table([head_quality,*data_pie])
-     st.markdown("""---""")
+   if list_pie_chart != dict() and list_pie_chart != {'removenan':True}:
+    st.table([head_quality,*data_pie])
+    st.markdown("""---""")
     
    for box in list_boxplot:
     mean_sd = stat(upload_df[box].values.tolist())
