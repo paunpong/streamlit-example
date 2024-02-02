@@ -510,7 +510,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     color_topic = f'**{pie}**'
     st.write(color_topic)
-    data_pie.append([**pie**, sum([values[key]['count'] for key in values]), 100])
+    data_pie.append([**{pie}**, sum([values[key]['count'] for key in values]), 100])
     for ans in values:
      count = values[ans]['count']
      percent = values[ans]['percent']
