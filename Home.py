@@ -369,7 +369,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    c = Count(upload_df[i_bar].values.tolist())
    M = max(c.values())
    z = st.slider('', 1, M, 1, 1)
-   Bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+   Bar = st.radio(i_bar, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
    list_bar_chart[i_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': z}
      
   with tab2:
