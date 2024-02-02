@@ -367,7 +367,7 @@ if menu == 'เริ่มต้นโปรแกรม':
   st.write(list_bar_chart)
   for i_bar in list_bar_chart:
    c = Count(upload_df[i_bar].values.tolist())
-   st.write(c)
+   st.write(max(c.values()))
      
   with tab2:
    Number = 0
