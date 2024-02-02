@@ -182,7 +182,7 @@ def bar_chart_new(data,key):
  st.write(max(values))
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticks(labels)
- #ax.yticks(range(0,max(data[1])))
+ ax.yticks(range(0,max(values)))
  #ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
  legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
  plt.bar(labels, values,label=legend)
