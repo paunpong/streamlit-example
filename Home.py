@@ -364,14 +364,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     head_bulet = strnumberitem + topic[:x]+endtext
     stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
-  st.write(list_bar_chart)
-  st.write(list_pie_chart)
-  for i_bar in list_bar_chart:
-   c = Count(upload_df[i_bar].values.tolist())
-   M = max(c.values())
-   z = st.slider('', 1, M, 1, 1)
-   Bar = st.radio(i_bar, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-   list_bar_chart[i_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': z}
+   #st.button('ตกลง')
      
   with tab2:
    Number = 0
