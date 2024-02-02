@@ -508,7 +508,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_num_stack = []
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
-    data_pie.append(['<b>'+pie+'</b>', sum([values[key]['count'] for key in values]), 100])
+    data_pie.append([<b>pie</b>, sum([values[key]['count'] for key in values]), 100])
     for ans in values:
      count = values[ans]['count']
      percent = values[ans]['percent']
