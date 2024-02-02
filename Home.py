@@ -365,6 +365,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
   st.write(list_bar_chart)
+  st.write(list_pie_chart)
   for i_bar in list_bar_chart:
    c = Count(upload_df[i_bar].values.tolist())
    M = max(c.values())
