@@ -181,7 +181,7 @@ def bar_chart_new(data,key):
  values = data[1]
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticks(labels)
- ax.set_yticks(range(0,len(data[1])+1))
+ ax.set_yticks()
  legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
  plt.bar(labels, values,label=legend)
  ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
