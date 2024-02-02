@@ -234,8 +234,9 @@ if menu == 'เริ่มต้นโปรแกรม':
 
    if '[' in key:
     list_stackbar.append(key)
-    topic = Split(list_stackbar)
-    list_topic_stackbar.append(topic)
+    topic = key.split('[')[0]
+    if topic not in list_topic_stackbar:
+     list_topic_stackbar.append(topic)
     continue
  
    if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
