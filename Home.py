@@ -512,7 +512,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     for ans in values:
      count = values[ans]['count']
      percent = values[ans]['percent']
-     data_pie.append([ans, count, percent])
+     data_pie.append([ans, count, percent],/n)
     data_pie.append(['','',''])
    if list_pie_chart != dict() and {'removenan':True}:
     st.table([head_quality,*data_pie])
