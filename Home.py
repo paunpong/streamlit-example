@@ -177,19 +177,16 @@ def bar_list_count(data,orther_number=1):
  return [labels, values]
 
 def bar_chart_new(data,key):
- labels = range(1,len(data[0])+1)
+ labels = range(1, len(data[0]) + 1)
  values = data[1]
- fig,ax = plt.subplots(figsize=(9,6))
+ fig, ax = plt.subplots(figsize=(9, 6))
  ax.set_xticks(labels)
  ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
  legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
- bars = plt.bar(labels, values, label=legend, color=plt.cm.viridis(range(len(labels))))
- ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
- plt.title(key,fontproperties=thai_font_prop)
- cbar = plt.colorbar(bars, ax=ax, pad=0.01)
- cbar.set_label('Legend', rotation=270, labelpad=15)
+ plt.bar(labels, values, label=legend)
+ ax.legend(bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
+ plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
-
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
