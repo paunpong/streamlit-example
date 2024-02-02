@@ -211,6 +211,7 @@ if menu == 'เริ่มต้นโปรแกรม':
  upload_df = upload(upload_file)
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
 if menu == 'เริ่มต้นโปรแกรม':
+ st.write(upload_file)
  if upload_file is not None:
   list_topic_stackbar=[]
   list_stackbar=[]
