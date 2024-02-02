@@ -555,9 +555,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      cou = data_dict[key]
      percent = 100*cou/all_data
      data_bar.append([key,data_dict[key],round(percent,digit)])
-    if list_bar_keys != list():
-     st.table([head_quality,*data_bar])
-     st.markdown("""---""")
+   if list_bar_keys != list():
+    st.table([head_quality,*data_bar])
+    st.markdown("""---""")
     
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
