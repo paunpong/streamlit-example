@@ -416,7 +416,15 @@ if menu == 'เริ่มต้นโปรแกรม':
      if num == 'ข้อมูลเชิงคุณภาพ':
       list_stack_str[topic_stack]={'removenan':True}
       del list_stack_num[topic_stack]
-  
+    for topic_num in list_list_stackn_keys:
+     Number = Number+1
+     strnumberitem = str(Number)+')'
+     head_bulet = strnumberitem + topic_stack[:x]+endtext
+     st_num = st.radio(head_bulet,['ข้อมูลเชิงปริมาณ','ข้อมูลเชิงคุณภาพ'], horizontal=True)
+     st.text("")
+     if st_num == 'ข้อมูลเชิงคุณภาพ':
+      list_str_stack[topic_num]={'removenan':True}
+      del list_num_stack[topic_num]
 #-----------------------------------------------tab ภาพแผนภูมิ -------------------------------------------------------#
 if menu == 'เริ่มต้นโปรแกรม':
  dict_str_stack = dict()
