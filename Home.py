@@ -179,7 +179,6 @@ def bar_list_count(data,orther_number=1):
 def bar_chart_new(data,key):
  labels = range(1,len(data[0])+1)
  values = data[1]
- st.write(max(values))
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticks(labels)
  ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
