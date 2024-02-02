@@ -402,7 +402,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      head_bulet = strnumberitem + topic[:x]+endtext
      c = Count(upload_df[topic].values.tolist())
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     w = st.slider('', 1.0, max(c.values()), 1.0, 1.0) 
+     w = st.slider('', 1, max(c.values()), 1, 1) 
      list_bar_chart[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': w}
      continue
   
