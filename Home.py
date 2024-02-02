@@ -419,7 +419,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     for topic_num in list_stackn_keys:
      Number = Number+1
      strnumberitem = str(Number)+')'
-     head_bulet = strnumberitem + topic_stack[:x]+endtext
+     head_bulet = strnumberitem + topic_num[:x]+endtext
      st_num = st.radio(head_bulet,['ข้อมูลเชิงปริมาณ','ข้อมูลเชิงคุณภาพ'], horizontal=True)
      st.text("")
      if st_num == 'ข้อมูลเชิงคุณภาพ':
