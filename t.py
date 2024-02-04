@@ -183,8 +183,8 @@ def bar_chart_new(data,key):
  for i in range(len(data[0])):
   legend = f'{i + 1}:{data[0][i]}'
   #color=plt.rcParams['axes.prop_cycle'].by_key()['color']
-  ax.bar(labels, values, label=legend)
-  ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
+  ax.bar(labels, values, label=legend,color=plt.rcParams['axes.prop_cycle'].by_key()['color'])
+ ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
  
@@ -277,7 +277,6 @@ if menu == 'เริ่มต้นโปรแกรม':
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 if menu == 'เริ่มต้นโปรแกรม':
- st.write(list_bar_chart)
  if upload_file is not None:
   list_pie_keys = list(list_pie_chart.keys())
   list_box_keys = list(list_boxplot.keys())
