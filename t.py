@@ -182,7 +182,8 @@ def bar_chart_new(data,key):
  ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
  for i in range(len(data[0])):
   legend = f'{i + 1}:{data[0][i]}'
-  ax.bar(labels, values, label=legend, color=plt.rcParams['axes.prop_cycle'].by_key()['color'][i])
+  ax.bar(labels, [values[j][i] for j in range(len(values))], label=legend, color=plt.rcParams['axes.prop_cycle'].by_key()['color'][i])
+  #ax.bar(labels, values, label=legend, color=plt.rcParams['axes.prop_cycle'].by_key()['color'][i])
  ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
