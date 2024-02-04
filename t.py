@@ -395,7 +395,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      a = split_comma(A)
      b = Count(a)
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     y = st.slider('head_bulet', 1, max(b.values()), 1, 1) 
+     y = st.slider('', 1, max(b.values()), 1, 1) 
      list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
     for topic_bar in list_bar_chart:
      Number = Number+1
@@ -404,8 +404,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      c = Count(upload_df[topic_bar].values.tolist())
      Bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
      #a = st.radio('',[1,3,5,7,max(c.values())], horizontal=True)
-     y = st.slider(key='unique_key', min_value=1, max_value=max(c.values()), step=1, value=1) 
-     st.write(y)
+     y = st.slider(key='', min_value=1, max_value=max(c.values()), step=1, value=1)
      list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
      continue
    
