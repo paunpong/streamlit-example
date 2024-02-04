@@ -395,7 +395,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      a = split_comma(A)
      b = Count(a)
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     y = st.slider('', 1, max(b.values()), 1, 1) 
+     y = st.slider('head_bulet', 1, max(b.values()), 1, 1) 
      list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
     for topic_bar in list_bar_chart:
      Number = Number+1
