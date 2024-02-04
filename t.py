@@ -185,7 +185,7 @@ def bar_chart_new(data,key):
  legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
  plt.bar(labels, values, label=legend, color=plt.rcParams['axes.prop_cycle'].by_key()['color'])
  for i, value in enumerate(values):
-  ax.bar_label(ax.containers[i], label=f'{i + 1}:{data[0][i]}', fontsize=8, color='white', weight='bold', ha='center')
+  ax.bar_label(ax.patches[i], label=f'{i + 1}:{data[0][i]}', fontsize=8, color='white', weight='bold')
  ax.legend(bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
