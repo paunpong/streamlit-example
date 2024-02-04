@@ -53,16 +53,6 @@ def check_count(A):
    return False
  return True
 
-def Split(A):
- for i in A:
-  topic = i.split('[')[0]
- return topic
-
-def Split_sub(A):
- for i in A:
-  sub = i.split('[')[1]
- return sub
-
 def num_check(A):
  for i in set(A):
   if type(i) is str and i != 'ไม่ระบุ':
@@ -123,10 +113,8 @@ def pie_chart(data, key):
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots(figsize=(9,6))
- wedges, texts, autotexts = ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- for text in texts + autotexts:
-  text.set_fontproperties(thai_font_prop)
- #ax.legend(wedges, labels, title="Legend", loc="center left", bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
+ ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ #ax.legend(bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
@@ -177,16 +165,19 @@ def bar_list_count(data,orther_number=1):
  return [labels, values]
 
 def bar_chart_new(data,key):
- labels = range(1, len(data[0]) + 1)
+ labels = range(1,len(data[0])+1)
  values = data[1]
- fig, ax = plt.subplots(figsize=(9, 6))
+ fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticks(labels)
  ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
- legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
- plt.bar(labels, values, label=legend, color=plt.rcParams['axes.prop_cycle'].by_key()['color'])
- ax.legend(bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
- plt.title(key, fontproperties=thai_font_prop)
+ color=plt.rcParams['axes.prop_cycle'].by_key()['color']
+ for i in range(len(data[0])):
+  legend = f'{i + 1}:{data[0][i]}'
+  ax.bar(labels, values, label=legend,color=color)
+ ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
+ plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
+ 
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
@@ -395,7 +386,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      a = split_comma(A)
      b = Count(a)
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     y = st.slider('', 1, max(b.values()), 1, 1) 
+     y = st.slider(topic, 1, max(b.values()), 1, 1) 
      list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
     for topic_bar in list_bar_chart:
      Number = Number+1
@@ -404,8 +395,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      c = Count(upload_df[topic_bar].values.tolist())
      Bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
      #a = st.radio('',[1,3,5,7,max(c.values())], horizontal=True)
-     y = st.slider('', 1, max(c.values()), 1, 1) 
-     st.write(y)
+     y = st.slider(topic_bar, 1, max(c.values()), 1, 1)
      list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
      continue
    
