@@ -179,7 +179,8 @@ def bar_chart_new(data,key):
  values = data[1]
  fig,ax = plt.subplots(figsize=(9,6))
  ax.set_xticks(labels)
- legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
+ for i in range(len(data[0])):
+  legend = f'{i + 1}:{data[0][i]}'
  ax.bar(labels, values, label=legend, color=plt.rcParams['axes.prop_cycle'].by_key()['color'])
  ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
