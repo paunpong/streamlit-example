@@ -114,7 +114,7 @@ def pie_chart(data, key):
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots(figsize=(9,6))
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- ax.legend(bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
+ #ax.legend(bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
 
