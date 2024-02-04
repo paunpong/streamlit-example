@@ -182,13 +182,16 @@ def bar_chart_new(data,key):
  fig, ax = plt.subplots(figsize=(9, 6))
  ax.set_xticks(labels)
  ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
- legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
+ wedges, texts, autotexts = ax.bar(labels, values, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
+ for text in texts + autotexts:
+  text.set_fontproperties(thai_font_prop)
+ ax.legend(wedges, labels, title="Legend", bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
+ #legend = [f'{i + 1}:{data[0][i]}' for i in range(len(data[0]))]
  #plt.bar(labels, values, label=legend, color=plt.rcParams['axes.prop_cycle'].by_key()['color'])
- if key < len(ax.containers):
-  ax.bar_label(ax.containers[i], label=f'{i + 1}:{data[0][i]}', fontsize=8, color='white', weight='bold', ha='center')
- ax.legend(bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
+ #ax.legend(bbox_to_anchor=(1, 0, 0.22, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
+ 
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
