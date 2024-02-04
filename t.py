@@ -184,7 +184,7 @@ def bar_chart_new(data,key):
  for i in range(len(data[0])):
   legend = f'{i + 1}:{data[0][i]}'
   ax.bar(labels, values, label=legend,color=color)
-  ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
+ ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
  
