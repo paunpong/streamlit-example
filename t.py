@@ -53,16 +53,6 @@ def check_count(A):
    return False
  return True
 
-def Split(A):
- for i in A:
-  topic = i.split('[')[0]
- return topic
-
-def Split_sub(A):
- for i in A:
-  sub = i.split('[')[1]
- return sub
-
 def num_check(A):
  for i in set(A):
   if type(i) is str and i != 'ไม่ระบุ':
@@ -183,7 +173,7 @@ def bar_chart_new(data,key):
  color=plt.rcParams['axes.prop_cycle'].by_key()['color']
  for i in range(len(data[0])):
   legend = f'{i + 1}:{data[0][i]}'
-  ax.bar(labels, values, label=legend,color=color)
+ ax.bar(labels, values, label=legend)
  ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
