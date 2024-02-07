@@ -185,7 +185,7 @@ def stacked_bar(data,key):
  name = data.keys()
  data1 = data.values()
 
- st.write(data1)
+
 
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data1,index=name)
