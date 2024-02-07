@@ -183,11 +183,13 @@ def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
  data1 = data.values()
+
+ data1 = dict(sorted(data1.items()))
  st.write(data1)
 
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data1,index=name)
- d_f = dict(sorted(d_f.items()))
+ 
 
  
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
