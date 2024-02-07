@@ -107,7 +107,23 @@ def change_num_to_text(A):
  dict_change_num_to_text = {5: 'มากที่สุด', 4: 'มาก', 3: 'ปานกลาง', 2: "น้อย", 1: "ควรปรับปรุง", 'ไม่ระบุ': 'ไม่ระบุ'}
  for i in upload_df[A].values.tolist():
   x.append(dict_change_num_to_text[i])
-  x.sort()
+ AB=list()
+if 'มากที่สุด' in x:
+  x.remove('มากที่สุด')
+  AB.append('มากที่สุด')
+if 'มาก' in x:
+  x.remove('มาก')
+  AB.append('มาก')
+ if 'ปานกลาง' in x:
+  x.remove('ปานกลาง')
+  AB.append('ปานกลาง')
+ if 'น้อย' in x:
+  x.remove('น้อย')
+  AB.append('น้อย')
+ if 'ควรปรับปรุง' in x:
+  x.remove('ควรปรับปรุง')
+  AB.append('ควรปรับปรุง')
+ AB=AB+x 
  return x
 
 def pie_chart(data, key):
