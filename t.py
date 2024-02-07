@@ -538,7 +538,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     #data_pie.append(['','','']) 
    if list_pie_chart != dict() and {'removenan':True}:
     #st.table([head_quality,*data_pie])
-    data_pie = [['วิทยากร', 'มาก'],[,จำนวน(เปอร์เซนต์)],['a','5(15%)']]
+    data_pie = [['วิทยากร', 'มาก'],[" ",จำนวน(เปอร์เซนต์)],['a','5(15%)']]
     st.table(data_pie)
     st.markdown("""---""")
     
