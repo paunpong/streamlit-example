@@ -104,9 +104,10 @@ def stat(A,removenan=True):
 
 def change_num_to_text(A):
  x = []
- dict_change_num_to_text = {5: 'มากที่สุด', 4: 'มาก', 3: 'ปานกลาง', 2: "น้อย", 1: "ควรปรับปรุง", 'ไม่ระบุ': 'ไม่ระบุ'}
+ dict_change_num_to_text = {5: '1 มากที่สุด', 4: '2 มาก', 3: '3 ปานกลาง', 2: "4 น้อย", 1: "5 ควรปรับปรุง", '6 ไม่ระบุ': 'ไม่ระบุ'}
  for i in upload_df[A].values.tolist():
   x.append(dict_change_num_to_text[i])
+  '''
  AB=list()
  if 'มากที่สุด' in x:
   x.remove('มากที่สุด')
@@ -123,7 +124,8 @@ def change_num_to_text(A):
  if 'ควรปรับปรุง' in x:
   x.remove('ควรปรับปรุง')
   AB.append('ควรปรับปรุง')
- AB=AB+x 
+ AB=AB+x
+ '''
  return x
 
 def pie_chart(data, key):
