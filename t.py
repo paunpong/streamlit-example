@@ -126,6 +126,7 @@ def change_num_to_text(A):
   AB.append('ควรปรับปรุง')
  AB=AB+x
  '''
+ x.sort()
  return x
 
 def pie_chart(data, key):
