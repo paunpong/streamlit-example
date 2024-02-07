@@ -107,25 +107,6 @@ def change_num_to_text(A):
  dict_change_num_to_text = {5: '1 มากที่สุด', 4: '2 มาก', 3: '3 ปานกลาง', 2: "4 น้อย", 1: "5 ควรปรับปรุง", '6 ไม่ระบุ': 'ไม่ระบุ'}
  for i in upload_df[A].values.tolist():
   x.append(dict_change_num_to_text[i])
-  '''
- AB=list()
- if 'มากที่สุด' in x:
-  x.remove('มากที่สุด')
-  AB.append('มากที่สุด')
- if 'มาก' in x:
-  x.remove('มาก')
-  AB.append('มาก')
- if 'ปานกลาง' in x:
-  x.remove('ปานกลาง')
-  AB.append('ปานกลาง')
- if 'น้อย' in x:
-  x.remove('น้อย')
-  AB.append('น้อย')
- if 'ควรปรับปรุง' in x:
-  x.remove('ควรปรับปรุง')
-  AB.append('ควรปรับปรุง')
- AB=AB+x
- '''
  x.sort()
  return x
 
@@ -202,8 +183,14 @@ def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
  data1 = data.values()
+ set_value = list(set(data1))
+ set_value.sort()
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data1,index=name)
+ d_f.columns=pd.CategoricalIndex(d_f.columns.values, ordered=True, categories=set_value)
+
+ d_f = df.sort_index(axis=1)
+ 
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
