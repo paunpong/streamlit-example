@@ -527,7 +527,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      count = values[ans]['count']
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent,])
-    data_pie.append(['**{รวม}**', sum([values[key]['count'] for key in values]), 100])
+    data_pie.append(['รวม', sum([values[key]['count'] for key in values]), 100])
 
     #------------------------------ อ.เอกเขียนไว้
     st.table(data_pie)
