@@ -107,6 +107,7 @@ def change_num_to_text(A):
  dict_change_num_to_text = {5: 'มากที่สุด', 4: 'มาก', 3: 'ปานกลาง', 2: "น้อย", 1: "ควรปรับปรุง", 'ไม่ระบุ': 'ไม่ระบุ'}
  for i in upload_df[A].values.tolist():
   x.append(dict_change_num_to_text[i])
+  x.sort()
  return x
 
 def pie_chart(data, key):
@@ -181,9 +182,9 @@ def bar_chart_new(data,key):
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
- data = data.values()
+ data1 = data.values()
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
- d_f = pd.DataFrame(data,index=name)
+ d_f = pd.DataFrame(data1,index=name)
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
