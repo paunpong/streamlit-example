@@ -108,10 +108,10 @@ def change_num_to_text(A):
  for i in upload_df[A].values.tolist():
   x.append(dict_change_num_to_text[i])
  AB=list()
-if 'มากที่สุด' in x:
+ if 'มากที่สุด' in x:
   x.remove('มากที่สุด')
   AB.append('มากที่สุด')
-if 'มาก' in x:
+ if 'มาก' in x:
   x.remove('มาก')
   AB.append('มาก')
  if 'ปานกลาง' in x:
