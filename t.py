@@ -508,7 +508,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
      stacked_bar(dict_stack_str[s],s)
-     
+  #----------------------------------------------------------------------------------------------------------------- tab2   
   with tab2:
    top_name = ''
    head_quality = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
@@ -522,7 +522,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_num_stack = []
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
-    data_pie.append([pie, sum([values[key]['count'] for key in values]), 100])
+    data_pie.append([pie, 'จำนวน', 'เปอร์เซนต์'])
     for ans in values:
      count = values[ans]['count']
      percent = values[ans]['percent']
@@ -531,6 +531,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     data_pie.append(['','','']) 
    if list_pie_chart != dict() and {'removenan':True}:
     st.table([head_quality,*data_pie])
+    st.table(data_pie)
     st.markdown("""---""")
     
    for box in list_boxplot:
