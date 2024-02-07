@@ -92,7 +92,8 @@ def count_list(A,removenan=True):
   per = (A.count(c)/len_A)*100
   count_dict[c] = {"count":A.count(c),"percent":round(per,digit)}
  sorted_dict = dict(sorted(count_dict.items()))
- return sorted_dict
+ st.write(sorted_dict)
+ return count_dict
 
 def stat(A,removenan=True):
  if removenan and 'ไม่ระบุ' in A:
