@@ -183,7 +183,7 @@ def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
  data1 = data.values()
- set_value = list(set(data1))
+ set_value = list(set(data1.tolist()))
  set_value.sort()
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data1,index=name)
