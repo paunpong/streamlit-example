@@ -174,7 +174,7 @@ def bar_chart_new(data,key):
  for i in range(len(data[0])):
   legend = f'{i + 1}:{data[0][i]}'
   ax.bar(labels, values, label=legend,color=color)
- ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
+ ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
  
@@ -386,7 +386,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      a = split_comma(A)
      b = Count(a)
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     y = st.slider(topic, 1, max(b.values()), 1, 1) 
+     y = st.slider(topic[:x]+endtext, 1, max(b.values()), 1, 1) 
      list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
     for topic_bar in list_bar_chart:
      Number = Number+1
@@ -395,7 +395,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      c = Count(upload_df[topic_bar].values.tolist())
      Bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
      #a = st.radio('',[1,3,5,7,max(c.values())], horizontal=True)
-     y = st.slider(topic_bar, 1, max(c.values()), 1, 1)
+     y = st.slider(topic_bar[:x]+endtext, 1, max(c.values()), 1, 1)
      list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
      continue
    
