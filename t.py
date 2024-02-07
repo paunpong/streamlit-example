@@ -91,8 +91,7 @@ def count_list(A,removenan=True):
  for c in list_A:
   per = (A.count(c)/len_A)*100
   count_dict[str(c)] = {"count":A.count(c),"percent":round(per,digit)}
- sorted_dict = dict(sorted(count_dict.items()))
- st.write(sorted_dict)
+ sorted_dict = dict(sorted(count_dict.items(),reverse=True))
  return sorted_dict
 
 def stat(A,removenan=True):
