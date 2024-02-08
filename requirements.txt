@@ -4,10 +4,6 @@ pandas
 openpyxl
 Pillow
 plotly
-railroad
-scikit_learn
-sentence_transformers
-spacy
 streamlit
 streamlit_option_menu
 my_module
