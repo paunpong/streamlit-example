@@ -7,6 +7,6 @@ plotly
 streamlit
 streamlit_option_menu
 my_module
-git+https://github.com/panupong/my_module.git
+git+git @ github.com:username/my_module.git
 en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.2.0/en_core_web_sm-3.2.0.tar.gz
 cluestar @ git+https://github.com/Buckeyes2019/cluestar_2.git
