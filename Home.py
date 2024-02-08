@@ -90,8 +90,9 @@ def count_list(A,removenan=True):
  len_A = len(A)
  for c in list_A:
   per = (A.count(c)/len_A)*100
-  count_dict[c] = {"count":A.count(c),"percent":round(per,digit)}
- return count_dict
+  count_dict[str(c)] = {"count":A.count(c),"percent":round(per,digit)}
+ sorted_dict = dict(sorted(count_dict.items(),reverse=True))
+ return sorted_dict
 
 def stat(A,removenan=True):
  if removenan and 'ไม่ระบุ' in A:
@@ -107,6 +108,7 @@ def change_num_to_text(A):
  dict_change_num_to_text = {5: 'มากที่สุด', 4: 'มาก', 3: 'ปานกลาง', 2: "น้อย", 1: "ควรปรับปรุง", 'ไม่ระบุ': 'ไม่ระบุ'}
  for i in upload_df[A].values.tolist():
   x.append(dict_change_num_to_text[i])
+ x.sort()
  return x
 
 def pie_chart(data, key):
@@ -174,16 +176,22 @@ def bar_chart_new(data,key):
  for i in range(len(data[0])):
   legend = f'{i + 1}:{data[0][i]}'
   ax.bar(labels, values, label=legend,color=color)
- ax.legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
+ ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
  
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
  name = data.keys()
- data = data.values()
+ data1 = data.values()
+
+
+
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
- d_f = pd.DataFrame(data,index=name)
+ d_f = pd.DataFrame(data1,index=name)
+ 
+
+ 
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  st.pyplot()
@@ -313,7 +321,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
-    comma = st.radio(head_bulet,['แผนภูมิแท่ง'])
+    st.write(head_bulet)
+    #comma = st.radio(head_bulet,['แผนภูมิแท่ง'])
     st.text("")
    for topic in list_bar_keys:
     numberitem = numberitem+1
@@ -333,7 +342,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + sub_word[:x]+endtext
-    str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    st.write(head_bulet)
+    #str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
    for topic in list_num_keys:
     sub_word = topic.split(' [')[1]
@@ -341,19 +351,22 @@ if menu == 'เริ่มต้นโปรแกรม':
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + sub_word[:x]+endtext
-    num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    st.write(head_bulet)
+    #num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
    for topic in list_stackn_keys:
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
-    stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    st.write(head_bulet)
+    #stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
    for topic in list_stacks_keys:
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
-    stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    st.write(head_bulet)
+    #stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
    #st.button('ตกลง')
      
@@ -386,7 +399,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      a = split_comma(A)
      b = Count(a)
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     y = st.slider(topic, 1, max(b.values()), 1, 1) 
+     y = st.slider(topic[:x]+endtext, 1, max(b.values()), 1, 1) 
      list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
     for topic_bar in list_bar_chart:
      Number = Number+1
@@ -395,7 +408,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      c = Count(upload_df[topic_bar].values.tolist())
      Bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
      #a = st.radio('',[1,3,5,7,max(c.values())], horizontal=True)
-     y = st.slider(topic_bar, 1, max(c.values()), 1, 1)
+     y = st.slider(topic_bar[:x]+endtext, 1, max(c.values()), 1, 1)
      list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
      continue
    
@@ -495,7 +508,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
      stacked_bar(dict_stack_str[s],s)
-     
+  #----------------------------------------------------------------------------------------------------------------- tab2   
   with tab2:
    top_name = ''
    head_quality = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
@@ -509,14 +522,24 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_num_stack = []
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
-    data_pie.append([pie, sum([values[key]['count'] for key in values]), 100])
+    data_pie.append([pie, 'จำนวน', 'เปอร์เซนต์'])
     for ans in values:
      count = values[ans]['count']
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent,])
-    data_pie.append(['','','']) 
+    data_pie.append(['รวม', sum([values[key]['count'] for key in values]), 100])
+
+    #------------------------------ อ.เอกเขียนไว้
+    st.table(data_pie)
+    data_pie = []
+    #---------------------------------------------
+
+   
+    #data_pie.append(['','','']) 
    if list_pie_chart != dict() and {'removenan':True}:
-    st.table([head_quality,*data_pie])
+    #st.table([head_quality,*data_pie])
+    data_pie = [['วิทยากร', 'มาก'],[" ", "จำนวน(เปอร์เซนต์)"],['a','5(15%)']]
+    st.table(data_pie)
     st.markdown("""---""")
     
    for box in list_boxplot:
