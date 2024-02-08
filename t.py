@@ -571,13 +571,12 @@ if menu == 'เริ่มต้นโปรแกรม':
     data = upload_df[bar].values.tolist()
     all_data = len(data)
     Val = Count(data,list_bar_chart[bar]['removenan'])
+    sum_val = sum(Val)
     other = bar_list_count(Val,list_bar_chart[bar]['orther_number'])
     data_bar.append([bar,'จำนวน', 'เปอร์เซนต์'])
     data_dict = dict(zip(other[0],other[1]))
     for key in data_dict:
      cou = data_dict[key]
-     sum_cou = sum(cou.values())
-     st.write(sum_cou)
      percent = 100*cou/all_data
      data_bar.append([key,data_dict[key],round(percent,digit)])
     data_bar.append(['รวม',all_data,100])
