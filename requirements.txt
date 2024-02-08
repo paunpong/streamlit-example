@@ -1,20 +1,19 @@
-keybert==0.6.0
-keyphrase_vectorizers==0.0.10
-matplotlib==3.5.2
-numpy==1.21.6
+matplotlib
+numpy
 pandas
 openpyxl
-Pillow==9.2.0
-plotly==5.8.2
-railroad==0.5.0
-scikit_learn==1.1.2
-sentence_transformers==2.2.2
-spacy==3.2.0
+Pillow
+plotly
+railroad
+scikit_learn
+sentence_transformers
+spacy
 streamlit
 streamlit_option_menu
 my_module
-textacy==0.12.0
-umap-learn==0.5.3
-wordcloud==1.8.2.2
+textacy
+umap-learn
+wordcloud
+git+https://github.com/username/my_module.git
 en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.2.0/en_core_web_sm-3.2.0.tar.gz
 cluestar @ git+https://github.com/Buckeyes2019/cluestar_2.git
