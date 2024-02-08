@@ -560,7 +560,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      cou = data_dict[key]
      percent = 100*cou/len(list_free)
      data_comma.append([key,data_dict[key],round(percent,digit)])
-    data_comma.append(['รวม',all_number],100)
+    data_comma.append(['รวม',all_number,100])
     
     st.table(data_comma)
     data_comma = []
