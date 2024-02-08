@@ -561,8 +561,11 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = 100*cou/len(list_free)
      data_comma.append([key,data_dict[key],round(percent,digit)])
     data_comma.append(['รวม',all_number],100)
-   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:
-    st.table([head_quality,*data_comma])
+    
+    st.table(data_comma)
+    data_comma = []
+   #if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:
+    
      
    for bar in list_bar_chart:
     data = upload_df[bar].values.tolist()
