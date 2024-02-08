@@ -4,3 +4,6 @@ railroad
 scikit_learn
 sentence_transformers
 spacy
+textacy
+umap-learn
+wordcloud
