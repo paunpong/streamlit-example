@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu
+from my_module import my_function
 #from t import pie_chart, boxplot, bar_chart_new, stacked_bar   
 
 #st.set_page_config(page_title="อัปโหลดไฟล์",layout="wide")
@@ -638,4 +639,4 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 #------------------------------------------------------------docs-------------------------------------------------#
 
-st.markdown(inspect.getsource(pie_chart))
+
