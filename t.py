@@ -13,6 +13,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu
+from my_charts import pie_chart, boxplot, bar_chart_new, stacked_bar   
 
 #st.set_page_config(page_title="อัปโหลดไฟล์",layout="wide")
 
@@ -634,3 +635,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_num_stack != dict() and {'removenan':True}:
     st.table([head_re,*data_num_stack])
     st.markdown("""---""")
+    
+#------------------------------------------------------------docs-------------------------------------------------#
+
+pie_chart(your_data, your_key, digit=your_digit, thai_font_prop=your_font_prop)
