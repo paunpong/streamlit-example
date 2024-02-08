@@ -185,12 +185,8 @@ def stacked_bar(data,key):
  name = data.keys()
  data1 = data.values()
 
-
-
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data1,index=name)
- 
-
  
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
@@ -558,12 +554,13 @@ if menu == 'เริ่มต้นโปรแกรม':
     #set_list = list(set(list_free))
     val = Count(list_free,list_bar_chart_comma[comma]['removenan'])
     data = bar_list_count(val, list_bar_chart_comma[comma]['orther_number'])
-    data_comma.append([comma, all_number, 100])
+    data_comma.append([comma, 'จำนวน', 'เปอร์เซนต์'])
     data_dict = dict(zip(data[0],data[1]))
     for key in data_dict:
      cou = data_dict[key]
-     percent = 100*cou/all_number
+     percent = 100*cou/len(list_free)
      data_comma.append([key,data_dict[key],round(percent,digit)])
+    data_comma.append(['รวม',all_number],100)
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:
     st.table([head_quality,*data_comma])
      
