@@ -572,14 +572,19 @@ if menu == 'เริ่มต้นโปรแกรม':
     all_data = len(data)
     Val = Count(data,list_bar_chart[bar]['removenan'])
     other = bar_list_count(Val,list_bar_chart[bar]['orther_number'])
-    data_bar.append([bar,all_data,100])
+    data_bar.append([bar,'จำนวน', 'เปอร์เซนต์'])
     data_dict = dict(zip(other[0],other[1]))
     for key in data_dict:
      cou = data_dict[key]
      percent = 100*cou/all_data
      data_bar.append([key,data_dict[key],round(percent,digit)])
+    data_bar.append(['รวม',all_number,100])
+    
+    st.table(data_bar)
+    data_bar = []
+    
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1}:
-    st.table([head_quality,*data_bar])
+    
     st.markdown("""---""")
     
    for num in list_stack_num:
