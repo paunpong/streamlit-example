@@ -578,7 +578,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      cou = data_dict[key]
      percent = 100*cou/all_data
      data_bar.append([key,data_dict[key],round(percent,digit)])
-    data_bar.append(['รวม',all_number,100])
+    data_bar.append(['รวม',all_data,100])
     
     st.table(data_bar)
     data_bar = []
