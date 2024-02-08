@@ -1,2 +1,6 @@
 keybert
 keyphrase_vectorizers
+railroad
+scikit_learn
+sentence_transformers
+spacy
