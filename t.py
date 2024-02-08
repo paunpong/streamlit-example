@@ -638,4 +638,4 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 #------------------------------------------------------------docs-------------------------------------------------#
 
-pie_chart(your_data, your_key, digit=your_digit, thai_font_prop=your_font_prop)
+st.markdown(inspect.getsource(pie_chart))
