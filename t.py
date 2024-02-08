@@ -13,7 +13,7 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu
-from t import pie_chart, boxplot, bar_chart_new, stacked_bar   
+#from t import pie_chart, boxplot, bar_chart_new, stacked_bar   
 
 #st.set_page_config(page_title="อัปโหลดไฟล์",layout="wide")
 
