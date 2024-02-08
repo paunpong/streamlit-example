@@ -569,9 +569,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      
    for bar in list_bar_chart:
     data = upload_df[bar].values.tolist()
-    all_data = len(data)
+    all_data = sum(Count(data))
     Val = Count(data,list_bar_chart[bar]['removenan'])
-    sum_val = sum(Val)
     other = bar_list_count(Val,list_bar_chart[bar]['orther_number'])
     data_bar.append([bar,'จำนวน', 'เปอร์เซนต์'])
     data_dict = dict(zip(other[0],other[1]))
