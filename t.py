@@ -576,7 +576,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     data_bar.append([bar,'จำนวน', 'เปอร์เซนต์'])
     data_dict = dict(zip(other[0],other[1]))
     for key in data_dict:
-     #sum_val = sum([Val[key] for key in Val]
+     sum_val = sum([Val[key] for key in Val]
+     st.write(sum_val)
      cou = data_dict[key]
      percent = 100*cou/all_data
      data_bar.append([key,data_dict[key],round(percent,digit)])
@@ -586,7 +587,6 @@ if menu == 'เริ่มต้นโปรแกรม':
     data_bar = []
     
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1}:
-    
     st.markdown("""---""")
     
    for num in list_stack_num:
