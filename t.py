@@ -575,7 +575,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     data_bar.append([bar,'จำนวน', 'เปอร์เซนต์'])
     data_dict = dict(zip(other[0],other[1]))
     for key in data_dict:
-     cou = sum(data_dict[key])
+     cou = data_dict[key]
      st.write(cou)
      percent = 100*cou/all_data
      data_bar.append([key,data_dict[key],round(percent,digit)])
