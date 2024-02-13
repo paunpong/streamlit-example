@@ -598,6 +598,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     if topic_word != top_name: 
      data_stack_str.append[topic_word, 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด']
      data_stack_str.append[" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"]
+     top_name = topic_word
     for key in count_string:
      data_stack_str.append[sub_word] 
     #st.table(data_stack_str)
