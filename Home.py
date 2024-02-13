@@ -593,9 +593,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     topic_word, sub_word = Str.split(' [')[:2]
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
+    data_stack_str.append[topic_word, 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด']
     for key in count_string:
-     data_stack_str = [[topic_word, 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'],[" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", 
-     "จำนวน(เปอร์เซนต์)"],[sub_word,'']]
+     data_stack_str.append[" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"]
     st.table(data_stack_str)
     
    for num in list_stack_num:
