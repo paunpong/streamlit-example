@@ -600,7 +600,18 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
      top_name = topic_word
     for key in count_string:
-     data_stack_str.append([sub_word,count_string['มากที่สุด']['count']]) 
+     if type(key) is str and key != 'ไม่ระบุ':
+      data_stack_str.append([sub_word,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)",
+                             f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)",
+                             f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)",
+                             f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)",
+                             f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"])
+     else:
+      data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)",
+                             f"{count_string['4']['count']}({count_string['4']['percent']}%)",
+                             f"{count_string['3']['count']}({count_string['3']['percent']}%)",
+                             f"{count_string['2']['count']}({count_string['2']['percent']}%)",
+                             f"{count_string['1']['count']}({count_string['1']['percent']}%)"])
     #st.table(data_stack_str)
     
    for num in list_stack_num:
