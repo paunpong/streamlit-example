@@ -612,7 +612,7 @@ if menu == 'เริ่มต้นโปรแกรม':
                              f"{count_string['3']['count']}({count_string['3']['percent']}%)"if '3' in count_string else "",
                              f"{count_string['2']['count']}({count_string['2']['percent']}%)"if '2' in count_string else "",
                              f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else ""])
-    #st.table(data_stack_str)
+   st.table(data_stack_str)
     
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
