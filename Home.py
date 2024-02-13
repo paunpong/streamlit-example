@@ -605,7 +605,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
     if topic_word != top_name:
-     data_stack_num.append([topic_word, '', '', ''])
+     data_stack_num.append([topic_word, 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล'])
      top_name = topic_word 
     for key in mean_sd:
      mean = mean_sd['ค่าเฉลี่ย']
@@ -622,8 +622,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
     data_stack_num.append([sub_word,mean,s_d,level])
-   if list_stack_num != dict() and {'removenan':True}:
-    st.table([head_re,*data_stack_num])
+    st.table(data_stack_num)
+   #if list_stack_num != dict() and {'removenan':True}:
+    #st.table(data_stack_num)
     
    for nums in list_num_stack:
     math = upload_df[nums].values.tolist()
