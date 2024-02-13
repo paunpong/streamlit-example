@@ -603,7 +603,8 @@ if menu == 'เริ่มต้นโปรแกรม':
                             f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
                             f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
                             f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"]) 
-    st.table(data_stack_str)
+   st.table(data_stack_str)
+   data_stack_str = []
     
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
