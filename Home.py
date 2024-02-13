@@ -4,7 +4,8 @@ import os
 from matplotlib import font_manager as fm
 from matplotlib.font_manager import FontProperties
 #import statistics as stat
-#import io
+import io
+from docx import Document
 #import re
 #import operator
 from PIL import Image
