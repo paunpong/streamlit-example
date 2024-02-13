@@ -1,4 +1,4 @@
-import matplotlib as mpl
+eimport matplotlib as mpl
 import matplotlib.pyplot as plt
 import os
 from matplotlib import font_manager as fm
@@ -609,8 +609,8 @@ if menu == 'เริ่มต้นโปรแกรม':
                              f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"]) 
       
    
-   st.table(data_stack_str)
-   data_stack_str = []
+    st.table(data_stack_str)
+    data_stack_str = []
     
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
