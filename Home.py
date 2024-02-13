@@ -601,6 +601,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     for key in count_string:
      st.write(key)
      if type(key) is str and key != 'ไม่ระบุ':
+      st.write(sub_word)
       data_stack_str.append([sub_word,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
                              f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
                              f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
