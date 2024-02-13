@@ -591,6 +591,9 @@ if menu == 'เริ่มต้นโปรแกรม':
 
    for Str in list_stack_str:
     count_string = count_list(upload_df[Str].values.tolist(),list_stack_str[Str]['removenan'])
+    #if num_check(Str):
+     #a = change_num_to_text(Str)
+     #count_string = count_list(a)
     topic_word, sub_word = Str.split(' [')[:2]
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
@@ -599,7 +602,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
      top_name = topic_word
      
-    if num_check(count_string):
+    if num_check(Str):
      data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
                              f"{count_string['4']['count']}({count_string['4']['percent']}%)"if '4' in count_string else "0(0%)",
                              f"{count_string['3']['count']}({count_string['3']['percent']}%)"if '3' in count_string else "0(0%)",
