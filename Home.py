@@ -622,7 +622,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
     data_stack_num.append([sub_word,mean,s_d,level])
-    st.table(data_stack_num)
+   st.table(data_stack_num)
    #if list_stack_num != dict() and {'removenan':True}:
     #st.table(data_stack_num)
     
