@@ -590,7 +590,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 
    for Str in list_stack_str:
     count_string = count_list(upload_df[Str].values.tolist(),list_stack_str[Str]['removenan'])
-    st.write(string)
+    st.write(count_string)
     topic_word, sub_word = Str.split(' [')[:2]
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
