@@ -600,8 +600,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
      top_name = topic_word
     for key in count_string:
-     st.write(key)
-     data_stack_str.append([sub_word],) 
+     data_stack_str.append([sub_word,count_string['มากที่สุด'][count]]) 
     #st.table(data_stack_str)
     
    for num in list_stack_num:
