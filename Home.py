@@ -590,10 +590,13 @@ if menu == 'เริ่มต้นโปรแกรม':
 
    for Str in list_stack_str:
     string = count_list(upload_df[Str].values.tolist(),list_stack_str[Str]['removenan'])
+    st.write(string)
     topic_word, sub_word = Str.split(' [')[:2]
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
-    data_stack_str = [[topic_word, 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'],[" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"],[sub_word,'5(15%)']]
+    data_stack_str = [[topic_word, 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'],[" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", 
+    "จำนวน(เปอร์เซนต์)"],[sub_word,'']]
+    st.table(data_stack_str)
     
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
