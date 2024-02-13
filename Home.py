@@ -591,7 +591,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 
    for Str in list_stack_str:
     count_string = count_list(upload_df[Str].values.tolist(),list_stack_str[Str]['removenan'])
-    st.write(Str,count_string)
+    #st.write(Str,count_string)
     topic_word, sub_word = Str.split(' [')[:2]
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
@@ -599,6 +599,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_stack_str.append([topic_word, 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'])
      data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
     for key in count_string:
+     st.write(key)
      if type(key) is str and key != 'ไม่ระบุ':
       data_stack_str.append([sub_word,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
                              f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
