@@ -407,7 +407,6 @@ if menu == 'เริ่มต้นโปรแกรม':
      y = st.slider(topic_bar[:x]+endtext, 1, max(c.values()), 1, 1)
      list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
      continue
-   
    if Type == 'แท่งต่อกัน':
     for topic_stack in list_num_keys:
      Number = Number+1
@@ -460,7 +459,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      topic_word, sub_word = i.split(' [')[:2]
      topic_word = topic_word.strip()
      sub_word = sub_word.strip().replace(']','')
-     A_l = count_list(upload_df[i].values.tolist())
+     A_l = count_list(upload_df[i].values.tolist(),list_stack_str[i]['removenan'])
      for k in A_l:
       A_l[k] = A_l[k]['percent']
      if topic_word not in dict_str_stack:
@@ -514,8 +513,10 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_box = []
    data_comma = []
    data_bar = []
+   data_stack_str = []
    data_stack_num = []
    data_num_stack = []
+   
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     data_pie.append([pie, 'จำนวน', 'เปอร์เซนต์'])
@@ -534,7 +535,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     #data_pie.append(['','','']) 
    if list_pie_chart != dict() and {'removenan':True}:
     #st.table([head_quality,*data_pie])
-    data_pie = [['วิทยากร', 'มาก'],[" ", "จำนวน(เปอร์เซนต์)"],['a','5(15%)']]
+    data_pie = [['วิทยากร', 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'],[" ", "จำนวน(เปอร์เซนต์)"],['a','5(15%)']]
     st.table(data_pie)
     st.markdown("""---""")
     
@@ -585,6 +586,12 @@ if menu == 'เริ่มต้นโปรแกรม':
     
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1}:
     st.markdown("""---""")
+
+   for Str in list_stack_str:
+    string = count_list(upload_df[Str].values.tolist(),list_stack_str[Str]['removenan'])
+    topic_word, sub_word = Str.split(' [')[:2]
+    topic_word = topic_word.strip()
+    sub_word = sub_word.strip().replace(']', '')
     
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
