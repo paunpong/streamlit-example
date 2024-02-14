@@ -677,8 +677,12 @@ if st.button("Create Word Document"):
  for p in list_pie_chart:
   pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
   encoded_image = image_to_base64(pie_chart_path)
+  encoded_images.append(encoded_image)
+ # Add images to the Word document
+ for encoded_image in encoded_images:
+  doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))
   #pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit,)
-  doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
+  #doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
  # Save the document to a BytesIO object
  
  doc_buffer = io.BytesIO()
