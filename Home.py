@@ -132,7 +132,7 @@ def Pie_chart(data, key):
  counts = [data[key]['percent'] for key in data]
  fig, ax = plt.subplots(figsize=(9, 6))
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- plt.title(key)
+ plt.title(key, fontproperties=thai_font_prop)
  chart_path = "pie_chart.png"
  plt.savefig(chart_path)
  plt.close()
@@ -692,7 +692,7 @@ if st.button('Generate'):
  #doc = create_word_doc("This is the text content of the document.")
  for p in list_pie_chart:
   pie_chart_path = Pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
- chart_paths.append(pie_chart_path)
+  chart_paths.append(pie_chart_path)
  word_file_path = create_word_doc(chart_paths)
  st.success("Report Generated!")
  
