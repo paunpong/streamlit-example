@@ -677,9 +677,9 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 def create_word_doc(chart_paths):
  doc = Document()
- st.write(chart_paths)
  for chart_path in chart_paths:
-  doc.add_picture(pie_chart_path,width=Inches(3.5))
+  st.write(chart_path,chart_paths[chart_path])
+  doc.add_picture(chart_path,width=Inches(3.5))
  doc.save('report.docx')
  return 'report.docx'
  
@@ -690,7 +690,6 @@ if st.button('Generate'):
  for p in list_pie_chart:
   pie_chart_path = Pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
  word_file_path = create_word_doc(pie_chart_path)
- st.write(word_file_path.read())
  st.success("Report Generated!")
  
  st.download_button(label="Download Report",data=word_file_path,
