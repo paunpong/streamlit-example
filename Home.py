@@ -122,8 +122,8 @@ def pie_chart(data, key):
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
- fig.savefig("pie_chart.jpg", bbox_inches='tight')
- return "pie_chart.jpg"
+ fig.savefig("pie_chart.png", bbox_inches='tight')
+ return "pie_chart.png"
 
 def boxplot(data,key):
  fig,ax = plt.subplots()
@@ -666,6 +666,9 @@ if menu == 'เริ่มต้นโปรแกรม':
 def create_word_doc(text):
     doc = Document()
     doc.add_paragraph(text)
+    for p in list_pie_chart:
+     pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
+     doc.add_picture(pie_chart_path,width=Inches(3.5))
     return doc
  
 st.title("Word Document Creator")
@@ -673,7 +676,7 @@ if st.button("Create Word Document"):
  doc = create_word_doc("This is the text content of the document.")
  for p in list_pie_chart:
   pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
-  doc.add_picture(pie_chart_path,width=Inches(2.5))
+  doc.add_picture(pie_chart_path,width=Inches(3.5))
   #pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit,)
   #doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
  # Save the document to a BytesIO object
