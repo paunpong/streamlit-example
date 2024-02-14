@@ -668,22 +668,22 @@ def create_word_doc(text):
  
 st.title("Word Document Creator")
 
-if st.button("Create Word Document"):
- doc = create_word_doc()
- if pie_chart_data:
-  pie_chart_path = create_pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit, thai_font_prop)
-  doc.add_picture(pie_chart_path, width=Inches(4))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
- # Save the document to a BytesIO object
- doc_buffer = io.BytesIO()
- doc.save(doc_buffer)
- doc_buffer.seek(0)
- # Provide download link for the generated document
- st.download_button(
+#if st.button("Create Word Document"):
+doc = create_word_doc()
+if pie_chart_data:
+ pie_chart_path = create_pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit, thai_font_prop)
+ doc.add_picture(pie_chart_path, width=Inches(4))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
+# Save the document to a BytesIO object
+doc_buffer = io.BytesIO()
+doc.save(doc_buffer)
+doc_buffer.seek(0)
+# Provide download link for the generated document
+st.download_button(
             label="Download Word Document",
             data=doc_buffer,
             file_name="output.docx",
             mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
             key="word-doc-download"
         )
- st.success("Word document created successfully!")
+st.success("Word document created successfully!")
 
