@@ -664,7 +664,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 #--------------------------------------------------------------doc--------------------------------
 
-def create_word_doc(chart_path):
+def create_word_doc(chart_paths):
  doc = Document()
  for chart_path in chart_paths:
   doc.add_picture(pie_chart_path,width=Inches(3.5))
