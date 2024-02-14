@@ -7,8 +7,8 @@ from matplotlib.font_manager import FontProperties
 import io
 from docx import Document
 from io import BytesIO
-from docx.shared import Inches
-import base64
+from docx.shared import Pt
+from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
 #import re
 #import operator
 from PIL import Image
