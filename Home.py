@@ -122,7 +122,9 @@ def pie_chart(data, key):
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
- fig.savefig("pie_chart.png")
+ chart_path = "pie_chart.png"
+ fig.savefig(chart_path)
+ return chart_path
 
 def boxplot(data,key):
  fig,ax = plt.subplots()
@@ -662,19 +664,25 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 #--------------------------------------------------------------doc--------------------------------
 
-def create_word_doc(text):
-    doc = Document()
-    #doc.add_paragraph(text)
-    doc.add_picture(pie_chart_path,width=Inches(3.5))
-    doc.save('report.docx')
-    return st.info('Report Generated')
+def create_word_doc(chart_path):
+ doc = Document()
+ for chart_path in chart_paths:
+  doc.add_picture(pie_chart_path,width=Inches(3.5))
+ doc.save('report.docx')
+ return 'report.docx'
  
 st.title("Word Document Creator")
-if st.form_submit_button('Generate'):
+
+if st.button('Generate'):
  #doc = create_word_doc("This is the text content of the document.")
  for p in list_pie_chart:
   pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
- create_word_doc(pie_chart_path)
+ word_file_path = create_word_doc(pie_chart_path)
+ st.success("Report Generated!")
+ 
+ st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),
+        file_name="report.docx",mime="application/docx",)
+ 
  #for p in list_pie_chart:
   #pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
   #doc.add_picture(pie_chart_path,width=Inches(3.5)) 
