@@ -678,6 +678,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 def create_word_doc(chart_paths):
  doc = Document()
  for chart_path in chart_paths:
+  st.write(chart_path)
   doc.add_picture(chart_path,width=Inches(3.5))
  doc.save('report.docx')
  return 'report.docx'
