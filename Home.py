@@ -605,7 +605,6 @@ if menu == 'เริ่มต้นโปรแกรม':
                             f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
    if list_stack_str != dict() and {'removenan':True}: 
     st.table(data_stack_str)
-    data_stack_str = []
     
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
