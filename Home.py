@@ -130,7 +130,7 @@ def Pie_chart(data, key):
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
  fig, ax = plt.subplots(figsize=(9, 6))
- ax.pie(counts, labels=labels, autopct='%.2f%%')
+ ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key)
  chart_path = "pie_chart.png"
  plt.savefig(chart_path)
@@ -678,8 +678,11 @@ if menu == 'เริ่มต้นโปรแกรม':
 def create_word_doc(chart_paths):
  doc = Document()
  for chart_path in chart_paths:
-  doc.add_paragraph()
-  doc.add_picture(chart_path,width=Inches(3.5))
+  p = doc.add_paragraph()
+  p.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER  # Center align the paragraph
+  r = p.add_run()
+  r.add_picture(chart_path, width=Inches(3.5))
+  #doc.add_paragraph()
  doc.save('report.docx')
  return 'report.docx'
  
@@ -690,12 +693,12 @@ if st.button('Generate'):
  #doc = create_word_doc("This is the text content of the document.")
  for p in list_pie_chart:
   pie_chart_path = Pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
-  chart_paths.append(pie_chart_path)
+ chart_paths.append(pie_chart_path)
  word_file_path = create_word_doc(chart_paths)
  st.success("Report Generated!")
  
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),
-        file_name="report.docx",mime="application/docx",)
+        file_name="report.docx",mime="application/docx")
  
  #for p in list_pie_chart:
   #pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
