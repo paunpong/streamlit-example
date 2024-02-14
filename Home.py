@@ -667,10 +667,6 @@ def create_word_doc(text):
     doc = Document()
     doc.add_paragraph(text)
     return doc
-
-def image_to_base64(image_path):
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode("utf-8")
  
 st.title("Word Document Creator")
 if st.button("Create Word Document"):
