@@ -668,7 +668,7 @@ def create_word_doc(text):
  
 st.title("Word Document Creator")
 
-doc = create_word_doc()
+doc = create_word_doc("This is the text content of the document.")
 if pie_chart_data:
     pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit, thai_font_prop)
     doc.add_picture(pie_chart_path, width=Inches(4))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
