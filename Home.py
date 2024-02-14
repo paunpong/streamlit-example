@@ -665,7 +665,7 @@ def create_word_doc(text):
     doc.add_paragraph(text)
     return doc
  
-st.title(##"Word Document Creator")
+st.title("Word Document Creator")
 doc = create_word_doc("This is the text content of the document.")
 for p in list_pie_chart:
  pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
