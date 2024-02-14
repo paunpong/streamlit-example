@@ -603,6 +603,7 @@ if menu == 'เริ่มต้นโปรแกรม':
                             f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
                             f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
                             f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
+    
    if list_stack_str != dict() and {'removenan':True}: 
     st.table(data_stack_str)
     
@@ -630,9 +631,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
     data_stack_num.append([sub_word,mean,s_d,level])
-   st.table(data_stack_num)
-   #if list_stack_num != dict() and {'removenan':True}:
-    #st.table(data_stack_num)
+   #st.table(data_stack_num)
+   if list_stack_num != dict() and {'removenan':True}:
+    st.table(data_stack_num)
     
    for nums in list_num_stack:
     math = upload_df[nums].values.tolist()
