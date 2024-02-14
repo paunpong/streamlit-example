@@ -680,11 +680,11 @@ if st.button("Create Word Document"):
  
  doc_buffer = io.BytesIO()
  doc.save(doc_buffer)
- doc.seek(0)
- #doc_buffer.seek(0)
+ #doc.seek(0)
+ doc_buffer.seek(1)
  #st.write(doc_buffer)
  
  # Provide download link for the generated document
- st.download_button(label="Download Word Document",data=doc,file_name="output.docx",
+ st.download_button(label="Download Word Document",data=doc_buffer,file_name="output.docx",
      mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",key="word-doc-download")
  st.success("Word document created successfully!")
