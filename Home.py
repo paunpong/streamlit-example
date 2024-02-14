@@ -679,10 +679,10 @@ def create_word_doc(chart_paths):
  doc = Document()
  for chart_path in chart_paths:
   p = doc.add_paragraph()
-  p.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER  # Center align the paragraph
+  p.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
   r = p.add_run()
   r.add_picture(chart_path, width=Inches(3.5))
-  #doc.add_paragraph()
+  doc.add_paragraph()
  doc.save('report.docx')
  return 'report.docx'
  
@@ -693,7 +693,7 @@ if st.button('Generate'):
  #doc = create_word_doc("This is the text content of the document.")
  for p in list_pie_chart:
   pie_chart_path = Pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
-  chart_paths.append(pie_chart_path)
+ chart_paths.append(pie_chart_path)
  word_file_path = create_word_doc(chart_paths)
  st.success("Report Generated!")
  
