@@ -117,7 +117,6 @@ def pie_chart(data, key):
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots(figsize=(9,6))
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- #ax.legend(bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
  fig.savefig("pie_chart.png", bbox_inches='tight')
@@ -669,8 +668,9 @@ def create_word_doc(text):
 st.title("Word Document Creator")
 
 doc = create_word_doc("This is the text content of the document.")
-if pie_chart_data:
- pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit, thai_font_prop)
+for p in list_pie_chart:
+ pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
+ #pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit,)
  doc.add_picture(pie_chart_path, width=Inches(4))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
 # Save the document to a BytesIO object
 doc_buffer = io.BytesIO()
