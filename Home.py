@@ -9,6 +9,7 @@ from docx import Document
 from io import BytesIO
 from docx.shared import Pt
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.shared import Inches
 #import re
 #import operator
 from PIL import Image
