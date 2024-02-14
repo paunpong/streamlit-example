@@ -682,9 +682,10 @@ if st.button("Create Word Document"):
   #doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
  # Save the document to a BytesIO object
  
- doc_buffer = io.BytesIO(pie_chart_path)
+ doc_buffer = io.BytesIO()
  doc.save(doc_buffer)
  doc_buffer.seek(0)
+ st.write(doc_buffer)
  
  # Provide download link for the generated document
  st.download_button(label="Download Word Document",data=doc_buffer,file_name="output.docx",
