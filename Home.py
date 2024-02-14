@@ -678,11 +678,13 @@ if st.button("Create Word Document"):
   pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
   encoded_image = image_to_base64(pie_chart_path)
   #pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit,)
-  doc.add_picture(base64.b64decode(encoded_image)  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
+  doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
  # Save the document to a BytesIO object
+ 
  doc_buffer = io.BytesIO()
  doc.save(doc_buffer)
  doc_buffer.seek(0)
+ 
  # Provide download link for the generated document
  st.download_button(label="Download Word Document",data=doc_buffer,file_name="output.docx",
      mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",key="word-doc-download")
