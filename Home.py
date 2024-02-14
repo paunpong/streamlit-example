@@ -6,6 +6,8 @@ from matplotlib.font_manager import FontProperties
 #import statistics as stat
 import io
 from docx import Document
+from docx.shared import Inches
+import base64
 #import re
 #import operator
 from PIL import Image
@@ -664,14 +666,19 @@ def create_word_doc(text):
     doc = Document()
     doc.add_paragraph(text)
     return doc
+
+def image_to_base64(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode("utf-8")
  
 st.title("Word Document Creator")
 if st.button("Create Word Document"):
  doc = create_word_doc("This is the text content of the document.")
  for p in list_pie_chart:
   pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
+  encoded_image = image_to_base64(pie_chart_path)
   #pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit,)
-  doc.add_picture(pie_chart_path)  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
+  doc.add_picture(io.BytesIO(base64.b64decode(encoded_image))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
  # Save the document to a BytesIO object
  doc_buffer = io.BytesIO()
  doc.save(doc_buffer)
