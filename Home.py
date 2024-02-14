@@ -675,10 +675,10 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 #--------------------------------------------------------------doc--------------------------------
 
-def create_word_doc(chart_paths):
+def create_word_doc(pie_chart_path):
  doc = Document()
- for chart_path in chart_paths:
-  st.write(chart_path)
+ for chart_path in pie_chart_path:
+  doc.add_paragraph()
   doc.add_picture(chart_path,width=Inches(3.5))
  doc.save('report.docx')
  return 'report.docx'
@@ -692,7 +692,7 @@ if st.button('Generate'):
  word_file_path = create_word_doc(pie_chart_path)
  st.success("Report Generated!")
  
- st.download_button(label="Download Report",data=word_file_path,
+ st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),
         file_name="report.docx",mime="application/docx",)
  
  #for p in list_pie_chart:
