@@ -673,7 +673,7 @@ if st.button("Create Word Document"):
  doc = create_word_doc("This is the text content of the document.")
  for p in list_pie_chart:
   pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
-  doc.add_picture(io.BytesIO(base64.b64decode(pie_chart_path)),width=Inches(2))
+  doc.add_picture(pie_chart_path,width=Inches(2))
   #pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit,)
   #doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
  # Save the document to a BytesIO object
