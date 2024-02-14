@@ -120,6 +120,8 @@ def pie_chart(data, key):
  #ax.legend(bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
+ fig.savefig("pie_chart.png", bbox_inches='tight')
+ return "pie_chart.png"
 
 def boxplot(data,key):
  fig,ax = plt.subplots()
@@ -656,3 +658,32 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_num_stack != dict() and {'removenan':True}:
     st.table([head_re,*data_num_stack])
     st.markdown("""---""")
+
+#--------------------------------------------------------------doc--------------------------------
+
+def create_word_doc(text):
+    doc = Document()
+    doc.add_paragraph(text)
+    return doc
+ 
+st.title("Word Document Creator")
+
+if st.button("Create Word Document"):
+ doc = create_word_doc()
+ if pie_chart_data:
+  pie_chart_path = create_pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit, thai_font_prop)
+  doc.add_picture(pie_chart_path, width=Inches(4))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
+ # Save the document to a BytesIO object
+ doc_buffer = io.BytesIO()
+ doc.save(doc_buffer)
+ doc_buffer.seek(0)
+ # Provide download link for the generated document
+ st.download_button(
+            label="Download Word Document",
+            data=doc_buffer,
+            file_name="output.docx",
+            mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            key="word-doc-download"
+        )
+ st.success("Word document created successfully!")
+
