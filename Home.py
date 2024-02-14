@@ -689,7 +689,7 @@ if st.button('Generate'):
  for p in list_pie_chart:
   pie_chart_path = Pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
  word_file_path = create_word_doc(pie_chart_path)
- st.write(word_file_path)
+ st.write(open(word_file_path, "rb").read())
  st.success("Report Generated!")
  
  st.download_button(label="Download Report",data=word_file_path,
