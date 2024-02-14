@@ -126,6 +126,17 @@ def pie_chart(data, key):
  fig.savefig(chart_path)
  return chart_path
 
+def Pie_chart(data, key):
+ labels = [key for key in data]
+ counts = [data[key]['percent'] for key in data]
+ fig, ax = plt.subplots(figsize=(9, 6))
+ ax.pie(counts, labels=labels, autopct='%.2f%%')
+ plt.title(key)
+ chart_path = "pie_chart.png"
+ plt.savefig(chart_path)
+ plt.close()
+ return chart_path
+
 def boxplot(data,key):
  fig,ax = plt.subplots()
  plt.boxplot(data,showmeans=True)
@@ -671,16 +682,17 @@ def create_word_doc(chart_paths):
  doc.save('report.docx')
  return 'report.docx'
  
-st.title("Word Document Creator")
+#st.title("Word Document Creator")
 
 if st.button('Generate'):
  #doc = create_word_doc("This is the text content of the document.")
  for p in list_pie_chart:
-  pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
+  pie_chart_path = Pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
  word_file_path = create_word_doc(pie_chart_path)
+ st.write(word_file_path)
  st.success("Report Generated!")
  
- st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),
+ st.download_button(label="Download Report",data=word_file_path,
         file_name="report.docx",mime="application/docx",)
  
  #for p in list_pie_chart:
