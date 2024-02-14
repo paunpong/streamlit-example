@@ -122,8 +122,8 @@ def pie_chart(data, key):
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
  st.pyplot()
- fig.savefig("pie_chart.png", bbox_inches='tight')
- return "pie_chart.png"
+ fig.savefig("pie_chart.jpg", bbox_inches='tight')
+ return "pie_chart.jpg"
 
 def boxplot(data,key):
  fig,ax = plt.subplots()
@@ -673,17 +673,17 @@ if st.button("Create Word Document"):
  doc = create_word_doc("This is the text content of the document.")
  for p in list_pie_chart:
   pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
-  doc.add_picture(pie_chart_path,width=Inches(2))
+  doc.add_picture(pie_chart_path,width=Inches(1.25))
   #pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit,)
   #doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
  # Save the document to a BytesIO object
  
- #doc_buffer = io.BytesIO()
- #doc.save(doc_buffer)
- #doc_buffer.seek(0)
+ doc_buffer = io.BytesIO()
+ doc.save(doc_buffer)
+ doc_buffer.seek(0)
  #st.write(doc_buffer)
  
  # Provide download link for the generated document
- st.download_button(label="Download Word Document",data=doc,file_name="output.docx",
+ st.download_button(label="Download Word Document",data=doc_buffer,file_name="output.docx",
      mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",key="word-doc-download")
  st.success("Word document created successfully!")
