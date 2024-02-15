@@ -8,7 +8,8 @@ import io
 from docx import Document
 from io import BytesIO
 from docx.shared import Pt , Cm
-from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
+from docx.oxml.ns import nsdecls
+from docx.oxml import parse_xml
 #import re
 #import operator
 from PIL import Image
@@ -682,8 +683,6 @@ def create_word_doc(chart_paths):
   #doc.add_paragraph()
  doc.save('report.docx')
  return 'report.docx'
- 
-#st.title("Word Document Creator")
 
 if st.button('Generate'):
  chart_paths = []
@@ -692,6 +691,7 @@ if st.button('Generate'):
   pie_chart_path = Pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
   chart_paths.append(pie_chart_path)
  word_file_path = create_word_doc(chart_paths)
+ 
  st.success("Report Generated!")
  
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),
