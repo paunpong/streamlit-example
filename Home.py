@@ -675,9 +675,9 @@ if menu == 'เริ่มต้นโปรแกรม':
 def create_word_doc(chart_paths):
  doc = Document()
  for chart_path in chart_paths:
-  paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-  run = paragraph.add_run()
-  run.add_picture(chart_path, width=Cm(15), height=Cm(10))
+  #paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+  #run = paragraph.add_run()
+  doc.add_picture(chart_path, width=Cm(15), height=Cm(10), align='center')
   #doc.add_picture(chart_path, width=Inches(3.5))
   #doc.add_paragraph()
  doc.save('report.docx')
