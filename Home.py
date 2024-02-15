@@ -125,8 +125,8 @@ def pie_chart(data, key):
  st.pyplot()
 
 def Pie_chart(data, key):
+ st.write(data)
  labels = [key for key in data]
- st.write(labels)
  counts = [data[key]['percent'] for key in data]
  fig, ax = plt.subplots(figsize=(9, 6))
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
