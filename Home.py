@@ -119,7 +119,7 @@ def change_num_to_text(A):
 def create_word_doc(chart_pie,table_pie):
  doc = Document()
  
- for chart_path in chart_paths:
+ for chart_path in chart_pie:
   doc.add_picture(chart_path, width=Cm(15), height=Cm(10))
 
  Table = doc.add_table(rows=len(table_pie),cols=len(table_pie[0]))
