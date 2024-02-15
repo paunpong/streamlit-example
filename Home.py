@@ -695,6 +695,8 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_num_stack != dict() and {'removenan':True}:
     st.table([head_re,*data_num_stack])
     st.markdown("""---""")
+    
+#--------------------------------------------------------doc
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,data_pie)
@@ -710,8 +712,8 @@ if upload_file is not None:
   #pie_data.append([p,])
   #chart_paths.append(pie_chart_path)
  #word_file_path = create_word_doc(chart_paths)
- if upload_file is not None:
- st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+ #if upload_file is not None:
+  Est.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
  
  #for p in list_pie_chart:
   #pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
