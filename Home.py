@@ -118,6 +118,7 @@ def change_num_to_text(A):
 
 def pie_chart(data, key):
  labels = [key for key in data]
+ st.write(labels)
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots(figsize=(9,6))
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
