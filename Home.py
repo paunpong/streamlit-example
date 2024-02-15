@@ -459,7 +459,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     for p in list_pie_chart:
      pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
      Pie_chart.append(pie_chart_path)
-    word_file_path = create_word_doc(chart_paths)
+    word_file_path = create_word_doc(Pie_chart)
      
    with st.expander('แผนภาพกล่อง'):
     for b in list_boxplot:
