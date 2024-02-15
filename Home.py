@@ -116,6 +116,13 @@ def change_num_to_text(A):
  x.sort()
  return x
 
+def create_word_doc(chart_paths):
+ doc = Document()
+ for chart_path in chart_paths:
+  doc.add_picture(chart_path, width=Cm(15), height=Cm(10))
+ doc.save('report.docx')
+ return 'report.docx'
+
 def pie_chart(data, key):
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
@@ -680,12 +687,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 #--------------------------------------------------------------doc--------------------------------
 
-def create_word_doc(chart_paths):
- doc = Document()
- for chart_path in chart_paths:
-  doc.add_picture(chart_path, width=Cm(15), height=Cm(10))
- doc.save('report.docx')
- return 'report.docx'
+
 
 #if st.button('Generate'):
  #chart_paths = []
