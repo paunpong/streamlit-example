@@ -122,7 +122,7 @@ def create_word_doc(chart_pie,table_pie):
  for chart_path in chart_pie:
   doc.add_picture(chart_path, width=Cm(15), height=Cm(10))
 
- Table = doc.add_table(rows=len(table_pie),cols=len(table_pie[0]))
+ table = doc.add_table(rows=len(table_pie),cols=len(table_pie[0]))
  for i, row in enumerate(table_pie):
   for j, Cell in enumerate(row):
    table.cell(i,j).text = str(cell)
