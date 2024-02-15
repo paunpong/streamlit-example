@@ -713,7 +713,7 @@ if upload_file is not None:
   #chart_paths.append(pie_chart_path)
  #word_file_path = create_word_doc(chart_paths)
  #if upload_file is not None:
-  Est.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+  #st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
  
  #for p in list_pie_chart:
   #pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
