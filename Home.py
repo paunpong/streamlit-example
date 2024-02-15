@@ -7,9 +7,8 @@ from matplotlib.font_manager import FontProperties
 import io
 from docx import Document
 from io import BytesIO
-from docx.shared import Pt
+from docx.shared import Pt , Cm
 from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-from docx.shared import Inches
 #import re
 #import operator
 from PIL import Image
@@ -676,8 +675,10 @@ if menu == 'เริ่มต้นโปรแกรม':
 def create_word_doc(chart_paths):
  doc = Document()
  for chart_path in chart_paths:
-  doc.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
-  doc.add_picture(chart_path, width=Inches(3.5))
+  paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
+  run = paragraph.add_run()
+  run.add_picture(chart_path, width=Cm(15), height=Cm(10))
+  #doc.add_picture(chart_path, width=Inches(3.5))
   #doc.add_paragraph()
  doc.save('report.docx')
  return 'report.docx'
