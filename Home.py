@@ -125,13 +125,12 @@ def pie_chart(data, key):
  st.pyplot()
 
 def Pie_chart(data, key):
- st.write(key,data)
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
  fig, ax = plt.subplots(figsize=(9, 6))
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
- chart_path = "pie_chart.png"
+ chart_path = f"{key}.png"
  plt.savefig(chart_path)
  plt.close()
  return chart_path
