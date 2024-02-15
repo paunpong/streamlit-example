@@ -125,7 +125,7 @@ def create_word_doc(chart_pie,table_pie):
  Table = doc.add_table(rows=len(table_pie),cols=len(table_pie[0]))
  for i, row in enumerate(table_pie):
   for j, Cell in enumerate(row):
-   table.cell(i+1,j).text = str(cell)
+   table.cell(i,j).text = str(cell)
  
  doc.save('report.docx')
  return 'report.docx'
@@ -457,14 +457,7 @@ St_str = []
 Num_st = []
 Str_st = []
 
-data_pie = []
-data_box = []
-data_comma = []
-data_bar = []
-data_stack_str = []
-data_str_stack = []
-data_stack_num = []
-data_num_stack = []
+table_pie = []
 
 if menu == 'เริ่มต้นโปรแกรม':
  dict_str_stack = dict()
@@ -557,6 +550,14 @@ if menu == 'เริ่มต้นโปรแกรม':
    head_quality = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
    head_amount = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
    head_re = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
+   data_pie = []
+   data_box = []
+   data_comma = []
+   data_bar = []
+   data_stack_str = []
+   data_str_stack = []
+   data_stack_num = []
+   data_num_stack = []
    
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
@@ -566,6 +567,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent,])
     data_pie.append(['รวม', sum([values[key]['count'] for key in values]), 100])
+    table_pie.append(data_pie)
 
     #------------------------------ อ.เอกเขียนไว้
     st.table(data_pie)
@@ -699,8 +701,10 @@ if menu == 'เริ่มต้นโปรแกรม':
 #--------------------------------------------------------doc
 
 if upload_file is not None:
- word_file_path = create_word_doc(Pie_chart,data_pie)
+ word_file_path = create_word_doc(Pie_chart,table_pie)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+
+
 #if st.button('Generate'):
  #chart_paths = []
  #pie_data = []
