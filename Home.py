@@ -138,6 +138,7 @@ def create_word_doc(chart_pie,table_pie):
   
  for t_p in table_pie:
   df = create_table(t_p,doc)
+ df.style = 'Table Grid'
    
  doc.save('report.docx')
  return 'report.docx'
