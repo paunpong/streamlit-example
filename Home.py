@@ -116,12 +116,19 @@ def change_num_to_text(A):
  x.sort()
  return x
 
-def create_table(data):
+def create_table(data,doc):
  headers = data[0]
- 
  rows = data[1:]
  df = pd.DataFrame(rows, columns=headers)
- return df
+ 
+ table = doc.add_table(df.shape[0]+1, df.shape[1])
+ for j in range(df.shape[-1]):
+  table.cell(0, j).text = df.columns[j]
+ for i in range(df.shape[0]):
+  for j in range(df.shape[-1]):
+   table.cell(i+1, j).text = str(df.values[i,j])
+   
+ return table
 
 def create_word_doc(chart_pie,table_pie):
  doc = Document()
@@ -134,8 +141,6 @@ def create_word_doc(chart_pie,table_pie):
    
  doc.save('report.docx')
  return 'report.docx'
-
-
 
 def pie_chart(data, key):
  labels = [key for key in data]
