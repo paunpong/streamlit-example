@@ -568,6 +568,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_pie.append([ans, count, percent,])
     data_pie.append(['รวม', sum([values[key]['count'] for key in values]), 100])
     table_pie.append(data_pie)
+    st.write(table_pie)
 
     #------------------------------ อ.เอกเขียนไว้
     st.table(data_pie)
