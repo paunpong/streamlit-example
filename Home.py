@@ -120,19 +120,7 @@ def create_table(data):
  headers = data[0][0]
  rows = data[0][1:]
  df = pd.DataFrame(rows, columns=headers)
- 
- df = df.reset_index()
- num_rows, num_cols = df.shape
-
- table = data.add_table(Row=num_rows + 1, Cols=num_cols)
-
- for i, col in enumerate(df.columns):
-  table.cell(0, i).text = str(col)
-
- for i, row in dataframe.iterrows():
-  for j, value in enumerate(row):
-   table.cell(i + 1, j).text = str(value)
- return table
+ return df
 
 def create_word_doc(chart_pie):
  doc = Document()
