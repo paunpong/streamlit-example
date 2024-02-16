@@ -119,8 +119,8 @@ def change_num_to_text(A):
 def create_word_doc(chart_pie):
  doc = Document()
  
- for chart_path in chart_pie:
-  doc.add_picture(chart_path, width=Cm(15), height=Cm(10))
+ for pie in chart_pie:
+  doc.add_picture(pie, width=Cm(15), height=Cm(10))
  
  doc.save('report.docx')
  return 'report.docx'
@@ -553,7 +553,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_str_stack = []
    data_stack_num = []
    data_num_stack = []
-   
+st.write(table_pie)   
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     data_pie.append([pie, 'จำนวน', 'เปอร์เซนต์'])
@@ -563,7 +563,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_pie.append([ans, count, percent,])
     data_pie.append(['รวม', sum([values[key]['count'] for key in values]), 100])
     table_pie.append(data_pie)
-    st.write(table_pie)
+    
 
     #------------------------------ อ.เอกเขียนไว้
     st.table(data_pie)
