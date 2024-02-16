@@ -714,9 +714,9 @@ if upload_file is not None:
  st.write(table_pie)
  for t_p in table_pie:
   df = create_table(t_p)
- st.write(df)
- word_file_path = create_word_doc(Pie_chart,table_pie)
- st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+  st.write(df)
+ #word_file_path = create_word_doc(Pie_chart,table_pie)
+ #st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 
 #if st.button('Generate'):
