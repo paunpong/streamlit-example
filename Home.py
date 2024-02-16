@@ -573,6 +573,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent,])
     data_pie.append(['รวม', sum([values[key]['count'] for key in values]), 100])
+    t_p = create_table(data_pie)
+    st.write(t_p)
     table_pie.append(data_pie)
     
 
