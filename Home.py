@@ -712,7 +712,7 @@ if upload_file is not None:
  st.write(table_pie)
  df = create_table(table_pie)
  st.write(df)
- word_file_path = create_word_doc(Pie_chart)
+ word_file_path = create_word_doc(Pie_chart,table_pie)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 
