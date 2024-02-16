@@ -116,16 +116,11 @@ def change_num_to_text(A):
  x.sort()
  return x
 
-def create_word_doc(chart_pie,table_pie):
+def create_word_doc(chart_pie):
  doc = Document()
  
  for chart_path in chart_pie:
   doc.add_picture(chart_path, width=Cm(15), height=Cm(10))
-
- table = doc.add_table(rows=len(table_pie),cols=len(table_pie[0]))
- for i, row in enumerate(table_pie):
-  for j, Cell in enumerate(row):
-   table.cell(i,j).text = str(Cell)
  
  doc.save('report.docx')
  return 'report.docx'
@@ -702,7 +697,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 #--------------------------------------------------------doc
 
 if upload_file is not None:
- word_file_path = create_word_doc(Pie_chart,table_pie)
+ word_file_path = create_word_doc(Pie_chart)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 
