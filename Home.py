@@ -122,12 +122,16 @@ def create_table(data):
  df = pd.DataFrame(rows, columns=headers)
  return df
 
-def create_word_doc(chart_pie):
+def create_word_doc(chart_pie,table_pie):
  doc = Document()
  
  for pie in chart_pie:
   doc.add_picture(pie, width=Cm(15), height=Cm(10))
- 
+
+ for Tabel_pie in table_pie:
+  table_p = create_table(Tabel_pie)
+  table_p.style = 'LightShading-Accent1'
+  
  doc.save('report.docx')
  return 'report.docx'
 
