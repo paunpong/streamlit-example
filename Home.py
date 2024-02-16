@@ -121,7 +121,7 @@ def create_table(data):
  rows = data[0][1:]
  df = pd.DataFrame(rows, columns=headers)
  
- df = df..reset_index()
+ df = df.reset_index()
  num_rows, num_cols = df.shape
 
  table = data.add_table(Row=num_rows + 1, Cols=num_cols)
