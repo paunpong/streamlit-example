@@ -116,6 +116,12 @@ def change_num_to_text(A):
  x.sort()
  return x
 
+def create_table(data):
+ headers = data[0][0]
+ rows = data[0][1:]
+ df = pd.DataFrame(rows, columns=headers)
+ return df
+
 def create_word_doc(chart_pie):
  doc = Document()
  
@@ -124,6 +130,8 @@ def create_word_doc(chart_pie):
  
  doc.save('report.docx')
  return 'report.docx'
+
+
 
 def pie_chart(data, key):
  labels = [key for key in data]
@@ -698,6 +706,8 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 if upload_file is not None:
  st.write(table_pie)
+ df = create_table(table_pie)
+ st.write(df)
  word_file_path = create_word_doc(Pie_chart)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
