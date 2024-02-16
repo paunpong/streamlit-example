@@ -573,7 +573,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent,])
     data_pie.append(['รวม', sum([values[key]['count'] for key in values]), 100])
-    st.write(data_pie)
+    #st.write(data_pie)
     #t_p = create_table(data_pie)
     #st.write(t_p)
     table_pie.append(data_pie)
@@ -712,7 +712,8 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 if upload_file is not None:
  st.write(table_pie)
- df = create_table(table_pie)
+ for t_p in table_pie:
+  df = create_table(t_p)
  st.write(df)
  word_file_path = create_word_doc(Pie_chart,table_pie)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
