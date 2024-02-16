@@ -128,9 +128,9 @@ def create_word_doc(chart_pie,table_pie):
  for pie in chart_pie:
   doc.add_picture(pie, width=Cm(15), height=Cm(10))
   
-  table_p = create_table(table_pie)
-  st.write(table_p)
-  
+ for t_p in table_pie:
+  df = create_table(t_p)
+   
  doc.save('report.docx')
  return 'report.docx'
 
@@ -711,12 +711,12 @@ if menu == 'เริ่มต้นโปรแกรม':
 #--------------------------------------------------------doc
 
 if upload_file is not None:
- st.write(table_pie)
- for t_p in table_pie:
-  df = create_table(t_p)
-  st.write(df)
- #word_file_path = create_word_doc(Pie_chart,table_pie)
- #st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+ #st.write(table_pie)
+ #for t_p in table_pie:
+  #df = create_table(t_p)
+  #st.write(df)
+ word_file_path = create_word_doc(Pie_chart,table_pie)
+ st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 
 #if st.button('Generate'):
