@@ -118,6 +118,7 @@ def change_num_to_text(A):
 
 def create_table(data):
  headers = data[0]
+ 
  rows = data[1:]
  df = pd.DataFrame(rows, columns=headers)
  return df
