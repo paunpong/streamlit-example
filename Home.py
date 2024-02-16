@@ -120,9 +120,9 @@ def create_table(data):
  headers = data[0][0]
  rows = data[0][1:]
  cleaned_rows = []
-  for row in rows:
-   cleaned_row = [item for item in row if item != '' and item != 0 and item != 1]
-   cleaned_rows.append(cleaned_row)
+ for row in rows:
+  cleaned_row = [item for item in row if item != '' and item != 0 and item != 1]
+  cleaned_rows.append(cleaned_row)
  df = pd.DataFrame(cleaned_rows, columns=headers)
  return df
 
