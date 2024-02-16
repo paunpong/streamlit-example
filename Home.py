@@ -137,7 +137,7 @@ def create_word_doc(chart_pie,table_pie):
   doc.add_picture(pie, width=Cm(15), height=Cm(10))
   
  for t_p in table_pie:
-  df = create_table(t_p)
+  df = create_table(t_p,doc)
    
  doc.save('report.docx')
  return 'report.docx'
