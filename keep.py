@@ -149,10 +149,10 @@ def pie_chart(data, key):
  fig,ax = plt.subplots()
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
- chart_path = f"{key}.png"
- plt.savefig(chart_path)
+ chart_pie = f"{key}.png"
+ plt.savefig(chart_pie)
  st.pyplot()
- return chart_path
+ return chart_pie
 
 def boxplot(data,key):
  fig,ax = plt.subplots()
@@ -186,7 +186,10 @@ def boxplot(data,key):
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
  plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop)
+ chart_box = f"{key}.png"
+ plt.savefig(chart_box)
  st.pyplot()
+ return chart_box
 
 def bar_list_count(data,orther_number=1):
  values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
@@ -212,7 +215,10 @@ def bar_chart_new(data,key):
   ax.bar(labels, values, label=legend,color=color)
  ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
+ chart_bar = f"{key}.png"
+ plt.savefig(chart_bar)
  st.pyplot()
+ return chart_bar
  
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
@@ -224,7 +230,10 @@ def stacked_bar(data,key):
  
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
+ chart_stack = f"{key}.png"
+ plt.savefig(chart_stack)
  st.pyplot()
+ return chart_stack
 
 with st.sidebar:
  menu = option_menu(menu_title=' ',options=['เริ่มต้นโปรแกรม'])
@@ -465,12 +474,19 @@ Pie_chart = []
 Com_bar = []
 Bar_chart = []
 Box_chart = []
-St_num = []
 St_str = []
+St_num = []
 Num_st = []
 Str_st = []
 
 table_pie = []
+table_box = []
+table_comma = []
+table_bar = []
+table_str = []
+table_num = []
+str_table = []
+num_table = []
 
 if menu == 'เริ่มต้นโปรแกรม':
  dict_str_stack = dict()
@@ -488,7 +504,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      
    with st.expander('แผนภาพกล่อง'):
     for b in list_boxplot:
-     boxplot(upload_df[b].values.tolist(),b)
+     box_charts = boxplot(upload_df[b].values.tolist(),b)
+     Box_chart.append(box_charts)
      
    with st.expander('แผนภูมิแท่ง',expanded=True):
     for a in list_bar_chart_comma:
@@ -496,13 +513,15 @@ if menu == 'เริ่มต้นโปรแกรม':
      v = split_comma(A)
      count_v = Count(v,list_bar_chart_comma[a]['removenan'])
      data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
-     bar_chart_new(data,a)
+     bar_comma = bar_chart_new(data,a)
+     Com_bar.append(bar_comma)
      
     for i in list_bar_chart:
      list_com = upload_df[i].values.tolist()
      a = Count(list_com,list_bar_chart[i]['removenan'])
      data = bar_list_count(a,list_bar_chart[i]['orther_number'])
-     bar_chart_new(data,i)
+     bar_charts = bar_chart_new(data,i)
+     Bar_chart.append(bar_charts)
      
    with st.expander('แผนภูมิแท่งแบบต่อกัน',expanded=True):
     for i in list_stack_str:
@@ -516,7 +535,8 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_str_stack[topic_word] = dict()
      dict_str_stack[topic_word][sub_word] = A_l
     for s in dict_str_stack:
-     stacked_bar(dict_str_stack[s],s)
+     stack_str = stacked_bar(dict_str_stack[s],s)
+     St_str.append(stack_str)
      
     for i in list_stack_num:
      mat = upload_df[i].values.tolist()
@@ -534,7 +554,8 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_num_stack[topic_word] = dict()
      dict_num_stack[topic_word][sub_word] = A_l
     for i in dict_num_stack:
-      stacked_bar(dict_num_stack[i],i)
+     stack_num = stacked_bar(dict_num_stack[i],i)
+     St_num.append(stack_num)
      
     for i in list_num_stack:
      a = change_num_to_text(i)
@@ -545,7 +566,8 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_stack_bar[i] = dict()
      dict_stack_bar[i][''] = c
     for i in dict_stack_bar:
-     stacked_bar(dict_stack_bar[i],i)
+     str_st = stacked_bar(dict_stack_bar[i],i)
+     Str_st.append(str_st)
      
     for i in list_str_stack:
      A_l = count_list(upload_df[i].values.tolist())
@@ -555,13 +577,15 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_stack_str[i] = dict()
      dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
-     stacked_bar(dict_stack_str[s],s)
+     num_st = stacked_bar(dict_stack_str[s],s)
+     Num_st.append(num_st)
      
   #----------------------------------------------------------------------------------------------------------------- tab2   
   with tab2:
    top_name = ''
    head_quality = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
    head_amount = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
+   head_data = [['หัวข้อ', 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'],[" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"]]
    head_re = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
    data_pie = []
    data_box = []
@@ -580,13 +604,11 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent,])
     data_pie.append(['รวม', sum([values[key]['count'] for key in values]), 100])
-    #st.write(data_pie)
-    #t_p = create_table(data_pie)
-    #st.write(t_p)
     table_pie.append(data_pie)
     
 
     #------------------------------ อ.เอกเขียนไว้
+    st.markdown(f'<h3 style="color:red; font-size:18px">{pie}</h3>', unsafe_allow_html=True)
     st.table(data_pie)
     data_pie = []
     #---------------------------------------------
@@ -604,7 +626,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     mean = mean_sd['ค่าเฉลี่ย']
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     data_box.append([box,mean,std])
+    table_box.append(data_box)
    if list_boxplot != dict() and {'removenan':True}:
+    st.markdown(f'<h3 style="color:red; font-size:18px">{box}</h3>', unsafe_allow_html=True)
     st.table([head_amount,*data_box])
     st.markdown("""---""") 
     
@@ -622,7 +646,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = 100*cou/len(list_free)
      data_comma.append([key,data_dict[key],round(percent,digit)])
     data_comma.append(['รวม',all_number,100])
-    
+    table_comma.append(data_comma)
+
+    st.markdown(f'<h3 style="color:red; font-size:18px">{comma}</h3>', unsafe_allow_html=True)
     st.table(data_comma)
     data_comma = []
    #if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:
@@ -640,7 +666,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = 100*cou/sum_val
      data_bar.append([key,data_dict[key],round(percent,digit)])
     data_bar.append(['รวม',sum_val,100])
-    
+    table_bar.append(data_bar)
+
+    st.markdown(f'<h3 style="color:red; font-size:18px">{bar}</h3>', unsafe_allow_html=True)
     st.table(data_bar)
     data_bar = []
     
@@ -661,10 +689,25 @@ if menu == 'เริ่มต้นโปรแกรม':
                             f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
                             f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
                             f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
-    
-   if list_stack_str != dict() and {'removenan':True}: 
+    table_str.append(data_stack_str)
+   
+   if list_stack_str != dict() and {'removenan':True}:
     st.table(data_stack_str)
+
+   for strs in list_str_stack:
+    count_string = count_list(upload_df[strs].values.tolist(),list_str_stack[strs]['removenan'])
+    data_stack_str.append([strs,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
+                            f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
+                            f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
+                            f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
+                            f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
     
+    
+    
+   if list_str_stack != dict() and {'removenan':True}:
+    str_table.append([head_data] + data_stack_str)
+    st.table(head_data+data_stack_str)
+   
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
     mean_sd = stat(mat,True)
@@ -689,6 +732,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
     data_stack_num.append([sub_word,mean,s_d,level])
+    table_num.append(data_stack_num)
    #st.table(data_stack_num)
    if list_stack_num != dict() and {'removenan':True}:
     st.table(data_stack_num)
@@ -711,7 +755,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
     data_num_stack.append([nums,mean,s_d,level])
+    
    if list_num_stack != dict() and {'removenan':True}:
+    num_table.append([head_re] + data_num_stack)
     st.table([head_re,*data_num_stack])
     st.markdown("""---""")
     
