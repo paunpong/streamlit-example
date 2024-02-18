@@ -603,7 +603,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 
     #------------------------------ อ.เอกเขียนไว้
-    st.text(f'<h3 style="color:red">{pie}</h3>', unsafe_allow_html=True)
+    st.markdown(f'<h3 style="color:red; font-size:24px">{pie}</h3>', unsafe_allow_html=True)
     st.table(data_pie)
     data_pie = []
     #---------------------------------------------
@@ -622,6 +622,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     data_box.append([box,mean,std])
    if list_boxplot != dict() and {'removenan':True}:
+    st.markdown(f'<h3 style="color:red; font-size:24px">{box}</h3>', unsafe_allow_html=True)
     st.table([head_amount,*data_box])
     st.markdown("""---""") 
     
@@ -639,7 +640,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = 100*cou/len(list_free)
      data_comma.append([key,data_dict[key],round(percent,digit)])
     data_comma.append(['รวม',all_number,100])
-    
+
+    st.markdown(f'<h3 style="color:red; font-size:24px">{comma}</h3>', unsafe_allow_html=True)
     st.table(data_comma)
     data_comma = []
    #if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:
@@ -657,7 +659,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = 100*cou/sum_val
      data_bar.append([key,data_dict[key],round(percent,digit)])
     data_bar.append(['รวม',sum_val,100])
-    
+
+    st.markdown(f'<h3 style="color:red; font-size:24px">{bar}</h3>', unsafe_allow_html=True)
     st.table(data_bar)
     data_bar = []
     
@@ -679,7 +682,7 @@ if menu == 'เริ่มต้นโปรแกรม':
                             f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
                             f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
     
-   if list_stack_str != dict() and {'removenan':True}: 
+   if list_stack_str != dict() and {'removenan':True}:
     st.table(data_stack_str)
     
    for num in list_stack_num:
