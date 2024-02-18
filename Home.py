@@ -706,7 +706,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     
    if list_str_stack != dict() and {'removenan':True}:
     str_table.append([head_data] + data_stack_str)
-    st.table([head_data,*data_stack_str])
+    st.table(head_data+data_stack_str)
    
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
