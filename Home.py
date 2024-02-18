@@ -585,6 +585,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    top_name = ''
    head_quality = ['หัวข้อ' , 'จำนวน' , 'เปอร์เซ็นต์']
    head_amount = ['หัวข้อ' , 'ค่าเฉลี่ย' , 'ส่วนเบี่ยงเบนมาตรฐาน']
+   head_data = [['หัวข้อ', 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'],[" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"]]
    head_re = ['หัวข้อ' , 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล']
    data_pie = []
    data_box = []
@@ -695,18 +696,17 @@ if menu == 'เริ่มต้นโปรแกรม':
 
    for strs in list_str_stack:
     count_string = count_list(upload_df[strs].values.tolist(),list_str_stack[strs]['removenan'])
-    data_stack_str.append(['', 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'])
-    data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
     data_stack_str.append([strs,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
                             f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
                             f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
                             f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
                             f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
     
-    str_table.append(data_str_stack)
+    
     
    if list_str_stack != dict() and {'removenan':True}:
-    st.table(data_stack_str)
+    str_table.append([head_data] + data_stack_str)
+    st.table([head_data,*data_stack_str])
    
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
@@ -755,8 +755,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
     data_num_stack.append([nums,mean,s_d,level])
-    num_table.append(data_num_stack)
+    
    if list_num_stack != dict() and {'removenan':True}:
+    num_table.append([head_re] + data_num_stack)
     st.table([head_re,*data_num_stack])
     st.markdown("""---""")
     
