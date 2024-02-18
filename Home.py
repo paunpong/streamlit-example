@@ -149,10 +149,10 @@ def pie_chart(data, key):
  fig,ax = plt.subplots()
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
- chart_path = f"{key}.png"
- plt.savefig(chart_path)
+ chart_pie = f"{key}.png"
+ plt.savefig(chart_pie)
  st.pyplot()
- return chart_path
+ return chart_pie
 
 def boxplot(data,key):
  fig,ax = plt.subplots()
@@ -186,7 +186,10 @@ def boxplot(data,key):
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
  plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop)
+ chart_box = f"{key}.png"
+ plt.savefig(chart_box)
  st.pyplot()
+ return chart_box
 
 def bar_list_count(data,orther_number=1):
  values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
@@ -212,7 +215,10 @@ def bar_chart_new(data,key):
   ax.bar(labels, values, label=legend,color=color)
  ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
+ chart_bar = f"{key}.png"
+ plt.savefig(chart_bar)
  st.pyplot()
+ return chart_bar
  
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
@@ -224,7 +230,10 @@ def stacked_bar(data,key):
  
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
+ chart_stack = f"{key}.png"
+ plt.savefig(chart_stack)
  st.pyplot()
+ return chart_stack
 
 with st.sidebar:
  menu = option_menu(menu_title=' ',options=['เริ่มต้นโปรแกรม'])
@@ -465,8 +474,8 @@ Pie_chart = []
 Com_bar = []
 Bar_chart = []
 Box_chart = []
-St_num = []
 St_str = []
+St_num = []
 Num_st = []
 Str_st = []
 
@@ -488,7 +497,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      
    with st.expander('แผนภาพกล่อง'):
     for b in list_boxplot:
-     boxplot(upload_df[b].values.tolist(),b)
+     box_charts = boxplot(upload_df[b].values.tolist(),b)
+     Box_chart.append(box_charts)
      
    with st.expander('แผนภูมิแท่ง',expanded=True):
     for a in list_bar_chart_comma:
@@ -496,13 +506,15 @@ if menu == 'เริ่มต้นโปรแกรม':
      v = split_comma(A)
      count_v = Count(v,list_bar_chart_comma[a]['removenan'])
      data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
-     bar_chart_new(data,a)
+     bar_comma = bar_chart_new(data,a)
+     Com_bar.append(bar_comma)
      
     for i in list_bar_chart:
      list_com = upload_df[i].values.tolist()
      a = Count(list_com,list_bar_chart[i]['removenan'])
      data = bar_list_count(a,list_bar_chart[i]['orther_number'])
-     bar_chart_new(data,i)
+     bar_charts = bar_chart_new(data,i)
+     Bar_chart.append(bar_charts)
      
    with st.expander('แผนภูมิแท่งแบบต่อกัน',expanded=True):
     for i in list_stack_str:
@@ -516,7 +528,8 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_str_stack[topic_word] = dict()
      dict_str_stack[topic_word][sub_word] = A_l
     for s in dict_str_stack:
-     stacked_bar(dict_str_stack[s],s)
+     stack_str = stacked_bar(dict_str_stack[s],s)
+     St_str.append(stack_str)
      
     for i in list_stack_num:
      mat = upload_df[i].values.tolist()
@@ -534,7 +547,8 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_num_stack[topic_word] = dict()
      dict_num_stack[topic_word][sub_word] = A_l
     for i in dict_num_stack:
-      stacked_bar(dict_num_stack[i],i)
+     stack_num = stacked_bar(dict_num_stack[i],i)
+     St_num.append(stack_num)
      
     for i in list_num_stack:
      a = change_num_to_text(i)
@@ -545,7 +559,8 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_stack_bar[i] = dict()
      dict_stack_bar[i][''] = c
     for i in dict_stack_bar:
-     stacked_bar(dict_stack_bar[i],i)
+     str_st = stacked_bar(dict_stack_bar[i],i)
+     Str_st.append(str_st)
      
     for i in list_str_stack:
      A_l = count_list(upload_df[i].values.tolist())
@@ -555,7 +570,8 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_stack_str[i] = dict()
      dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
-     stacked_bar(dict_stack_str[s],s)
+     num_st = stacked_bar(dict_stack_str[s],s)
+     Num_st.append(num_st)
      
   #----------------------------------------------------------------------------------------------------------------- tab2   
   with tab2:
@@ -587,6 +603,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 
     #------------------------------ อ.เอกเขียนไว้
+    st.header(f"## : {pie}")
     st.table(data_pie)
     data_pie = []
     #---------------------------------------------
