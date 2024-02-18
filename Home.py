@@ -705,7 +705,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     
     str_table.append(data_str_stack)
     
-    if list_stack_str != dict() and {'removenan':True}:
+    if list_str_stack != dict() and {'removenan':True}:
      st.table(data_stack_str)
    
    for num in list_stack_num:
