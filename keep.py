@@ -4,7 +4,12 @@ import os
 from matplotlib import font_manager as fm
 from matplotlib.font_manager import FontProperties
 #import statistics as stat
-#import io
+import io
+from docx import Document
+from io import BytesIO
+from docx.shared import Pt , Cm
+from docx.oxml.ns import nsdecls
+from docx.oxml import parse_xml
 #import re
 #import operator
 from PIL import Image
@@ -111,14 +116,43 @@ def change_num_to_text(A):
  x.sort()
  return x
 
+def create_table(data,doc):
+ headers = data[0]
+ rows = data[1:]
+ df = pd.DataFrame(rows, columns=headers)
+ 
+ table = doc.add_table(df.shape[0]+1, df.shape[1])
+ for j in range(df.shape[-1]):
+  table.cell(0, j).text = df.columns[j]
+ for i in range(df.shape[0]):
+  for j in range(df.shape[-1]):
+   table.cell(i+1, j).text = str(df.values[i,j])
+   
+ return table
+
+def create_word_doc(chart_pie,table_pie):
+ doc = Document()
+ 
+ for pie in chart_pie:
+  doc.add_picture(pie, width=Cm(15), height=Cm(10))
+  
+ for t_p in table_pie:
+  df = create_table(t_p,doc)
+  df.style = 'Table Grid'
+   
+ doc.save('report.docx')
+ return 'report.docx'
+
 def pie_chart(data, key):
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
- fig,ax = plt.subplots(figsize=(9,6))
+ fig,ax = plt.subplots()
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- #ax.legend(bbox_to_anchor=(1, 0, 0.5, 1), prop=thai_font_prop)
  plt.title(key, fontproperties=thai_font_prop)
+ chart_path = f"{key}.png"
+ plt.savefig(chart_path)
  st.pyplot()
+ return chart_path
 
 def boxplot(data,key):
  fig,ax = plt.subplots()
@@ -407,7 +441,6 @@ if menu == 'เริ่มต้นโปรแกรม':
      y = st.slider(topic_bar[:x]+endtext, 1, max(c.values()), 1, 1)
      list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
      continue
-   
    if Type == 'แท่งต่อกัน':
     for topic_stack in list_num_keys:
      Number = Number+1
@@ -428,6 +461,17 @@ if menu == 'เริ่มต้นโปรแกรม':
       list_str_stack[topic_num]={'removenan':True}
       del list_num_stack[topic_num]
 #-----------------------------------------------tab ภาพแผนภูมิ -------------------------------------------------------#
+Pie_chart = []
+Com_bar = []
+Bar_chart = []
+Box_chart = []
+St_num = []
+St_str = []
+Num_st = []
+Str_st = []
+
+table_pie = []
+
 if menu == 'เริ่มต้นโปรแกรม':
  dict_str_stack = dict()
  dict_num_stack = dict()
@@ -439,10 +483,13 @@ if menu == 'เริ่มต้นโปรแกรม':
   with tab1:
    with st.expander('แผนภูมิวงกลม',expanded=True):
     for p in list_pie_chart:
-     pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
+     pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
+     Pie_chart.append(pie_chart_path)
+     
    with st.expander('แผนภาพกล่อง'):
     for b in list_boxplot:
      boxplot(upload_df[b].values.tolist(),b)
+     
    with st.expander('แผนภูมิแท่ง',expanded=True):
     for a in list_bar_chart_comma:
      A = upload_df[a].values.tolist()
@@ -450,17 +497,19 @@ if menu == 'เริ่มต้นโปรแกรม':
      count_v = Count(v,list_bar_chart_comma[a]['removenan'])
      data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
      bar_chart_new(data,a)
+     
     for i in list_bar_chart:
      list_com = upload_df[i].values.tolist()
      a = Count(list_com,list_bar_chart[i]['removenan'])
      data = bar_list_count(a,list_bar_chart[i]['orther_number'])
      bar_chart_new(data,i)
+     
    with st.expander('แผนภูมิแท่งแบบต่อกัน',expanded=True):
     for i in list_stack_str:
      topic_word, sub_word = i.split(' [')[:2]
      topic_word = topic_word.strip()
      sub_word = sub_word.strip().replace(']','')
-     A_l = count_list(upload_df[i].values.tolist())
+     A_l = count_list(upload_df[i].values.tolist(),list_stack_str[i]['removenan'])
      for k in A_l:
       A_l[k] = A_l[k]['percent']
      if topic_word not in dict_str_stack:
@@ -468,6 +517,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_str_stack[topic_word][sub_word] = A_l
     for s in dict_str_stack:
      stacked_bar(dict_str_stack[s],s)
+     
     for i in list_stack_num:
      mat = upload_df[i].values.tolist()
      mean_sd = stat(mat)
@@ -485,6 +535,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_num_stack[topic_word][sub_word] = A_l
     for i in dict_num_stack:
       stacked_bar(dict_num_stack[i],i)
+     
     for i in list_num_stack:
      a = change_num_to_text(i)
      c = count_list(a)
@@ -495,6 +546,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_stack_bar[i][''] = c
     for i in dict_stack_bar:
      stacked_bar(dict_stack_bar[i],i)
+     
     for i in list_str_stack:
      A_l = count_list(upload_df[i].values.tolist())
      for k in A_l:
@@ -504,6 +556,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
      stacked_bar(dict_stack_str[s],s)
+     
   #----------------------------------------------------------------------------------------------------------------- tab2   
   with tab2:
    top_name = ''
@@ -514,8 +567,11 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_box = []
    data_comma = []
    data_bar = []
+   data_stack_str = []
+   data_str_stack = []
    data_stack_num = []
    data_num_stack = []
+   
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     data_pie.append([pie, 'จำนวน', 'เปอร์เซนต์'])
@@ -524,6 +580,11 @@ if menu == 'เริ่มต้นโปรแกรม':
      percent = values[ans]['percent']
      data_pie.append([ans, count, percent,])
     data_pie.append(['รวม', sum([values[key]['count'] for key in values]), 100])
+    #st.write(data_pie)
+    #t_p = create_table(data_pie)
+    #st.write(t_p)
+    table_pie.append(data_pie)
+    
 
     #------------------------------ อ.เอกเขียนไว้
     st.table(data_pie)
@@ -534,8 +595,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     #data_pie.append(['','','']) 
    if list_pie_chart != dict() and {'removenan':True}:
     #st.table([head_quality,*data_pie])
-    data_pie = [['วิทยากร', 'มาก'],[" ", "จำนวน(เปอร์เซนต์)"],['a','5(15%)']]
-    st.table(data_pie)
+    #data_pie = [['วิทยากร', 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'],[" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"],['a','5(15%)']]
+    #st.table(data_pie)
     st.markdown("""---""")
     
    for box in list_boxplot:
@@ -585,6 +646,24 @@ if menu == 'เริ่มต้นโปรแกรม':
     
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1}:
     st.markdown("""---""")
+
+   for Str in list_stack_str:
+    count_string = count_list(upload_df[Str].values.tolist(),list_stack_str[Str]['removenan'])
+    topic_word, sub_word = Str.split(' [')[:2]
+    topic_word = topic_word.strip()
+    sub_word = sub_word.strip().replace(']', '')
+    if topic_word != top_name:
+     data_stack_str.append([topic_word, 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'])
+     data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
+     top_name = topic_word
+    data_stack_str.append([sub_word,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
+                            f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
+                            f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
+                            f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
+                            f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
+    
+   if list_stack_str != dict() and {'removenan':True}: 
+    st.table(data_stack_str)
     
    for num in list_stack_num:
     mat = upload_df[num].values.tolist()
@@ -593,7 +672,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     topic_word = topic_word.strip()
     sub_word = sub_word.strip().replace(']', '')
     if topic_word != top_name:
-     data_stack_num.append([topic_word, '', '', ''])
+     data_stack_num.append([topic_word, 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล'])
      top_name = topic_word 
     for key in mean_sd:
      mean = mean_sd['ค่าเฉลี่ย']
@@ -610,8 +689,9 @@ if menu == 'เริ่มต้นโปรแกรม':
      elif mean < 1.8:
       level = 'น้อยที่สุด'
     data_stack_num.append([sub_word,mean,s_d,level])
+   #st.table(data_stack_num)
    if list_stack_num != dict() and {'removenan':True}:
-    st.table([head_re,*data_stack_num])
+    st.table(data_stack_num)
     
    for nums in list_num_stack:
     math = upload_df[nums].values.tolist()
@@ -634,3 +714,46 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_num_stack != dict() and {'removenan':True}:
     st.table([head_re,*data_num_stack])
     st.markdown("""---""")
+    
+#--------------------------------------------------------doc
+
+if upload_file is not None:
+ #st.write(table_pie)
+ #for t_p in table_pie:
+  #df = create_table(t_p)
+  #st.write(df)
+ word_file_path = create_word_doc(Pie_chart,table_pie)
+ st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+
+
+#if st.button('Generate'):
+ #chart_paths = []
+ #pie_data = []
+ #table_pie = []
+ #doc = create_word_doc("This is the text content of the document.")
+ #for p in list_pie_chart:
+  #Values = count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan'])
+  #pie_chart_path = Pie_chart(Values,p)
+  #pie_data.append([p,])
+  #chart_paths.append(pie_chart_path)
+ #word_file_path = create_word_doc(chart_paths)
+ #if upload_file is not None:
+  #st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+ 
+ #for p in list_pie_chart:
+  #pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
+  #doc.add_picture(pie_chart_path,width=Inches(3.5)) 
+  #pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit,)
+  #doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
+ # Save the document to a BytesIO object
+ 
+ #doc_buffer = io.BytesIO()
+ #doc.save(doc_buffer)
+ #doc.seek(0)
+ #doc_buffer.seek(1)
+ #st.write(doc_buffer)
+ 
+ # Provide download link for the generated document
+ #st.download_button(label="Download Word Document",data=doc_buffer,file_name="output.docx",
+     #mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",key="word-doc-download")
+ #st.success("Word document created successfully!")
