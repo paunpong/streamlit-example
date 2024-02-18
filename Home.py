@@ -603,7 +603,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 
     #------------------------------ อ.เอกเขียนไว้
-    st.header(pie,font_size=24,fg_color='red')
+    st.header(pie,fg_color='red')
     st.table(data_pie)
     data_pie = []
     #---------------------------------------------
