@@ -603,7 +603,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 
     #------------------------------ อ.เอกเขียนไว้
-    st.markdown(f'<h3 style="color:red">{pie}</h3>', unsafe_allow_html=True)
+    st.text(f'<h3 style="color:red">{pie}</h3>', unsafe_allow_html=True)
     st.table(data_pie)
     data_pie = []
     #---------------------------------------------
