@@ -264,7 +264,6 @@ def bar_chart_new(data,key,legend):
   for i in range(len(data[0])):
    legend = f'{i + 1}:{data[0][i]}'
    ax.bar(labels, values, label=legend,color=color)
-   st.write(legend + '')
  else:
   Label = data[0]
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
@@ -274,7 +273,7 @@ def bar_chart_new(data,key,legend):
  plt.title(key,fontproperties=thai_font_prop)
  chart_bar = f"{key}.png"
  plt.savefig(chart_bar, bbox_inches='tight')
- st.pyplot()
+ st.pyplot(st.write(legend + ''))
  return chart_bar
  
 def stacked_bar(data,key):
