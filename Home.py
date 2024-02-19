@@ -200,7 +200,7 @@ def pie_chart(data, key):
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
  chart_pie = f"{key}.png"
- plt.savefig(chart_pie)#, bbox_inches='tight'
+ plt.savefig(chart_pie, bbox_inches='tight')#, bbox_inches='tight'
  st.pyplot()
  return chart_pie
 
@@ -237,7 +237,7 @@ def boxplot(data,key):
  plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop)
  chart_box = f"{key}.png"
- plt.savefig(chart_box)
+ plt.savefig(chart_box, bbox_inches='tight')
  st.pyplot()
  return chart_box
 
@@ -264,15 +264,16 @@ def bar_chart_new(data,key,legend):
   for i in range(len(data[0])):
    legend = f'{i + 1}:{data[0][i]}'
    ax.bar(labels, values, label=legend,color=color)
-  ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
+   st.write(legend + '')
  else:
   Label = data[0]
+  color=plt.rcParams['axes.prop_cycle'].by_key()['color']
   ax.set_xticklabels(Label, fontproperties=thai_font_prop)
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
-  ax.bar(Label,values)
+  ax.bar(Label,values,color=color)
  plt.title(key,fontproperties=thai_font_prop)
  chart_bar = f"{key}.png"
- plt.savefig(chart_bar)
+ plt.savefig(chart_bar, bbox_inches='tight')
  st.pyplot()
  return chart_bar
  
@@ -284,10 +285,10 @@ def stacked_bar(data,key):
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data1,index=name)
  
- d_f.plot.barh(stacked=True, ax=ax).legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
+ d_f.plot.barh(stacked=True, ax=ax).legend(bbox_to_anchor=(1, 0, 0.15, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  chart_stack = f"{key}.png"
- plt.savefig(chart_stack)
+ plt.savefig(chart_stack, bbox_inches='tight')
  st.pyplot()
  return chart_stack
 
