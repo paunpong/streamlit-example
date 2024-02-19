@@ -685,14 +685,14 @@ if menu == 'เริ่มต้นโปรแกรม':
      data_stack_str.append([topic_word, 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'])
      data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
      top_name = topic_word
-    #if set(upload_df[Str].values.tolist()).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
-    data_stack_str.append([sub_word,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
+    if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
+     data_stack_str.append([sub_word,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
                             f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
                             f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
                             f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
                             f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
-    #else:
-    data_stack_str.append([sub_word,f"{count_string[5]['count']}({count_string[5]['percent']}%)"if 5 in count_string else "0(0%)",
+    else:
+     data_stack_str.append([sub_word,f"{count_string[5]['count']}({count_string[5]['percent']}%)"if 5 in count_string else "0(0%)",
                             f"{count_string[4]['count']}({count_string[4]['percent']}%)"if 4 in count_string else "0(0%)",
                             f"{count_string[3]['count']}({count_string[3]['percent']}%)"if 3 in count_string else "0(0%)",
                             f"{count_string[2]['count']}({count_string[2]['percent']}%)"if 2 in count_string else "0(0%)",
@@ -705,16 +705,15 @@ if menu == 'เริ่มต้นโปรแกรม':
 
    for strs in list_str_stack:
     Col = upload_df[strs].values.tolist()
-    st.write(Col)
     count_string = count_list(Col,list_str_stack[strs]['removenan'])
-    #if set(upload_df[Str].values.tolist()).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
-    data_stack_str.append([strs,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
+    if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
+     data_stack_str.append([strs,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
                             f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
                             f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
                             f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
                             f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
-    #else:
-    data_stack_str.append([strs,f"{count_string[5]['count']}({count_string[5]['percent']}%)"if 5 in count_string else "0(0%)",
+    else:
+     data_stack_str.append([strs,f"{count_string[5]['count']}({count_string[5]['percent']}%)"if 5 in count_string else "0(0%)",
                             f"{count_string[4]['count']}({count_string[4]['percent']}%)"if 4 in count_string else "0(0%)",
                             f"{count_string[3]['count']}({count_string[3]['percent']}%)"if 3 in count_string else "0(0%)",
                             f"{count_string[2]['count']}({count_string[2]['percent']}%)"if 2 in count_string else "0(0%)",
