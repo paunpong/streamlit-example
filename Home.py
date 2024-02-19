@@ -205,7 +205,6 @@ def bar_list_count(data,orther_number=1):
  return [labels, values]
 
 def bar_chart_new(data,key,legend):
- labels = data[0]
  values = data[1]
  st.write(data[0])
  fig,ax = plt.subplots()
@@ -219,7 +218,8 @@ def bar_chart_new(data,key,legend):
    ax.bar(labels, values, label=legend,color=color)
   ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
  else:
-  ax.bar(labels,values,prop=thai_font_prop)
+  Label = data[0]
+  ax.bar(Label,values)
  plt.title(key,fontproperties=thai_font_prop)
  chart_bar = f"{key}.png"
  plt.savefig(chart_bar, bbox_inches='tight')
