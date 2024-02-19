@@ -219,7 +219,7 @@ def bar_chart_new(data,key,legend):
   ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
  else:
   Label = data[0]
-  ax.bar(Label,values)
+  ax.bar(Label,values,fontproperties=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  chart_bar = f"{key}.png"
  plt.savefig(chart_bar, bbox_inches='tight')
