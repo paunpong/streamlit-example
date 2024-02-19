@@ -628,7 +628,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_stack_bar[i][''] = c
     for i in dict_stack_bar:
      num_st = stacked_bar(dict_stack_bar[i],i)
-     Num_st.append(str_st)
+     Num_st.append(num_st)
      
     for i in list_str_stack:
      A_l = count_list(upload_df[i].values.tolist())
@@ -639,7 +639,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
      str_st = stacked_bar(dict_stack_str[s],s)
-     Str_st.append(num_st)
+     Str_st.append(str_st)
      
   #----------------------------------------------------------------------------------------------------------------- tab2   
   with tab2:
