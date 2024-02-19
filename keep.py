@@ -687,7 +687,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     mean = mean_sd['ค่าเฉลี่ย']
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     data_box.append([box,mean,std])
-    table_box.append(data_box)
+    table_box.append(head_amount+data_box)
    if list_boxplot != dict() and {'removenan':True}:
     st.markdown(f'<h3 style="color:red; font-size:18px">{box}</h3>', unsafe_allow_html=True)
     st.table([head_amount,*data_box])
