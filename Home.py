@@ -125,8 +125,8 @@ def create_table(data,doc):
  for j in range(df.shape[-1]):
   table.cell(0, j).text = df.columns[j]
  for i in range(df.shape[0]):
-  for j in range(df.shape[-1]):
-   table.cell(i+1, j).text = str(df.values[i,j])
+  for k in range(df.shape[-1]):
+   table.cell(i+1, k).text = str(df.values[i,k])
    
  return table
 
@@ -135,56 +135,56 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  doc = Document()
  
  for pie in Pie_chart:
-  doc.add_picture(pie)#, width=Cm(15.24), height=Cm(10.16)
+  doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
   
  for t_p in table_pie:
   df = create_table(t_p,doc)
   df.style = 'Table Grid'
  
  for box in Box_chart:
-  doc.add_picture(box)
+  doc.add_picture(box, height=Cm(10.16))
  
  for t_box in table_box:
   df = create_table(t_box,doc)
   df.style = 'Table Grid'
  
  for com in Com_bar:
-  doc.add_picture(com)
+  doc.add_picture(com, height=Cm(10.16))
  
  for t_com in table_comma:
   df = create_table(t_com,doc)
   df.style = 'Table Grid'
   
  for bar in Bar_chart:
-  doc.add_picture(bar)
+  doc.add_picture(bar, height=Cm(10.16))
  
  for t_bar in table_bar:
   df = create_table(t_bar,doc)
   df.style = 'Table Grid'
     
  for str in St_str:
-  doc.add_picture(str)
+  doc.add_picture(str, height=Cm(10.16))
  
  for t_str in table_str:
   df = create_table(t_str,doc)
   df.style = 'Table Grid'
     
  for num in St_num:
-  doc.add_picture(num)
+  doc.add_picture(num, height=Cm(10.16))
  
  for t_num in table_num:
   df = create_table(t_num,doc)
   df.style = 'Table Grid'
      
  for Str in Str_st:
-  doc.add_picture(Str)
+  doc.add_picture(Str, height=Cm(10.16))
  
  for str_t in str_table:
   df = create_table(str_t,doc)
   df.style = 'Table Grid'
   
  for Num in Num_st:
-  doc.add_picture(Num)
+  doc.add_picture(Num, height=Cm(10.16))
  
  for num_t in num_table:
   df = create_table(num_t,doc)
