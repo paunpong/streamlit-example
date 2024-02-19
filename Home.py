@@ -163,28 +163,28 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df.style = 'Table Grid'
     
  for str in St_str:
-  doc.add_picture(str, height=Cm(10.16))
+  doc.add_picture(str, width=Cm(15.24))
  
  for t_str in table_str:
   df = create_table(t_str,doc)
   df.style = 'Table Grid'
     
  for num in St_num:
-  doc.add_picture(num, height=Cm(10.16))
+  doc.add_picture(num, width=Cm(15.24))
  
  for t_num in table_num:
   df = create_table(t_num,doc)
   df.style = 'Table Grid'
      
  for Str in Str_st:
-  doc.add_picture(Str, height=Cm(10.16))
+  doc.add_picture(Str, width=Cm(15.24))
  
  for str_t in str_table:
   df = create_table(str_t,doc)
   df.style = 'Table Grid'
   
  for Num in Num_st:
-  doc.add_picture(Num, height=Cm(10.16))
+  doc.add_picture(Num, width=Cm(15.24))
  
  for num_t in num_table:
   df = create_table(num_t,doc)
