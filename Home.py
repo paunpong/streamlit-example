@@ -518,7 +518,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      v = split_comma(A)
      count_v = Count(v,list_bar_chart_comma[a]['removenan'])
      data = bar_list_count(count_v,list_bar_chart_comma[a]['orther_number'])
-     bar_comma = bar_chart_new(data,a)
+     data_legend = list_bar_chart_comma[a]['legend']
+     bar_comma = bar_chart_new(data,a,data_legend)
      Com_bar.append(bar_comma)
      
     for i in list_bar_chart:
