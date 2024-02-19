@@ -706,6 +706,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    for strs in list_str_stack:
     Col = upload_df[strs].values.tolist()
     count_string = count_list(Col,list_str_stack[strs]['removenan'])
+    st.write(count_string)
     if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
      data_stack_str.append([strs,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
                             f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
