@@ -844,3 +844,4 @@ if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
                                   table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+ 
