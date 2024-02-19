@@ -216,6 +216,7 @@ def bar_chart_new(data,key,legend):
    legend = f'{i + 1}:{data[0][i]}'
    ax.bar(labels, values, label=legend,color=color)
   ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
+ ax.bar(data[0],values)
  plt.title(key,fontproperties=thai_font_prop)
  chart_bar = f"{key}.png"
  plt.savefig(chart_bar, bbox_inches='tight')
