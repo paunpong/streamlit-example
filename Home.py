@@ -135,56 +135,56 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  doc = Document()
  
  for pie in Pie_chart:
-  doc.add_picture(pie, width=Cm(15.24), height=Cm(10.16))
+  doc.add_picture(pie)#, width=Cm(15.24), height=Cm(10.16)
   
  for t_p in table_pie:
   df = create_table(t_p,doc)
   df.style = 'Table Grid'
  
  for box in Box_chart:
-  doc.add_picture(box, width=Cm(15.24), height=Cm(10.16))
+  doc.add_picture(box)
  
  for t_box in table_box:
   df = create_table(t_box,doc)
   df.style = 'Table Grid'
  
  for com in Com_bar:
-  doc.add_picture(com, width=Cm(15.24), height=Cm(10.16))
+  doc.add_picture(com)
  
  for t_com in table_comma:
   df = create_table(t_com,doc)
   df.style = 'Table Grid'
   
  for bar in Bar_chart:
-  doc.add_picture(bar, width=Cm(15.24), height=Cm(10.16))
+  doc.add_picture(bar)
  
  for t_bar in table_bar:
   df = create_table(t_bar,doc)
   df.style = 'Table Grid'
     
  for str in St_str:
-  doc.add_picture(str, width=Cm(15.24), height=Cm(10.16))
+  doc.add_picture(str)
  
  for t_str in table_str:
   df = create_table(t_str,doc)
   df.style = 'Table Grid'
     
  for num in St_num:
-  doc.add_picture(num, width=Cm(15.24), height=Cm(10.16))
+  doc.add_picture(num)
  
  for t_num in table_num:
   df = create_table(t_num,doc)
   df.style = 'Table Grid'
      
  for Str in Str_st:
-  doc.add_picture(Str, width=Cm(15.24), height=Cm(10.16))
+  doc.add_picture(Str)
  
  for str_t in str_table:
   df = create_table(str_t,doc)
   df.style = 'Table Grid'
   
  for Num in Num_st:
-  doc.add_picture(Num, width=Cm(15.24), height=Cm(10.16))
+  doc.add_picture(Num)
  
  for num_t in num_table:
   df = create_table(num_t,doc)
