@@ -526,7 +526,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      list_com = upload_df[i].values.tolist()
      a = Count(list_com,list_bar_chart[i]['removenan'])
      data = bar_list_count(a,list_bar_chart[i]['orther_number'])
-     data_legend = list_bar_chart_comma[a]['legend']
+     data_legend = list_bar_chart_comma[i]['legend']
      bar_charts = bar_chart_new(data,i,data_legend)
      Bar_chart.append(bar_charts)
      
