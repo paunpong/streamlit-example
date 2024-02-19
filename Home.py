@@ -130,10 +130,11 @@ def create_table(data,doc):
    
  return table
 
-def create_word_doc(chart_pie,table_pie):
+def create_word_doc(Pie_chart,com_bar,Bar_chart,Box_chart,St_str,St_num,Num_st,Str_st
+                    table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table):
  doc = Document()
  
- for pie in chart_pie:
+ for pie in Pie_chart:
   doc.add_picture(pie, width=Cm(15), height=Cm(10))
   
  for t_p in table_pie:
@@ -150,7 +151,7 @@ def pie_chart(data, key):
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
  chart_pie = f"{key}.png"
- plt.savefig(chart_pie)
+ plt.savefig(chart_pie , bbox_inches='tight')
  st.pyplot()
  return chart_pie
 
@@ -187,7 +188,7 @@ def boxplot(data,key):
  plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop)
  chart_box = f"{key}.png"
- plt.savefig(chart_box)
+ plt.savefig(chart_box, bbox_inches='tight')
  st.pyplot()
  return chart_box
 
@@ -203,20 +204,21 @@ def bar_list_count(data,orther_number=1):
   labels.append('ไม่ระบุ')
  return [labels, values]
 
-def bar_chart_new(data,key):
+def bar_chart_new(data,key,legend):
  labels = range(1,len(data[0])+1)
  values = data[1]
- fig,ax = plt.subplots(figsize=(9,6))
- ax.set_xticks(labels)
- ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
- color=plt.rcParams['axes.prop_cycle'].by_key()['color']
- for i in range(len(data[0])):
-  legend = f'{i + 1}:{data[0][i]}'
-  ax.bar(labels, values, label=legend,color=color)
- ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
+ fig,ax = plt.subplots()
+ if legend == True:
+  ax.set_xticks(labels)
+  ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
+  color=plt.rcParams['axes.prop_cycle'].by_key()['color']
+  for i in range(len(data[0])):
+   legend = f'{i + 1}:{data[0][i]}'
+   ax.bar(labels, values, label=legend,color=color)
+  ax.legend(bbox_to_anchor=(1, 0, 0.25, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  chart_bar = f"{key}.png"
- plt.savefig(chart_bar)
+ plt.savefig(chart_bar, bbox_inches='tight')
  st.pyplot()
  return chart_bar
  
@@ -231,7 +233,7 @@ def stacked_bar(data,key):
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  chart_stack = f"{key}.png"
- plt.savefig(chart_stack)
+ plt.savefig(chart_stack, bbox_inches='tight')
  st.pyplot()
  return chart_stack
 
@@ -285,7 +287,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     continue
     
    if check_comma(column):
-    list_bar_chart_comma[key] = {'removenan':True,'orther_number':1}
+    list_bar_chart_comma[key] = {'removenan':True,'orther_number':1,'legend':True}
     continue
    
    if num_check(column):
@@ -295,7 +297,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    if len(set(column)) < 6:
     list_pie_chart[key]={'removenan':True}
    else:
-    list_bar_chart[key] = {'removenan':True,'orther_number':1}
+    list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
  
   set_topic = set(list_topic_stackbar)
   for i in set_topic:
@@ -426,8 +428,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      Number = Number+1
      strnumberitem = str(Number)+')'
      head_bulet = strnumberitem + topic_box[:x]+endtext
-     box = st.radio(head_bulet,['เพิ่มค่าเฉลี่ย','ลบค่าเฉลี่ย'],horizontal=True)
-     list_boxplot[topic_box]={'showmeans': True if box == 'เพิ่มค่าเฉลี่ย' else False}
+     box = st.radio(head_bulet,['ลบไม่ระบุ','เพิ่มไม่ระบุ'],horizontal=True)
+     list_boxplot[topic_box]={'showmeans': True if box == 'ลบไม่ระบุ' else False}
      continue
    if Type == 'แท่ง':
     for topic in list_bar_chart_comma:
@@ -438,17 +440,20 @@ if menu == 'เริ่มต้นโปรแกรม':
      a = split_comma(A)
      b = Count(a)
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
+     bar_legend = st.radio(topic[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
      y = st.slider(topic[:x]+endtext, 1, max(b.values()), 1, 1) 
-     list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
+     list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y ,
+                                    'legend': True if bar_legend == 'เพิ่มคำอธิบาย' else False}
     for topic_bar in list_bar_chart:
      Number = Number+1
      strnumberitem = str(Number)+')'
      head_bulet = strnumberitem + topic_bar[:x]+endtext
      c = Count(upload_df[topic_bar].values.tolist())
      Bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     #a = st.radio('',[1,3,5,7,max(c.values())], horizontal=True)
+     Bar_legend = st.radio(topic[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
      y = st.slider(topic_bar[:x]+endtext, 1, max(c.values()), 1, 1)
-     list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y}
+     list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y,
+                                  'legend': True if bar_legend == 'เพิ่มคำอธิบาย' else False}
      continue
    if Type == 'แท่งต่อกัน':
     for topic_stack in list_num_keys:
@@ -780,14 +785,14 @@ if menu == 'เริ่มต้นโปรแกรม':
 #--------------------------------------------------------doc
 
 if upload_file is not None:
- #st.write(table_pie)
+ word_file_path = create_word_doc(Pie_chart,Com_bar,Bar_chart,Box_chart,St_str,St_num,Num_st,Str_st,
+                                  table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table)
+ st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+
+#st.write(table_pie)
  #for t_p in table_pie:
   #df = create_table(t_p)
   #st.write(df)
- word_file_path = create_word_doc(Pie_chart,table_pie)
- st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
-
-
 #if st.button('Generate'):
  #chart_paths = []
  #pie_data = []
