@@ -284,7 +284,7 @@ def stacked_bar(data,key):
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data1,index=name)
  
- d_f.plot.barh(stacked=True, ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
+ d_f.plot.barh(stacked=True, ax=ax).legend(bbox_to_anchor=(1, 0, 0.22, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  chart_stack = f"{key}.png"
  plt.savefig(chart_stack)
@@ -627,8 +627,8 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_stack_bar[i] = dict()
      dict_stack_bar[i][''] = c
     for i in dict_stack_bar:
-     str_st = stacked_bar(dict_stack_bar[i],i)
-     Str_st.append(str_st)
+     num_st = stacked_bar(dict_stack_bar[i],i)
+     Num_st.append(str_st)
      
     for i in list_str_stack:
      A_l = count_list(upload_df[i].values.tolist())
@@ -638,8 +638,8 @@ if menu == 'เริ่มต้นโปรแกรม':
       dict_stack_str[i] = dict()
      dict_stack_str[i][''] = A_l
     for s in dict_stack_str:
-     num_st = stacked_bar(dict_stack_str[s],s)
-     Num_st.append(num_st)
+     str_st = stacked_bar(dict_stack_str[s],s)
+     Str_st.append(num_st)
      
   #----------------------------------------------------------------------------------------------------------------- tab2   
   with tab2:
