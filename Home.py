@@ -200,7 +200,7 @@ def pie_chart(data, key):
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
  chart_pie = f"{key}.png"
- plt.savefig(chart_pie , bbox_inches='tight')
+ plt.savefig(chart_pie)#, bbox_inches='tight'
  st.pyplot()
  return chart_pie
 
@@ -237,7 +237,7 @@ def boxplot(data,key):
  plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop)
  chart_box = f"{key}.png"
- plt.savefig(chart_box, bbox_inches='tight')
+ plt.savefig(chart_box)
  st.pyplot()
  return chart_box
 
@@ -272,7 +272,7 @@ def bar_chart_new(data,key,legend):
   ax.bar(Label,values)
  plt.title(key,fontproperties=thai_font_prop)
  chart_bar = f"{key}.png"
- plt.savefig(chart_bar, bbox_inches='tight')
+ plt.savefig(chart_bar)
  st.pyplot()
  return chart_bar
  
@@ -287,7 +287,7 @@ def stacked_bar(data,key):
  d_f.plot.barh(stacked=True, figsize=(9,4),ax=ax).legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  chart_stack = f"{key}.png"
- plt.savefig(chart_stack, bbox_inches='tight')
+ plt.savefig(chart_stack)
  st.pyplot()
  return chart_stack
 
