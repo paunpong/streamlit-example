@@ -840,11 +840,14 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown("""---""")
     
 #--------------------------------------------------------doc
-c = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black']
-co = ['purple', 'orange', 'pink']
-
-plt.rcParams['axes.prop_cycle'] = plt.cycler(color=co)
-st.write(plt.rcParams['axes.prop_cycle'])
+c = ['#FF5733', '#33FF57', '#5733FF', '#FFFF33', '#33FFFF', '#FF33FF', '#FF3333', '#33FF33', '#3333FF', '#FF9933']
+co = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', '#FF6666', '#66FF66', '#6666FF', '#FFCC66']
+Color = st.radio('ปรับแต่งสีกราฟ', ['ชุดสีที่ 1', 'ชุดสีที่ 2'], horizontal=True)
+if Color == 'ชุดสีที่ 1':
+ plt.rcParams['axes.prop_cycle'] = plt.cycler(color=co)
+else:
+ plt.rcParams['axes.prop_cycle'] = plt.cycler(color=c)
+#st.write(plt.rcParams['axes.prop_cycle'])
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
