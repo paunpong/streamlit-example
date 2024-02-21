@@ -840,8 +840,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown("""---""")
     
 #--------------------------------------------------------doc
-
-color=plt.rcParams['axes.prop_cycle'].by_key()['color']
+c = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black']
+co = ['purple', 'orange', 'pink', 'brown', 'gray', 'turquoise', 'indigo']
+color=plt.rcParams['axes.prop_cycle'].by_key()['co']
 st.write(color)
 
 if upload_file is not None:
