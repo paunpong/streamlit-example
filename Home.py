@@ -263,8 +263,8 @@ def bar_chart_new(data,key,legend):
   my_colors = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black']
   ax.set_prop_cycle(color=my_colors)
   for i in range(len(data[0])):
-   legend = f'{i + 1}:{data[0][i]}'
-   ax.bar(labels, values, label=legend)
+   legend_new = f'{i + 1}:{data[0][i]}'
+   ax.bar(labels, values, label=legend_new)
  else:
   Label = data[0]
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
