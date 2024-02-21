@@ -39,6 +39,19 @@ list_num_stack = {}
 list_comment={}
 list_time={}
 
+c = ['#996633', '#663399', '#339966', '#669933', '#339933', '#993366', '#336699', '#996666', '#669966', '#666699']
+co = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', '#FF6666', '#66FF66', '#6666FF', '#FFCC66']
+cc = ['#FFCC99', '#99FFCC', '#CC99FF', '#FFFF99', '#99FFFF', '#FF99FF', '#FF9999', '#99FF99', '#9999FF', '#FFDD99']
+
+Color = st.radio('ปรับแต่งสีกราฟ', ['ชุดสีที่ 1', 'ชุดสีที่ 2', 'ชุดสีที่ 3'], horizontal=True, index=0)
+
+if Color == 'ชุดสีที่ 1':
+    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=c)
+elif Color == 'ชุดสีที่ 2':
+    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=co)
+else:
+    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=cc)
+
 def upload(A):
  if A is not None:
   y = A.name.split(".")[1]
@@ -840,18 +853,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown("""---""")
     
 #--------------------------------------------------------doc
-c = ['#996633', '#663399', '#339966', '#669933', '#339933', '#993366', '#336699', '#996666', '#669966', '#666699']
-co = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', '#FF6666', '#66FF66', '#6666FF', '#FFCC66']
-cc = ['#FFCC99', '#99FFCC', '#CC99FF', '#FFFF99', '#99FFFF', '#FF99FF', '#FF9999', '#99FF99', '#9999FF', '#FFDD99']
 
-Color = st.radio('ปรับแต่งสีกราฟ', ['ชุดสีที่ 1', 'ชุดสีที่ 2', 'ชุดสีที่ 3'], horizontal=True, index=0)
-
-if Color == 'ชุดสีที่ 1':
-    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=c)
-if Color == 'ชุดสีที่ 2':
-    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=co)
-if Color == 'ชุดสีที่ 3':
-    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=cc)
  
 #st.write(plt.rcParams['axes.prop_cycle'])
 
