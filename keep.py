@@ -845,3 +845,4 @@ if upload_file is not None:
                                   table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
  
+ 
