@@ -18,12 +18,12 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu   
- 
+
 #st.set_page_config(page_title="อัปโหลดไฟล์",layout="wide")
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 script_dir = os.path.dirname(os.path.abspath(__file__))
-thai_font_path = os.path.join("THSARABUN BOLD.TTF")
+thai_font_path = os.path.join("Sarabun-Regular.ttf")
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
 digit = int(2)
@@ -39,31 +39,18 @@ list_num_stack = {}
 list_comment={}
 list_time={}
 
-c = ['#996633', '#663399', '#339966', '#669933', '#339933', '#993366', '#336699', '#996666', '#669966', '#666699']
-co = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', '#FF6666', '#66FF66', '#6666FF', '#FFCC66']
-cc = ['#FFCC99', '#99FFCC', '#CC99FF', '#FFFF99', '#99FFFF', '#FF99FF', '#FF9999', '#99FF99', '#9999FF', '#FFDD99']
-
-Color = st.radio('ปรับแต่งสีกราฟ', ['ชุดสีที่ 1', 'ชุดสีที่ 2', 'ชุดสีที่ 3'], horizontal=True, index=0)
-
-if Color == 'ชุดสีที่ 1':
- plt.rcParams['axes.prop_cycle'] = plt.cycler(color=c)
-elif Color == 'ชุดสีที่ 2':
- plt.rcParams['axes.prop_cycle'] = plt.cycler(color=co)
-else:
- plt.rcParams['axes.prop_cycle'] = plt.cycler(color=cc)
-
 def upload(A):
  if A is not None:
   y = A.name.split(".")[1]
- if 'xlsx' in y:
-  df = pd.read_excel(A)
- elif 'csv' in y:
-  df = pd.read_csv(A)
- df.fillna('ไม่ระบุ',inplace=True)
- df.replace('-','ไม่ระบุ',inplace=True)
- df.replace(' ','ไม่ระบุ',inplace=True)
+  if 'xlsx' in y:
+   df = pd.read_excel(A)
+  elif 'csv' in y:
+   df = pd.read_csv(A)
+  df.fillna('ไม่ระบุ',inplace=True)
+  df.replace('-','ไม่ระบุ',inplace=True)
+  df.replace(' ','ไม่ระบุ',inplace=True)
   #st.dataframe(df)  
- return df
+  return df
 
 def check_count(A):
  for i in A:
@@ -81,8 +68,8 @@ def num_check(A):
 
 def check_comma(A):
  for i in A:
-  if (', ' in str(i)):
-   return True
+   if (', ' in str(i)):
+     return True
  return False
 
 def split_comma(A):
@@ -94,11 +81,11 @@ def split_comma(A):
 def Count(A,removenan=True):
  if removenan and 'ไม่ระบุ' in A:
   A = [n for n in A if n != 'ไม่ระบุ']
-  list_A = list(set(A))
-  counta = dict()
-  for i in list_A:
-   counta[i] = A.count(i)
-  return counta
+ list_A = list(set(A))
+ counta = dict()
+ for i in list_A:
+  counta[i] = A.count(i)
+ return counta
 
 def count_list(A,removenan=True):
  if removenan and 'ไม่ระบุ'in A:
@@ -174,7 +161,6 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  for t_bar in table_bar:
   df = create_table(t_bar,doc)
   df.style = 'Table Grid'
-  doc.add_paragraph('\t')
     
  for str in St_str:
   doc.add_picture(str, width=Cm(15.24))
@@ -207,14 +193,14 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  doc.save('report.docx')
  return 'report.docx'
 
-def pie_chart(data, key, digit=2):
+def pie_chart(data, key):
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
- fig, ax = plt.subplots()
+ fig,ax = plt.subplots()
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
- plt.title(key, fontdict={'fontproperties': thai_font_prop, 'fontsize': 16})
+ plt.title(key, fontproperties=thai_font_prop)
  chart_pie = f"{key}.png"
- plt.savefig(chart_pie, bbox_inches='tight', dpi=300)
+ plt.savefig(chart_pie, bbox_inches='tight')#, bbox_inches='tight'
  st.pyplot()
  return chart_pie
 
@@ -276,9 +262,8 @@ def bar_chart_new(data,key,legend):
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
   for i in range(len(data[0])):
-   Legend = f'{i + 1}:{data[0][i]}'
-   ax.bar(labels, values, label=Legend,color=color)#,color=color  
-  ax.legend(bbox_to_anchor=(1, 0, 0.15, 1),prop=thai_font_prop,handlelength=0) 
+   legend = f'{i + 1}:{data[0][i]}'
+   ax.bar(labels, values, label=legend,color=color)
  else:
   Label = data[0]
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
@@ -299,7 +284,7 @@ def stacked_bar(data,key):
  ax.set_yticklabels(name, fontproperties=thai_font_prop)
  d_f = pd.DataFrame(data1,index=name)
  
- d_f.plot.barh(stacked=True, figsize=(8,3), ax=ax).legend(bbox_to_anchor=(1, 0, 0.19, 1), prop=thai_font_prop)
+ d_f.plot.barh(stacked=True, figsize=(8,3), ax=ax).legend(bbox_to_anchor=(1, 0, 0.19, 1),prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  chart_stack = f"{key}.png"
  plt.savefig(chart_stack, bbox_inches='tight')
@@ -520,7 +505,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      c = Count(upload_df[topic_bar].values.tolist())
      Bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
      Bar_legend = st.radio(topic_bar[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
-     y = st.slider(topic_bar[:x]+endtext, 0, max(c.values()), 1, 1)
+     y = st.slider(topic_bar[:x]+endtext, 1, max(c.values()), 1, 1)
      list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y,
                                   'legend': True if Bar_legend == 'เพิ่มคำอธิบาย' else False}
      continue
@@ -702,7 +687,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     mean = mean_sd['ค่าเฉลี่ย']
     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
     data_box.append([box,mean,std])
-    table_box.append(data_box)
+    table_box.append([head_amount]+data_box)
    if list_boxplot != dict() and {'removenan':True}:
     st.markdown(f'<h3 style="color:red; font-size:18px">{box}</h3>', unsafe_allow_html=True)
     st.table([head_amount,*data_box])
@@ -855,46 +840,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 #--------------------------------------------------------doc
 
- 
-#st.write(plt.rcParams['axes.prop_cycle'])
-
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
                                   table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
-
-#st.write(table_pie)
- #for t_p in table_pie:
-  #df = create_table(t_p)
-  #st.write(df)
-#if st.button('Generate'):
- #chart_paths = []
- #pie_data = []
- #table_pie = []
- #doc = create_word_doc("This is the text content of the document.")
- #for p in list_pie_chart:
-  #Values = count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan'])
-  #pie_chart_path = Pie_chart(Values,p)
-  #pie_data.append([p,])
-  #chart_paths.append(pie_chart_path)
- #word_file_path = create_word_doc(chart_paths)
- #if upload_file is not None:
-  #st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
  
- #for p in list_pie_chart:
-  #pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
-  #doc.add_picture(pie_chart_path,width=Inches(3.5)) 
-  #pie_chart_path = pie_chart(pie_chart_data, pie_chart_key, pie_chart_digit,)
-  #doc.add_picture(io.BytesIO(base64.b64decode(encoded_image)))  # เพิ่มรูปภาพ pie chart เข้าไปในเอกสาร
- # Save the document to a BytesIO object
  
- #doc_buffer = io.BytesIO()
- #doc.save(doc_buffer)
- #doc.seek(0)
- #doc_buffer.seek(1)
- #st.write(doc_buffer)
- 
- # Provide download link for the generated document
- #st.download_button(label="Download Word Document",data=doc_buffer,file_name="output.docx",
-     #mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",key="word-doc-download")
- #st.success("Word document created successfully!")
