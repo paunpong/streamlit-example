@@ -260,7 +260,7 @@ def bar_chart_new(data,key,legend):
   labels = range(1,len(data[0])+1)
   ax.set_xticks(labels)
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
-  color=plt.rcParams['axes.prop_cycle'].by_key()['color']
+  color=plt.rcParams['axes.prop_cycle'].by_key()['ggplot']
   for i in range(len(data[0])):
    legend = f'{i + 1}:{data[0][i]}'
    ax.bar(labels, values, label=legend,color=color)
