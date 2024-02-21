@@ -161,6 +161,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  for t_bar in table_bar:
   df = create_table(t_bar,doc)
   df.style = 'Table Grid'
+  doc.add_paragraph('\t')
     
  for str in St_str:
   doc.add_picture(str, width=Cm(15.24))
