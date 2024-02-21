@@ -135,7 +135,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  doc = Document()
  
  for pie in Pie_chart:
-  doc.add_picture(pie, height=Cm(10.16),dpi=300)#, width=Cm(15.24), height=Cm(10.16)
+  doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
   
  for t_p in table_pie:
   df = create_table(t_p,doc)
@@ -840,6 +840,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown("""---""")
     
 #--------------------------------------------------------doc
+
+color=plt.rcParams['axes.prop_cycle'].by_key()['color']
+st.write(color)
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
