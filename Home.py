@@ -53,64 +53,64 @@ else:
     plt.rcParams['axes.prop_cycle'] = plt.cycler(color=cc)
 
 def upload(A):
- if A is not None:
-  y = A.name.split(".")[1]
-  if 'xlsx' in y:
-   df = pd.read_excel(A)
-  elif 'csv' in y:
-   df = pd.read_csv(A)
-  df.fillna('ไม่ระบุ',inplace=True)
-  df.replace('-','ไม่ระบุ',inplace=True)
-  df.replace(' ','ไม่ระบุ',inplace=True)
+    if A is not None:
+        y = A.name.split(".")[1]
+    if 'xlsx' in y:
+        df = pd.read_excel(A)
+    elif 'csv' in y:
+        df = pd.read_csv(A)
+    df.fillna('ไม่ระบุ',inplace=True)
+    df.replace('-','ไม่ระบุ',inplace=True)
+    df.replace(' ','ไม่ระบุ',inplace=True)
   #st.dataframe(df)  
-  return df
+    return df
 
 def check_count(A):
- for i in A:
-  if A[i] > 1 :
-   return False
- return True
+    for i in A:
+        if A[i] > 1 :
+            return False
+    return True
 
 def num_check(A):
- for i in set(A):
-  if type(i) is str and i != 'ไม่ระบุ':
-   return False
-  else:
-   continue
- return True
+    for i in set(A):
+        if type(i) is str and i != 'ไม่ระบุ':
+            return False
+        else:
+            continue
+    return True
 
 def check_comma(A):
- for i in A:
-   if (', ' in str(i)):
-     return True
- return False
+    for i in A:
+        if (', ' in str(i)):
+            return True
+    return False
 
 def split_comma(A):
- res = []
- for i in A:
-  res = res + i.split(", ")
- return res
+    res = []
+    for i in A:
+        res = res + i.split(", ")
+    return res
 
 def Count(A,removenan=True):
- if removenan and 'ไม่ระบุ' in A:
-  A = [n for n in A if n != 'ไม่ระบุ']
- list_A = list(set(A))
- counta = dict()
- for i in list_A:
-  counta[i] = A.count(i)
- return counta
+    if removenan and 'ไม่ระบุ' in A:
+        A = [n for n in A if n != 'ไม่ระบุ']
+        list_A = list(set(A))
+        counta = dict()
+        for i in list_A:
+            counta[i] = A.count(i)
+        return counta
 
 def count_list(A,removenan=True):
- if removenan and 'ไม่ระบุ'in A:
-  A = [n for n in A if n != 'ไม่ระบุ']
- list_A = list(set(A))
- count_dict = dict()
- len_A = len(A)
- for c in list_A:
-  per = (A.count(c)/len_A)*100
-  count_dict[str(c)] = {"count":A.count(c),"percent":round(per,digit)}
- sorted_dict = dict(sorted(count_dict.items(),reverse=True))
- return sorted_dict
+    if removenan and 'ไม่ระบุ'in A:
+        A = [n for n in A if n != 'ไม่ระบุ']
+    list_A = list(set(A))
+    count_dict = dict()
+    len_A = len(A)
+    for c in list_A:
+        per = (A.count(c)/len_A)*100
+        count_dict[str(c)] = {"count":A.count(c),"percent":round(per,digit)}
+    sorted_dict = dict(sorted(count_dict.items(),reverse=True))
+    return sorted_dict
 
 def stat(A,removenan=True):
  if removenan and 'ไม่ระบุ' in A:
@@ -208,15 +208,15 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  return 'report.docx'
 
 def pie_chart(data, key):
- labels = [key for key in data]
- counts = [data[key]['percent'] for key in data]
- fig,ax = plt.subplots()
- ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop}
- plt.title(key,fontproperties=thai_font_prop)
- chart_pie = f"{key}.png"
- plt.savefig(chart_pie, bbox_inches='tight',dpi=300)#, bbox_inches='tight'
- st.pyplot()
- return chart_pie
+    labels = [key for key in data]
+    counts = [data[key]['percent'] for key in data]
+    fig,ax = plt.subplots()
+    ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop}
+    #plt.title(key,fontproperties=thai_font_prop)
+    chart_pie = f"{key}.png"
+    plt.savefig(chart_pie, bbox_inches='tight',dpi=300)#, bbox_inches='tight'
+    st.pyplot()
+    return chart_pie
 
 def boxplot(data,key):
  fig,ax = plt.subplots()
