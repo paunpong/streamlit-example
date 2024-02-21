@@ -260,11 +260,10 @@ def bar_chart_new(data,key,legend):
   labels = range(1,len(data[0])+1)
   ax.set_xticks(labels)
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
-  my_colors = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black']
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
   for i in range(len(data[0])):
-   legend_new = f'{i + 1}:{data[0][i]}'
-   ax.bar(labels, values, label=legend_new,color=color)
+   legend = f'{i + 1}:{data[0][i]}'
+   ax.bar(labels, values, label=legend,color=color)
  else:
   Label = data[0]
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
