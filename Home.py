@@ -847,13 +847,13 @@ Color = st.radio('ปรับแต่งสีกราฟ', ['ชุดสี
 
 if Color == 'ชุดสีที่ 1':
  plt.rcParams['axes.prop_cycle'] = plt.cycler(color=c)
- 
-elif Color == 'ชุดสีที่ 2':
+  continue
+if Color == 'ชุดสีที่ 2':
  plt.rcParams['axes.prop_cycle'] = plt.cycler(color=co)
- 
-else:
+  continue
+if Color == 'ชุดสีที่ 3':
  plt.rcParams['axes.prop_cycle'] = plt.cycler(color=cc)
- 
+  continue
 #st.write(plt.rcParams['axes.prop_cycle'])
 
 if upload_file is not None:
