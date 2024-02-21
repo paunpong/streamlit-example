@@ -841,7 +841,8 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 #--------------------------------------------------------doc
 c = ['blue', 'green', 'red', 'cyan', 'magenta', 'yellow', 'black']
-co = ['purple', 'orange', 'pink', 'brown', 'gray', 'turquoise', 'indigo']
+co = ['purple', 'orange', 'pink']
+
 plt.rcParams['axes.prop_cycle'] = plt.cycler(color=co)
 st.write(plt.rcParams['axes.prop_cycle'])
 
