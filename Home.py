@@ -278,8 +278,7 @@ def bar_chart_new(data,key,legend):
   for i in range(len(data[0])):
    Legend = f'{i + 1}:{data[0][i]}'
    ax.bar(labels, values, label=Legend,color=color[i])#,color=color
-  #handles, labels = ax.get_legend_handles_labels()
-  ax.legend(bbox_to_anchor=(1, 0, 0.2, 1), prop=thai_font_prop)  
+   ax.legend(bbox_to_anchor=(1, 0, 0.2, 1), prop=thai_font_prop)  
   #ax.legend(bbox_to_anchor=(1, 0, 0.2, 1),prop=thai_font_prop) 
  else:
   Label = data[0]
