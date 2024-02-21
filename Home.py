@@ -23,7 +23,7 @@ from streamlit_option_menu import option_menu
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 script_dir = os.path.dirname(os.path.abspath(__file__))
-thai_font_path = os.path.join("Sarabun-Regular.ttf")
+thai_font_path = os.path.join("THSARABUN BOLD.TTF")
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
 digit = int(2)
