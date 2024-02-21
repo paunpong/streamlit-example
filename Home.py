@@ -200,7 +200,7 @@ def pie_chart(data, key):
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
  chart_pie = f"{key}.png"
- plt.savefig(chart_pie, bbox_inches='tight',dpi=800)#, bbox_inches='tight'
+ plt.savefig(chart_pie, bbox_inches='tight',dpi=1800)#, bbox_inches='tight'
  st.pyplot()
  return chart_pie
 
