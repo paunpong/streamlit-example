@@ -847,7 +847,7 @@ Color = st.radio('ปรับแต่งสีกราฟ', ['ชุดสี
 
 if Color == 'ชุดสีที่ 1':
  plt.rcParams['axes.prop_cycle'] = plt.cycler(color=c)
- continue
+ 
  
 elif Color == 'ชุดสีที่ 2':
  plt.rcParams['axes.prop_cycle'] = plt.cycler(color=co)
