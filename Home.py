@@ -477,7 +477,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      head_bulet = strnumberitem + topic_pie[:x]+endtext
      Pie = st.radio(head_bulet, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
      list_pie_chart[topic_pie] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False}
-     continue
+    continue
    if Type == 'กล่อง':
     for topic_box in list_boxplot:
      Number = Number+1
@@ -509,7 +509,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      y = st.slider(topic_bar[:x]+endtext, 0, max(c.values()), 1, 1)
      list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ลบไม่ระบุ' else False, 'orther_number': y,
                                   'legend': True if Bar_legend == 'เพิ่มคำอธิบาย' else False}
-     continue
+    continue
    if Type == 'แท่งต่อกัน':
     for topic_stack in list_num_keys:
      Number = Number+1
@@ -844,6 +844,7 @@ c = ['#FF5733', '#33FF57', '#5733FF', '#FFFF33', '#33FFFF', '#FF33FF', '#FF3333'
 co = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', '#FF6666', '#66FF66', '#6666FF', '#FFCC66']
 cc = ['#FFCC99', '#99FFCC', '#CC99FF', '#FFFF99', '#99FFFF', '#FF99FF', '#FF9999', '#99FF99', '#9999FF', '#FFDD99']
 Color = st.radio('ปรับแต่งสีกราฟ', ['ชุดสีที่ 1', 'ชุดสีที่ 2', 'ชุดสีที่ 3'], horizontal=True)
+
 if Color == 'ชุดสีที่ 1':
  plt.rcParams['axes.prop_cycle'] = plt.cycler(color=c)
  continue
@@ -854,7 +855,6 @@ if Color == 'ชุดสีที่ 2':
  
 if Color == 'ชุดสีที่ 3':
  plt.rcParams['axes.prop_cycle'] = plt.cycler(color=cc)
- continue
  
 #st.write(plt.rcParams['axes.prop_cycle'])
 
