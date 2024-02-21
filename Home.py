@@ -211,7 +211,7 @@ def pie_chart(data, key):
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots()
- ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop},fontsize=14)
+ ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop,'fontsize': 14}
  plt.title(key, fontproperties=thai_font_prop,fontsize=16)
  chart_pie = f"{key}.png"
  plt.savefig(chart_pie, bbox_inches='tight',dpi=300)#, bbox_inches='tight'
