@@ -721,7 +721,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_stack_num = []
    data_num_stack = []
    if list_pie_chart != dict() and {'removenan':True}: 
-    st.write(f'<h3 style="color:blue; font-size:18px">{ตารางแผนภาพวงกลม}</h3>', unsafe_allow_html=True)
+    st.markdown('<h3 style="color:blue; font-size:18px">ตารางแผนภาพวงกลม</h3>', unsafe_allow_html=True)
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     data_pie.append([pie, 'จำนวน', 'เปอร์เซนต์'])
