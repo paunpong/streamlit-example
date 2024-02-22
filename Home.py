@@ -151,24 +151,28 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading = doc.add_heading(level=0)
  heading_run = heading.add_run('สรุปผล' + upload_file.name.split('.')[0])
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
- 
+ #--------------------------------------------------ตาราง
+ for t_p in table_pie:
+  df = create_table(t_p,doc)
+  df.style = 'Table Grid'                       
+
+ for t_box in table_box:
+  df = create_table(t_box,doc)
+  df.style = 'Table Grid'
+     
  for pie in Pie_chart:
   #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
   paragraph = doc.add_paragraph()
   run = paragraph.add_run()
-  picture = run.add_picture(pie, height=Cm(10.10))
+  picture = run.add_picture(pie, height=Cm(9.8))
   paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-  
- for t_p in table_pie:
-  df = create_table(t_p,doc)
-  df.style = 'Table Grid'
+  heading_run.bold = True
+ 
  
  for box in Box_chart:
   doc.add_picture(box, height=Cm(10.16))
  
- for t_box in table_box:
-  df = create_table(t_box,doc)
-  df.style = 'Table Grid'
+ 
  
  for com in Com_bar:
   doc.add_picture(com, height=Cm(10.16))
