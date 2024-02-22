@@ -191,7 +191,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df = create_table(num_t,doc)
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
 
- head_pic = doc.add_heading(level=1)
+ head_pic = doc.add_heading(level=0)
  head = head_pic.add_run('ภาพแผนภูมิ')
  head.bold = True
  head.font.size = Pt(18)                                              
