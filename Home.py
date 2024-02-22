@@ -620,7 +620,7 @@ table_str = []
 table_num = []
 str_table = []
 num_table = []
-
+comment = []
 if menu == 'เริ่มต้นโปรแกรม':
  dict_str_stack = dict()
  dict_num_stack = dict()
@@ -730,6 +730,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_str_stack = []
    data_stack_num = []
    data_num_stack = []
+   data_comment = []
    if list_pie_chart != dict() and {'removenan':True}: 
     st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิวงกลม</h3>', unsafe_allow_html=True)
    for pie in list_pie_chart:
@@ -927,6 +928,20 @@ if menu == 'เริ่มต้นโปรแกรม':
     num_table.append([head_re] + data_num_stack)
     st.table([head_re,*data_num_stack])
     st.markdown("""---""")
+       
+   if list_pie_chart != dict() and {'removenan':True}: 
+    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิวงกลม</h3>', unsafe_allow_html=True) 
+   for ment in list_comment:
+    Val = Count(upload_df[ment].values.tolist(),list_comment[ment]['removenan'])
+    Val.sort(reverse=True)
+    data_comment.append(ment,'จำนวน')
+    for ans in Val:
+     count = Val[ans]
+     data_comment.append([ans, count])
+    
+    st.table(data_comment)
+    data_comment = []
+    comment.append(data_comment)
     
 #--------------------------------------------------------doc
 
