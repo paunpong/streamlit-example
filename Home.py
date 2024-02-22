@@ -937,7 +937,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     data_comment.append([ment,'จำนวน'])
     for ans in sorted_items:
      count = ans[1]
-     data_comment.append([ans[0], count])
+     data_comment.append([ans[0], f'({count})'])
     
     st.table(data_comment)
     data_comment = []
