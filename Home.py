@@ -153,7 +153,11 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
  
  for pie in Pie_chart:
-  doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
+  #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
+  paragraph = doc.add_paragraph()
+  run = paragraph.add_run()
+  picture = run.add_picture(pie, height=Cm(10.10))
+  paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
   
  for t_p in table_pie:
   df = create_table(t_p,doc)
