@@ -153,8 +153,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
  #--------------------------------------------------ตาราง
  for t_p in table_pie:
-  df = create_table(t_p,doc)
-  df.append('\t')   
+  df = create_table(t_p+'\t',doc)  
   df.style = 'Table Grid'                       
 
  for t_box in table_box:
