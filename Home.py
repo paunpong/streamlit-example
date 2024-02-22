@@ -39,18 +39,18 @@ list_num_stack = {}
 list_comment={}
 list_time={}
 
-c = ['#996633', '#663399', '#339966', '#669933', '#339933', '#993366', '#336699', '#996666', '#669966', '#666699']
-co = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', '#FF6666', '#66FF66', '#6666FF', '#FFCC66']
-cc = ['#FFCC99', '#99FFCC', '#CC99FF', '#FFFF99', '#99FFFF', '#FF99FF', '#FF9999', '#99FF99', '#9999FF', '#FFDD99']
+color_set1 = ['#996633', '#663399', '#339966', '#669933', '#339933', '#993366', '#336699', '#996666', '#669966', '#666699']
+color_set2 = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', '#FF6666', '#66FF66', '#6666FF', '#FFCC66']
+color_set3 = ['#FFCC99', '#99FFCC', '#CC99FF', '#FFFF99', '#99FFFF', '#FF99FF', '#FF9999', '#99FF99', '#9999FF', '#FFDD99']
 
 Color = st.radio('ปรับแต่งสีกราฟ', ['ชุดสีที่ 1', 'ชุดสีที่ 2', 'ชุดสีที่ 3'], horizontal=True, index=0)
 
 if Color == 'ชุดสีที่ 1':
-    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=c)
+    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=color_set1)
 elif Color == 'ชุดสีที่ 2':
-    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=co)
+    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=color_set2)
 else:
-    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=cc)
+    plt.rcParams['axes.prop_cycle'] = plt.cycler(color=color_set3)
 
 def upload(A):
  if A is not None:
@@ -144,8 +144,10 @@ def create_table(data,doc):
  return table
 
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                    table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table):
+                    table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file):
  doc = Document()
+
+ doc.add_heading('สรุปผลแบบสอบถาม/แบบประเมิน'+ upload_file.name , 0)
  
  for pie in Pie_chart:
   doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
@@ -860,7 +862,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                                  table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table)
+                                  table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 #st.write(table_pie)
