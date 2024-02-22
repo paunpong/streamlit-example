@@ -193,7 +193,6 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
 
  head_pic = doc.add_heading(level=1)
  head = head_pic.add_run('ภาพแผนภูมิ')
- head_pic.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
  head.bold = True
  head.font.size = Pt(18)                                              
  
