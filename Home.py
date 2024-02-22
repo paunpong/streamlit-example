@@ -720,7 +720,8 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_str_stack = []
    data_stack_num = []
    data_num_stack = []
-   
+
+   st.write(f'<h3 style="color:red; font-size:16px">{'ตารางแผนภาพวงกลม'}</h3>', unsafe_allow_html=True)
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     data_pie.append([pie, 'จำนวน', 'เปอร์เซนต์'])
@@ -733,7 +734,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 
     #------------------------------ อ.เอกเขียนไว้
-    st.markdown(f'<h3 style="color:red; font-size:18px">{pie}</h3>', unsafe_allow_html=True)
+    st.markdown(f'<h3 style="color:red; font-size:16px">{pie}</h3>', unsafe_allow_html=True)
     st.table(data_pie)
     data_pie = []
     #---------------------------------------------
@@ -741,9 +742,6 @@ if menu == 'เริ่มต้นโปรแกรม':
    
     #data_pie.append(['','','']) 
    if list_pie_chart != dict() and {'removenan':True}:
-    #st.table([head_quality,*data_pie])
-    #data_pie = [['วิทยากร', 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'],[" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"],['a','5(15%)']]
-    #st.table(data_pie)
     st.markdown("""---""")
     
    for box in list_boxplot:
