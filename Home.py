@@ -721,7 +721,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    data_stack_num = []
    data_num_stack = []
    if list_pie_chart != dict() and {'removenan':True}: 
-    st.markdown('<h3 style="color:blue; font-size:18px">ตารางแผนภาพวงกลม</h3>', unsafe_allow_html=True)
+    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิวงกลม</h3>', unsafe_allow_html=True)
    for pie in list_pie_chart:
     values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
     data_pie.append([pie, 'จำนวน', 'เปอร์เซนต์'])
@@ -743,7 +743,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     #data_pie.append(['','','']) 
    if list_pie_chart != dict() and {'removenan':True}:
     st.markdown("""---""")
-    
+
+   if list_boxplot != dict() and {'removenan':True}:    
+    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิกล่อง</h3>', unsafe_allow_html=True)  
    for box in list_boxplot:
     mean_sd = stat(upload_df[box].values.tolist())
     mean = mean_sd['ค่าเฉลี่ย']
@@ -754,7 +756,9 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown(f'<h3 style="color:red; font-size:18px">{box}</h3>', unsafe_allow_html=True)
     st.table([head_amount,*data_box])
     st.markdown("""---""") 
-    
+
+   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}: 
+    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่ง</h3>', unsafe_allow_html=True)  
    for comma in list_bar_chart_comma:
     topic = upload_df[comma].values.tolist()
     all_number = len(topic)
@@ -774,9 +778,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown(f'<h3 style="color:red; font-size:18px">{comma}</h3>', unsafe_allow_html=True)
     st.table(data_comma)
     data_comma = []
-   #if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:
-    
-     
+  
    for bar in list_bar_chart:
     data = upload_df[bar].values.tolist()
     Val = Count(data,list_bar_chart[bar]['removenan'])
@@ -798,6 +800,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1}:
     st.markdown("""---""")
 
+   st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่งแบบต่อกัน</h3>', unsafe_allow_html=True) 
    for Str in list_stack_str:
     Col = upload_df[Str].values.tolist()
     count_string = count_list(Col,list_stack_str[Str]['removenan'])
