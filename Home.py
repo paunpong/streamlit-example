@@ -940,7 +940,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      if count > 1:   
       data_comment.append([ans[0], f'({count})'])
      else:    
-      data_comment.append([ans[0], '''])
+      data_comment.append([ans[0], ''])
     st.table(data_comment)
     data_comment = []
     comment.append(data_comment)
@@ -989,4 +989,3 @@ if upload_file is not None:
  # Provide download link for the generated document
  #st.download_button(label="Download Word Document",data=doc_buffer,file_name="output.docx",
      #mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",key="word-doc-download")
- #st.success("Word document created successfully!")
