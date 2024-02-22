@@ -199,32 +199,60 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  
  for pie in Pie_chart:
   #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
-  paragraph = doc.add_paragraph()
-  run = paragraph.add_run()
-  picture = run.add_picture(pie, height=Cm(10.16))
-  paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+  paragraph_pie = doc.add_paragraph()
+  run_pie = paragraph_pie.add_run()
+  picture_pie = run_pie.add_picture(pie, height=Cm(10.16),keep_aspect_ratio=True)
+  paragraph_pie.alignment = WD_ALIGN_PARAGRAPH.CENTER
  
  for box in Box_chart:
-  doc.add_picture(box, height=Cm(10.16))
- 
+  #doc.add_picture(box, height=Cm(10.16))
+   paragraph_box = doc.add_paragraph()
+   run_box = paragraph_box.add_run()
+   picture_box = run_box.add_picture(box, height=Cm(10.16),keep_aspect_ratio=True)
+   paragraph_box.alignment = WD_ALIGN_PARAGRAPH.CENTER
+     
  for com in Com_bar:
-  doc.add_picture(com, height=Cm(10.16))
-  
+  #doc.add_picture(com, height=Cm(10.16))
+   paragraph_com = doc.add_paragraph()
+   run_com = paragraph_com.add_run()
+   picture_com = run_com.add_picture(com, height=Cm(10.16),keep_aspect_ratio=True)
+   paragraph_com.alignment = WD_ALIGN_PARAGRAPH.CENTER
+     
  for bar in Bar_chart:
-  doc.add_picture(bar, height=Cm(10.16))
+  #doc.add_picture(bar, height=Cm(10.16))
+  paragraph_bar = doc.add_paragraph()
+  run_bar = paragraph_bar.add_run()
+  picture_bar = run_bar.add_picture(bar, height=Cm(10.16),keep_aspect_ratio=True)
+  paragraph_bar.alignment = WD_ALIGN_PARAGRAPH.CENTER   
     
  for str in St_str:
-  doc.add_picture(str, width=Cm(15.24))
-    
+  #doc.add_picture(str, width=Cm(15.24))
+  paragraph_str = doc.add_paragraph()
+  run_str = paragraph_str.add_run()
+  picture_str = run_str.add_picture(str, height=Cm(10.16),keep_aspect_ratio=True)
+  paragraph_str.alignment = WD_ALIGN_PARAGRAPH.CENTER
+     
  for num in St_num:
-  doc.add_picture(num, width=Cm(15.24))
+  #doc.add_picture(num, width=Cm(15.24))
+  paragraph_num = doc.add_paragraph()
+  run_num = paragraph_num.add_run()
+  picture_num = run_num.add_picture(num, height=Cm(10.16),keep_aspect_ratio=True)
+  paragraph_num.alignment = WD_ALIGN_PARAGRAPH.CENTER   
      
  for Str in Str_st:
-  doc.add_picture(Str, width=Cm(15.24))
-  
+  #doc.add_picture(Str, width=Cm(15.24))
+  paragraph_Str = doc.add_paragraph()
+  run_Str = paragraph_Str.add_run()
+  picture_Str = run_Str.add_picture(Str, height=Cm(10.16),keep_aspect_ratio=True)
+  paragraph_Str.alignment = WD_ALIGN_PARAGRAPH.CENTER
+     
  for Num in Num_st:
-  doc.add_picture(Num, width=Cm(15.24))
-                  
+  #doc.add_picture(Num, width=Cm(15.24))
+  paragraph_Num = doc.add_paragraph()
+  run_Num = paragraph_Num.add_run()
+  picture_Num = run_Num.add_picture(Num, height=Cm(10.16),keep_aspect_ratio=True)
+  paragraph_Num.alignment = WD_ALIGN_PARAGRAPH.CENTER 
+     
  doc.save('report.docx')
  return 'report.docx'
 
