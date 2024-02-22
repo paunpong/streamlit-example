@@ -148,10 +148,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
                     table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file):
  doc = Document()
 
- doc.add_heading('สรุปผลแบบสอบถาม/แบบประเมิน'+ upload_file.name.split('.')[0] , 1)
-
  heading = doc.add_heading(level=0)
- heading_run = heading.add_run('สรุปผลแบบสอบถาม/แบบประเมิน ' + upload_file.name.split('.')[0])
+ heading_run = heading.add_run('สรุปผล' + upload_file.name.split('.')[0])
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
  
  for pie in Pie_chart:
