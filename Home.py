@@ -439,6 +439,8 @@ if menu == 'เริ่มต้นโปรแกรม':
   list_num_keys = list(list_stack_num.keys())
   list_stackn_keys = list(list_num_stack.keys())
   list_stacks_keys = list(list_str_stack.keys())
+
+  st.write(df)
   
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
