@@ -229,28 +229,28 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   #doc.add_picture(str, width=Cm(15.24))
   paragraph_str = doc.add_paragraph()
   run_str = paragraph_str.add_run()
-  picture_str = run_str.add_picture(str, height=Cm(10.16))
+  picture_str = run_str.add_picture(str, width=Cm(15.24))
   paragraph_str.alignment = WD_ALIGN_PARAGRAPH.CENTER
      
  for num in St_num:
   #doc.add_picture(num, width=Cm(15.24))
   paragraph_num = doc.add_paragraph()
   run_num = paragraph_num.add_run()
-  picture_num = run_num.add_picture(num, height=Cm(10.16))
+  picture_num = run_num.add_picture(num, width=Cm(15.24))
   paragraph_num.alignment = WD_ALIGN_PARAGRAPH.CENTER   
      
  for Str in Str_st:
   #doc.add_picture(Str, width=Cm(15.24))
   paragraph_Str = doc.add_paragraph()
   run_Str = paragraph_Str.add_run()
-  picture_Str = run_Str.add_picture(Str, height=Cm(10.16))
+  picture_Str = run_Str.add_picture(Str, width=Cm(15.24))
   paragraph_Str.alignment = WD_ALIGN_PARAGRAPH.CENTER
      
  for Num in Num_st:
   #doc.add_picture(Num, width=Cm(15.24))
   paragraph_Num = doc.add_paragraph()
   run_Num = paragraph_Num.add_run()
-  picture_Num = run_Num.add_picture(Num, height=Cm(10.16))
+  picture_Num = run_Num.add_picture(Num, width=Cm(15.24))
   paragraph_Num.alignment = WD_ALIGN_PARAGRAPH.CENTER 
      
  doc.save('report.docx')
