@@ -10,6 +10,7 @@ from io import BytesIO
 from docx.shared import Pt , Cm
 from docx.oxml.ns import nsdecls
 from docx.oxml import parse_xml
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 #import re
 #import operator
 from PIL import Image
@@ -148,6 +149,10 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  doc = Document()
 
  doc.add_heading('สรุปผลแบบสอบถาม/แบบประเมิน'+ upload_file.name.split('.')[0] , 1)
+
+ heading = doc.add_heading(level=0)
+ heading_run = heading.add_run('สรุปผลแบบสอบถาม/แบบประเมิน ' + upload_file.name.split('.')[0])
+ heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
  
  for pie in Pie_chart:
   doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
