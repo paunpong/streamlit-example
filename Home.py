@@ -382,8 +382,9 @@ if menu == 'เริ่มต้นโปรแกรม':
    len_column = len(column)
    x = Count(column)
       
-   if all(pd.isnull(cell) for cell in column):
+   if all(value == "ไม่ระบุ" for value in column):
     list_non[key] = True
+    continue   
        
    if 'time' in key:
     list_time[key] = True
