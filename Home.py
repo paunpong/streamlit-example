@@ -929,7 +929,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.table([head_re,*data_num_stack])
     st.markdown("""---""")
        
-   if list_pie_chart != dict() and {'removenan':True}: 
+   if list_comment != dict(): 
     st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">ข้อเสนอแนะ</h3>', unsafe_allow_html=True) 
    for ment in list_comment:
     Val = Count(upload_df[ment].values.tolist(),list_comment[ment]['removenan'])
