@@ -392,11 +392,11 @@ if menu == 'เริ่มต้นโปรแกรม':
      list_topic_stackbar.append(topic)
     continue
  
-   if num_check(column) and set(column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+   if num_check(column) and set(column).issubset({1,2,3,4,5}):
     list_num_stack[key]={'removenan':True}
     continue
 
-   if not num_check(column) and set(column).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด',}):
+   if not num_check(column) and set(column).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'}):
     list_str_stack[key]={'removenan':True}
     continue
     
