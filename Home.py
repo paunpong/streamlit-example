@@ -475,7 +475,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     box = st.radio(head_bulet,['แผนภาพกล่อง','แผนภูมิแท่ง'], horizontal=True)
     st.text("")
     if box == 'แผนภูมิแท่ง':
-     list_bar_chart[topic]={'removenan':True,'orther_number':1}
+     list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
      del list_boxplot[topic]
    if list_box_keys != list():
     st.markdown("""---""")
