@@ -151,73 +151,79 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading = doc.add_heading(level=0)
  heading_run = heading.add_run('สรุปผล' + upload_file.name.split('.')[0])
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
+ heading_run.bold = True
+ heading_run.font.size = Pt(20)                       
  #--------------------------------------------------ตาราง
  for t_p in table_pie:
-  df = create_table(t_p+'\t',doc)  
+  df = create_table(t_p,doc)  
   df.style = 'Table Grid'                       
-
+  doc.add_paragraph('\t')# ตารางวงกลม
+     
  for t_box in table_box:
   df = create_table(t_box,doc)
-  df.style = 'Table Grid'
+  df.style = 'Table Grid' # ตารางกล่อง
      
- for pie in Pie_chart:
-  #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
-  paragraph = doc.add_paragraph()
-  run = paragraph.add_run()
-  picture = run.add_picture(pie, height=Cm(9.8))
-  paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
-  heading_run.bold = True
-  heading_run.font.size = Pt(24)
- 
- 
- for box in Box_chart:
-  doc.add_picture(box, height=Cm(10.16))
- 
- 
- 
- for com in Com_bar:
-  doc.add_picture(com, height=Cm(10.16))
- 
  for t_com in table_comma:
   df = create_table(t_com,doc)
   df.style = 'Table Grid'
-  
- for bar in Bar_chart:
-  doc.add_picture(bar, height=Cm(10.16))
- 
+  doc.add_paragraph('\t')# ตารางแท่ง
+        
  for t_bar in table_bar:
   df = create_table(t_bar,doc)
   df.style = 'Table Grid'
-  doc.add_paragraph('\t')
-    
- for str in St_str:
-  doc.add_picture(str, width=Cm(15.24))
+  doc.add_paragraph('\t')# ตารางแท่ง
  
  for t_str in table_str:
   df = create_table(t_str,doc)
   df.style = 'Table Grid'
+  doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
+     
+ for t_num in table_num:
+  df = create_table(t_num,doc)
+  df.style = 'Table Grid' 
+  doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
+     
+ for str_t in str_table:
+  df = create_table(str_t,doc)
+  df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่
+     
+ for num_t in num_table:
+  df = create_table(num_t,doc)
+  df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
+
+ body_paragraph = doc.add_paragraph('ภาพแผนภูมิ')
+ body_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+ body_paragraph.bold = True
+ body_paragraph.font.size = Pt(20)                       
+ 
+ for pie in Pie_chart:
+  #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
+  paragraph = doc.add_paragraph()
+  run = paragraph.add_run()
+  picture = run.add_picture(pie, height=Cm(10.16))
+  paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+ 
+ for box in Box_chart:
+  doc.add_picture(box, height=Cm(10.16))
+ 
+ for com in Com_bar:
+  doc.add_picture(com, height=Cm(10.16))
+  
+ for bar in Bar_chart:
+  doc.add_picture(bar, height=Cm(10.16))
+    
+ for str in St_str:
+  doc.add_picture(str, width=Cm(15.24))
     
  for num in St_num:
   doc.add_picture(num, width=Cm(15.24))
- 
- for t_num in table_num:
-  df = create_table(t_num,doc)
-  df.style = 'Table Grid'
      
  for Str in Str_st:
   doc.add_picture(Str, width=Cm(15.24))
- 
- for str_t in str_table:
-  df = create_table(str_t,doc)
-  df.style = 'Table Grid'
   
  for Num in Num_st:
   doc.add_picture(Num, width=Cm(15.24))
- 
- for num_t in num_table:
-  df = create_table(num_t,doc)
-  df.style = 'Table Grid'
-                     
+                  
  doc.save('report.docx')
  return 'report.docx'
 
