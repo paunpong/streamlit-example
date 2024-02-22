@@ -933,10 +933,10 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">ข้อเสนอแนะ</h3>', unsafe_allow_html=True) 
    for ment in list_comment:
     Val = Count(upload_df[ment].values.tolist(),list_comment[ment]['removenan'])
-    Val.sort(reverse=True)
+    sorted_items = sorted(Val.items(), key=lambda x: x[1], reverse=True)
     data_comment.append(ment,'จำนวน')
-    for ans in Val:
-     count = Val[ans]
+    for ans in sorted_items:
+     count = sorted_items[ans]
      data_comment.append([ans, count])
     
     st.table(data_comment)
