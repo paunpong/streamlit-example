@@ -201,56 +201,56 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
   paragraph_pie = doc.add_paragraph()
   run_pie = paragraph_pie.add_run()
-  picture_pie = run_pie.add_picture(pie, height=Cm(10.16),keep_aspect_ratio=True)
+  picture_pie = run_pie.add_picture(pie, height=Cm(10.16))
   paragraph_pie.alignment = WD_ALIGN_PARAGRAPH.CENTER
  
  for box in Box_chart:
   #doc.add_picture(box, height=Cm(10.16))
    paragraph_box = doc.add_paragraph()
    run_box = paragraph_box.add_run()
-   picture_box = run_box.add_picture(box, height=Cm(10.16),keep_aspect_ratio=True)
+   picture_box = run_box.add_picture(box, height=Cm(10.16))
    paragraph_box.alignment = WD_ALIGN_PARAGRAPH.CENTER
      
  for com in Com_bar:
   #doc.add_picture(com, height=Cm(10.16))
    paragraph_com = doc.add_paragraph()
    run_com = paragraph_com.add_run()
-   picture_com = run_com.add_picture(com, height=Cm(10.16),keep_aspect_ratio=True)
+   picture_com = run_com.add_picture(com, height=Cm(10.16))
    paragraph_com.alignment = WD_ALIGN_PARAGRAPH.CENTER
      
  for bar in Bar_chart:
   #doc.add_picture(bar, height=Cm(10.16))
   paragraph_bar = doc.add_paragraph()
   run_bar = paragraph_bar.add_run()
-  picture_bar = run_bar.add_picture(bar, height=Cm(10.16),keep_aspect_ratio=True)
+  picture_bar = run_bar.add_picture(bar, height=Cm(10.16))
   paragraph_bar.alignment = WD_ALIGN_PARAGRAPH.CENTER   
     
  for str in St_str:
   #doc.add_picture(str, width=Cm(15.24))
   paragraph_str = doc.add_paragraph()
   run_str = paragraph_str.add_run()
-  picture_str = run_str.add_picture(str, height=Cm(10.16),keep_aspect_ratio=True)
+  picture_str = run_str.add_picture(str, height=Cm(10.16))
   paragraph_str.alignment = WD_ALIGN_PARAGRAPH.CENTER
      
  for num in St_num:
   #doc.add_picture(num, width=Cm(15.24))
   paragraph_num = doc.add_paragraph()
   run_num = paragraph_num.add_run()
-  picture_num = run_num.add_picture(num, height=Cm(10.16),keep_aspect_ratio=True)
+  picture_num = run_num.add_picture(num, height=Cm(10.16))
   paragraph_num.alignment = WD_ALIGN_PARAGRAPH.CENTER   
      
  for Str in Str_st:
   #doc.add_picture(Str, width=Cm(15.24))
   paragraph_Str = doc.add_paragraph()
   run_Str = paragraph_Str.add_run()
-  picture_Str = run_Str.add_picture(Str, height=Cm(10.16),keep_aspect_ratio=True)
+  picture_Str = run_Str.add_picture(Str, height=Cm(10.16))
   paragraph_Str.alignment = WD_ALIGN_PARAGRAPH.CENTER
      
  for Num in Num_st:
   #doc.add_picture(Num, width=Cm(15.24))
   paragraph_Num = doc.add_paragraph()
   run_Num = paragraph_Num.add_run()
-  picture_Num = run_Num.add_picture(Num, height=Cm(10.16),keep_aspect_ratio=True)
+  picture_Num = run_Num.add_picture(Num, height=Cm(10.16))
   paragraph_Num.alignment = WD_ALIGN_PARAGRAPH.CENTER 
      
  doc.save('report.docx')
@@ -263,7 +263,7 @@ def pie_chart(data, key):
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop})
  plt.title(key, fontproperties=thai_font_prop)
  chart_pie = f"{key}.png"
- plt.savefig(chart_pie, bbox_inches='tight')#, bbox_inches='tight'
+ plt.savefig(chart_pie, bbox_inches='tight',dpi=300)#, bbox_inches='tight'
  st.pyplot()
  return chart_pie
 
@@ -300,7 +300,7 @@ def boxplot(data,key):
  plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop)
  chart_box = f"{key}.png"
- plt.savefig(chart_box, bbox_inches='tight')
+ plt.savefig(chart_box, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_box
 
@@ -336,7 +336,7 @@ def bar_chart_new(data,key,legend):
   ax.bar(Label,values,color=color)
  plt.title(key,fontproperties=thai_font_prop)
  chart_bar = f"{key}.png"
- plt.savefig(chart_bar, bbox_inches='tight')
+ plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_bar
  
@@ -351,7 +351,7 @@ def stacked_bar(data,key):
  d_f.plot.barh(stacked=True, figsize=(8,3), ax=ax).legend(bbox_to_anchor=(1, 0, 0.19, 1), prop=thai_font_prop)
  plt.title(key,fontproperties=thai_font_prop)
  chart_stack = f"{key}.png"
- plt.savefig(chart_stack, bbox_inches='tight')
+ plt.savefig(chart_stack, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_stack
 
