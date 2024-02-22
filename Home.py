@@ -167,6 +167,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   picture = run.add_picture(pie, height=Cm(9.8))
   paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
   heading_run.bold = True
+  heading_run.font.size = Pt(24)
  
  
  for box in Box_chart:
