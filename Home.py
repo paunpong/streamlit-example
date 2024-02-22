@@ -39,6 +39,7 @@ list_str_stack = {}
 list_num_stack = {}
 list_comment={}
 list_time={}
+list_non = {}
 
 color_set1 = ['#996633', '#663399', '#339966', '#669933', '#339933', '#993366', '#336699', '#996666', '#669966', '#666699']
 color_set2 = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', '#FF6666', '#66FF66', '#6666FF', '#FFCC66']
@@ -375,12 +376,15 @@ if menu == 'เริ่มต้นโปรแกรม':
   list_question = [h for h in upload_df]
   if ('Times' or 'ประทับเวลา') in list_question[0]:
    list_question.pop(0)
-  
+      
   for key in list_question:
    column = upload_df[key].values.tolist()
    len_column = len(column)
    x = Count(column)
-
+      
+   if all(pd.isnull(cell) for cell in column):
+    list_non[key] = True
+       
    if 'time' in key:
     list_time[key] = True
     continue
@@ -439,8 +443,6 @@ if menu == 'เริ่มต้นโปรแกรม':
   list_num_keys = list(list_stack_num.keys())
   list_stackn_keys = list(list_num_stack.keys())
   list_stacks_keys = list(list_str_stack.keys())
-
-  st.write(upload_df)
   
   tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
   with tab1:
