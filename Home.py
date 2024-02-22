@@ -186,6 +186,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  for str_t in str_table:
   df = create_table(str_t,doc)
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่
+  doc.add_paragraph('\t')
      
  for num_t in num_table:
   df = create_table(num_t,doc)
