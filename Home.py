@@ -191,10 +191,11 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df = create_table(num_t,doc)
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
 
- body_paragraph = doc.add_paragraph('ภาพแผนภูมิ')
- body_paragraph.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
- body_paragraph.bold = True
- body_paragraph.font.size = Pt(20)                       
+ head_pic = doc.add_heading(level=1)
+ head = head_pic.add_run('ภาพแผนภูมิ')
+ heading.alignment = WD_PARAGRAPH_ALIGNMENT.LEFT
+ heading_run.bold = True
+ heading_run.font.size = Pt(18)                                              
  
  for pie in Pie_chart:
   #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
