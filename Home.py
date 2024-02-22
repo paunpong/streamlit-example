@@ -759,10 +759,9 @@ if menu == 'เริ่มต้นโปรแกรม':
 
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}: 
     st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่ง</h3>', unsafe_allow_html=True)
-
    else:
     st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่ง</h3>', unsafe_allow_html=True)
-    continue   
+    
    for comma in list_bar_chart_comma:
     topic = upload_df[comma].values.tolist()
     all_number = len(topic)
