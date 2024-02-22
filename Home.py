@@ -384,10 +384,6 @@ if menu == 'เริ่มต้นโปรแกรม':
    if 'time' in key:
     list_time[key] = True
     continue
-    
-   if check_count(x):
-    list_comment[key] = {'removenan':True}
-    continue
 
    if '[' in key:
     list_stackbar.append(key)
@@ -463,8 +459,10 @@ if menu == 'เริ่มต้นโปรแกรม':
     if p == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1}
      del list_pie_chart[topic]
+        
    if list_pie_keys != list():
     st.markdown("""---""")
+       
    for topic in list_box_keys:
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
@@ -476,6 +474,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      del list_boxplot[topic]
    if list_box_keys != list():
     st.markdown("""---""")
+       
    for topic in list_comma_keys:
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
@@ -487,12 +486,18 @@ if menu == 'เริ่มต้นโปรแกรม':
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
-    key = st.radio(head_bulet, ['แผนภูมิแท่ง','แผนภูมิวงกลม'], horizontal=True)
+    key = st.radio(head_bulet, ['แผนภูมิแท่ง','แผนภูมิวงกลม','ข้อเสนอแนะ'], horizontal=True)
     st.text("")
     if key == 'แผนภูมิวงกลม':
      list_pie_chart[topic]={'removenan':True}
      if 'orther_number' in list_bar_chart[topic]:
       del list_bar_chart[topic]
+      continue
+    if key == 'ข้อเสนอแนะ':
+     list_comment[topic] = {'removenan':True}
+     if 'orther_number' in list_bar_chart[topic]:
+      del list_bar_chart[topic]
+      continue
    if list_bar_keys != list():
     st.markdown("""---""")
    for topic in list_str_keys:
