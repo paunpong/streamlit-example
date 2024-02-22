@@ -147,7 +147,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
                     table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file):
  doc = Document()
 
- doc.add_heading('สรุปผลแบบสอบถาม/แบบประเมิน'+ upload_file.name , 0)
+ doc.add_heading('สรุปผลแบบสอบถาม/แบบประเมิน'+ upload_file.name.split('.')[0] , 0)
  
  for pie in Pie_chart:
   doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
