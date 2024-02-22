@@ -758,13 +758,25 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิกล่อง</h3>', unsafe_allow_html=True)  
    for box in list_boxplot:
     mean_sd = stat(upload_df[box].values.tolist())
-    mean = mean_sd['ค่าเฉลี่ย']
-    std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
-    data_box.append([box,mean,std])
-    table_box.append(data_box)
+    for m_s in mean_sd:    
+     mean = mean_sd['ค่าเฉลี่ย']
+     std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+     level = '' 
+     if mean >= 4.2:
+      level = 'มากที่สุด'
+     elif mean >= 3.4:
+      level = 'มาก'
+     elif mean >= 2.6:
+      level = 'ปานกลาง'
+     elif mean >= 1.8:
+      level = 'น้อย'
+     elif mean < 1.8:
+      level = 'น้อยที่สุด'
+    data_box.append([box,mean,std,level])
    if list_boxplot != dict() and {'removenan':True}:
+    table_box.append([head_re] + data_box)   
     st.markdown(f'<h3 style="color:red; font-size:18px">{box}</h3>', unsafe_allow_html=True)
-    st.table([head_amount,*data_box])
+    st.table([head_re,*data_box])
     st.markdown("""---""") 
 
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}: 
