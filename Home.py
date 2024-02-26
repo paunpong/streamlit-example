@@ -575,10 +575,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.write(head_bulet)
     #stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")   
-       
-   
-       
-   
+    
    #st.button('ตกลง')
      
   with tab2:
@@ -949,6 +946,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    
    if list_stack_str != dict() and {'removenan':True}:
     st.table(data_stack_str)
+    data_stack_str = []
 
    for strs in list_str_stack:
     Col = upload_df[strs].values.tolist()
