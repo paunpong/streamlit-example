@@ -210,7 +210,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  head_pic = doc.add_heading(level=0)
  head = head_pic.add_run('ภาพแผนภูมิ')
  head.bold = True
- head.font.size = Pt(18)                                              
+ head.font.size = Pt(16)                                              
 
  for pie in Pie_chart:
   #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
