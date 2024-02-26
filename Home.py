@@ -194,6 +194,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
 
  for ment in comment:
+  st.write(ment)   
   doc.add_paragraph(ment[0])
      
  #---------------------------------------------------------------------------ภาพ
@@ -952,7 +953,6 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 #--------------------------------------------------------doc
 
- st.write(comment[0][1:])
 #st.write(plt.rcParams['axes.prop_cycle'])
 
 if upload_file is not None:
