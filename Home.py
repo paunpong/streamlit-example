@@ -554,7 +554,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + sub_word[:x]+endtext
-    st.write(head_bulet)
+    #st.write(head_bulet)
     num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิกล่อง'], horizontal=True)
     if num_val == 'แผนภูมิกล่อง':
      list_boxplot[topic] = {'removenan':True}
@@ -565,7 +565,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
-    st.write(head_bulet)
+    #st.write(head_bulet)
     stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิกล่อง'], horizontal=True)
     if stack_num_val == 'แผนภูมิกล่อง':
      list_boxplot[topic] = {'removenan':True}
