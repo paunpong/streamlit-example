@@ -155,9 +155,9 @@ def table_comment(data, doc):
         table.cell(0, j).text = df.columns[j]
     for i in range(df.shape[0]):
         for k in range(df.shape[-1]):
-            # เพิ่มเครื่องหมายลบ (-) ในเซลล์แรกของแต่ละแถว
+            
             cell = table.cell(i + 1, k)
-            if k == 0:  # เพิ่มเครื่องหมายลบเฉพาะในคอลัมน์แรก
+            if k == 0:  
                 cell.text = f"- {df.values[i, k]}"
             else:
                 cell.text = str(df.values[i, k])
@@ -351,7 +351,7 @@ def bar_chart_new(data,key,legend):
   for i in range(len(data[0])):
    Legend = f'{i + 1}:{data[0][i]}'
    ax.bar(labels, values, label=Legend,color=color)#,color=color  
-  ax.legend(bbox_to_anchor=(1, 0, 0.16, 1),prop=thai_font_prop,handlelength=0) 
+  ax.legend(bbox_to_anchor=(1, 0, 0.18, 1),prop=thai_font_prop,handlelength=0) 
  else:
   Label = data[0]
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
