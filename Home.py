@@ -608,7 +608,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      b = Count(a)
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
      bar_legend = st.radio(topic[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
-     y = st.slider(topic[:x]+endtext, 1, max(b.values()), 1, 1) 
+     y = st.slider(topic[:x]+endtext, 0, max(b.values()), 1, 1) 
      list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y ,
                                     'legend': True if bar_legend == 'เพิ่มคำอธิบาย' else False}
     for topic_bar in list_bar_chart:
