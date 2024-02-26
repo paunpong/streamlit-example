@@ -194,7 +194,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
 
  for ment in comment:   
-  st.write(f"{ment[0][0]}\t\t\t\t{ment[0][1]}")   
+  st.write(f"{ment[0][0]}\t\t\t\t\t\t\t\t\t\t{ment[0][1]}")   
   #doc.add_paragraph(ment[0][0],ment[0][1])
      
  #---------------------------------------------------------------------------ภาพ
