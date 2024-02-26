@@ -944,7 +944,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      
     table_str.append(data_stack_str)
     st.table(data_stack_str)
-    data_stack_str = []
+   data_stack_str = []
    #if list_stack_str != dict() and {'removenan':True}:
     #st.table(data_stack_str)
     
