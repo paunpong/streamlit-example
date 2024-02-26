@@ -132,8 +132,8 @@ def change_num_to_text(A):
  return x
 
 def create_table(data,doc):
- headers = data[0][0]
- rows = data[0][1:]
+ headers = data[0]
+ rows = data[1:]
  df = pd.DataFrame(rows, columns=headers)
  
  table = doc.add_table(df.shape[0]+1, df.shape[1])
@@ -143,6 +143,17 @@ def create_table(data,doc):
   for k in range(df.shape[-1]):
    table.cell(i+1, k).text = str(df.values[i,k])
    
+ return table
+
+def Table(data,doc):
+ header = data[0][0]
+ row = pd.DataFrame(row,columns=header)
+ table = doc.add_table(df.shape[0]+1, df.shape[1])
+ for j in range(df.shape[-1]):
+  table.cell(0, j).text = df.columns[j]
+ for i in range(df.shape[0]):
+  for k in range(df.shape[-1]):
+   table.cell(i+1, k).text = str(df.values[i,k])   
  return table
 
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
@@ -194,7 +205,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
 
  for COM in comment:
-  df = create_table(COM,doc)
+  df = Table(COM,doc)
   doc.add_paragraph('\t')
      
  #---------------------------------------------------------------------------ภาพ
