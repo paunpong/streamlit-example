@@ -17,8 +17,6 @@ import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu   
 
-#st.set_page_config(page_title="อัปโหลดไฟล์",layout="wide")
-
 st.set_option('deprecation.showPyplotGlobalUse', False)
 script_dir = os.path.dirname(os.path.abspath(__file__))
 thai_font_path = os.path.join("THSARABUN BOLD.TTF")
