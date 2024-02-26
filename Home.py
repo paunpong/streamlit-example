@@ -701,20 +701,6 @@ if menu == 'เริ่มต้นโปรแกรม':
      Bar_chart.append(bar_charts)
      
    with st.expander('แผนภูมิแท่งแบบต่อกัน',expanded=True):
-    for i in list_stack_str:
-     topic_word, sub_word = i.split(' [')[:2]
-     topic_word = topic_word.strip()
-     sub_word = sub_word.strip().replace(']','')
-     A_l = count_list(upload_df[i].values.tolist(),list_stack_str[i]['removenan'])
-     for k in A_l:
-      A_l[k] = A_l[k]['percent']
-     if topic_word not in dict_str_stack:
-      dict_str_stack[topic_word] = dict()
-     dict_str_stack[topic_word][sub_word] = A_l
-    for s in dict_str_stack:
-     stack_str = stacked_bar(dict_str_stack[s],s)
-     St_str.append(stack_str)
-     
     for i in list_stack_num:
      mat = upload_df[i].values.tolist()
      mean_sd = stat(mat)
@@ -745,6 +731,20 @@ if menu == 'เริ่มต้นโปรแกรม':
     for i in dict_stack_bar:
      num_st = stacked_bar(dict_stack_bar[i],i)
      Num_st.append(num_st)
+
+    for i in list_stack_str:
+     topic_word, sub_word = i.split(' [')[:2]
+     topic_word = topic_word.strip()
+     sub_word = sub_word.strip().replace(']','')
+     A_l = count_list(upload_df[i].values.tolist(),list_stack_str[i]['removenan'])
+     for k in A_l:
+      A_l[k] = A_l[k]['percent']
+     if topic_word not in dict_str_stack:
+      dict_str_stack[topic_word] = dict()
+     dict_str_stack[topic_word][sub_word] = A_l
+    for s in dict_str_stack:
+     stack_str = stacked_bar(dict_str_stack[s],s)
+     St_str.append(stack_str)
      
     for i in list_str_stack:
      A_l = count_list(upload_df[i].values.tolist())
