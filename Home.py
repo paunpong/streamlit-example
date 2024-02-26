@@ -947,9 +947,10 @@ if menu == 'เริ่มต้นโปรแกรม':
       data_comment.append([ans[0], f'({count})'])
      else:    
       data_comment.append([ans[0], ''])
+    comment.append(data_comment)     
     st.table(data_comment)
     data_comment = []
-    comment.append(data_comment)
+    
     
 #--------------------------------------------------------doc
 
