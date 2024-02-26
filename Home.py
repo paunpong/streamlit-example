@@ -145,18 +145,6 @@ def create_table(data,doc):
    
  return table
 
-def table_comment(data,doc):
- header = data[0][0]
- row = data[0][1:]
- df = pd.DataFrame(row,columns=header)
- table = doc.add_table(df.shape[0]+1, df.shape[1])
- for j in range(df.shape[-1]):
-  table.cell(0, j).text = df.columns[j]
- for i in range(df.shape[0]):
-  for k in range(df.shape[-1]):
-   table.cell(i+1, k).text = str(df.values[i,k])   
- return table
-
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
                     table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment):
  doc = Document()
@@ -205,9 +193,9 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df = create_table(num_t,doc)
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
 
- for COM in comment:
-  df = table_comment(COM,doc)
-  doc.add_paragraph('\t')
+ for ment in comment:
+  doc.add_paragraph(ment[0][0])
+  doc.add_paragraph('-' + ment[0][1:])
      
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
