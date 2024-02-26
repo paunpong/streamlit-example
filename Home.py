@@ -194,8 +194,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
 
  for ment in comment:   
-  doc.add_paragraph(ment[0][0])
-  doc.add_paragraph(ment[0][1])   
+  df = create_table(ment,doc)
+  doc.add_paragraph('\t')   
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
  head = head_pic.add_run('ภาพแผนภูมิ')
