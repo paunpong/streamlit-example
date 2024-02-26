@@ -948,7 +948,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 #--------------------------------------------------------doc
 
- st.write(comment[0])
+ st.write(comment[0][0])
 #st.write(plt.rcParams['axes.prop_cycle'])
 
 if upload_file is not None:
