@@ -489,7 +489,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
     st.text("")
     if p == 'แผนภูมิแท่ง':
-     list_bar_chart[topic]={'removenan':True,'orther_number':1}
+     list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
      del list_pie_chart[topic]
         
    if list_pie_keys != list():
@@ -946,8 +946,7 @@ if menu == 'เริ่มต้นโปรแกรม':
    
    if list_stack_str != dict() and {'removenan':True}:
     st.table(data_stack_str)
-    data_stack_str = []
-
+    
    for strs in list_str_stack:
     Col = upload_df[strs].values.tolist()
     count_string = count_list(Col,list_str_stack[strs]['removenan'])
