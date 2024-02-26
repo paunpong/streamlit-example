@@ -495,7 +495,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
-    box = st.radio(head_bulet,['แผนภาพกล่อง','แผนภูมิแท่ง'], horizontal=True)
+    box = st.radio(head_bulet,['แผนภูมิกล่อง','แผนภูมิแท่ง'], horizontal=True)
     st.text("")
     if box == 'แผนภูมิแท่ง':
      list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
@@ -510,6 +510,7 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.write(head_bulet)
     #comma = st.radio(head_bulet,['แผนภูมิแท่ง'])
     st.text("")
+       
    for topic in list_bar_keys:
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
@@ -528,6 +529,7 @@ if menu == 'เริ่มต้นโปรแกรม':
       continue
    if list_bar_keys != list():
     st.markdown("""---""")
+       
    for topic in list_str_keys:
     sub_word = topic.split(' [')[1]
     sub_word = sub_word.strip().replace(']', '')
@@ -537,6 +539,15 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.write(head_bulet)
     #str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
     st.text("")
+
+   for topic in list_stacks_keys:
+    numberitem = numberitem+1
+    strnumberitem = str(numberitem)+')'
+    head_bulet = strnumberitem + topic[:x]+endtext
+    st.write(head_bulet)
+    #stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    st.text("")   
+       
    for topic in list_num_keys:
     sub_word = topic.split(' [')[1]
     sub_word = sub_word.strip().replace(']', '')
@@ -544,22 +555,24 @@ if menu == 'เริ่มต้นโปรแกรม':
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + sub_word[:x]+endtext
     st.write(head_bulet)
-    #num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิกล่อง'], horizontal=True)
+    if num_val == 'แผนภูมิกล่อง':
+     list_boxplot[topic] = {'removenan':True}
+     del list_stack_num[topic]
     st.text("")
+       
    for topic in list_stackn_keys:
     numberitem = numberitem+1
     strnumberitem = str(numberitem)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
     st.write(head_bulet)
-    #stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
+    stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิกล่อง'], horizontal=True)
+    if stack_num_val == 'แผนภูมิกล่อง':
+     list_boxplot[topic] = {'removenan':True}
+     del list_num_stack[topic]   
     st.text("")
-   for topic in list_stacks_keys:
-    numberitem = numberitem+1
-    strnumberitem = str(numberitem)+')'
-    head_bulet = strnumberitem + topic[:x]+endtext
-    st.write(head_bulet)
-    #stack_str_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน'], horizontal=True)
-    st.text("")
+       
+   
    #st.button('ตกลง')
      
   with tab2:
