@@ -316,7 +316,7 @@ def boxplot(data,key):
  plt.text(0.7,q3,f'Q3: {q3:.{digit}f}')
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
  plt.text(0.7,average, f'Average: {average:.{digit}f}')
- plt.title(key,fontproperties=thai_font_prop)
+ plt.title(key,fontproperties=thai_font_prop, fontsize = 16)
  chart_box = f"{key}.png"
  plt.savefig(chart_box, bbox_inches='tight',dpi=300)
  st.pyplot()
@@ -337,9 +337,9 @@ def bar_list_count(data,orther_number=1):
 def bar_chart_new(data,key,legend):
  values = data[1]
  fig,ax = plt.subplots()
- if legend == True:
+ if legend:
   labels = range(1,len(data[0])+1)
-  ax.set_xticks(labels)
+  ax.set_xticks(labels, fontsize=14)
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
   for i in range(len(data[0])):
@@ -349,10 +349,10 @@ def bar_chart_new(data,key,legend):
  else:
   Label = data[0]
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
-  ax.set_xticklabels(Label, fontproperties=thai_font_prop)
+  ax.set_xticklabels(Label, fontproperties=thai_font_prop, fontsize=14)
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
   ax.bar(Label,values,color=color)
- plt.title(key,fontproperties=thai_font_prop)
+ plt.title(key,fontproperties=thai_font_prop, fontsize=16)
  chart_bar = f"{key}.png"
  plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
  st.pyplot()
@@ -382,7 +382,7 @@ with st.sidebar:
 if menu == 'เริ่มต้นโปรแกรม':
  st.markdown('### :rainbow[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
  with st.expander('### :red[คำแนะนำ]',expanded=True):
-  st.text('1.โหลดไฟล์ออกจากแบบฟอร์มทำได้ทำการสร้างแบบสอบถาม')
+  st.text('1.โหลดไฟล์ออกจากแบบฟอร์มที่ได้ทำการสร้างแบบสอบถาม')
  upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
  upload_df = upload(upload_file)
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
