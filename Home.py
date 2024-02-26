@@ -180,6 +180,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  for t_box in table_box:
   df = create_table(t_box,doc)
   df.style = 'Table Grid' # ตารางกล่อง
+  doc.add_paragraph('\t')
      
  for t_com in table_comma:
   df = create_table(t_com,doc)
