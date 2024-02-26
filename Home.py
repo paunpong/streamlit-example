@@ -146,7 +146,7 @@ def create_table(data,doc):
  return table
 
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                    table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file):
+                    table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,Comment):
  doc = Document()
 
  heading = doc.add_heading(level=0)
@@ -197,7 +197,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  head = head_pic.add_run('ภาพแผนภูมิ')
  head.bold = True
  head.font.size = Pt(18)                                              
- 
+ #---------------------------------------------------------------------------ภาพ
  for pie in Pie_chart:
   #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
   paragraph_pie = doc.add_paragraph()
@@ -948,12 +948,12 @@ if menu == 'เริ่มต้นโปรแกรม':
     
 #--------------------------------------------------------doc
 
- 
+ st.write(comment)
 #st.write(plt.rcParams['axes.prop_cycle'])
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                                  table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file)
+                                  table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,Comment)
  st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 #st.write(table_pie)
