@@ -3,16 +3,13 @@ import matplotlib.pyplot as plt
 import os
 from matplotlib import font_manager as fm
 from matplotlib.font_manager import FontProperties
-#import statistics as stat
 import io
 from docx import Document
 from io import BytesIO
 from docx.shared import Pt , Cm
-from docx.oxml.ns import nsdecls
-from docx.oxml import parse_xml
+#from docx.oxml.ns import nsdecls
+#from docx.oxml import parse_xml
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-#import re
-#import operator
 from PIL import Image
 import altair as alt
 import numpy as np
