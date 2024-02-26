@@ -382,7 +382,11 @@ with st.sidebar:
 if menu == 'เริ่มต้นโปรแกรม':
  st.markdown('### :rainbow[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
  with st.expander('### :red[คำแนะนำ]',expanded=True):
-  st.text('1.โหลดไฟล์ออกจากแบบฟอร์มที่ได้ทำการสร้างแบบสอบถาม')
+  st.text('1. โหลดไฟล์ออกจากแบบฟอร์มที่ได้ทำการสร้างแบบสอบถาม')
+  st.text('2. กด Browse files จากนั้นเลือกไฟล์แบบสอบถามที่ต้องการ')
+  st.write('3. เลือกประเภทของกราฟที่ต้องการของแต่ละหัวข้อ')
+  st.write('4. ประแต่งรายละเอียดของกราฟประเภทต่าง ๆ ')
+  st.write('5. เมื่อได้รูปแบบที่ต้องการแล้วกดดาวน์โหลดเพื่อโหลดไฟล์ docs')
  upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
  upload_df = upload(upload_file)
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
@@ -993,7 +997,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
                                   table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment)
- st.download_button(label="Download Report",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
+ st.download_button(label="ดาวน์โหลด",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 #st.write(table_pie)
  #for t_p in table_pie:
