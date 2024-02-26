@@ -870,6 +870,58 @@ if menu == 'เริ่มต้นโปรแกรม':
     st.markdown("""---""")
 
    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่งแบบต่อกัน</h3>', unsafe_allow_html=True) 
+   for num in list_stack_num:
+    mat = upload_df[num].values.tolist()
+    mean_sd = stat(mat,True)
+    topic_word, sub_word = num.split(' [')[:2]
+    topic_word = topic_word.strip()
+    sub_word = sub_word.strip().replace(']', '')
+    if topic_word != top_name:
+     data_stack_num.append([topic_word, 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล'])
+     top_name = topic_word 
+    for key in mean_sd:
+     mean = mean_sd['ค่าเฉลี่ย']
+     s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+     level = '' 
+     if mean >= 4.2:
+      level = 'มากที่สุด'
+     elif mean >= 3.4:
+      level = 'มาก'
+     elif mean >= 2.6:
+      level = 'ปานกลาง'
+     elif mean >= 1.8:
+      level = 'น้อย'
+     elif mean < 1.8:
+      level = 'น้อยที่สุด'
+    data_stack_num.append([sub_word,mean,s_d,level])
+    table_num.append(data_stack_num)
+   #st.table(data_stack_num)
+   if list_stack_num != dict() and {'removenan':True}:
+    st.table(data_stack_num)
+    
+   for nums in list_num_stack:
+    math = upload_df[nums].values.tolist()
+    mean_sd = stat(math,True)
+    for key in mean_sd:
+     mean = mean_sd['ค่าเฉลี่ย']
+     s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
+     level = '' 
+     if mean >= 4.2:
+      level = 'มากที่สุด'
+     elif mean >= 3.4:
+      level = 'มาก'
+     elif mean >= 2.6:
+      level = 'ปานกลาง'
+     elif mean >= 1.8:
+      level = 'น้อย'
+     elif mean < 1.8:
+      level = 'น้อยที่สุด'
+    data_num_stack.append([nums,mean,s_d,level])
+
+   if list_num_stack != dict() and {'removenan':True}:
+    num_table.append([head_re] + data_num_stack)
+    st.table([head_re,*data_num_stack])
+
    for Str in list_stack_str:
     Col = upload_df[Str].values.tolist()
     count_string = count_list(Col,list_stack_str[Str]['removenan'])
@@ -918,58 +970,6 @@ if menu == 'เริ่มต้นโปรแกรม':
    if list_str_stack != dict() and {'removenan':True}:
     str_table.append([head_data] + data_stack_str)
     st.table(head_data+data_stack_str)
-   
-   for num in list_stack_num:
-    mat = upload_df[num].values.tolist()
-    mean_sd = stat(mat,True)
-    topic_word, sub_word = num.split(' [')[:2]
-    topic_word = topic_word.strip()
-    sub_word = sub_word.strip().replace(']', '')
-    if topic_word != top_name:
-     data_stack_num.append([topic_word, 'ค่าเฉลี่ย','ส่วนเบี่ยงเบนมาตรฐาน','แปรผล'])
-     top_name = topic_word 
-    for key in mean_sd:
-     mean = mean_sd['ค่าเฉลี่ย']
-     s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
-     level = '' 
-     if mean >= 4.2:
-      level = 'มากที่สุด'
-     elif mean >= 3.4:
-      level = 'มาก'
-     elif mean >= 2.6:
-      level = 'ปานกลาง'
-     elif mean >= 1.8:
-      level = 'น้อย'
-     elif mean < 1.8:
-      level = 'น้อยที่สุด'
-    data_stack_num.append([sub_word,mean,s_d,level])
-    table_num.append(data_stack_num)
-   #st.table(data_stack_num)
-   if list_stack_num != dict() and {'removenan':True}:
-    st.table(data_stack_num)
-    
-   for nums in list_num_stack:
-    math = upload_df[nums].values.tolist()
-    mean_sd = stat(math,True)
-    for key in mean_sd:
-     mean = mean_sd['ค่าเฉลี่ย']
-     s_d = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
-     level = '' 
-     if mean >= 4.2:
-      level = 'มากที่สุด'
-     elif mean >= 3.4:
-      level = 'มาก'
-     elif mean >= 2.6:
-      level = 'ปานกลาง'
-     elif mean >= 1.8:
-      level = 'น้อย'
-     elif mean < 1.8:
-      level = 'น้อยที่สุด'
-    data_num_stack.append([nums,mean,s_d,level])
-    
-   if list_num_stack != dict() and {'removenan':True}:
-    num_table.append([head_re] + data_num_stack)
-    st.table([head_re,*data_num_stack])
     st.markdown("""---""")
        
    if list_comment != dict()and {'removenan':True}: 
