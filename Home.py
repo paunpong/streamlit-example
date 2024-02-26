@@ -375,7 +375,8 @@ with st.sidebar:
  #st.markdown('## :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
 
 if menu == 'เริ่มต้นโปรแกรม':
- st.markdown('### :rainbow[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
+ #st.markdown('### :rainbow[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
+ st.image("header.png")
  with st.expander('### :red[คำแนะนำ]',expanded=True):
   st.markdown('**:blue[1. โหลดไฟล์ออกจากแบบฟอร์มที่ได้ทำการสร้างแบบสอบถาม]**')
   st.image("download.png")
