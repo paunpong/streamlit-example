@@ -339,13 +339,13 @@ def bar_chart_new(data,key,legend):
  fig,ax = plt.subplots()
  if legend:
   labels = range(1,len(data[0])+1)
-  ax.set_xticks(labels, fontsize=14)
+  ax.set_xticks(labels)
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
   for i in range(len(data[0])):
    Legend = f'{i + 1}:{data[0][i]}'
    ax.bar(labels, values, label=Legend,color=color)#,color=color  
-  ax.legend(bbox_to_anchor=(1, 0, 0.18, 1),prop=thai_font_prop,handlelength=0) 
+  ax.legend(bbox_to_anchor=(1, 0, 0.18, 1),prop=thai_font_prop,handlelength=0, fontsize=14) 
  else:
   Label = data[0]
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
