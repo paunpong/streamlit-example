@@ -145,14 +145,6 @@ def create_table(data,doc):
    
  return table
 
-def table_comment(data,doc):
- table = doc.add_table(rows=1, cols=2)
- table.autofit = True
- hdr_cells = table.rows[0].cells
- hdr_cells[0].text = data[0][0]
- hdr_cells[1].text = data[0][1]
- return doc
-
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
                     table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment):
  doc = Document()
@@ -201,10 +193,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df = create_table(num_t,doc)
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
 
- for ment in comment:
-  doc = table_comment(ment,doc)
-  st.write(doc)   
-  #st.write(ment[0][0],'   ',ment[0][1])   
+ for ment in comment:   
+  st.write(ment[0][0],ment[0][1],sep='\t')   
   #doc.add_paragraph(ment[0][0],ment[0][1])
      
  #---------------------------------------------------------------------------ภาพ
