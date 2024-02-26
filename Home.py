@@ -132,8 +132,8 @@ def change_num_to_text(A):
  return x
 
 def create_table(data,doc):
- headers = data[0]
- rows = data[1:]
+ headers = data[0][0]
+ rows = data[0][1:]
  df = pd.DataFrame(rows, columns=headers)
  
  table = doc.add_table(df.shape[0]+1, df.shape[1])
