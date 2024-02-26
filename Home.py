@@ -145,9 +145,10 @@ def create_table(data,doc):
    
  return table
 
-def Table(data,doc):
+def table_comment(data,doc):
  header = data[0][0]
- row = pd.DataFrame(row,columns=header)
+ row = data[0][1:]
+ df = pd.DataFrame(row,columns=header)
  table = doc.add_table(df.shape[0]+1, df.shape[1])
  for j in range(df.shape[-1]):
   table.cell(0, j).text = df.columns[j]
