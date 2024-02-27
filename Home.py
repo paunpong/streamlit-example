@@ -378,10 +378,9 @@ with st.sidebar:
  #st.markdown('## :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
 
 if menu == 'เริ่มต้นโปรแกรม':
- upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
  #st.markdown('### :rainbow[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
  st.image("header.png")
- with st.expander('### :red[คำแนะนำ]',expanded=(upload_file is None)):
+ with st.expander('### :red[คำแนะนำ]',expanded=True):#(upload_file is None)
   st.markdown('**:blue[1. โหลดไฟล์ออกจากแบบฟอร์มที่ได้ทำการสร้างแบบสอบถาม]**')
   st.image("download.png")
   st.markdown("""---""")
@@ -395,6 +394,7 @@ if menu == 'เริ่มต้นโปรแกรม':
   st.image("customize.png")
   st.markdown("""---""")
   st.markdown('**:blue[5. เมื่อได้รูปแบบที่ต้องการแล้วกดปุ่มดาวน์โหลดเพื่อโหลดไฟล์ docs]**')
+ upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"]) 
  upload_df = upload(upload_file) 
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
 if menu == 'เริ่มต้นโปรแกรม':
