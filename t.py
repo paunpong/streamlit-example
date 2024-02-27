@@ -502,7 +502,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      continue
         
    if Type == 'แท่ง':
-    st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')   
+    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:   
+     st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')   
     for topic in list_bar_chart_comma:
      Number = Number+1
      strnumberitem = str(Number)+')'
@@ -513,7 +514,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      bar = st.radio(head_bulet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
      list_bar_chart_comma[topic]['removenan'] = True if bar == 'ไม่เพิ่ม' else False 
 
-    st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
+    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:
+     st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
     for topic in list_bar_chart_comma:
      Number = Number+1
      strnumberitem = str(Number)+')'
@@ -521,7 +523,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      bar_legend = st.radio(topic[:x]+endtext,['เพิ่ม','ไม่เพิ่ม'], horizontal=True)
      list_bar_chart_comma[topic]['legend'] = True if bar_legend == 'เพิ่ม' else False
 
-    st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
+    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:    
+     st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
     for topic in list_bar_chart_comma:
      Number = Number+1
      strnumberitem = str(Number)+')'
