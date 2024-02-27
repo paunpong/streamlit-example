@@ -620,6 +620,7 @@ if upload_file is not None:
     
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย]**')
+   Number = 0 
    for topic in list_bar_chart_comma:
     Number = Number+1
     strnumberitem = str(Number)+')'
