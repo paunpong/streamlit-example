@@ -311,8 +311,7 @@ def boxplot(data,key,removenan=True):
  plt.text(0.7,q1,f'Q1: {q1:.{digit}f}')
  plt.text(0.7,q3,f'Q3: {q3:.{digit}f}')
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
- if Aver == True:
-  plt.text(0.7,average, f'Average: {average:.{digit}f}')
+ plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop, fontsize = 16)
  if '/' in key:
   key.split('/')[0]
@@ -597,14 +596,15 @@ if upload_file is not None:
     Pie = st.radio(head_bulet, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
     list_pie_chart[topic_pie] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False}
     continue
-  if Type == 'กล่อง':
-   for topic_box in list_boxplot:
-    Number = Number+1
-    strnumberitem = str(Number)+')'
-    head_bulet = strnumberitem + topic_box[:x]+endtext 
-    box = st.radio(head_bulet,['เพิ่ม','ไม่เพิ่ม'],horizontal=True)
-    list_boxplot[topic_box]={'Average': True if box == 'เพิ่ม' else False}
-    continue
+    
+  #if Type == 'กล่อง':
+   #for topic_box in list_boxplot:
+    #Number = Number+1
+    #strnumberitem = str(Number)+')'
+    #head_bulet = strnumberitem + topic_box[:x]+endtext 
+    #box = st.radio(head_bulet,['เพิ่ม','ไม่เพิ่ม'],horizontal=True)
+    #list_boxplot[topic_box]={'Average': True if box == 'เพิ่ม' else False}
+    #continue
     
   if Type == 'แท่ง':
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:   
