@@ -283,7 +283,7 @@ def pie_chart(data, key):
  st.pyplot()
  return chart_pie
 
-def boxplot(data,key):
+def boxplot(data,key,removenan=True):
  st.write(data,'1')
  if removenan and 'ไม่ระบุ' in data:
   data = [n for n in data if n != 'ไม่ระบุ']
