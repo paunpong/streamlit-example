@@ -535,7 +535,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      list_bar_chart[topic_bar]['orther_number'] = y
 
         
-     continue
+    
         
    if Type == 'แท่งต่อกัน':
     for topic_stack in list_num_keys:
