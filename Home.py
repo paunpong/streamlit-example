@@ -680,7 +680,7 @@ if upload_file is not None:
     pie_chart_path = pie_chart(count_list(upload_df[p].values.tolist(),list_pie_chart[p]['removenan']),p)
     Pie_chart.append(pie_chart_path)
      
-  with st.expander('แผนภาพกล่อง'):
+  with st.expander('แผนภาพกล่อง',expanded=True):
    for b in list_boxplot:
     box_charts = boxplot(upload_df[b].values.tolist(),b)
     Box_chart.append(box_charts)
