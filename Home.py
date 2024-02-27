@@ -284,11 +284,14 @@ def pie_chart(data, key):
  return chart_pie
 
 def boxplot(data,key):
+ st.write(data,'1')
+ if removenan and 'ไม่ระบุ' in data:
+  data = [n for n in data if n != 'ไม่ระบุ']
+ st.write(data,'2') 
  fig,ax = plt.subplots()
  plt.boxplot(data,showmeans=True)
  q1 = np.percentile(data,25)
  q3 = np.percentile(data,75)
-  #mean = stat.mean(data)
  median = np.median(data)
  average = np.mean(data)
  outlier_above = q3+(q3-q1)*1.5
