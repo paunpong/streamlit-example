@@ -607,17 +607,17 @@ if upload_file is not None:
     
   if Type == 'แท่ง':
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:   
-     st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')   
-    for topic in list_bar_chart_comma:
-     Number = Number+1
-     strnumberitem = str(Number)+')'
-     head_bulet = strnumberitem + topic[:x]+endtext
-     A = upload_df[topic].values.tolist()
-     a = split_comma(A)
-     b = Count(a)
-     bar = st.radio(head_bulet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
-     list_bar_chart_comma[topic]['removenan'] = True if bar == 'ไม่เพิ่ม' else False 
-
+    st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')   
+   for topic in list_bar_chart_comma:
+    Number = Number+1
+    strnumberitem = str(Number)+')'
+    head_bulet = strnumberitem + topic[:x]+endtext
+    A = upload_df[topic].values.tolist()
+    a = split_comma(A)
+    b = Count(a)
+    bar = st.radio(head_bulet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
+    list_bar_chart_comma[topic]['removenan'] = True if bar == 'ไม่เพิ่ม' else False 
+    
     if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}:
      st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
     for topic in list_bar_chart_comma:
