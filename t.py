@@ -514,10 +514,10 @@ if menu == 'เริ่มต้นโปรแกรม':
      list_bar_chart_comma[topic]['removenan'] = True if bar == 'ไม่เพิ่ม' else False 
 
     st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
-    for topic_bar in list_bar_chart:
+    for topic in list_bar_chart_comma:
      Number = Number+1
-     strnumberitem = str(Number) + ')'
-     head_bullet = strnumberitem + topic_bar[:x] + endtext    
+     strnumberitem = str(Number)+')'
+     head_bulet = strnumberitem + topic[:x]+endtext  
      bar_legend = st.radio(topic[:x]+endtext,['เพิ่ม','ไม่เพิ่ม'], horizontal=True)
      list_bar_chart_comma[topic]['legend'] = True if bar_legend == 'เพิ่ม' else False
 
