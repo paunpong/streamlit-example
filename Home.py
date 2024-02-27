@@ -613,6 +613,7 @@ if upload_file is not None:
     a = split_comma(A)
     b = Count(a)
     bar = st.radio(head_bulet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
+    bars.append(bar)
     bar_legend = st.radio(topic[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
     y = st.slider(topic[:x]+endtext, 0, max(b.values()), 1, 1) 
     list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y ,
