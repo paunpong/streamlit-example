@@ -355,7 +355,7 @@ def bar_chart_new(data,key,legend):
  chart_bar = f"{key}.png"
  #plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
  st.pyplot()
- #return chart_bar
+ return chart_bar
  
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
