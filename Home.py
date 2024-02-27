@@ -589,12 +589,14 @@ if upload_file is not None:
   Type = st.radio('ประเภท',['วงกลม','กล่อง','แท่ง','แท่งต่อกัน'],horizontal=True)
   st.markdown("""---""")
   if Type == 'วงกลม':
+   if list_pie_chart != dict() and {'removenan':True}:   
+    st.markdown('**:blue[หัวข้อใดที่ต้องการเพิ่มจำนวนของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
    for topic_pie in list_pie_chart:
     Number = Number+1
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_pie[:x]+endtext
-    Pie = st.radio(head_bulet, ['ลบไม่ระบุ','เพิ่มไม่ระบุ'], horizontal=True)
-    list_pie_chart[topic_pie] = {'removenan': True if Pie == 'ลบไม่ระบุ' else False}
+    Pie = st.radio(head_bulet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
+    list_pie_chart[topic_pie] = {'removenan': True if Pie == 'ไม่เพิ่ม' else False}
     continue
     
   #if Type == 'กล่อง':
@@ -608,7 +610,7 @@ if upload_file is not None:
     
   if Type == 'แท่ง':
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:   
-    st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
+    st.markdown('**:blue[หัวข้อใดที่ต้องการเพิ่มจำนวนของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
    NUM = 0 
    for topic in list_bar_chart_comma:
     NUM = NUM+1
@@ -621,17 +623,17 @@ if upload_file is not None:
     list_bar_chart_comma[topic]['removenan'] = True if bar == 'ไม่เพิ่ม' else False 
     
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:
-    st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย]**')
+    st.markdown('**:blue[หัวข้อใดที่ต้องการใช้ลำดับที่แสดงกำกับใต้แท่งแทนชื่อในแผนภูมิ ]**')
    NUM = 0 
    for topic in list_bar_chart_comma:
     NUM = NUM+1
     strnumberitem = str(NUM)+')'
     head_bulet = strnumberitem + topic[:x]+endtext  
-    bar_legend = st.radio(topic[:x]+endtext,['เพิ่ม','ไม่เพิ่ม'], horizontal=True)
+    bar_legend = st.radio(topic[:x]+endtext,['ใช้','ไม่ใช้'], horizontal=True)
     list_bar_chart_comma[topic]['legend'] = True if bar_legend == 'เพิ่ม' else False
     
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:    
-    st.markdown('**:blue[จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ]**')
+    st.markdown('**:blue[กำหนดจำนวนความถี่ขั้นต่ำของแต่ละหัวข้อที่ต้องการแสดงแท่งความถี่ในกราฟ (กรณีความถี่ไม่ถึงจะนับรวมในแท่ง อื่น ๆ)]**')
    NUM = 0 
    for topic in list_bar_chart_comma:
     NUM = NUM+1
@@ -644,7 +646,7 @@ if upload_file is not None:
     list_bar_chart_comma[topic]['orther_number'] = y
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
-    st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
+    st.markdown('**:blue[หัวข้อใดที่ต้องการเพิ่มจำนวนของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
    NB = 0 
    for topic_bar in list_bar_chart:
     NB = NB+1
@@ -655,17 +657,17 @@ if upload_file is not None:
     list_bar_chart[topic_bar]['removenan'] = True if Bar == 'ไม่เพิ่ม' else False
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
-    st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย]**')
+    st.markdown('**:blue[หัวข้อใดที่ต้องการใช้ลำดับที่แสดงกำกับใต้แท่งแทนชื่อในแผนภูมิ]**')
    NB = 0 
    for topic_bar in list_bar_chart:
     NB = NB+1
     strnumberitem = str(NB)+')'
     head_bullet = strnumberitem + topic_bar[:x] + endtext   
-    Bar_legend = st.radio(head_bullet, ['เพิ่ม', 'ไม่เพิ่ม'], horizontal=True)
-    list_bar_chart[topic_bar]['legend'] = True if Bar_legend == 'เพิ่ม' else False
+    Bar_legend = st.radio(head_bullet, ['ใช้', 'ไม่ใช้'], horizontal=True)
+    list_bar_chart[topic_bar]['legend'] = True if Bar_legend == 'ใช้' else False
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
-    st.markdown('**:blue[จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ]**')
+    st.markdown('**:blue[กำหนดจำนวนความถี่ขั้นต่ำของแต่ละหัวข้อที่ต้องการแสดงแท่งความถี่ในกราฟ (กรณีความถี่ไม่ถึงจะนับรวมในแท่ง อื่น ๆ)]**')
    NB = 0 
    for topic_bar in list_bar_chart:
     NB = NB+1
@@ -676,22 +678,27 @@ if upload_file is not None:
     list_bar_chart[topic_bar]['orther_number'] = y
     
   if Type == 'แท่งต่อกัน':
+   if list_stack_num != dict() and {'removenan':True}:
+    st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
    for topic_stack in list_num_keys:
     Number = Number+1
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_stack[:x]+endtext
-    num = st.radio(head_bulet,['ข้อมูลเชิงปริมาณ','ข้อมูลเชิงคุณภาพ'], horizontal=True)
+    num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
     st.text("")
-    if num == 'ข้อมูลเชิงคุณภาพ':
+    if num == 'ไม่แปลผล':
      list_stack_str[topic_stack]={'removenan':True}
      del list_stack_num[topic_stack]
+     
+   if list_num_stack != dict() and {'removenan':True}:
+    st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
    for topic_num in list_stackn_keys:
     Number = Number+1
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_num[:x]+endtext
-    st_num = st.radio(head_bulet,['ข้อมูลเชิงปริมาณ','ข้อมูลเชิงคุณภาพ'], horizontal=True)
+    st_num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
     st.text("")
-    if st_num == 'ข้อมูลเชิงคุณภาพ':
+    if st_num == 'ไม่แปลผล':
      list_str_stack[topic_num]={'removenan':True}
      del list_num_stack[topic_num]
 #-----------------------------------------------tab ภาพแผนภูมิ -------------------------------------------------------#
