@@ -607,7 +607,6 @@ if upload_file is not None:
     
   if Type == 'แท่ง':
    Bars = []
-   st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')
    for topic in list_bar_chart_comma:
     Number = Number+1
     strnumberitem = str(Number)+')'
@@ -625,11 +624,12 @@ if upload_file is not None:
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_bar[:x]+endtext
     c = Count(upload_df[topic_bar].values.tolist())
-    Bar = st.radio(head_bulet , ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
-    #Bar_legend = st.radio(topic_bar[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
-    #y = st.slider(topic_bar[:x]+endtext, 0, max(c.values()), 1, 1)
-    #list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ไม่เพิ่ม' else False, 'orther_number': y,
-                                  #'legend': True if Bar_legend == 'เพิ่มคำอธิบาย' else False}
+    if st.text('หัวข้อใดที่ประสงค์ระบุคำอธิบาย'):
+     Bar = st.radio(head_bulet , ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
+    Bar_legend = st.radio(topic_bar[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
+    y = st.slider(topic_bar[:x]+endtext, 0, max(c.values()), 1, 1)
+    list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ไม่เพิ่ม' else False, 'orther_number': y,
+                                  'legend': True if Bar_legend == 'เพิ่มคำอธิบาย' else False}
     continue
   if Type == 'แท่งต่อกัน':
    for topic_stack in list_num_keys:
