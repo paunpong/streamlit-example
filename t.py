@@ -522,10 +522,10 @@ if menu == 'เริ่มต้นโปรแกรม':
      list_bar_chart_comma[topic]['legend'] = True if bar_legend == 'เพิ่ม' else False
 
     st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
-    for topic_bar in list_bar_chart:
+    for topic in list_bar_chart_comma:
      Number = Number+1
-     strnumberitem = str(Number) + ')'
-     head_bullet = strnumberitem + topic_bar[:x] + endtext
+     strnumberitem = str(Number)+')'
+     head_bulet = strnumberitem + topic[:x]+endtext
      A = upload_df[topic].values.tolist()
      a = split_comma(A)
      b = Count(a)   
