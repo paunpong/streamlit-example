@@ -728,7 +728,7 @@ if upload_file is not None:
      
   with st.expander('แผนภาพกล่อง',expanded=True):
    for b in list_boxplot:
-    box_charts = boxplot(upload_df[b].values.tolist(),b,removenan,list_boxplot[b]['Average'])
+    box_charts = boxplot(upload_df[b].values.tolist(),b)
     Box_chart.append(box_charts)
      
   with st.expander('แผนภูมิแท่ง',expanded=True):
