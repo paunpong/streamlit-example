@@ -607,7 +607,7 @@ if upload_file is not None:
     
   if Type == 'แท่ง':
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:   
-    st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')   
+    st.text('**:blue[หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ]**')   
    for topic in list_bar_chart_comma:
     Number = Number+1
     strnumberitem = str(Number)+')'
@@ -619,7 +619,7 @@ if upload_file is not None:
     list_bar_chart_comma[topic]['removenan'] = True if bar == 'ไม่เพิ่ม' else False 
     
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:
-    st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
+    st.text('**:blue[หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย]**')
    for topic in list_bar_chart_comma:
     Number = Number+1
     strnumberitem = str(Number)+')'
@@ -628,7 +628,7 @@ if upload_file is not None:
     list_bar_chart_comma[topic]['legend'] = True if bar_legend == 'เพิ่ม' else False
     
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:    
-    st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
+    st.text('**:blue[จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ]**')
    for topic in list_bar_chart_comma:
     Number = Number+1
     strnumberitem = str(Number)+')'
@@ -640,7 +640,7 @@ if upload_file is not None:
     list_bar_chart_comma[topic]['orther_number'] = y
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
-    st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')
+    st.text('**:blue[หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
    for topic_bar in list_bar_chart:
     Number = Number+1
     strnumberitem = str(Number) + ')'
@@ -650,7 +650,7 @@ if upload_file is not None:
     list_bar_chart[topic_bar]['removenan'] = True if Bar == 'ไม่เพิ่ม' else False
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
-    st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
+    st.text('**:blue[หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย]**')
    for topic_bar in list_bar_chart:
     Number = Number+1
     strnumberitem = str(Number) + ')'
@@ -659,7 +659,7 @@ if upload_file is not None:
     list_bar_chart[topic_bar]['legend'] = True if Bar_legend == 'เพิ่ม' else False
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
-    st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
+    st.text('**:blue[จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ]**')
    for topic_bar in list_bar_chart:
     Number = Number+1
     strnumberitem = str(Number) + ')'
