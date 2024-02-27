@@ -273,6 +273,8 @@ def pie_chart(data, key):
  fig,ax = plt.subplots()
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop, 'fontsize': 14})
  plt.title(key, fontproperties=thai_font_prop, fontsize=16)
+ if '/' in key:
+  key.split('/')[0]
  chart_pie = f"{key}.png"
  plt.savefig(chart_pie, bbox_inches='tight',dpi=300)#, bbox_inches='tight'
  st.pyplot()
@@ -311,6 +313,8 @@ def boxplot(data,key,removenan=True):
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
  plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop, fontsize = 16)
+ if '/' in key:
+  key.split('/')[0]
  chart_box = f"{key}.png"
  plt.savefig(chart_box, bbox_inches='tight',dpi=300)
  st.pyplot()
@@ -349,9 +353,7 @@ def bar_chart_new(data,key,legend):
  plt.title(key,fontproperties=thai_font_prop, fontsize=16)
  if '/' in key:
   key.split('/')[0]
- st.write(key) 
- i = 0
- chart_bar = f"{i+1}.png"
+ chart_bar = f"{key}.png"
  plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_bar
@@ -366,6 +368,8 @@ def stacked_bar(data,key):
  
  d_f.plot.barh(stacked=True, figsize=(8,3), ax=ax).legend(bbox_to_anchor=(1, 0, 0.19, 1), prop=thai_font_prop, fontsize=16)
  plt.title(key,fontproperties=thai_font_prop, fontsize=16)
+ if '/' in key:
+  key.split('/')[0]
  chart_stack = f"{key}.png"
  plt.savefig(chart_stack, bbox_inches='tight',dpi=300)
  st.pyplot()
