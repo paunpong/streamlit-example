@@ -507,9 +507,9 @@ if upload_file is not None:
    numberitem = numberitem+1
    strnumberitem = str(numberitem)+')'
    head_bulet = strnumberitem + topic[:x]+endtext
-   box = st.radio(head_bulet,['แผนภูมิกล่อง','แผนภูมิแท่ง'], horizontal=True)
+   box = st.radio(head_bulet,['แผนภูมิกล่อง (Boxplot)','แผนภูมิแท่ง (Bar chart)'])
    st.text("")
-   if box == 'แผนภูมิแท่ง':
+   if box == 'แผนภูมิแท่ง (Bar chart)':
     list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
     del list_boxplot[topic]
   if list_box_keys != list():
@@ -527,14 +527,14 @@ if upload_file is not None:
    numberitem = numberitem+1
    strnumberitem = str(numberitem)+')'
    head_bulet = strnumberitem + topic[:x]+endtext
-   key = st.radio(head_bulet, ['แผนภูมิแท่ง','แผนภูมิวงกลม','ข้อเสนอแนะ'], horizontal=True)
+   key = st.radio(head_bulet, ['แผนภูมิแท่ง (Bar chart)','แผนภูมิวงกลม (Pie chart)','ข้อเสนอแนะ (comment)'])
    st.text("")
-   if key == 'แผนภูมิวงกลม':
+   if key == 'แผนภูมิวงกลม (Pie chart)':
     list_pie_chart[topic]={'removenan':True}
     if 'orther_number' in list_bar_chart[topic]:
      del list_bar_chart[topic]
      continue
-   if key == 'ข้อเสนอแนะ':
+   if key == 'ข้อเสนอแนะ (comment)':
     list_comment[topic] = {'removenan':True}
     if 'orther_number' in list_bar_chart[topic]:
      del list_bar_chart[topic]
@@ -549,8 +549,8 @@ if upload_file is not None:
    strnumberitem = str(numberitem)+')'
    head_bulet = strnumberitem + sub_word[:x]+endtext
    #st.write(head_bulet)
-   num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิกล่อง'], horizontal=True)
-   if num_val == 'แผนภูมิกล่อง':
+   num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน (Stacked bar)','แผนภูมิกล่อง (Boxplot)'])
+   if num_val == 'แผนภูมิกล่อง (Boxplot)':
     list_boxplot[topic] = {'removenan':True}
     del list_stack_num[topic]
    st.text("")
@@ -560,8 +560,8 @@ if upload_file is not None:
    strnumberitem = str(numberitem)+')'
    head_bulet = strnumberitem + topic[:x]+endtext
    #st.write(head_bulet)
-   stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน','แผนภูมิกล่อง'], horizontal=True)
-   if stack_num_val == 'แผนภูมิกล่อง':
+   stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน (Stacked bar)','แผนภูมิกล่อง (Boxplot)'])
+   if stack_num_val == 'แผนภูมิกล่อง (Boxplot)':
     list_boxplot[topic] = {'removenan':True}
     del list_num_stack[topic]   
    st.text("") 
