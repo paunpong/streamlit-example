@@ -311,7 +311,8 @@ def boxplot(data,key,removenan=True,Aver=True):
  plt.text(0.7,q1,f'Q1: {q1:.{digit}f}')
  plt.text(0.7,q3,f'Q3: {q3:.{digit}f}')
  plt.text(1.1, median, f'Q2: {median:.{digit}f}')
- plt.text(0.7,average, f'Average: {average:.{digit}f}')
+ if Aver == True:
+  plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop, fontsize = 16)
  if '/' in key:
   key.split('/')[0]
@@ -445,7 +446,7 @@ if upload_file is not None:
    continue
    
   if num_check(column):
-   list_boxplot[key] = {'Average':True}
+   list_boxplot[key] = {'removenan':True,'Average':True}
    continue
    
   if len(set(column)) < 6:
@@ -511,7 +512,8 @@ if upload_file is not None:
    st.text("")
    if box == 'แผนภูมิแท่ง (Bar chart)':
     list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
-    del list_boxplot[topic]
+    if 'Average' in list_boxplot[topic]:
+     del list_boxplot[topic]
   if list_box_keys != list():
    st.markdown("""---""")
        
@@ -551,7 +553,7 @@ if upload_file is not None:
    #st.write(head_bulet)
    num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน (Stacked bar)','แผนภูมิกล่อง (Boxplot)'])
    if num_val == 'แผนภูมิกล่อง (Boxplot)':
-    list_boxplot[topic] = {'Average':True}
+    list_boxplot[topic] = {'removenan':True,'Average':True}
     del list_stack_num[topic]
    st.text("")
        
@@ -562,7 +564,7 @@ if upload_file is not None:
    #st.write(head_bulet)
    stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน (Stacked bar)','แผนภูมิกล่อง (Boxplot)'])
    if stack_num_val == 'แผนภูมิกล่อง (Boxplot)':
-    list_boxplot[topic] = {'Average':True}
+    list_boxplot[topic] = {'removenan':True,'Average':True}
     del list_num_stack[topic]   
    st.text("") 
       
@@ -728,7 +730,7 @@ if upload_file is not None:
      
   with st.expander('แผนภาพกล่อง',expanded=True):
    for b in list_boxplot:
-    box_charts = boxplot(upload_df[b].values.tolist(),b,list_boxplot[b]['Average'])
+    box_charts = boxplot(upload_df[b].values.tolist(),b,list_boxplot[b]['removenan'],list_boxplot[b]['Average'])
     Box_chart.append(box_charts)
      
   with st.expander('แผนภูมิแท่ง',expanded=True):
