@@ -523,8 +523,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      head_bulet = strnumberitem + topic_bar[:x]+endtext
      c = Count(upload_df[topic_bar].values.tolist())
      Bar = st.radio(head_bulet , ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
-     Bars.append(Bar)
-     st.write(Bars)    
+    Bars.append(Bar)
+     
         
     st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
     Leg = []   
@@ -534,8 +534,8 @@ if menu == 'เริ่มต้นโปรแกรม':
      head_bulet = strnumberitem + topic_bar[:x]+endtext
      c = Count(upload_df[topic_bar].values.tolist())  
      Bar_legend = st.radio(topic_bar[:x]+endtext,['เพิ่ม','ไม่เพิ่ม'], horizontal=True)
-     Leg.append(Bar_legend)
-     st.write(Leg)       
+    Leg.append(Bar_legend)
+            
          
     st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
     sl = []   
@@ -545,10 +545,13 @@ if menu == 'เริ่มต้นโปรแกรม':
      head_bulet = strnumberitem + topic_bar[:x]+endtext
      c = Count(upload_df[topic_bar].values.tolist())    
      y = st.slider(topic_bar[:x]+endtext, 0, max(c.values()), 1, 1)
-     sl.append(y)
-     st.write(sl)   
+    sl.append(y)
+        
         
     for topic_bar in list_bar_chart:
+     st.write(Bars)
+     st.write(Leg)
+     st.write(sl)   
      list_bar_chart[topic_bar] = {'removenan': True if Bars == 'ไม่เพิ่ม' else False, 'orther_number': sl ,'legend': True if Leg == 'เพิ่ม' else False}
         
      continue
