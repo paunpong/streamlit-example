@@ -626,10 +626,9 @@ if upload_file is not None:
     head_bulet = strnumberitem + topic_bar[:x]+endtext
     c = Count(upload_df[topic_bar].values.tolist())
     Bar = st.radio(head_bulet , ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
-    Bars.append(Bar)
     #Bar_legend = st.radio(topic_bar[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
     #y = st.slider(topic_bar[:x]+endtext, 0, max(c.values()), 1, 1)
-    list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ไม่เพิ่ม' else False, 'orther_number': y,
+    list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ไม่เพิ่ม' else False, 'orther_number': 1,
                                   'legend': True if Bar_legend == 'เพิ่มคำอธิบาย' else False}
     continue
   if Type == 'แท่งต่อกัน':
