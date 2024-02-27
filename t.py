@@ -529,7 +529,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      Bar_legend = st.radio(head_bullet, ['เพิ่ม', 'ไม่เพิ่ม'], horizontal=True)
      list_bar_chart[topic_bar]['legend'] = True if Bar_legend == 'เพิ่ม' else False
 
-     st.sidebar.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ'):
+     st.sidebar.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
      c = Count(upload_df[topic_bar].values.tolist())
      y = st.slider(head_bullet, 0, max(c.values()), 1, 1)
      list_bar_chart[topic_bar]['orther_number'] = y
