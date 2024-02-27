@@ -607,9 +607,9 @@ if upload_file is not None:
     
   if Type == 'แท่ง':
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:   
-    st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ]**')   
+    st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ]**') 
+   number = 0 
    for topic in list_bar_chart_comma:
-    number = 0
     number = number+1
     strnumberitem = str(number)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
@@ -621,8 +621,8 @@ if upload_file is not None:
     
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย]**')
+   number = 0 
    for topic in list_bar_chart_comma:
-    number = 0
     number = number+1
     strnumberitem = str(number)+')'
     head_bulet = strnumberitem + topic[:x]+endtext  
@@ -631,8 +631,8 @@ if upload_file is not None:
     
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:    
     st.markdown('**:blue[จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ]**')
+   number = 0 
    for topic in list_bar_chart_comma:
-    number = 0
     number = number+1
     strnumberitem = str(number)+')'
     head_bulet = strnumberitem + topic[:x]+endtext
@@ -644,8 +644,8 @@ if upload_file is not None:
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
+   number = 0 
    for topic_bar in list_bar_chart:
-    number = 0
     number = number+1
     strnumberitem = str(number)+')'
     head_bullet = strnumberitem + topic_bar[:x] + endtext
@@ -655,8 +655,8 @@ if upload_file is not None:
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย]**')
+   number = 0 
    for topic_bar in list_bar_chart:
-    number = 0
     number = number+1
     strnumberitem = str(number)+')'
     head_bullet = strnumberitem + topic_bar[:x] + endtext   
@@ -665,8 +665,8 @@ if upload_file is not None:
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
     st.markdown('**:blue[จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ]**')
+   number = 0 
    for topic_bar in list_bar_chart:
-    number = 0
     number = number+1
     strnumberitem = str(number)+')'
     head_bullet = strnumberitem + topic_bar[:x] + endtext   
