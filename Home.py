@@ -280,7 +280,7 @@ def pie_chart(data, key):
  st.pyplot()
  return chart_pie
 
-def boxplot(data,key,removenan=True,Aver):
+def boxplot(data,key,removenan=True,Aver=True):
  if removenan and 'ไม่ระบุ' in data:
   data = [n for n in data if n != 'ไม่ระบุ']
  fig,ax = plt.subplots()
@@ -601,8 +601,8 @@ if upload_file is not None:
     Number = Number+1
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_box[:x]+endtext 
-    box = st.radio(head_bulet,['ไม่เพิ่ม','เพิ่ม'],horizontal=True)
-    list_boxplot[topic_box]={'Average': True if box == 'ไม่เพิ่ม' else False}
+    box = st.radio(head_bulet,['เพิ่ม','ไม่เพิ่ม'],horizontal=True)
+    list_boxplot[topic_box]={'Average': True if box == 'เพิ่ม' else False}
     continue
     
   if Type == 'แท่ง':
