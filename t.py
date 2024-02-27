@@ -552,7 +552,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      st.write(Bars)
      st.write(Leg)
      st.write(sl)   
-     list_bar_chart[topic_bar] = {'removenan': True if Bars == 'ไม่เพิ่ม' else False, 'orther_number': sl ,'legend': True if Leg == 'เพิ่ม' else False}
+     list_bar_chart[topic_bar] = {'removenan': True if Bars == 'ไม่เพิ่ม' else False, 'orther_number': 1 ,'legend': True if Leg == 'เพิ่ม' else False}
         
      continue
         
