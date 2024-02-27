@@ -522,7 +522,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      head_bulet = strnumberitem + topic_bar[:x]+endtext
      c = Count(upload_df[topic_bar].values.tolist())
      Bar = st.radio(head_bulet , ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
-     list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ไม่เพิ่ม'} 
+     list_bar_chart[topic_bar] = {'removenan': True if Bar == 'ไม่เพิ่ม' else False} 
         
     st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
     for topic_bar in list_bar_chart:
