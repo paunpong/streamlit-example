@@ -280,11 +280,11 @@ def pie_chart(data, key):
  st.pyplot()
  return chart_pie
 
-def boxplot(data,key,removenan=True,Aver=True):
+def boxplot(data,key,removenan=True):
  if removenan and 'ไม่ระบุ' in data:
   data = [n for n in data if n != 'ไม่ระบุ']
  fig,ax = plt.subplots()
- plt.boxplot(data,showmeans = Aver)
+ plt.boxplot(data,showmeans = True)
  q1 = np.percentile(data,25)
  q3 = np.percentile(data,75)
  median = np.median(data)
@@ -446,7 +446,7 @@ if upload_file is not None:
    continue
    
   if num_check(column):
-   list_boxplot[key] = {'removenan':True,'Average':True}
+   list_boxplot[key] = {'removenan':True}
    continue
    
   if len(set(column)) < 6:
@@ -512,8 +512,7 @@ if upload_file is not None:
    st.text("")
    if box == 'แผนภูมิแท่ง (Bar chart)':
     list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
-    if 'Average' in list_boxplot[topic]:
-     del list_boxplot[topic]
+    del list_boxplot[topic]
   if list_box_keys != list():
    st.markdown("""---""")
        
@@ -553,7 +552,7 @@ if upload_file is not None:
    #st.write(head_bulet)
    num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน (Stacked bar)','แผนภูมิกล่อง (Boxplot)'])
    if num_val == 'แผนภูมิกล่อง (Boxplot)':
-    list_boxplot[topic] = {'removenan':True,'Average':True}
+    list_boxplot[topic] = {'removenan':True}
     del list_stack_num[topic]
    st.text("")
        
@@ -564,7 +563,7 @@ if upload_file is not None:
    #st.write(head_bulet)
    stack_num_val = st.radio(head_bulet,['แผนภูมิแท่งแบบต่อกัน (Stacked bar)','แผนภูมิกล่อง (Boxplot)'])
    if stack_num_val == 'แผนภูมิกล่อง (Boxplot)':
-    list_boxplot[topic] = {'removenan':True,'Average':True}
+    list_boxplot[topic] = {'removenan':True}
     del list_num_stack[topic]   
    st.text("") 
       
@@ -730,7 +729,7 @@ if upload_file is not None:
      
   with st.expander('แผนภาพกล่อง',expanded=True):
    for b in list_boxplot:
-    box_charts = boxplot(upload_df[b].values.tolist(),b,list_boxplot[b]['removenan'],list_boxplot[b]['Average'])
+    box_charts = boxplot(upload_df[b].values.tolist(),b)
     Box_chart.append(box_charts)
      
   with st.expander('แผนภูมิแท่ง',expanded=True):
