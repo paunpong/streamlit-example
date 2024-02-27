@@ -739,6 +739,8 @@ if upload_file is not None:
    for b in list_boxplot:
     box_charts = boxplot(upload_df[b].values.tolist(),b)
     Box_chart.append(box_charts)
+    st.write(list_boxplot[b]['removenan'])
+    st.write(list_boxplot[b]['Aver'])
      
   with st.expander('แผนภูมิแท่ง',expanded=True):
    for a in list_bar_chart_comma:
