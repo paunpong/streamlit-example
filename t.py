@@ -538,14 +538,18 @@ if menu == 'เริ่มต้นโปรแกรม':
      st.write(Leg)       
          
     st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
+    sl = []   
     for topic_bar in list_bar_chart:
      Number = Number+1
      strnumberitem = str(Number)+')'
      head_bulet = strnumberitem + topic_bar[:x]+endtext
      c = Count(upload_df[topic_bar].values.tolist())    
      y = st.slider(topic_bar[:x]+endtext, 0, max(c.values()), 1, 1)
-     list_bar_chart[topic_bar] = {'removenan': True if Bars == 'เพิ่ม' else False, 'orther_number': y ,
-                                    'legend': True if Leg == 'เพิ่ม' else False}
+     sl.append(y)
+     st.write(sl)   
+        
+    for topic_bar in list_bar_chart:
+     list_bar_chart[topic_bar] = {'removenan': True if Bars == 'ไม่เพิ่ม' else False, 'orther_number': sl ,'legend': True if Leg == 'เพิ่ม' else False}
         
      continue
         
