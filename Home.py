@@ -41,11 +41,6 @@ color_set2 = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', 
 color_set3 = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']
 color_set4 = ['#e7ba52', '#e7cb94', '#843c39', '#ad494a', '#d6616b', '#e7969c', '#7b4173', '#a55194', '#ce6dbd', '#de9ed6']
 
-
-
-
-
-
 def upload(A):
  if A is not None:
   y = A.name.split(".")[1]
@@ -352,8 +347,9 @@ def bar_chart_new(data,key,legend):
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
   ax.bar(Label,values,color=color)
  plt.title(key,fontproperties=thai_font_prop, fontsize=16)
- chart_bar = f"{key}.png"
- #plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
+ i = 0
+ chart_bar = f"{i+1}.png"
+ plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_bar
  
