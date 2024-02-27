@@ -352,9 +352,8 @@ def bar_chart_new(data,key,legend):
   ax.bar(Label,values,color=color)
  plt.title(key,fontproperties=thai_font_prop, fontsize=16)
  if '/' in key:
-  key.split('/')[0]
- i=0 
- chart_bar = f"{key}+i+1.png"
+  key.split('/')[1]
+ chart_bar = f"{key}.png"
  plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_bar
