@@ -42,6 +42,9 @@ color_set3 = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', 
 color_set4 = ['#e7ba52', '#e7cb94', '#843c39', '#ad494a', '#d6616b', '#e7969c', '#7b4173', '#a55194', '#ce6dbd', '#de9ed6']
 
 
+upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
+upload_df = upload(upload_file)
+
 
 def upload(A):
  if A is not None:
@@ -391,8 +394,7 @@ if menu == 'เริ่มต้นโปรแกรม':
   st.image("customize.png")
   st.markdown("""---""")
   st.markdown('**:blue[5. เมื่อได้รูปแบบที่ต้องการแล้วกดปุ่มดาวน์โหลดเพื่อโหลดไฟล์ docs]**')
- upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"])
- upload_df = upload(upload_file)
+ 
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
 if menu == 'เริ่มต้นโปรแกรม':
  if upload_file is not None:
