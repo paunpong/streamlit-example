@@ -353,9 +353,9 @@ def bar_chart_new(data,key,legend):
   ax.bar(Label,values,color=color)
  plt.title(key,fontproperties=thai_font_prop, fontsize=16)
  chart_bar = f"{key}.png"
- plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
+ #plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
  st.pyplot()
- return chart_bar
+ #return chart_bar
  
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
