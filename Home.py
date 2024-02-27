@@ -284,10 +284,8 @@ def pie_chart(data, key):
  return chart_pie
 
 def boxplot(data,key,removenan=True):
- st.write(data,'1')
  if removenan and 'ไม่ระบุ' in data:
   data = [n for n in data if n != 'ไม่ระบุ']
- st.write(data,'2') 
  fig,ax = plt.subplots()
  plt.boxplot(data,showmeans=True)
  q1 = np.percentile(data,25)
@@ -338,7 +336,7 @@ def bar_list_count(data,orther_number=1):
 def bar_chart_new(data,key,legend):
  values = data[1]
  fig,ax = plt.subplots()
- if legend:
+ if legend == True:
   labels = range(1,len(data[0])+1)
   ax.set_xticks(labels)
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
