@@ -516,7 +516,7 @@ if menu == 'เริ่มต้นโปรแกรม':
                                     'legend': True if bar_legend == 'เพิ่มคำอธิบาย' else False}
 
        
-    st.sidebar.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')
+    st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')
     for topic_bar in list_bar_chart:
      Number += 1
      strnumberitem = str(Number) + ')'
@@ -525,7 +525,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      Bar = st.radio(head_bullet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
      list_bar_chart[topic_bar]['removenan'] = True if Bar == 'ไม่เพิ่ม' else False
 
-    st.sidebar.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
+    st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
     for topic_bar in list_bar_chart:
      Number += 1
      strnumberitem = str(Number) + ')'
@@ -533,7 +533,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      Bar_legend = st.radio(head_bullet, ['เพิ่ม', 'ไม่เพิ่ม'], horizontal=True)
      list_bar_chart[topic_bar]['legend'] = True if Bar_legend == 'เพิ่ม' else False
 
-    st.sidebar.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
+    st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
     for topic_bar in list_bar_chart:
      Number += 1
      strnumberitem = str(Number) + ')'
