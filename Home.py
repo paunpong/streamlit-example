@@ -614,7 +614,7 @@ if upload_file is not None:
     b = Count(a)
     bar = st.radio(head_bulet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
     bar_legend = st.radio(topic[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
-    y = st.slider(topic[:x]+endtext+(จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ)', 0, max(b.values()), 1, 1) 
+    y = st.slider(topic[:x]+endtext+'(จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ)', 0, max(b.values()), 1, 1) 
     list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y ,
                                     'legend': True if bar_legend == 'เพิ่มคำอธิบาย' else False}
    for topic_bar in list_bar_chart:
