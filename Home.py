@@ -641,8 +641,9 @@ if upload_file is not None:
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
-   NB = 0 
+    
    for topic_bar in list_bar_chart:
+    NB = 0
     NB = NB+1
     strnumberitem = str(NB)+')'
     head_bullet = strnumberitem + topic_bar[:x] + endtext
