@@ -641,9 +641,10 @@ if upload_file is not None:
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
+   NB = 0 
    for topic_bar in list_bar_chart:
-    Number = Number+1
-    strnumberitem = str(Number)+')'
+    NB = NB+1
+    strnumberitem = str(NB)+')'
     head_bullet = strnumberitem + topic_bar[:x] + endtext
     c = Count(upload_df[topic_bar].values.tolist())
     Bar = st.radio(head_bullet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
@@ -652,8 +653,8 @@ if upload_file is not None:
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย]**')
    for topic_bar in list_bar_chart:
-    Number = Number+1
-    strnumberitem = str(Number)+')'
+    NB = NB+1
+    strnumberitem = str(NB)+')'
     head_bullet = strnumberitem + topic_bar[:x] + endtext   
     Bar_legend = st.radio(head_bullet, ['เพิ่ม', 'ไม่เพิ่ม'], horizontal=True)
     list_bar_chart[topic_bar]['legend'] = True if Bar_legend == 'เพิ่ม' else False
@@ -661,8 +662,8 @@ if upload_file is not None:
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
     st.markdown('**:blue[จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ]**')
    for topic_bar in list_bar_chart:
-    Number = Number+1
-    strnumberitem = str(Number)+')'
+    NB = NB+1
+    strnumberitem = str(NB)+')'
     head_bullet = strnumberitem + topic_bar[:x] + endtext   
     c = Count(upload_df[topic_bar].values.tolist())
     y = st.slider(head_bullet, 0, max(c.values()), 1, 1)
