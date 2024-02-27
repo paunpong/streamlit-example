@@ -494,9 +494,9 @@ if upload_file is not None:
    numberitem = numberitem+1
    strnumberitem = str(numberitem)+')'
    head_bulet = strnumberitem + topic[:x]+endtext
-   p = st.radio(head_bulet, ['แผนภูมิวงกลม', 'แผนภูมิแท่ง'], horizontal=True)
+   p = st.radio(head_bulet, ['แผนภูมิวงกลม (Pie chart)', 'แผนภูมิแท่ง (Bar chart)'])#, horizontal=True
    st.text("")
-   if p == 'แผนภูมิแท่ง':
+   if p == 'แผนภูมิแท่ง (Bar chart)':
     list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
     del list_pie_chart[topic]
         
