@@ -739,7 +739,7 @@ if upload_file is not None:
    for b in list_boxplot:
     box_remove = list_boxplot[b]['removenan']
     box_Aver = list_boxplot[b]['Aver']
-    box_charts = boxplot(upload_df[b].values.tolist(),b)
+    box_charts = boxplot(upload_df[b].values.tolist(),b,True,list_boxplot[b]['Aver'])
     Box_chart.append(box_charts)
     st.write(box_remove)
     st.write(box_Aver)
