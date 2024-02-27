@@ -375,13 +375,7 @@ def stacked_bar(data,key):
  return chart_stack
 
 with st.sidebar:
- menu = option_menu(menu_title=' ',options=['เริ่มต้นโปรแกรม'])
-
-#if menu == 'หน้าแรก':
- #st.markdown('## :red[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
-
-if menu == 'เริ่มต้นโปรแกรม':
- #st.markdown('### :rainbow[โปรแกรมสร้างรายงานสรุปจากฟอร์มออนไลน์]')
+ 
  st.image("header.png")
  with st.expander('### :red[คำแนะนำ]',expanded=True):#(upload_file is None)
   st.markdown('**:blue[1. โหลดไฟล์ออกจากแบบฟอร์มที่ได้ทำการสร้างแบบสอบถาม]**')
@@ -400,7 +394,7 @@ if menu == 'เริ่มต้นโปรแกรม':
  upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"]) 
  upload_df = upload(upload_file) 
 #-------------------------------------------------แยกหัวข้อ----------------------------------------------------#
-if menu == 'เริ่มต้นโปรแกรม':
+ 
  if upload_file is not None:
   Color = st.radio('ปรับแต่งสีกราฟ', ['ชุดสีที่ 1', 'ชุดสีที่ 2', 'ชุดสีที่ 3', 'ชุดสีที่ 4'], horizontal=True, index=0)
   if Color == 'ชุดสีที่ 1':
