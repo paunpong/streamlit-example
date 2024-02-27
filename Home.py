@@ -624,7 +624,7 @@ if upload_file is not None:
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_bar[:x]+endtext
     c = Count(upload_df[topic_bar].values.tolist())
-    if st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ'):
+    if st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ') == 1:
      Bar = st.radio(head_bulet , ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
     if st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย'): 
      Bar_legend = st.radio(topic_bar[:x]+endtext,['เพิ่ม','ไม่เพิ่ม'], horizontal=True)
