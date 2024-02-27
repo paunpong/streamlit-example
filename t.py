@@ -502,6 +502,7 @@ if menu == 'เริ่มต้นโปรแกรม':
      continue
         
    if Type == 'แท่ง':
+    st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')   
     for topic in list_bar_chart_comma:
      Number = Number+1
      strnumberitem = str(Number)+')'
@@ -510,15 +511,30 @@ if menu == 'เริ่มต้นโปรแกรม':
      a = split_comma(A)
      b = Count(a)
      bar = st.radio(head_bulet, ['ลบไม่ระบุ', 'เพิ่มไม่ระบุ'], horizontal=True)
-     bar_legend = st.radio(topic[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
-     y = st.slider(topic[:x]+endtext, 1, max(b.values()), 1, 1) 
-     list_bar_chart_comma[topic] = {'removenan': True if bar == 'ลบไม่ระบุ' else False, 'orther_number': y ,
-                                    'legend': True if bar_legend == 'เพิ่มคำอธิบาย' else False}
+     list_bar_chart_comma[topic]['removenan'] = True if bar == 'ไม่เพิ่ม' else False 
 
+    st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
+    for topic_bar in list_bar_chart:
+     Number = Number+1
+     strnumberitem = str(Number) + ')'
+     head_bullet = strnumberitem + topic_bar[:x] + endtext    
+     bar_legend = st.radio(topic[:x]+endtext,['เพิ่มคำอธิบาย','ลบคำอธิบาย'], horizontal=True)
+     list_bar_chart_comma[topic]['legend'] = True if bar_legend == 'เพิ่ม' else False
+
+    st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
+    for topic_bar in list_bar_chart:
+     Number = Number+1
+     strnumberitem = str(Number) + ')'
+     head_bullet = strnumberitem + topic_bar[:x] + endtext
+     A = upload_df[topic].values.tolist()
+     a = split_comma(A)
+     b = Count(a)   
+     y = st.slider(topic[:x]+endtext, 1, max(b.values()), 1, 1) 
+     list_bar_chart_comma[topic]['orther_number'] = y
        
     st.text('หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ')
     for topic_bar in list_bar_chart:
-     Number += 1
+     Number = Number+1
      strnumberitem = str(Number) + ')'
      head_bullet = strnumberitem + topic_bar[:x] + endtext
      c = Count(upload_df[topic_bar].values.tolist())
@@ -527,7 +543,7 @@ if menu == 'เริ่มต้นโปรแกรม':
 
     st.text('หัวข้อใดที่ประสงค์เพิ่มคำอธิบาย')
     for topic_bar in list_bar_chart:
-     Number += 1
+     Number = Number+1
      strnumberitem = str(Number) + ')'
      head_bullet = strnumberitem + topic_bar[:x] + endtext   
      Bar_legend = st.radio(head_bullet, ['เพิ่ม', 'ไม่เพิ่ม'], horizontal=True)
@@ -535,16 +551,13 @@ if menu == 'เริ่มต้นโปรแกรม':
 
     st.text('จำนวนความถี่ขั้นต่ำของแต่ละกราฟที่ประสงค์ให้ปรากฎแท่งในกราฟแต่ละหัวข้อ')
     for topic_bar in list_bar_chart:
-     Number += 1
+     Number = Number+1
      strnumberitem = str(Number) + ')'
      head_bullet = strnumberitem + topic_bar[:x] + endtext   
      c = Count(upload_df[topic_bar].values.tolist())
      y = st.slider(head_bullet, 0, max(c.values()), 1, 1)
      list_bar_chart[topic_bar]['orther_number'] = y
 
-        
-    
-        
    if Type == 'แท่งต่อกัน':
     for topic_stack in list_num_keys:
      Number = Number+1
