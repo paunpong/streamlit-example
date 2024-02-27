@@ -608,7 +608,7 @@ if upload_file is not None:
    for topic in list_bar_chart_comma:
     Number = Number+1
     strnumberitem = str(Number)+')'
-    head_bulet = strnumberitem + topic[:x]+endtext + '\n' +'(หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ)'
+    head_bulet = strnumberitem + topic[:x]+endtext +'(หัวข้อใดที่ประสงค์เพิ่มข้อมูลของผู้ไม่ตอบแบบสอบถามในกราฟ)\n'
     A = upload_df[topic].values.tolist()
     a = split_comma(A)
     b = Count(a)
