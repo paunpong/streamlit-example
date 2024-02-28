@@ -992,9 +992,14 @@ if upload_file is not None:
    for subtopic in dic_stackbar_str_choosen[topic][0]:
     Col = upload_df[subtopic].values.tolist()
     count_string = count_list(Col,list_stack_str[subtopic]['removenan'])
+    row_sum = [subtopic]
     for i in choosen:
-     
-     st.write(i, i in count_string)
+     if i not in count_string:
+      row_sum.append('0(0)')
+     else:
+      row_sum.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
+      
+    st.write(row_sum)
 
   for Str in list_stack_str:
    Col = upload_df[Str].values.tolist()
