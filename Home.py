@@ -980,14 +980,17 @@ if upload_file is not None:
   if list_num_stack != dict() and {'removenan':True}:
    num_table.append([head_re] + data_num_stack)
    st.table([head_re,*data_num_stack])
-  data_stack_str2 = list()
+  data_stack_str3 = list()
+  
   for topic in dic_stackbar_str_choosen:
-   data_stack_str2.append(topic)
+   data_stack_str2 = [topic]
    choosen = list(dic_stackbar_str_choosen[topic][1])
+   choosen.remove('ไม่ระบุ')
    data_stack_str2 = data_stack_str2+choosen
+
    st.write(data_stack_str2)
+   
    for subtopic in dic_stackbar_str_choosen[topic][0]:
-    st.write(subtopic)
     Col = upload_df[subtopic].values.tolist()
     count_string = count_list(Col,list_stack_str[subtopic]['removenan'])
 
