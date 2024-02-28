@@ -453,7 +453,7 @@ if upload_file is not None:
    list_pie_chart[key]={'removenan':True}
   else:
    list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
- dic_stackbar_str_choosen = dic()
+ dic_stackbar_str_choosen = dict()
  set_topic = set(list_topic_stackbar)
  for i in set_topic:
   col = []
