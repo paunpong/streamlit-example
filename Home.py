@@ -987,12 +987,15 @@ if upload_file is not None:
    choosen = list(dic_stackbar_str_choosen[topic][1])
    choosen.remove('ไม่ระบุ')
    data_stack_str2 = data_stack_str2+choosen
+   
 
    st.write(data_stack_str2)
    
    for subtopic in dic_stackbar_str_choosen[topic][0]:
     Col = upload_df[subtopic].values.tolist()
     count_string = count_list(Col,list_stack_str[subtopic]['removenan'])
+    row_sum = [f'{count_string[i]['count']}' for i in choosen]
+    st.write(row_sum)
 
   for Str in list_stack_str:
    Col = upload_df[Str].values.tolist()
