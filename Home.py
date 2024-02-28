@@ -996,7 +996,7 @@ if upload_file is not None:
     count_string = count_list(Col,list_stack_str[subtopic]['removenan'])
     for i in count_string:
      row_sum = count_string[i]["count"]
-     st.write(row_sum)
+     st.write(choosen, count_string)
 
   for Str in list_stack_str:
    Col = upload_df[Str].values.tolist()
