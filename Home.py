@@ -453,7 +453,7 @@ if upload_file is not None:
    list_pie_chart[key]={'removenan':True}
   else:
    list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
- 
+ dic_stackbar_str_choosen = dic()
  set_topic = set(list_topic_stackbar)
  for i in set_topic:
   col = []
@@ -468,6 +468,7 @@ if upload_file is not None:
   else:
    for key in col:
     list_stack_str[key]={'removenan':True}
+    dic_strackbar_str_choosen[i]=[col,set(sum_Column)]
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 
