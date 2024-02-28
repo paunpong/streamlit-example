@@ -982,7 +982,7 @@ if upload_file is not None:
    st.table([head_re,*data_num_stack])
   data_stack_str2 = list()
   for topic in dic_stackbar_str_choosen:
-   data_stack_str2.appned(topic)
+   data_stack_str2.append(topic)
    choosen = list(dic_stackbar_str_choosen[topic][1])
    data_stack_str2 = data_stack_str2+choosen
    st.write(data_stack_str2)
