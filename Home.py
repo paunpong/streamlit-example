@@ -1001,7 +1001,7 @@ if upload_file is not None:
       row_sum.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
       
     data_stack_str2.append(row_sum)
-  st.table(data_stack_str2)  
+    st.table(data_stack_str2)  
 
   for Str in list_stack_str:
    Col = upload_df[Str].values.tolist()
