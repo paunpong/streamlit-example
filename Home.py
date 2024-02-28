@@ -468,7 +468,7 @@ if upload_file is not None:
   else:
    for key in col:
     list_stack_str[key]={'removenan':True}
-    dic_strackbar_str_choosen[i]=[col,set(sum_Column)]
+    dic_stackbar_str_choosen[i]=[col,set(sum_Column)]
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 
