@@ -1001,7 +1001,7 @@ if upload_file is not None:
       row_sum.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
       
     data_stack_str2.append(row_sum)
-  st.write(data_stack_str2)  
+  st.table(data_stack_str2)  
 
   for Str in list_stack_str:
    Col = upload_df[Str].values.tolist()
@@ -1027,6 +1027,7 @@ if upload_file is not None:
                             f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
      
    table_str.append(data_stack_str)
+
  
   if list_stack_str != dict() and {'removenan':True}:
    st.table(data_stack_str)
