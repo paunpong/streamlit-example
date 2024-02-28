@@ -980,13 +980,14 @@ if upload_file is not None:
   if list_num_stack != dict() and {'removenan':True}:
    num_table.append([head_re] + data_num_stack)
    st.table([head_re,*data_num_stack])
-  data_stack_str3 = list()
+  data_stack_str3 = dict()
   
   for topic in dic_stackbar_str_choosen:
    data_stack_str2 = [topic]
    choosen = list(dic_stackbar_str_choosen[topic][1])
    choosen.remove('ไม่ระบุ')
-   data_stack_str2 = data_stack_str2+choosen
+   head_choosen = [x+'\nจำนวน(เปอร์เซนต์)' for x in choosen]
+   data_stack_str2 = [data_stack_str2+head_choosen]
   
    
    for subtopic in dic_stackbar_str_choosen[topic][0]:
@@ -999,7 +1000,8 @@ if upload_file is not None:
      else:
       row_sum.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
       
-    st.write(row_sum)
+    data_stack_str2.append(row_sum)
+  st.write(data_stack_str2)  
 
   for Str in list_stack_str:
    Col = upload_df[Str].values.tolist()
