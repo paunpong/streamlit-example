@@ -980,7 +980,7 @@ if upload_file is not None:
   if list_num_stack != dict() and {'removenan':True}:
    num_table.append([head_re] + data_num_stack)
    st.table([head_re,*data_num_stack])
-  data_stack_str3 = dict()
+  data_stack_str3 = list()
   
   for topic in dic_stackbar_str_choosen:
    data_stack_str2 = [topic]
@@ -1001,6 +1001,7 @@ if upload_file is not None:
       row_sum.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
       
     data_stack_str2.append(row_sum)
+   data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)  
 
   for Str in list_stack_str:
@@ -1075,7 +1076,7 @@ if upload_file is not None:
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                                  table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment)
+                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,str_table,num_table,upload_file,comment)
  st.download_button(label="ดาวน์โหลด",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 #st.write(table_pie)
