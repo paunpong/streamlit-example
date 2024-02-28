@@ -994,8 +994,9 @@ if upload_file is not None:
    for subtopic in dic_stackbar_str_choosen[topic][0]:
     Col = upload_df[subtopic].values.tolist()
     count_string = count_list(Col,list_stack_str[subtopic]['removenan'])
-    row_sum = count_string[i]["count"]
-    st.write(row_sum)
+    for i in choosen:
+     row_sum = count_string[i]["count"]
+     st.write(row_sum)
 
   for Str in list_stack_str:
    Col = upload_df[Str].values.tolist()
