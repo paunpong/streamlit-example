@@ -981,6 +981,10 @@ if upload_file is not None:
    num_table.append([head_re] + data_num_stack)
    st.table([head_re,*data_num_stack])
 
+  for topic in dic_stackbar_str_choosen:
+   for subtopic in dic_stackbar_str_choosen[topic][0]:
+    st.write(subtopic)
+
   for Str in list_stack_str:
    Col = upload_df[Str].values.tolist()
    count_string = count_list(Col,list_stack_str[Str]['removenan'])
