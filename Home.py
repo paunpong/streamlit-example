@@ -493,7 +493,7 @@ if upload_file is not None:
   numberitem = 0
   if list_pie_keys != list():   
    st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
-   continue
+   break
   if list_box_keys != list():   
    st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
   if list_bar_keys != list():   
