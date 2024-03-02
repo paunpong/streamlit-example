@@ -490,24 +490,8 @@ if upload_file is not None:
   if topic_long =='ใช่':
    x=32
    endtext = "ฯ"
-  numberitem = 0
-  if list_pie_keys != list():   
-   st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
-   break
-  if list_box_keys != list():   
-   st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
-  if list_bar_keys != list():   
-   st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
-  if list_comma_keys != list():   
-   st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
-  if list_str_keys != list():   
-   st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
-  if list_num_keys != list():   
-   st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
-  if list_stackn_keys != list():   
-   st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
-  if list_stacks_keys != list():   
-   st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**') 
+  numberitem = 0   
+  st.markdown('**:blue[หัวข้อใดที่ต้องการเปลี่ยนประเภทกราฟ]**')
   for topic in list_pie_keys:
    numberitem = numberitem+1
    strnumberitem = str(numberitem)+')'
