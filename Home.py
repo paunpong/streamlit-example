@@ -866,9 +866,9 @@ if upload_file is not None:
    std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
    data_box.append([box,mean,std])
   if list_boxplot != dict() and {'removenan':True}:
-   table_box.append([head_re] + data_box)   
+   table_box.append([head_amount] + data_box)   
    st.markdown(f'<h3 style="color:red; font-size:18px">{box}</h3>', unsafe_allow_html=True)
-   st.table([head_re,*data_box])
+   st.table([head_amount,*data_box])
    st.markdown("""---""") 
 
   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}: 
