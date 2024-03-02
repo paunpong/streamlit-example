@@ -602,6 +602,8 @@ if upload_file is not None:
     continue
     
   if Type == 'กล่อง':
+   if list_boxplot != dict() and {'removenan':True,'Aver':True}:   
+    st.markdown('**:blue[หัวข้อใดที่ต้องการเพิ่มค่าเฉลี่ยเลขคณิตในกราฟ]**')
    for topic_box in list_boxplot:
     Number = Number+1
     strnumberitem = str(Number)+')'
@@ -859,22 +861,7 @@ if upload_file is not None:
   if list_boxplot != dict() and {'removenan':True}:    
    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิกล่อง</h3>', unsafe_allow_html=True)  
   for box in list_boxplot:
-   mean_sd = stat(upload_df[box].values.tolist())
-   for m_s in mean_sd:    
-    mean = mean_sd['ค่าเฉลี่ย']
-    std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
-    level = '' 
-    if mean >= 4.2:
-     level = 'มากที่สุด'
-    elif mean >= 3.4:
-     level = 'มาก'
-    elif mean >= 2.6:
-     level = 'ปานกลาง'
-    elif mean >= 1.8:
-     level = 'น้อย'
-    elif mean < 1.8:
-     level = 'น้อยที่สุด'
-   data_box.append([box,mean,std,level])
+   data_box.append([box,mean,std])
   if list_boxplot != dict() and {'removenan':True}:
    table_box.append([head_re] + data_box)   
    st.markdown(f'<h3 style="color:red; font-size:18px">{box}</h3>', unsafe_allow_html=True)
