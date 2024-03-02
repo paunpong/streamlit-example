@@ -861,6 +861,9 @@ if upload_file is not None:
   if list_boxplot != dict() and {'removenan':True}:    
    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิกล่อง</h3>', unsafe_allow_html=True)  
   for box in list_boxplot:
+   mean_sd = stat(upload_df[box].values.tolist())
+   mean = mean_sd['ค่าเฉลี่ย']
+   std = mean_sd['ส่วนเบี่ยงเบนมาตรฐาน']
    data_box.append([box,mean,std])
   if list_boxplot != dict() and {'removenan':True}:
    table_box.append([head_re] + data_box)   
