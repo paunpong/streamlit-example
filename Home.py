@@ -469,7 +469,7 @@ if upload_file is not None:
     dic_stackbar_num_choosen[i]=[col,set(sum_Column)]
   else:
    for key in col:
-    #list_stack_str[key]={'removenan':True}
+    list_stack_str[key]={'removenan':True}
     dic_stackbar_str_choosen[i]=[col,set(sum_Column)]
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
@@ -479,7 +479,7 @@ if upload_file is not None:
  list_box_keys = list(list_boxplot.keys())
  list_bar_keys = list(list_bar_chart.keys())
  list_comma_keys = list(list_bar_chart_comma.keys())
- list_str_keys = list(dic_stackbar_str_choosen.keys())
+ list_str_keys = list(list_stack_str.keys())
  list_num_keys = list(list_stack_num.keys())
  list_stackn_keys = list(list_num_stack.keys())
  list_stacks_keys = list(list_str_stack.keys())
