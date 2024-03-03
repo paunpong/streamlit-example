@@ -688,6 +688,8 @@ if upload_file is not None:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
    for i in set_topic:
     st.write(i)
+    for n in list_num_keys:
+     st.write(n)
    for topic_stack in list_num_keys:
     st.write(topic_stack)
     Number = Number+1
