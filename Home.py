@@ -1006,7 +1006,7 @@ if upload_file is not None:
    head_col = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set_col]
    data_str1 = [data_str1+head_col]
    data_str2 = [strs]
-   for i in set_col:
+   for str(i) in set_col:
     st.write(i)
     if i not in count_string:
      data_str2.append('0(0)')
