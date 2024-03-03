@@ -480,10 +480,12 @@ if upload_file is not None:
  list_bar_keys = list(list_bar_chart.keys())
  list_comma_keys = list(list_bar_chart_comma.keys())
  list_str_keys = list(list_stack_str.keys())
- list_num_keys = list(dic_stackbar_num_choosen.keys())
+ list_num_keys = list(list_stack_num.keys())
  list_stackn_keys = list(list_num_stack.keys())
  list_stacks_keys = list(list_str_stack.keys())
- st.write(list_num_keys) 
+
+ list_key_num = list(dic_stackbar_num_choosen.keys())
+ st.write(list_key_num) 
  tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
  with tab1:
   x = 1000
@@ -686,7 +688,7 @@ if upload_file is not None:
   if Type == 'แท่งต่อกัน':
    if list_stack_num != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
-   for topic_stack in list_num_keys:
+   for topic_stack in list_key_num:
     st.write(topic_stack)
     Number = Number+1
     strnumberitem = str(Number)+')'
