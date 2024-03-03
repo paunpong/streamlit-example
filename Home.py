@@ -687,7 +687,7 @@ if upload_file is not None:
    if list_stack_num != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
    st.write(dic_stackbar_str_choosen,'str') 
-   for topic_stack in list_num_keys:
+   for topic_stack in dic_stackbar_num_choosen:
     Number = Number+1
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_stack[:x]+endtext
@@ -697,15 +697,6 @@ if upload_file is not None:
      list_stack_str[topic_stack]={'removenan':True}
      del list_stack_num[topic_stack]
      dic_stackbar_str_choosen.update(dic_stackbar_num_choosen)
-     st.write(dic_stackbar_str_choosen,'num')
-     #for i in set_topic:
-      #col = []
-      #for n in list_stack_num:
-       #if i in n:
-        #col.append(n)
-        #st.write(col)
-        #dic_stackbar_str_choosen[n]=[col,set(sum_Column)]
-     #del list_stack_num[topic_stack]
      
    if list_num_stack != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
@@ -819,14 +810,7 @@ if upload_file is not None:
    for s in dict_str_stack:
     stack_str = stacked_bar(dict_str_stack[s],s)
     St_str.append(stack_str)
-
-   #for i in dict_str_choosen:
-    #topic_word, sub_word = i.split(' [')[:2]
-    #topic_word = topic_word.strip()
-    #sub_word = sub_word.strip().replace(']','')
-    #A_l = count_list(upload_df[i].values.tolist(),dict_str_choosen[i]['removenan'])
     
-     
    for i in list_str_stack:
     A_l = count_list(upload_df[i].values.tolist())
     for k in A_l:
