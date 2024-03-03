@@ -966,20 +966,20 @@ if upload_file is not None:
     elif mean < 1.8:
      level = 'น้อยที่สุด'
    data_num_stack.append([nums,mean,s_d,level])
-
+  
   if list_num_stack != dict() and {'removenan':True}:
    num_table.append([head_re] + data_num_stack)
    st.table([head_re,*data_num_stack])
+   
   data_stack_str3 = list()
-  
   for topic in dic_stackbar_str_choosen:
    data_stack_str2 = [topic]
+   st.write(data_stack_str2)
    choosen = list(dic_stackbar_str_choosen[topic][1])
    choosen.remove('ไม่ระบุ')
    head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in choosen]
    data_stack_str2 = [data_stack_str2+head_choosen]
   
-   
    for subtopic in dic_stackbar_str_choosen[topic][0]:
     Col = upload_df[subtopic].values.tolist()
     count_string = count_list(Col,list_stack_str[subtopic]['removenan'])
@@ -994,36 +994,9 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)  
 
-  for Str in list_stack_str:
-   Col = upload_df[Str].values.tolist()
-   count_string = count_list(Col,list_stack_str[Str]['removenan'])
-   topic_word, sub_word = Str.split(' [')[:2]
-   topic_word = topic_word.strip()
-   sub_word = sub_word.strip().replace(']', '')
-   if topic_word != top_name:
-    data_stack_str.append([topic_word, 'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'])
-    data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
-    top_name = topic_word
-   if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
-    data_stack_str.append([sub_word,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
-                            f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
-                            f"{count_string['ปานกลาง']['count']}({count_string['ปานกลาง']['percent']}%)"if 'ปานกลาง' in count_string else "0(0%)",
-                            f"{count_string['น้อย']['count']}({count_string['น้อย']['percent']}%)"if 'น้อย' in count_string else "0(0%)",
-                            f"{count_string['น้อยที่สุด']['count']}({count_string['น้อยที่สุด']['percent']}%)"if 'น้อยที่สุด' in count_string else "0(0%)"])
-   else:
-    data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
-                            f"{count_string['4']['count']}({count_string['4']['percent']}%)"if '4' in count_string else "0(0%)",
-                            f"{count_string['3']['count']}({count_string['3']['percent']}%)"if '3' in count_string else "0(0%)",
-                            f"{count_string['2']['count']}({count_string['2']['percent']}%)"if '2' in count_string else "0(0%)",
-                            f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
-     
-   table_str.append(data_stack_str)
-
- 
-  if list_stack_str != dict() and {'removenan':True}:
-   st.table(data_stack_str)
-    
   for strs in list_str_stack:
+   data_str2 = [strs]
+   st.write(data_str2)
    Col = upload_df[strs].values.tolist()
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
    if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
