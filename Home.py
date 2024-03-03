@@ -483,7 +483,7 @@ if upload_file is not None:
  list_num_keys = list(dic_stackbar_num_choosen.keys())
  list_stackn_keys = list(list_num_stack.keys())
  list_stacks_keys = list(list_str_stack.keys())
-  
+ st.write(list_num_keys) 
  tab1, tab2 = st.sidebar.tabs(['ประเภทแผนภูมิ', 'ปรับแต่งรายระเอียดแผนภูมิ'])
  with tab1:
   x = 1000
