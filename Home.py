@@ -693,7 +693,7 @@ if upload_file is not None:
       if not form_displayed:
        num = st.radio(i, ['แปลผล', 'ไม่แปลผล'], horizontal=True)
        if num == 'ไม่แปลผล':
-        del list_stack_num[topic_stack]
+        del list_stack_num[n]
        form_displayed = True
    #for topic_stack in list_num_keys:
     #Number = Number+1
