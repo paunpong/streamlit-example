@@ -987,6 +987,8 @@ if upload_file is not None:
     count_string = count_list(Col,list_stack_str[subtopic]['removenan'])
     row_sum = [subtopic[len(topic)+1:-1]]
     for i in choosen:
+     if type(i) is not str:
+      i = str(i)
      if i not in count_string:
       row_sum.append('0(0)')
      else:
@@ -1009,7 +1011,6 @@ if upload_file is not None:
    for i in set_col:
     if type(i) is not str:
      i = str(i)
-    st.write(i)
     if i not in count_string:
      data_str2.append('0(0)')
     else:
