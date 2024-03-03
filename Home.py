@@ -691,7 +691,6 @@ if upload_file is not None:
      if i in n:
       st.write(i)
    for topic_stack in list_num_keys:
-    st.write(topic_stack)
     Number = Number+1
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_stack[:x]+endtext
