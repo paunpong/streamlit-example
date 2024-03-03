@@ -690,8 +690,8 @@ if upload_file is not None:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
    for topic_stack in list_num_keys:
     cc = topic_stack.split(' [')[0]
-    st.write(cc)
-    st.write(set_topic)
+    st.write(cc,'cc')
+    st.write(set_topic,'set')
     Number = Number+1
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_stack[:x]+endtext
