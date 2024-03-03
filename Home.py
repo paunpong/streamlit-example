@@ -689,7 +689,9 @@ if upload_file is not None:
    for i in set_topic:
     for n in list_num_keys:
      if i in n:
-      st.write(i)
+      num = st.radio(i,['แปลผล','ไม่แปลผล'], horizontal=True)
+      if num == 'ไม่แปลผล':
+       st.write(n)
    for topic_stack in list_num_keys:
     Number = Number+1
     strnumberitem = str(Number)+')'
