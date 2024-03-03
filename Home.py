@@ -977,6 +977,7 @@ if upload_file is not None:
    st.write(data_stack_str2)
    choosen = list(dic_stackbar_str_choosen[topic][1])
    choosen.remove('ไม่ระบุ')
+   choosen.sort(reverse=True)
    head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in choosen]
    data_stack_str2 = [data_stack_str2+head_choosen]
   
@@ -1000,8 +1001,11 @@ if upload_file is not None:
    Col = upload_df[strs].values.tolist()
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
    set_col = list(set(Col))
+   set_col.remove('ไม่ระบุ')
    set_col.sort(reverse=True)
-   st.write(set_col)
+   head_col = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set_col]
+   data_str2 = [data_str2+head_col]
+   st.write(data_str2)
    if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
     data_stack_str.append([strs,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
                             f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
