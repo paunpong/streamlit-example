@@ -1001,7 +1001,10 @@ if upload_file is not None:
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
    set_col = list(set(Col))
    sorted(set_col, reverse=True)
-   st.write(set_col)
+   #st.write(set_col)
+   sw = ['มาก','ปานกลาง','มากที่สุด']
+   sw.sort(reverse=True)
+   st.write(sw)
    if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
     data_stack_str.append([strs,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
                             f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
