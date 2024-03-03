@@ -696,8 +696,7 @@ if upload_file is not None:
     num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
     st.text("")
     if num == 'ไม่แปลผล':
-     if topic_stack.split('[')[0] not in list_num_keys:
-      st.write(cc)
+     if cc not in list_num_keys:
       list_stack_str[topic_stack]={'removenan':True}
       del list_stack_num[topic_stack]
       dic_stackbar_str_choosen.update(dic_stackbar_num_choosen)
