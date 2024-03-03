@@ -690,6 +690,7 @@ if upload_file is not None:
     for n in list_num_keys:
      if i in n:
       num = st.radio(i,['แปลผล','ไม่แปลผล'], horizontal=True)
+      break
       if num == 'ไม่แปลผล':
        st.write(n)
    for topic_stack in list_num_keys:
