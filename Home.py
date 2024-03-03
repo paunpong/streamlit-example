@@ -995,7 +995,8 @@ if upload_file is not None:
   for topic in dic_stackbar_str_choosen:
    data_stack_str2 = [topic]
    choosen = list(dic_stackbar_str_choosen[topic][1])
-   choosen.remove('ไม่ระบุ')
+   if 'ไม่ระบุ' in choosen:
+    choosen.remove('ไม่ระบุ')
    choosen.sort(reverse=True)
    head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in choosen]
    data_stack_str2 = [data_stack_str2+head_choosen]
