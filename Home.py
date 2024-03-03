@@ -693,10 +693,8 @@ if upload_file is not None:
     num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
     st.text("")
     if num == 'ไม่แปลผล':
-     dict_str_choosen[topic_stack]=True
+     list_stack_str[topic_stack]={'removenan':True}
      del list_stack_num[topic_stack]
-     st.write(list_stack_num)
-     st.write(dict_str_choosen)
      #for i in set_topic:
       #col = []
       #for n in list_stack_num:
@@ -818,6 +816,13 @@ if upload_file is not None:
    for s in dict_str_stack:
     stack_str = stacked_bar(dict_str_stack[s],s)
     St_str.append(stack_str)
+
+   #for i in dict_str_choosen:
+    #topic_word, sub_word = i.split(' [')[:2]
+    #topic_word = topic_word.strip()
+    #sub_word = sub_word.strip().replace(']','')
+    #A_l = count_list(upload_df[i].values.tolist(),dict_str_choosen[i]['removenan'])
+    
      
    for i in list_str_stack:
     A_l = count_list(upload_df[i].values.tolist())
