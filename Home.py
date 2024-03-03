@@ -1002,7 +1002,7 @@ if upload_file is not None:
    set_col = list(set(Col))
    set_col.sort(reverse=True)
    #st.write(set_col)
-   sw = set('มาก','ปานกลาง','มากที่สุด')
+   sw = {'มาก','ปานกลาง','มากที่สุด'}
    sorted(sw, reverse=True)
    st.write(sw)
    if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
