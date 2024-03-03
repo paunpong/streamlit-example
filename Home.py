@@ -701,7 +701,7 @@ if upload_file is not None:
         #col.append(n)
         #st.write(col)
         #dic_stackbar_str_choosen[n]=[col,set(sum_Column)]
-        #del list_stack_num[topic_stack]
+     del list_stack_num[topic_stack]
      
    if list_num_stack != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
