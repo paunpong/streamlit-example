@@ -473,7 +473,7 @@ if upload_file is not None:
     dic_stackbar_str_choosen[i]=[col,set(sum_Column)]
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
-
+dict_str_choosen = dict()
 if upload_file is not None:
  list_pie_keys = list(list_pie_chart.keys())
  list_box_keys = list(list_boxplot.keys())
@@ -686,23 +686,17 @@ if upload_file is not None:
   if Type == 'แท่งต่อกัน':
    if list_stack_num != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
-   for i in set_topic:
-    c_o = []
-    for n in list_num_keys:
-     if i in n:
-      st.write(n)
-      c_o.append(n)
-      #num = st.radio(i, ['แปลผล', 'ไม่แปลผล'], horizontal=True)
-      #if num == 'ไม่แปลผล':
-       #del list_stack_num[n]
-    st.write(c_o)   
-   #for topic_stack in list_num_keys:
-    #Number = Number+1
-    #strnumberitem = str(Number)+')'
-    #head_bulet = strnumberitem + topic_stack[:x]+endtext
-    #num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
-    #st.text("")
-    #if num == 'ไม่แปลผล':
+   for topic_stack in list_num_keys:
+    Number = Number+1
+    strnumberitem = str(Number)+')'
+    head_bulet = strnumberitem + topic_stack[:x]+endtext
+    num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
+    st.text("")
+    if num == 'ไม่แปลผล':
+     dict_str_choosen[list_stack_num]
+     del list_stack_num[topic_stack]
+     st.write(list_stack_num)
+     st.write(dict_str_choosen)
      #for i in set_topic:
       #col = []
       #for n in list_stack_num:
