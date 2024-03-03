@@ -693,7 +693,7 @@ if upload_file is not None:
     num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
     st.text("")
     if num == 'ไม่แปลผล':
-     dict_str_choosen[list_stack_num]
+     dict_str_choosen[list_stack_num]=True
      del list_stack_num[topic_stack]
      st.write(list_stack_num)
      st.write(dict_str_choosen)
