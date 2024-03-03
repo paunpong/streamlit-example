@@ -454,6 +454,7 @@ if upload_file is not None:
   else:
    list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
  dic_stackbar_str_choosen = dict()
+ dic_stackbar_num_choosen = dict()
  set_topic = set(list_topic_stackbar)
  for i in set_topic:
   col = []
@@ -465,6 +466,7 @@ if upload_file is not None:
   if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
    for key in col:
     list_stack_num[key]={'removenan':True}
+    dic_stackbar_num_choosen[i]=[col,set(sum_Column)]
   else:
    for key in col:
     list_stack_str[key]={'removenan':True}
@@ -691,7 +693,7 @@ if upload_file is not None:
     num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
     st.text("")
     if num == 'ไม่แปลผล':
-     list_stack_str[topic_stack]={'removenan':True}
+     dic_stackbar_str_choosen[topic_stack]=True
      del list_stack_num[topic_stack]
      
    if list_num_stack != dict() and {'removenan':True}:
@@ -1038,7 +1040,7 @@ if upload_file is not None:
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,str_table,num_table,upload_file,comment)
+                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,data_str1,num_table,upload_file,comment)
  st.download_button(label="ดาวน์โหลด",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 #st.write(table_pie)
