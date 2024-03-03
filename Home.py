@@ -694,9 +694,9 @@ if upload_file is not None:
     st.text("")
     if num == 'ไม่แปลผล':
      for i in set_topic:
-      st.write(i)
       col = []
-      #for n in list_stackbar:
+      for n in list_stack_num:
+       st.write(n)
        #if i in n:
         #col.append(n)
      dic_stackbar_str_choosen[topic_stack]=[col,set(sum_Column)]
