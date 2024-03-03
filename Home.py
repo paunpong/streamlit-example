@@ -999,13 +999,13 @@ if upload_file is not None:
    data_str2 = [strs]
    st.write(data_str2)
    Col = upload_df[strs].values.tolist()
+   Col.remove('ไม่ระบุ')
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
    set_col = list(set(Col))
-   set_col.remove('ไม่ระบุ')
    set_col.sort(reverse=True)
    head_col = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set_col]
    data_str2 = [data_str2+head_col]
-   st.write(data_str2)
+   st.table(data_str2)
    if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
     data_stack_str.append([strs,f"{count_string['มากที่สุด']['count']}({count_string['มากที่สุด']['percent']}%)"if 'มากที่สุด' in count_string else "0(0%)",
                             f"{count_string['มาก']['count']}({count_string['มาก']['percent']}%)"if 'มาก' in count_string else "0(0%)",
