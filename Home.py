@@ -1009,10 +1009,7 @@ if upload_file is not None:
      data_str2.append('0(0)')
     else:
      data_str2.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
-   st.write(data_str2) 
-   data_str1.append(data_str2)
-  st.write(data_str1)
-  st.table(data_str1)
+  st.table([data_str1,*data_str2])
     
   if list_str_stack != dict() and {'removenan':True}:
    st.markdown("""---""")
