@@ -995,8 +995,9 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)  
 
-  data_str1 = []
+  
   for strs in list_str_stack:
+   data_str1 = ['หัวข้อ']
    data_str2 = [strs]
    st.write(data_str2)
    Col = upload_df[strs].values.tolist()
@@ -1004,7 +1005,7 @@ if upload_file is not None:
    set_col = list(set(Col))
    set_col.sort(reverse=True)
    head_col = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set_col]
-  data_str1.append(['หัวข้อ'+head_col])
+  data_str1 = [data_str1+head_col]
   st.table(data_str1)
     
   if list_str_stack != dict() and {'removenan':True}:
