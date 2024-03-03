@@ -999,7 +999,6 @@ if upload_file is not None:
    data_str2 = [strs]
    st.write(data_str2)
    Col = upload_df[strs].values.tolist()
-   Col.remove('ไม่ระบุ')
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
    set_col = list(set(Col))
    set_col.sort(reverse=True)
