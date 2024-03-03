@@ -1004,12 +1004,13 @@ if upload_file is not None:
    head_col = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set_col]
    data_str1 = [data_str1+head_col]
    data_str2 = [strs]
+   st.write(data_str2)
   for i in set_col:
    if i not in count_string:
     data_str2.append('0(0)')
    else:
     data_str2.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
-   data_str1.append(data_str2)
+  data_str1.append(data_str2)
   st.table(data_str1)
     
   if list_str_stack != dict() and {'removenan':True}:
