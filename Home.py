@@ -690,13 +690,14 @@ if upload_file is not None:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
    for topic_stack in list_num_keys:
     cc = topic_stack.split(' [')[0]
+    cv = list_num_keys.split(' [')[0]
     Number = Number+1
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_stack[:x]+endtext
     num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
     st.text("")
     if num == 'ไม่แปลผล':
-     if cc not in list_num_keys:
+     if cc not in cv:
       list_stack_str[topic_stack]={'removenan':True}
       del list_stack_num[topic_stack]
       dic_stackbar_str_choosen.update(dic_stackbar_num_choosen)
