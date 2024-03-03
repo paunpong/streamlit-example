@@ -1002,13 +1002,16 @@ if upload_file is not None:
    data_str1 = ['หัวข้อ']
    Col = upload_df[strs].values.tolist()
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
+   cc = str(count_string)
+   st.write(cc)
+   st.write(count_string)
    set_col = list(set(Col))
    set_col.sort(reverse=True)
    head_col = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set_col]
    data_str1 = [data_str1+head_col]
    data_str2 = [strs]
    for i in set_col:
-    if i not in str(count_string):
+    if i not in count_string:
      data_str2.append('0(0)')
     else:
      data_str2.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
