@@ -686,11 +686,15 @@ if upload_file is not None:
   if Type == 'แท่งต่อกัน':
    if list_stack_num != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
+   form_displayed = False
    for i in set_topic:
-    if i in n for n in list_num_keys:
-     num = st.radio(i,['แปลผล','ไม่แปลผล'], horizontal=True)
-     if num == 'ไม่แปลผล':
-      del list_stack_num[topic_stack]
+    for n in list_num_keys:
+     if i in n:
+      if not form_displayed:
+       num = st.radio(i, ['แปลผล', 'ไม่แปลผล'], horizontal=True)
+       if num == 'ไม่แปลผล':
+        del list_stack_num[topic_stack]
+       form_displayed = True
    #for topic_stack in list_num_keys:
     #Number = Number+1
     #strnumberitem = str(Number)+')'
