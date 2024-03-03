@@ -696,8 +696,8 @@ if upload_file is not None:
      for i in set_topic:
       col = []
       for n in list_stack_num:
-       st.write(n)
-       #if i in n:
+       if i in n:
+        st.write(i)
         #col.append(n)
      dic_stackbar_str_choosen[topic_stack]=[col,set(sum_Column)]
      del list_stack_num[topic_stack]
