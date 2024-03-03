@@ -1007,7 +1007,7 @@ if upload_file is not None:
    data_str1 = [data_str1+head_col]
    data_str2 = [strs]
    for i in set_col:
-    if type(i) not str:
+    if type(i) is not str:
      i = str(i)
     st.write(i)
     if i not in count_string:
