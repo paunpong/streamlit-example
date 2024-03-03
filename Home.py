@@ -999,7 +999,7 @@ if upload_file is not None:
    st.write(data_str2)
    Col = upload_df[strs].values.tolist()
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
-   set_col = set(Col)
+   set_col = list(set(Col))
    sorted(set_col, reverse=True)
    st.write(set_col)
    if set(Col).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด','ไม่ระบุ'}):
