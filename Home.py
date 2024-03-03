@@ -694,10 +694,12 @@ if upload_file is not None:
     st.text("")
     if num == 'ไม่แปลผล':
      for i in set_topic:
+      col = []
       for n in list_stack_num:
        if i in n:
-        st.write(i)
-        dic_stackbar_str_choosen[n]=[col,set(sum_Column)]
+        col.append(n)
+        st.write(col)
+        #dic_stackbar_str_choosen[n]=[col,set(sum_Column)]
         del list_stack_num[topic_stack]
      
    if list_num_stack != dict() and {'removenan':True}:
