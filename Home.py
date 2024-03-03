@@ -1007,7 +1007,7 @@ if upload_file is not None:
   for strs in list_str_stack:
    data_str1 = ['หัวข้อ']
    Col = upload_df[strs].values.tolist()
-   cc.append(Col)
+   cc = cc + Col
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
   set_col = list(set(Col))
   st.write(set_col)
