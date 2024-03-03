@@ -460,7 +460,7 @@ if upload_file is not None:
   col = []
   for n in list_stackbar:
    if i in n:
-     col.append(n)
+    col.append(n)
   Column = upload_df[col].values.tolist()
   sum_Column = sum(Column,[])
   if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
@@ -693,6 +693,12 @@ if upload_file is not None:
     num = st.radio(head_bulet,['แปลผล','ไม่แปลผล'], horizontal=True)
     st.text("")
     if num == 'ไม่แปลผล':
+     for i in set_topic:
+      st.write(i)
+      col = []
+      #for n in list_stackbar:
+       #if i in n:
+        #col.append(n)
      dic_stackbar_str_choosen[topic_stack]=[col,set(sum_Column)]
      del list_stack_num[topic_stack]
      
