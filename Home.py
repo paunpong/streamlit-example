@@ -1003,11 +1003,12 @@ if upload_file is not None:
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
    set_col = list(set(Col))
    set_col.sort(reverse=True)
-   s_c = str(set_col)
    head_col = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set_col]
    data_str1 = [data_str1+head_col]
    data_str2 = [strs]
-   for i in s_c:
+   for i in set_col:
+    if type(i) not str:
+     i = str(i)
     st.write(i)
     if i not in count_string:
      data_str2.append('0(0)')
