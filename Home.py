@@ -1010,8 +1010,6 @@ if upload_file is not None:
    cc = cc + Col
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
    set_col = list(set(Col))
-   st.write(set_col)
-   st.write(list(set(cc)))
    set_col.sort(reverse=True)
    head_col = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set_col]
    data_str1 = [data_str1+head_col]
