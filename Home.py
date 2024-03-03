@@ -686,6 +686,7 @@ if upload_file is not None:
   if Type == 'แท่งต่อกัน':
    if list_stack_num != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
+   st.write(dic_stackbar_str_choosen) 
    for topic_stack in list_num_keys:
     Number = Number+1
     strnumberitem = str(Number)+')'
@@ -695,8 +696,7 @@ if upload_file is not None:
     if num == 'ไม่แปลผล':
      list_stack_str[topic_stack]={'removenan':True}
      del list_stack_num[topic_stack]
-     dic_stackbar_str_choosen[i][0][topic_stack] = col
-     dic_stackbar_str_choosen[i][1] = set(sum_Column)
+     dic_stackbar_str_choosen.update(dic_stackbar_num_choosen)
      #for i in set_topic:
       #col = []
       #for n in list_stack_num:
