@@ -995,7 +995,6 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)
    
-  data_str2 = [] 
   for strs in list_str_stack:
    data_str1 = ['หัวข้อ']
    Col = upload_df[strs].values.tolist()
@@ -1004,8 +1003,9 @@ if upload_file is not None:
    set_col.sort(reverse=True)
    head_col = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set_col]
    data_str1 = [data_str1+head_col]
-   data_str2.append(strs)
+   data_str2 = [strs]
    for i in set_col:
+    st.write(data_str2)
     if i not in count_string:
      data_str2.append('0(0)')
     else:
