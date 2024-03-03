@@ -1008,7 +1008,7 @@ if upload_file is not None:
    data_str2 = [strs]
    for i in set_col:
     if i not in count_string:
-     1 in i
+     st.write(1 in i)
      data_str2.append('0(0)')
     else:
      data_str2.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
