@@ -695,6 +695,8 @@ if upload_file is not None:
     if num == 'ไม่แปลผล':
      list_stack_str[topic_stack]={'removenan':True}
      del list_stack_num[topic_stack]
+     dic_stackbar_str_choosen[i][0][topic_stack] = col
+     dic_stackbar_str_choosen[i][1] = set(sum_Column)
      #for i in set_topic:
       #col = []
       #for n in list_stack_num:
