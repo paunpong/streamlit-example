@@ -480,7 +480,7 @@ if upload_file is not None:
  list_bar_keys = list(list_bar_chart.keys())
  list_comma_keys = list(list_bar_chart_comma.keys())
  list_str_keys = list(list_stack_str.keys())
- list_num_keys = list(list_stack_num.keys())
+ list_num_keys = list(dic_stackbar_num_choosen.keys())
  list_stackn_keys = list(list_num_stack.keys())
  list_stacks_keys = list(list_str_stack.keys())
   
@@ -686,8 +686,8 @@ if upload_file is not None:
   if Type == 'แท่งต่อกัน':
    if list_stack_num != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
-   st.write(dic_stackbar_str_choosen,'str') 
-   for topic_stack in dic_stackbar_num_choosen:
+   for topic_stack in list_num_keys:
+    st.write(topic_stack)
     Number = Number+1
     strnumberitem = str(Number)+')'
     head_bulet = strnumberitem + topic_stack[:x]+endtext
