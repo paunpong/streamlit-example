@@ -703,15 +703,15 @@ if upload_file is not None:
    moved_topics = []
    
    for topic_stack in list_num_keys:
-       strnumberitem = topic_stack.split(')')[0] + ')'
-       num = st.radio(strnumberitem, ['แปลผล', 'ไม่แปลผล'], horizontal=True)
-       st.text("")
-       if num == 'ไม่แปลผล' and topic_stack not in moved_topics:
-           moved_topics.append(topic_stack)
-           similar_topics = [t for t in list_num_keys if t.split(')')[0] == strnumberitem[:-1]]
-           for similar_topic in similar_topics:
-               dic_stackbar_str_choosen[similar_topic] = list_stack_str[similar_topic]
-               del list_stack_num[similar_topic]
+    strnumberitem = topic_stack.split(')')[0] + ')'
+    num = st.radio(strnumberitem, ['แปลผล', 'ไม่แปลผล'], horizontal=True)
+    st.text("")
+    if num == 'ไม่แปลผล' and topic_stack not in moved_topics:
+     moved_topics.append(topic_stack)
+     similar_topics = [t for t in list_num_keys if t.split(')')[0] == strnumberitem[:-1]]
+     for similar_topic in similar_topics:
+      dic_stackbar_str_choosen[similar_topic] = list_stack_str[similar_topic]
+      del list_stack_num[similar_topic]
 
      
    if list_num_stack != dict() and {'removenan':True}:
