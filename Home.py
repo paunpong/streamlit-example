@@ -691,8 +691,8 @@ if upload_file is not None:
     for n in list_num_keys:
      if i in n:
       st.write(n)
-      #c_o.append(n)
-      num = st.radio(i, ['แปลผล', 'ไม่แปลผล'], horizontal=True)
+      c_o.append(n)
+      #num = st.radio(i, ['แปลผล', 'ไม่แปลผล'], horizontal=True)
       #if num == 'ไม่แปลผล':
        #del list_stack_num[n]
     st.write(c_o)   
