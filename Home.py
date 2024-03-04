@@ -1009,7 +1009,7 @@ if upload_file is not None:
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    Data_stack = [topic_word]
-   head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set(Col)]
+   head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in list_num_set]
    Data_stack = [Data_stack + head_choosen]
    st.write(head_choosen)
    #if set(Col).issubset({'5','4','3','2','1'}):
