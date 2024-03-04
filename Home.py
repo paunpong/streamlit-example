@@ -153,7 +153,7 @@ def table_comment(data, doc):
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
                     table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment):
  doc = Document()
-
+ 
  heading = doc.add_heading(level=0)
  heading_run = heading.add_run('สรุปผล' + upload_file.name.split('.')[0])
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -200,9 +200,10 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
   doc.add_paragraph('\t')
      
- for COMMENT in comment:
-  doc.add_paragraph(COMMENT)
-  doc.add_paragraph('\t')
+ for text in comment:
+  st.write(text)
+  paragraph = doc.add_paragraph()
+  run = paragraph.add_run(text)
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
  head = head_pic.add_run('ภาพแผนภูมิ')
