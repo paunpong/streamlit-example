@@ -1051,11 +1051,10 @@ if upload_file is not None:
   for ment in list_comment:
    Val = Count(upload_df[ment].values.tolist(),list_comment[ment]['removenan'])
    sorted_items = sorted(Val.items(), key=lambda x: x[1], reverse=True)
-   if type(sorted_items) is not str:
-    sorted_items = str(sorted_items)
-   st.write(type(sorted_items))
    data_comment.append([ment,'จำนวน'])
    for ans in sorted_items:
+    if type(ans[0]) is not str:
+     ans[0] = str(ans[0])
     count = ans[1]
     if count > 1:   
      data_comment.append([ans[0], f'({count})'])
