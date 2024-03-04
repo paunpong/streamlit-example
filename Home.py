@@ -740,7 +740,7 @@ Str_st = []
 str_table = []
 
 comment = []
-data_str_table = list()
+
 
 dict_str_stack = dict()
 dict_num_stack = dict()
@@ -1024,7 +1024,7 @@ if upload_file is not None:
    st.write(data_stack_str3,'1')
    st.table(data_stack_str2)
   
-  table_str1 = []
+  data_str_table = list()
   one_name = True
   for Str in dict_str:
    Col = upload_df[Str].values.tolist()
