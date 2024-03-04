@@ -177,8 +177,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df.style = 'Table Grid'
   doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
 
- for T_Str in table_str2:
-  st.write(T_Str)
+ #for T_Str in table_str2:
+  #st.write(T_Str)
   #df = create_table(T_Str,doc)
   #df.style = 'Table Grid'
   #doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
@@ -1041,8 +1041,9 @@ if upload_file is not None:
                             f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
    
    data_str_table.append(data_stack_str)
-   table_str1.append(data_str_table)
+  table_str1.append(data_str_table)
   if dict_str != dict() and {'removenan':True}:
+   st.write(table_str1)
    st.table(data_stack_str)
   
   data_str3 = list()
