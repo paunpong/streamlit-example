@@ -35,6 +35,7 @@ list_num_stack = {}
 list_comment={}
 list_time={}
 list_non = {}
+dict_str = {}
 
 color_set1 = ['#FF5733', '#FFBD33', '#33FF57', '#33FFBD', '#5733FF', '#BD33FF', '#FF33BD', '#FF3364', '#FF3333', '#33FFBD']
 color_set2 = ['#FF9966', '#66FF99', '#9966FF', '#FFFF66', '#66FFFF', '#FF66FF', '#FF6666', '#66FF66', '#6666FF', '#FFCC66']
@@ -697,6 +698,7 @@ if upload_file is not None:
     st.text("")
     if num == 'ไม่แปลผล':
      list_stack_str[topic_stack]={'removenan':True}
+     dict_str[[topic_stack]={'removenan':True}]
      del list_stack_num[topic_stack]
      
    if list_num_stack != dict() and {'removenan':True}:
@@ -734,6 +736,7 @@ dict_str_stack = dict()
 dict_num_stack = dict()
 dict_stack_bar = dict()
 dict_stack_str = dict()
+
 top_name = None
 if upload_file is not None:
  tab1, tab2 = st.tabs(['ภาพแผนภูมิ', 'ข้อมูลแบบตาราง'])
@@ -1002,16 +1005,16 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)
 
-  for Str in list_stack_str:
+  for Str in dict_str:
    Col = upload_df[Str].values.tolist()
-   count_string = count_list(Col,list_stack_str[Str]['removenan'])
+   count_string = count_list(Col,dict_str[Str]['removenan'])
    topic_word, sub_word = Str.split(' [')[:2]
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    Data_stack = [topic_word]
    head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in list_num_set]
    Data_stack = [Data_stack + head_choosen]
-   st.write(head_choosen)
+   st.table(Data_stack)
    #if set(Col).issubset({'5','4','3','2','1'}):
   
   #for topic in list_stack_str:
