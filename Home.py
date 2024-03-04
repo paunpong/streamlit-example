@@ -204,7 +204,14 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
      
  for Text in comment:
   for item in Text:
-   text = "- {}\t{}".format(item[0], item[1])
+   if isinstance(item[0], str):
+    # ถ้าเป็นสตริง ให้เพิ่มข้อความในรูปแบบของลิสต์เดิม
+    text = f"- {item[0]}\t{item[1]}"
+   else:
+    # ถ้าไม่ใช่สตริง ให้แปลงเป็นสตริงแล้วเพิ่มข้อความ
+    text = f"- {str(item[0])}\t{item[1]}"
+    # เพิ่มข้อความลงในเอกสาร Word
+  #doc.add_paragraph(text)
   doc.add_paragraph(text)
   
  #---------------------------------------------------------------------------ภาพ
