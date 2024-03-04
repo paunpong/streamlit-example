@@ -1054,9 +1054,9 @@ if upload_file is not None:
    data_comment.append([ment,'จำนวน'])
    for Ans in sorted_items:
     if count > 1:   
-     data_comment.append([Ans[0], f'({count})'])
+     data_comment.append([str(Ans[0]), f'({count})'])
     else:    
-     data_comment.append([Ans[0], ''])  
+     data_comment.append([str(Ans[0]), ''])  
    comment.append(data_comment)
    st.table(data_comment)
    data_comment = []
