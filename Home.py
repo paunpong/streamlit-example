@@ -204,7 +204,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
      
  for Text in comment:
   for item in Text:
-   text = f"- {item[0]}\t{item[1]}"
+   text = "- {}\t{}".format(item[0], item[1])
   doc.add_paragraph(text)
   
  #---------------------------------------------------------------------------ภาพ
