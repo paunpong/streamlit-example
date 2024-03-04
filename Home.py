@@ -1011,7 +1011,7 @@ if upload_file is not None:
    topic_word, sub_word = Str.split(' [')[:2]
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
-   data_stack_str = [topic_word, '5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)']
+   data_stack_str = [topic_word, '5'+'\nจำนวน(เปอร์เซนต์)','4'+'\nจำนวน(เปอร์เซนต์)','3'+'\nจำนวน(เปอร์เซนต์)','2'+'\nจำนวน(เปอร์เซนต์)','1'+'\nจำนวน(เปอร์เซนต์)']
    
    
    st.table(data_stack_str)
