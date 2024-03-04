@@ -1015,7 +1015,7 @@ if upload_file is not None:
     data_stack_str = [topic_word]
     head_choosen = ['5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)']
     data_stack_str = [data_stack_str+head_choosen]
-    '' = topic_word
+    topic_word = ''
    row_sum = [sub_word]
    for i in list_num_set:
     if type(i) is not str:
