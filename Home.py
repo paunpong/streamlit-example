@@ -133,27 +133,11 @@ def create_table(data,doc):
    
  return table
 
-def table_comment(data, doc):
- headers = data[0]
- rows = data[1:]
- df = pd.DataFrame(rows, columns=headers)
-
- table = doc.add_table(df.shape[0] + 1, df.shape[1])
- for j in range(df.shape[-1]):
-  table.cell(0, j).text = df.columns[j]
- for i in range(df.shape[0]):
-  for k in range(df.shape[-1]):
-            
-   cell = table.cell(i + 1, k)
-   if k == 0:  
-    cell.text = f"- {df.values[i, k]}"
-   else:
-    cell.text = str(df.values[i, k])
-
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
                     table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment):
 
- st.write(comment)                    
+ st.write(comment)
+ st.write(table_str)                    
  doc = Document()
  
  heading = doc.add_heading(level=0)
