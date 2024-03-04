@@ -1058,7 +1058,6 @@ if upload_file is not None:
     else:    
      data_comment.append([ans[0], ''])
    comment.append(data_comment)
-   comment = str(comment)
    st.table(data_comment)
    data_comment = []
     
