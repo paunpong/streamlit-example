@@ -197,6 +197,14 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   for Text in comment:
    st.write(Text[0])
    #doc.add_paragraph(text)
+  for item in comment:
+   if isinstance(item, list):
+    if len(item) == 2:
+     # หัวข้อ
+     doc.add_paragraph(f"{item[0]} {item[1]}", style='ListBullet')
+    elif len(item) == 1:
+     # รายการย่อย
+     doc.add_paragraph(f"- {item[0]}")
   
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
