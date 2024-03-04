@@ -198,7 +198,11 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  for Ment in comment:
   doc.add_paragraph(Ment[0])
   for sub_ment in Ment[1:]:
-   doc.add_paragraph(f"- {sub_ment}")
+   if isinstance(sub_ment, list):
+    if len(sub_ment) > 1 and sub_ment[1][0] != '(' and sub_ment[0] != '':
+     doc.add_paragraph(f"- {sub_ment[0]} {sub_ment[1]}")
+    elif sub_ment != '' and sub_ment != 1:
+     doc.add_paragraph(f"- {sub_ment}")
    
   #doc.add_paragraph(Ment[0])
   #doc.add_paragraph(f'- {Ment[1:]}')
