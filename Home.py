@@ -1051,7 +1051,7 @@ if upload_file is not None:
   for ment in list_comment:
    Val = Count(upload_df[ment].values.tolist(),list_comment[ment]['removenan'])
    sorted_items = sorted(Val.items(), key=lambda x: x[1], reverse=True)
-   st.write(Val[ment])
+   st.write(type(sorted_items))
    data_comment.append([ment,'จำนวน'])
    for ans in sorted_items:
     count = ans[1]
