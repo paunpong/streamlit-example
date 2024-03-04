@@ -1002,8 +1002,8 @@ if upload_file is not None:
    st.table(data_stack_str2)
    
   for topic in list_stack_str:
-   Data_str_stack = [topic.split('[ ')[0]]
-   st.write(Data_str_stack)
+   topic_word,sub_word = topic.split('[ ')[:2]
+   st.write(topic_word)
   
   data_str3 = list()
   cc = []
