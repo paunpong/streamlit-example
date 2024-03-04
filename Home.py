@@ -1000,7 +1000,6 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)
 
-  
   data_str_table = list()
   for Str in dict_str:
    Col = upload_df[Str].values.tolist()
@@ -1021,7 +1020,7 @@ if upload_file is not None:
    data_str_table.append(data_stack_str)
   
   if dict_str != dict() and {'removenan':True}:
-   st.table(data_str_table)
+   st.table(data_stack_str)
   
   data_str3 = list()
   for strs in list_str_stack:
