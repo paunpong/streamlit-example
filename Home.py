@@ -1016,16 +1016,13 @@ if upload_file is not None:
     head_choosen = ['5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)']
     data_stack_str = [data_stack_str+head_choosen]
     topic_word = ''
-   row_sum = [sub_word]
-   for i in list_num_set:
-    if type(i) is not str:
-     i = str(i)
-    if i not in count_string:
-     row_sum.append('0(0)')
-    else:
-     row_sum.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
+   data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
+                            f"{count_string['4']['count']}({count_string['4']['percent']}%)"if '4' in count_string else "0(0%)",
+                            f"{count_string['3']['count']}({count_string['3']['percent']}%)"if '3' in count_string else "0(0%)",
+                            f"{count_string['2']['count']}({count_string['2']['percent']}%)"if '2' in count_string else "0(0%)",
+                            f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
    
-   data_stack_str.append(row_sum)
+   
    st.table(data_stack_str)
    
   
