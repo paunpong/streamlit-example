@@ -195,7 +195,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
 
            
  for item in comment:
-  sum(item,[])
+  merged_list = sum(comment,[])
+  st.write(merged_list)
   st.write(item[0])
   st.write(item[1:])
   
