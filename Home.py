@@ -467,6 +467,7 @@ if upload_file is not None:
    for key in col:
     list_stack_num[key]={'removenan':True}
    list_num_set.append(list(set(sum_Column)))
+   list_num_set.sort(reverse=True)
   else:
    for key in col:
     list_stack_str[key]={'removenan':True}
@@ -1008,7 +1009,7 @@ if upload_file is not None:
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    Data_stack = [topic_word]
-   list_num_set.sort(reverse=True)
+   list_num_set
    st.write(list_num_set)
   
   #for topic in list_stack_str:
