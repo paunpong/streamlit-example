@@ -201,8 +201,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   doc.add_paragraph('\t')
      
  for ment in comment:   
-  df = table_comment(ment,doc)
-  doc.add_paragraph('\t')   
+  doc.add_paragraph(ment)   
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
  head = head_pic.add_run('ภาพแผนภูมิ')
