@@ -195,14 +195,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
 
                      
  for item in comment:
-  if isinstance(item, list):
-   if len(item) == 2:
-    # หัวข้อ
-    p = doc.add_paragraph()
-    p.add_run(f"{item[0]} {item[1]}").bold = True
-   elif len(item) == 1:
-    # รายการย่อย
-    doc.add_paragraph(f"- {item[0]}")
+  doc.add_paragraph(item)
   
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
