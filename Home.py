@@ -1002,8 +1002,16 @@ if upload_file is not None:
    st.table(data_stack_str2)
    
   for topic in list_stack_str:
+   if topic in dic_stackbar_str_choosen:
+    list_stack_str.remove(topic)
+   st.write(topic) 
+   Col = upload_df[topic].values.tolist()
+   list_num_set.sort(reverse=True)
    topic_word,sub_word = topic.split(' [')[:2]
-   st.write(topic_word)
+   Data_stack = [topic_word]
+   head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in list_num_set]
+   Data_stack = [Data_stack+head_choosen]
+
   
   data_str3 = list()
   cc = []
