@@ -194,8 +194,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
    doc.add_paragraph('\t')
 
  if comment != list():                    
-  for Text in comment:
-   st.write(Text[0])
+  #for Text in comment:
+   #st.write(Text[0])
    #doc.add_paragraph(text)
   for item in comment:
    if isinstance(item, list):
