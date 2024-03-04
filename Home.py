@@ -1008,7 +1008,9 @@ if upload_file is not None:
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    Data_stack = [topic_word]
-   head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in list(list_num_set).sort(reverse=True)]
+   num_sort = list(list_num_set)
+   num_sort.sort(reverse=True)
+   head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in num_sort]
    Data_stack = [Data_stack + head_choosen]
    st.table(Data_stack)
   
