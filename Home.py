@@ -195,9 +195,9 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
    doc.add_paragraph('\t')
 
  #doc.add_paragraph(comment)          
- for Ment in comment:
-  st.write(Ment[0])
-  st.write(Ment[1:])
+ #for Ment in comment:
+  #st.write(Ment[0])
+  #st.write(Ment[1:])
   
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
@@ -1054,12 +1054,11 @@ if upload_file is not None:
    st.write(Val)
    sorted_items = sorted(Val.items(), key=lambda x: x[1], reverse=True)
    data_comment.append([ment,'จำนวน'])
-   for Ans in sorted_items:
-    st.write(count)
+   for ans in sorted_items:
     if count > 1:   
-     data_comment.append([str(Ans[0]), f'({count})'])
+     data_comment.append([str(ans[0]), f'({count})'])
     else:    
-     data_comment.append([str(Ans[0]), ''])  
+     data_comment.append([str(ans[0]), ''])  
    comment.append(data_comment)
    st.table(data_comment)
    data_comment = []
