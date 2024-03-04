@@ -693,7 +693,7 @@ if upload_file is not None:
     st.text("")
     if num == 'ไม่แปลผล':
      list_stack_str[topic_stack]={'removenan':True}
-     #dict_str[topic_stack]={'removenan':True}
+     dict_str[topic_stack]={'removenan':True}
      del list_stack_num[topic_stack]
      
    if list_num_stack != dict() and {'removenan':True}:
