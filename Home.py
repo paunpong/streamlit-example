@@ -454,7 +454,7 @@ if upload_file is not None:
   else:
    list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
  dic_stackbar_str_choosen = dict()
- dic_stackbar_num_choosen = dict()
+ list_num_set = []
  set_topic = set(list_topic_stackbar)
  for i in set_topic:
   col = []
@@ -466,7 +466,7 @@ if upload_file is not None:
   if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
    for key in col:
     list_stack_num[key]={'removenan':True}
-    dic_stackbar_num_choosen[i]=[col,set(sum_Column)]
+    list_num_set.append(set(sum_Column))
   else:
    for key in col:
     list_stack_str[key]={'removenan':True}
@@ -697,10 +697,10 @@ if upload_file is not None:
     st.text("")
     if num == 'ไม่แปลผล':
      list_stack_str[topic_stack]={'removenan':True}
-     dic_stackbar_str_choosen.update(dic_stackbar_num_choosen)
+     #dic_stackbar_str_choosen.update(dic_stackbar_num_choosen)
      del list_stack_num[topic_stack]
      
-     st.write(dic_stackbar_str_choosen)
+     st.write(list_num_set)
      
    if list_num_stack != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
