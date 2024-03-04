@@ -1005,6 +1005,7 @@ if upload_file is not None:
   
   data_str_table = list()
   for Str in dict_str:
+   data_stack_str = []
    Col = upload_df[Str].values.tolist()
    count_string = count_list(Col,dict_str[Str]['removenan'])
    topic_word, sub_word = Str.split(' [')[:2]
