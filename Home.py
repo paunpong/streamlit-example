@@ -1043,7 +1043,6 @@ if upload_file is not None:
   data_str_table.append(data_stack_str)
   #table_str1.append(data_str_table)
   if dict_str != dict() and {'removenan':True}:
-   st.write(data_str_table)
    st.table(data_stack_str)
   
   data_str3 = list()
