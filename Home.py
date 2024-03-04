@@ -1069,7 +1069,7 @@ if upload_file is not None:
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,data_str1,num_table,upload_file,comment)
+                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,data_str3,num_table,upload_file,comment)
  st.download_button(label="ดาวน์โหลด",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 #st.write(table_pie)
