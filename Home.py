@@ -1012,32 +1012,16 @@ if upload_file is not None:
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    data_stack_str = [topic_word, '5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)']
-   row_sum = [sub_word]
-   for i in '5','4','3','2','1':
-    if type(i) is not str:
-      i = str(i)
-    if i not in count_string:
-     row_sum.append('0(0)')
-    else:
-     row_sum.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
+   data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
+                            f"{count_string['4']['count']}({count_string['4']['percent']}%)"if '4' in count_string else "0(0%)",
+                            f"{count_string['3']['count']}({count_string['3']['percent']}%)"if '3' in count_string else "0(0%)",
+                            f"{count_string['2']['count']}({count_string['2']['percent']}%)"if '2' in count_string else "0(0%)",
+                            f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
+ 
       
    data_stack_str.append(row_sum)
-   data_stack_str3.append(data_stack_str)
-   st.table(data_stack_str)
-
-  
-  #for topic in list_stack_str:
-   #for i in dic_stackbar_str_choosen:
-    #if topic in i:
-     #topic.remove(i)
-   #st.write(topic) 
-   #Col = upload_df[topic].values.tolist()
-   #list_num_set.sort(reverse=True)
-   #topic_word,sub_word = topic.split(' [')[:2]
-   #Data_stack = [topic_word]
-   #head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in list_num_set]
-   #Data_stack = [Data_stack+head_choosen]
-
+  data_stack_str3.append(data_stack_str)
+  st.table(data_stack_str)
   
   data_str3 = list()
   cc = []
