@@ -145,7 +145,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading_run.bold = True
  heading_run.font.size = Pt(20)    
 
- st.write(table_str2)                    
+ st.write(table_str)                    
  #--------------------------------------------------ตาราง
                   
  for t_p in table_pie:
@@ -1044,7 +1044,6 @@ if upload_file is not None:
   data_stack_str3.append(data_stack_str)
   #table_str1.append(data_str_table)
   if dict_str != dict() and {'removenan':True}:
-   st.write(data_stack_str3)
    st.table(data_stack_str)
   
   data_str3 = list()
