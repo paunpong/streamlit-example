@@ -144,7 +144,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
  heading_run.bold = True
  heading_run.font.size = Pt(20)    
- comments = str(comment)
+ 
  st.write(comments)                    
  #--------------------------------------------------ตาราง
                   
