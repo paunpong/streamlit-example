@@ -1022,7 +1022,7 @@ if upload_file is not None:
   st.table(data_stack_str)
    
   
-  #data_str3 = list()
+  data_str3 = list()
   for strs in list_str_stack:
    data_str1 = ['หัวข้อ']
    Col = upload_df[strs].values.tolist()
@@ -1040,7 +1040,7 @@ if upload_file is not None:
     else:
      data_str2.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
    data_str1.append(data_str2)
-   #data_str3.append(data_str1)
+   data_str3.append([data_str1]+data_str2)
    #st.write(data_str1)
    st.table(data_str1)
   
