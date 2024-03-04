@@ -1015,7 +1015,6 @@ if upload_file is not None:
    if topic_word != top_name:
     head_table = ['5'+'\nจำนวน(เปอร์เซนต์)','4'+'\nจำนวน(เปอร์เซนต์)','3'+'\nจำนวน(เปอร์เซนต์)','2'+'\nจำนวน(เปอร์เซนต์)','1'+'\nจำนวน(เปอร์เซนต์)']
     data_stack_str.append([topic_word,*head_table])
-    #data_stack_str.append(head_table)
     top_name = topic_word
    data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
                             f"{count_string['4']['count']}({count_string['4']['percent']}%)"if '4' in count_string else "0(0%)",
@@ -1023,7 +1022,7 @@ if upload_file is not None:
                             f"{count_string['2']['count']}({count_string['2']['percent']}%)"if '2' in count_string else "0(0%)",
                             f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
    
-   
+  data_stack_str3.append(data_stack_str) 
   st.table(data_stack_str)
    
   
