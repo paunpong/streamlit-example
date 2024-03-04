@@ -954,9 +954,9 @@ if upload_file is not None:
     elif mean < 1.8:
      level = 'น้อยที่สุด'
    data_stack_num.append([sub_word,mean,s_d,level])
-   table_num.append(data_stack_num)
   #st.table(data_stack_num)
   if list_stack_num != dict() and {'removenan':True}:
+   table_num.append(data_stack_num)
    st.table(data_stack_num)
     
   for nums in list_num_stack:
