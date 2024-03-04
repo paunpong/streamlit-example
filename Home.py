@@ -1021,8 +1021,9 @@ if upload_file is not None:
       
     data_stack_str2.append(row_sum)
    data_stack_str3.append(data_stack_str2)
+   st.write(data_stack_str3,'1')
    st.table(data_stack_str2)
-
+  
   table_str1 = []
   one_name = True
   for Str in dict_str:
@@ -1041,6 +1042,7 @@ if upload_file is not None:
                             f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
    
   data_str_table.append(data_stack_str)
+  st.write(data_str_table,'2')
   #table_str1.append(data_str_table)
   if dict_str != dict() and {'removenan':True}:
    st.table(data_stack_str)
