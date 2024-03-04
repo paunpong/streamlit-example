@@ -1012,8 +1012,7 @@ if upload_file is not None:
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    data_stack_str = [topic_word]
-   for x in list_num_set:
-    head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)']
+   head_choosen = ['5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)']
    st.write(head_choosen)
    
    st.table(data_stack_str)
