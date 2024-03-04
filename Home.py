@@ -466,7 +466,7 @@ if upload_file is not None:
   if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
    for key in col:
     list_stack_num[key]={'removenan':True}
-    dic_stackbar_num_choosen[key]=[col,set(sum_Column)]
+    dic_stackbar_num_choosen[i]=[col,set(sum_Column)]
   else:
    for key in col:
     list_stack_str[key]={'removenan':True}
