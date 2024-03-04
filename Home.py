@@ -143,7 +143,10 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading_run = heading.add_run('สรุปผล' + upload_file.name.split('.')[0])
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
  heading_run.bold = True
- heading_run.font.size = Pt(20)                       
+ heading_run.font.size = Pt(20)    
+
+ merged_list = sum(comment,[])
+ st.write(merged_list)                    
  #--------------------------------------------------ตาราง
                   
  for t_p in table_pie:
