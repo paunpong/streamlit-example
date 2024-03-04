@@ -1001,7 +1001,9 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)
    
-  for topic in list_
+  for topic in list_stack_str:
+   Data_str_stack = [topic]
+   st.write(Data_str_stack)
   
   data_str3 = list()
   cc = []
