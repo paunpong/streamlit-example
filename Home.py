@@ -1005,6 +1005,7 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)
 
+  data_stack_str = []
   for Str in dict_str:
    Col = upload_df[Str].values.tolist()
    count_string = count_list(Col,list_stack_str[Str]['removenan'])
@@ -1012,7 +1013,7 @@ if upload_file is not None:
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    if topic_word != '':
-    data_stack_str = [topic_word]
+    data_stack_str.append(topic_word)
     head_choosen = ['5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)']
     data_stack_str = [data_stack_str+head_choosen]
     topic_word = ''
