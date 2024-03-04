@@ -1051,9 +1051,11 @@ if upload_file is not None:
    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">ข้อเสนอแนะ</h3>', unsafe_allow_html=True) 
   for ment in list_comment:
    Val = Count(upload_df[ment].values.tolist(),list_comment[ment]['removenan'])
+   st.write(Val)
    sorted_items = sorted(Val.items(), key=lambda x: x[1], reverse=True)
    data_comment.append([ment,'จำนวน'])
    for Ans in sorted_items:
+    st.write(count)
     if count > 1:   
      data_comment.append([str(Ans[0]), f'({count})'])
     else:    
