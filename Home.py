@@ -145,7 +145,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading_run.bold = True
  heading_run.font.size = Pt(20)    
  
- st.write(comments)                    
+ st.write(comment)                    
  #--------------------------------------------------ตาราง
                   
  for t_p in table_pie:
@@ -1053,11 +1053,13 @@ if upload_file is not None:
    sorted_items = sorted(Val.items(), key=lambda x: x[1], reverse=True)
    data_comment.append([ment,'จำนวน'])
    for ans in sorted_items:
+    if type(ans) is not str:
+     ans = str(ans)
     count = ans[1]
     if count > 1:   
      data_comment.append([ans[0], f'({count})'])
     else:    
-     data_comment.append([ans[0], ''])
+     data_comment.append([ans[0], ''])  
    comment.append(data_comment)
    st.table(data_comment)
    data_comment = []
