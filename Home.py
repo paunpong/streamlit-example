@@ -134,7 +134,7 @@ def create_table(data,doc):
  return table
 
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                    table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment,table_str2):
+                    table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment):
 
                     
  doc = Document()
@@ -145,7 +145,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading_run.bold = True
  heading_run.font.size = Pt(20)    
 
- st.write(table_str)                    
+ #st.write(table_str)                    
  #--------------------------------------------------ตาราง
                   
  for t_p in table_pie:
@@ -1043,7 +1043,7 @@ if upload_file is not None:
   
   #table_str1.append(data_str_table)
   if dict_str != dict() and {'removenan':True}:
-   data_str_table.append(data_stack_str)
+   #data_str_table.append(data_stack_str)
    data_stack_str3.append(data_stack_str)
    st.table(data_stack_str)
   
@@ -1091,7 +1091,7 @@ if upload_file is not None:
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,data_str3,num_table,upload_file,comment,data_str_table)
+                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,data_str3,num_table,upload_file,comment)
  st.download_button(label="ดาวน์โหลด",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 #st.write(table_pie)
