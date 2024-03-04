@@ -466,7 +466,7 @@ if upload_file is not None:
   if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
    for key in col:
     list_stack_num[key]={'removenan':True}
-   list_num_set.append(set(sum_Column))
+   list_num_set.append(list(set(sum_Column)))
   else:
    for key in col:
     list_stack_str[key]={'removenan':True}
@@ -1008,8 +1008,8 @@ if upload_file is not None:
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    Data_stack = [topic_word]
-   list_set_col = list(set(Col))
-   st.write(list_set_col)
+   list_num_set
+   st.write(list_num_set)
   
   #for topic in list_stack_str:
    #for i in dic_stackbar_str_choosen:
