@@ -134,7 +134,7 @@ def create_table(data,doc):
  return table
 
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                    table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment):
+                    table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment,table_str2):
 
                     
  doc = Document()
@@ -176,6 +176,10 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df.style = 'Table Grid'
   doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
 
+ for T_Str in table_str2:
+  df = create_table(T_Str,doc)
+  df.style = 'Table Grid'
+  doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
                      
  for t_num in table_num:
   df = create_table(t_num,doc)
@@ -725,15 +729,16 @@ St_num = []
 Num_st = []
 Str_st = []
 
-table_pie = []
-table_box = []
-table_comma = []
-table_bar = []
-table_str = []
-table_num = []
+
+
+
+
+
+
 str_table = []
-num_table = []
+
 comment = []
+data_str_table = list()
 
 dict_str_stack = dict()
 dict_num_stack = dict()
@@ -847,6 +852,7 @@ if upload_file is not None:
   data_comment = []
   if list_pie_chart != dict() and {'removenan':True}: 
    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิวงกลม</h3>', unsafe_allow_html=True)
+  table_pie = [] 
   for pie in list_pie_chart:
    values = count_list(upload_df[pie].values.tolist(), list_pie_chart[pie]['removenan'])
    data_pie.append([pie, 'จำนวน', 'เปอร์เซนต์'])
@@ -871,6 +877,8 @@ if upload_file is not None:
 
   if list_boxplot != dict() and {'removenan':True}:    
    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิกล่อง</h3>', unsafe_allow_html=True)  
+   
+  table_box = [] 
   for box in list_boxplot:
    mean_sd = stat(upload_df[box].values.tolist())
    mean = mean_sd['ค่าเฉลี่ย']
@@ -887,7 +895,8 @@ if upload_file is not None:
        
   elif list_bar_chart != dict() and {'removenan':True,'orther_number':1}:
    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่ง</h3>', unsafe_allow_html=True)
-    
+
+  table_comma = []
   for comma in list_bar_chart_comma:
    topic = upload_df[comma].values.tolist()
    all_number = len(topic)
@@ -907,7 +916,8 @@ if upload_file is not None:
    st.markdown(f'<h3 style="color:red; font-size:18px">{comma}</h3>', unsafe_allow_html=True)
    st.table(data_comma)
    data_comma = []
-  
+
+  table_bar = []
   for bar in list_bar_chart:
    data = upload_df[bar].values.tolist()
    Val = Count(data,list_bar_chart[bar]['removenan'])
@@ -930,6 +940,8 @@ if upload_file is not None:
    st.markdown("""---""")
 
   st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่งแบบต่อกัน</h3>', unsafe_allow_html=True) 
+
+  table_num = []
   for num in list_stack_num:
    mat = upload_df[num].values.tolist()
    mean_sd = stat(mat,True)
@@ -958,7 +970,8 @@ if upload_file is not None:
   if list_stack_num != dict() and {'removenan':True}:
    table_num.append(data_stack_num)
    st.table(data_stack_num)
-    
+
+  num_table = []
   for nums in list_num_stack:
    math = upload_df[nums].values.tolist()
    mean_sd = stat(math,True)
@@ -1008,7 +1021,7 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)
 
-  data_str_table = list()
+  table_str = []
   one_name = True
   for Str in dict_str:
    Col = upload_df[Str].values.tolist()
@@ -1028,6 +1041,7 @@ if upload_file is not None:
    data_str_table.append(data_stack_str)
    
   if dict_str != dict() and {'removenan':True}:
+   table_str.append(data_str_table)
    st.table(data_stack_str)
   
   data_str3 = list()
@@ -1074,7 +1088,7 @@ if upload_file is not None:
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,data_str3,num_table,upload_file,comment)
+                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,data_str3,num_table,upload_file,comment,table_str)
  st.download_button(label="ดาวน์โหลด",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 #st.write(table_pie)
