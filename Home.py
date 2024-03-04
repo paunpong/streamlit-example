@@ -1009,8 +1009,9 @@ if upload_file is not None:
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    Data_stack = [topic_word]
-   list_num_set
-   st.write(list_num_set)
+   head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in set(Col)]
+   st.write(head_choosen)
+   if set(Col).issubset({'5','4','3','2','1'}):
   
   #for topic in list_stack_str:
    #for i in dic_stackbar_str_choosen:
