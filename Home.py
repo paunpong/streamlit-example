@@ -201,6 +201,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   doc.add_paragraph('\t')
      
  for text in comment:
+  if type(text) is not str:
+   text = str(text)
   st.write(text)
   paragraph = doc.add_paragraph()
   run = paragraph.add_run(text)
