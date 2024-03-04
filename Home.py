@@ -178,9 +178,10 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
 
  for T_Str in table_str2:
-  df = create_table(T_Str,doc)
-  df.style = 'Table Grid'
-  doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
+  st.write(T_Str[0])
+  #df = create_table(T_Str,doc)
+  #df.style = 'Table Grid'
+  #doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
                      
  for t_num in table_num:
   df = create_table(t_num,doc)
