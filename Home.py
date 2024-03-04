@@ -1020,7 +1020,7 @@ if upload_file is not None:
    data_str_table.append([data_stack_str1]+data_stack_str)
   
   if dict_str != dict() and {'removenan':True}:
-   st.table(data_stack_str1)
+   st.table(data_stack_str1,*data_stack_str)
   
   data_str3 = list()
   for strs in list_str_stack:
