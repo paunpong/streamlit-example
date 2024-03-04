@@ -144,7 +144,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
  heading_run.bold = True
  heading_run.font.size = Pt(20)    
-                     
+
+ st.write(table_str2)                    
  #--------------------------------------------------ตาราง
                   
  for t_p in table_pie:
@@ -1021,7 +1022,7 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)
 
-  table_str = []
+  table_str1 = []
   one_name = True
   for Str in dict_str:
    Col = upload_df[Str].values.tolist()
@@ -1039,7 +1040,7 @@ if upload_file is not None:
                             f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
    
    data_str_table.append(data_stack_str)
-   table_str.append(data_str_table)
+  table_str1.append(data_str_table)
   if dict_str != dict() and {'removenan':True}:
    st.table(data_stack_str)
   
@@ -1087,7 +1088,7 @@ if upload_file is not None:
 
 if upload_file is not None:
  word_file_path = create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
-                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,data_str3,num_table,upload_file,comment,table_str)
+                                  table_pie,table_box,table_comma,table_bar,data_stack_str3,table_num,data_str3,num_table,upload_file,comment,table_str1)
  st.download_button(label="ดาวน์โหลด",data=open(word_file_path, "rb").read(),file_name="report.docx",mime="application/docx")
 
 #st.write(table_pie)
