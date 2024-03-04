@@ -144,8 +144,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
  heading_run.bold = True
  heading_run.font.size = Pt(20)    
- 
- st.write(comment)                    
+                     
  #--------------------------------------------------ตาราง
                   
  for t_p in table_pie:
@@ -196,7 +195,9 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
    doc.add_paragraph('\t')
 
  #doc.add_paragraph(comment)          
- 
+ for Ment in comment:
+  st.write(Ment[0])
+  st.write(Ment[1:])
   
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
