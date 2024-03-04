@@ -1023,11 +1023,9 @@ if upload_file is not None:
    
   
   data_str3 = list()
-  cc = []
   for strs in list_str_stack:
    data_str1 = ['หัวข้อ']
    Col = upload_df[strs].values.tolist()
-   cc = cc + Col
    count_string = count_list(Col,list_str_stack[strs]['removenan'])
    set_col = list(set(Col))
    set_col.sort(reverse=True)
