@@ -1001,6 +1001,7 @@ if upload_file is not None:
    st.table(data_stack_str2)
 
   data_str_table = list()
+  data_stack_str1 = list()
   for Str in dict_str:
    Col = upload_df[Str].values.tolist()
    count_string = count_list(Col,list_stack_str[Str]['removenan'])
@@ -1008,18 +1009,18 @@ if upload_file is not None:
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
    if topic_word != top_name:
-    data_stack_str.append([topic_word, '5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)'])
+    data_stack_str1.append([topic_word, '5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)'])
     top_name = topic_word
-    data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
+   data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
                             f"{count_string['4']['count']}({count_string['4']['percent']}%)"if '4' in count_string else "0(0%)",
                             f"{count_string['3']['count']}({count_string['3']['percent']}%)"if '3' in count_string else "0(0%)",
                             f"{count_string['2']['count']}({count_string['2']['percent']}%)"if '2' in count_string else "0(0%)",
                             f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
    
-   data_str_table.append(data_stack_str)
+   data_str_table.append([data_stack_str1]+data_stack_str)
   
   if dict_str != dict() and {'removenan':True}:
-   st.table(data_stack_str)
+   st.table(data_stack_str1)
   
   data_str3 = list()
   for strs in list_str_stack:
