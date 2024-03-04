@@ -700,7 +700,7 @@ if upload_file is not None:
       for n_1 in list_num_keys:
        if i_1 in n_1:
         dic_stackbar_str_choosen[i_1] = topic_stack
-        dic_stackbar_str_choosen[i_1] = list_num_set
+        #dic_stackbar_str_choosen[i_1] = list_num_set
      del list_stack_num[topic_stack] 
     st.write(dic_stackbar_str_choosen)
      
