@@ -693,7 +693,7 @@ if upload_file is not None:
     st.text("")
     if num == 'ไม่แปลผล':
      list_stack_str[topic_stack]={'removenan':True}
-     dict_str[topic_stack]={'removenan':True}
+     #dict_str[topic_stack]={'removenan':True}
      del list_stack_num[topic_stack]
      
    if list_num_stack != dict() and {'removenan':True}:
@@ -1003,7 +1003,7 @@ if upload_file is not None:
   data_str_table = list()
   for Str in dict_str:
    Col = upload_df[Str].values.tolist()
-   count_string = count_list(Col,list_stack_str[Str]['removenan'])
+   count_string = count_list(Col,dict_str[Str]['removenan'])
    topic_word, sub_word = Str.split(' [')[:2]
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
