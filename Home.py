@@ -200,9 +200,10 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
   doc.add_paragraph('\t')
      
- for ment in comment:
-  text = f"{ment[0]}({len(ment) - 1})"
-  doc.add_text(text)   
+ for ment in comment[1:]:
+  if '(' in ment[1]:
+   doc.add_paragraph(ment[0] + ' ' + ment[1])
+  
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
  head = head_pic.add_run('ภาพแผนภูมิ')
