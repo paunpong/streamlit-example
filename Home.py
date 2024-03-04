@@ -152,7 +152,8 @@ def table_comment(data, doc):
 
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
                     table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment):
- 
+ is type(comment) is not str:
+  comment = str(comment)                   
  st.write(comment)                    
  doc = Document()
  
@@ -203,9 +204,6 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   doc.add_paragraph('\t')
      
  for text in comment:
-  if type(text) is not str:
-   text = str(text)
-  st.write(text)
   paragraph = doc.add_paragraph()
   run = paragraph.add_run(text)
  #---------------------------------------------------------------------------ภาพ
