@@ -1002,8 +1002,9 @@ if upload_file is not None:
    st.table(data_stack_str2)
    
   for topic in list_stack_str:
-   if topic in dic_stackbar_str_choosen:
-    list_stack_str.remove(topic)
+   for i in dic_stackbar_str_choosen
+    if topic in i:
+     topic.remove(i)
    st.write(topic) 
    Col = upload_df[topic].values.tolist()
    list_num_set.sort(reverse=True)
