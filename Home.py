@@ -1008,7 +1008,7 @@ if upload_file is not None:
    topic_word, sub_word = Str.split(' [')[:2]
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
-   if data_one:
+   if data_one == True:
     data_stack_str.append([topic_word, '5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)'])
     #data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
     data_one = False
