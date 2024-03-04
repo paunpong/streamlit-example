@@ -1011,11 +1011,11 @@ if upload_file is not None:
    topic_word, sub_word = Str.split(' [')[:2]
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
-   if topic_word != top_name:
+   if topic_word != '':
     data_stack_str = [topic_word]
     head_choosen = ['5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)']
     data_stack_str = [data_stack_str+head_choosen]
-    top_name = topic_word
+    '' = topic_word
    row_sum = [sub_word]
    for i in list_num_set:
     if type(i) is not str:
