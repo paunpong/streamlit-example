@@ -121,7 +121,6 @@ def change_num_to_text(A):
 
 def create_table(data,doc):
  headers = data[0]
- st.write(headers)
  rows = data[1:]
  df = pd.DataFrame(rows, columns=headers)
  
@@ -137,8 +136,7 @@ def create_table(data,doc):
 def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,Num_st,
                     table_pie,table_box,table_comma,table_bar,table_str,table_num,str_table,num_table,upload_file,comment):
 
- st.write(comment)
- st.write(table_str)                    
+                    
  doc = Document()
  
  heading = doc.add_heading(level=0)
@@ -149,7 +147,6 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  #--------------------------------------------------ตาราง
  if table_pie != list():                    
   for t_p in table_pie:
-   st.write(table_pie)
    df = create_table(t_p,doc)  
    df.style = 'Table Grid'                       
    doc.add_paragraph('\t')# ตารางวงกลม
