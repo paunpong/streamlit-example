@@ -1009,9 +1009,8 @@ if upload_file is not None:
    sub_word = sub_word.strip().replace(']', '')
    if topic_word != top_name:
     data_stack_str.append([topic_word, '5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)'])
-    #data_stack_str.append([" ", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)", "จำนวน(เปอร์เซนต์)"])
     top_name = topic_word
-   data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
+    data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
                             f"{count_string['4']['count']}({count_string['4']['percent']}%)"if '4' in count_string else "0(0%)",
                             f"{count_string['3']['count']}({count_string['3']['percent']}%)"if '3' in count_string else "0(0%)",
                             f"{count_string['2']['count']}({count_string['2']['percent']}%)"if '2' in count_string else "0(0%)",
