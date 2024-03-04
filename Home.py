@@ -696,7 +696,9 @@ if upload_file is not None:
     st.text("")
     if num == 'ไม่แปลผล':
      list_stack_str[topic_stack]={'removenan':True}
-     dic_stackbar_str_choosen[len(topic_stack)0:1] = [topic_stack,list_num_set]
+     if list_stack_num in set_topic:
+      st.write(set_topic)
+      dic_stackbar_str_choosen = [topic_stack,list_num_set]
      del list_stack_num[topic_stack] 
     st.write(dic_stackbar_str_choosen)
      
