@@ -202,7 +202,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
      
  for COMMENT in comment:
   doc.add_paragraph(COMMENT)
-  
+  doc.add_paragraph('\t')
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
  head = head_pic.add_run('ภาพแผนภูมิ')
