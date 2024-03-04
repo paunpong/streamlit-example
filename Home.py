@@ -149,6 +149,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  #--------------------------------------------------ตาราง
  if table_pie != list():                    
   for t_p in table_pie:
+   st.write(table_pie)
    df = create_table(t_p,doc)  
    df.style = 'Table Grid'                       
    doc.add_paragraph('\t')# ตารางวงกลม
@@ -173,6 +174,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
 
  if table_str != list():                    
   for t_str in table_str:
+   st.write(t_str)
    df = create_table(t_str,doc)
    df.style = 'Table Grid'
    doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
