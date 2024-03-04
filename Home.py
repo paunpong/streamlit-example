@@ -201,7 +201,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   doc.add_paragraph('\t')
      
  for ment in comment:
-  doc.add_paragraph(str(ment))
+  doc.add_paragraph(ment)
   if '(' in ment[1]:
    doc.add_paragraph(ment[0] + ' ' + ment[1])
   
