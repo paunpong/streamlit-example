@@ -696,13 +696,7 @@ if upload_file is not None:
     st.text("")
     if num == 'ไม่แปลผล':
      list_stack_str[topic_stack]={'removenan':True}
-     for i_1 in set_topic:
-      for n_1 in list_num_keys:
-       if i_1 in n_1:
-        dic_stackbar_str_choosen[i_1] = topic_stack
-        #dic_stackbar_str_choosen[i_1] = list_num_set
-     del list_stack_num[topic_stack] 
-    st.write(dic_stackbar_str_choosen)
+     del list_stack_num[topic_stack]
      
    if list_num_stack != dict() and {'removenan':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการให้แปลผลเป็นระดับความพึงพอใจ (1 น้อยที่สุด – 5 มากที่สุด)  )]**')
@@ -1006,7 +1000,9 @@ if upload_file is not None:
     data_stack_str2.append(row_sum)
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)
-
+   
+  for topic in list_
+  
   data_str3 = list()
   cc = []
   for strs in list_str_stack:
