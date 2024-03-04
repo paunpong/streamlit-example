@@ -1053,9 +1053,8 @@ if upload_file is not None:
    sorted_items = sorted(Val.items(), key=lambda x: x[1], reverse=True)
    data_comment.append([ment,'จำนวน'])
    for ans in sorted_items:
-    if type(ans[0]) is not str:
-     ans[0] = str(ans[0])
-    count = ans[1]
+    ans = str(ans[0])
+    st.write(ans)
     if count > 1:   
      data_comment.append([ans[0], f'({count})'])
     else:    
