@@ -1018,8 +1018,6 @@ if upload_file is not None:
                             f"{count_string['2']['count']}({count_string['2']['percent']}%)"if '2' in count_string else "0(0%)",
                             f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
  
-      
-   data_stack_str.append(row_sum)
   data_stack_str3.append(data_stack_str)
   st.table(data_stack_str)
   
