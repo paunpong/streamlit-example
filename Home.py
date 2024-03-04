@@ -146,49 +146,58 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  heading_run.bold = True
  heading_run.font.size = Pt(20)                       
  #--------------------------------------------------ตาราง
- for t_p in table_pie:
-  df = create_table(t_p,doc)  
-  df.style = 'Table Grid'                       
-  doc.add_paragraph('\t')# ตารางวงกลม
-     
- for t_box in table_box:
-  df = create_table(t_box,doc)
-  df.style = 'Table Grid' # ตารางกล่อง
-  doc.add_paragraph('\t')
-     
- for t_com in table_comma:
-  df = create_table(t_com,doc)
-  df.style = 'Table Grid'
-  doc.add_paragraph('\t')# ตารางแท่ง
-        
- for t_bar in table_bar:
-  df = create_table(t_bar,doc)
-  df.style = 'Table Grid'
-  doc.add_paragraph('\t')# ตารางแท่ง
- 
- for t_str in table_str:
-  df = create_table(t_str,doc)
-  df.style = 'Table Grid'
-  doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
-     
- for t_num in table_num:
-  df = create_table(t_num,doc)
-  df.style = 'Table Grid' 
-  doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
-     
- for str_t in str_table:
-  df = create_table(str_t,doc)
-  df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่
-  doc.add_paragraph('\t')
-     
- for num_t in num_table:
-  df = create_table(num_t,doc)
-  df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
-  doc.add_paragraph('\t')
-     
- for Text in comment:
-  st.write(Text[0])
-  #doc.add_paragraph(text)
+ if table_pie != list():                    
+  for t_p in table_pie:
+   df = create_table(t_p,doc)  
+   df.style = 'Table Grid'                       
+   doc.add_paragraph('\t')# ตารางวงกลม
+
+ if table_box != list():                    
+  for t_box in table_box:
+   df = create_table(t_box,doc)
+   df.style = 'Table Grid' # ตารางกล่อง
+   doc.add_paragraph('\t')
+
+ if table_comma != list():                   
+  for t_com in table_comma:
+   df = create_table(t_com,doc)
+   df.style = 'Table Grid'
+   doc.add_paragraph('\t')# ตารางแท่ง
+
+ if table_bar != list():                    
+  for t_bar in table_bar:
+   df = create_table(t_bar,doc)
+   df.style = 'Table Grid'
+   doc.add_paragraph('\t')# ตารางแท่ง
+
+ if table_str != list():                    
+  for t_str in table_str:
+   df = create_table(t_str,doc)
+   df.style = 'Table Grid'
+   doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
+
+ if table_num != list():                    
+  for t_num in table_num:
+   df = create_table(t_num,doc)
+   df.style = 'Table Grid' 
+   doc.add_paragraph('\t')# ตารางแท่งต่อกับมีหัวใหญ่
+
+ if str_table != list():                    
+  for str_t in str_table:
+   df = create_table(str_t,doc)
+   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่
+   doc.add_paragraph('\t')
+
+ if num_table != list():                    
+  for num_t in num_table:
+   df = create_table(num_t,doc)
+   df.style = 'Table Grid'# ตารางแท่งต่อกับไม่มีหัวใหญ่ 
+   doc.add_paragraph('\t')
+
+ if comment != list():                    
+  for Text in comment:
+   st.write(Text[0])
+   #doc.add_paragraph(text)
   
  #---------------------------------------------------------------------------ภาพ
  head_pic = doc.add_heading(level=0)
