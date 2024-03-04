@@ -198,6 +198,10 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  for Ment in comment:
   doc.add_paragraph(Ment[0])
   for Ment2 in Ment[1:]:
+   if '[' and '''' in  Ment2:
+    Ment2.remove('''')
+    Ment2.remove('[')
+    Ment2.remove(']')
    doc.add_paragraph(f"- {Ment2}")
    
   #doc.add_paragraph(Ment[0])
