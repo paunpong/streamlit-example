@@ -1023,7 +1023,7 @@ if upload_file is not None:
                             f"{count_string['1']['count']}({count_string['1']['percent']}%)"if '1' in count_string else "0(0%)"])
    
    
-   st.table(data_stack_str)
+  st.table(data_stack_str)
    
   
   data_str3 = list()
