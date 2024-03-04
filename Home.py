@@ -1016,10 +1016,10 @@ if upload_file is not None:
    for i in '5','4','3','2','1':
     if type(i) is not str:
       i = str(i)
-     if i not in count_string:
-      row_sum.append('0(0)')
-     else:
-      row_sum.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
+    if i not in count_string:
+     row_sum.append('0(0)')
+    else:
+     row_sum.append(f'{count_string[i]["count"]}({count_string[i]["percent"]})')
       
    data_stack_str.append(row_sum)
    data_stack_str3.append(data_stack_str)
