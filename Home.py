@@ -1001,13 +1001,16 @@ if upload_file is not None:
    st.table(data_stack_str2)
 
   data_str_table = list()
+  one_name = True
   for Str in dict_str:
    Col = upload_df[Str].values.tolist()
    count_string = count_list(Col,dict_str[Str]['removenan'])
    topic_word, sub_word = Str.split(' [')[:2]
    topic_word = topic_word.strip()
    sub_word = sub_word.strip().replace(']', '')
-   data_stack_str.append([topic_word, '5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)'])
+   if one_name:
+    data_stack_str.append([topic_word, '5\nจำนวน(เปอร์เซนต์)','4\nจำนวน(เปอร์เซนต์)','3\nจำนวน(เปอร์เซนต์)','2\nจำนวน(เปอร์เซนต์)','1\nจำนวน(เปอร์เซนต์)'])
+    one_name = False
    data_stack_str.append([sub_word,f"{count_string['5']['count']}({count_string['5']['percent']}%)"if '5' in count_string else "0(0%)",
                             f"{count_string['4']['count']}({count_string['4']['percent']}%)"if '4' in count_string else "0(0%)",
                             f"{count_string['3']['count']}({count_string['3']['percent']}%)"if '3' in count_string else "0(0%)",
