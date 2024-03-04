@@ -1002,7 +1002,7 @@ if upload_file is not None:
    data_stack_str3.append(data_stack_str2)
    st.table(data_stack_str2)
 
-  data_stack_str = []
+  
   data_str_table = list()
   for Str in dict_str:
    Col = upload_df[Str].values.tolist()
