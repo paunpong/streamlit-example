@@ -1002,7 +1002,7 @@ if upload_file is not None:
    st.table(data_stack_str2)
    
   for topic in list_stack_str:
-   for i in dic_stackbar_str_choosen
+   for i in dic_stackbar_str_choosen:
     if topic in i:
      topic.remove(i)
    st.write(topic) 
