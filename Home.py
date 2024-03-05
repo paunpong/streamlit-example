@@ -386,7 +386,7 @@ def stacked_bar(data,key):
  return chart_stack
 
 with st.sidebar:
- upload_file = st.sidebar.file_uploader(" ",type=["csv", "xlsx"]) 
+ upload_file = st.sidebar.file_uploader(" อัพโหลดไฟล์ ",type=["csv", "xlsx"]) 
  upload_df = upload(upload_file) 
 st.image("header.png")
 with st.expander('### :red[คำแนะนำ]',expanded=(upload_file is None)):#(upload_file is None)
