@@ -1006,7 +1006,7 @@ if upload_file is not None:
     choosen.remove('ไม่ระบุ')
    if type(choosen) is not str:
     choosen = str(choosen)
-   choosen.sort(reverse=True)
+    choosen.sort(reverse=True)
    head_choosen = [str(x)+'\nจำนวน(เปอร์เซนต์)' for x in choosen]
    data_stack_str2 = [data_stack_str2+head_choosen]
   
