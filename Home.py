@@ -420,8 +420,8 @@ if upload_file is not None:
  
  if ('Times' or 'ประทับเวลา') in list_question[0]:
   list_question.pop(0)
- else:
-  list_question
+  continue
+  
  for key in list_question:
   column = upload_df[key].values.tolist()
   len_column = len(column)
