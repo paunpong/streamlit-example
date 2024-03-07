@@ -417,15 +417,14 @@ if upload_file is not None:
  list_topic_stackbar=[]
  list_stackbar=[]
  list_question = [h for h in upload_df]
- 
- if ('Times' or 'ประทับเวลา') in list_question[0]:
-  list_question.pop(0)
-  continue
   
  for key in list_question:
   column = upload_df[key].values.tolist()
   len_column = len(column)
   x = Count(column)
+
+  if ('Times' or 'ประทับเวลา') in key:
+   list_question.remove(key)
       
   if all(value == "ไม่ระบุ" for value in column):
    list_non[key] = True
