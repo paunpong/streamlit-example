@@ -650,7 +650,7 @@ if upload_file is not None:
     strnumberitem = str(NUM)+')'
     head_bulet = strnumberitem + topic[:x]+endtext  
     bar_legend = st.radio(topic[:x]+endtext,['ใช้','ไม่ใช้'], horizontal=True)
-    list_bar_chart_comma[topic]['legend'] = True if bar_legend == 'เพิ่ม' else False
+    list_bar_chart_comma[topic]['legend'] = True if bar_legend == 'ใช้' else False
     
    if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:    
     st.markdown('**:blue[กำหนดจำนวนความถี่ขั้นต่ำของแต่ละหัวข้อที่ต้องการแสดงแท่งความถี่ในกราฟ (กรณีความถี่ไม่ถึงจะนับรวมในแท่ง อื่น ๆ)]**')
