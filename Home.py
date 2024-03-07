@@ -433,6 +433,9 @@ if upload_file is not None:
    list_time[key] = True
    continue
 
+  if 'ข้อเสนอแนะ' in key:
+   list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
+
   if '[' in key:
    list_stackbar.append(key)
    topic = key.split('[')[0]
