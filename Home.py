@@ -662,7 +662,7 @@ if upload_file is not None:
     A = upload_df[topic].values.tolist()
     a = split_comma(A)
     b = Count(a)   
-    y = st.slider(topic[:x]+endtext, 1, max(b.values()), 1, 1) 
+    y = st.slider(topic[:x]+endtext, 0, max(b.values()), 1, 1) 
     list_bar_chart_comma[topic]['orther_number'] = y
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
@@ -733,13 +733,7 @@ Num_st = []
 Str_st = []
 
 
-
-
-
-
-
 str_table = []
-
 comment = []
 
 
