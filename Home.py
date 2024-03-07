@@ -283,9 +283,8 @@ def pie_chart(data, key):
  fig,ax = plt.subplots()
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop, 'fontsize': 14})
  plt.title(key, fontproperties=thai_font_prop, fontsize=16)
- if '/' in key:
-  key.split('/')[0]
- chart_pie = f"{key}.png"
+ i= 100
+ chart_pie = f"{i+1}.png"
  plt.savefig(chart_pie, bbox_inches='tight',dpi=300)#, bbox_inches='tight'
  st.pyplot()
  return chart_pie
