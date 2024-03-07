@@ -323,9 +323,8 @@ def boxplot(data,key,removenan=True,Aver=True):
  if Aver == True:
   plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop, fontsize = 16)
- if '/' in key:
-  key.split('/')[0]
- chart_box = f"{key}.png"
+ i = 1000
+ chart_box = f"{i+1}.png"
  plt.savefig(chart_box, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_box
@@ -377,9 +376,8 @@ def stacked_bar(data,key):
  
  d_f.plot.barh(stacked=True, figsize=(8,3), ax=ax).legend(bbox_to_anchor=(1, 0, 0.19, 1), prop=thai_font_prop, fontsize=16)
  plt.title(key,fontproperties=thai_font_prop, fontsize=16)
- if '/' in key:
-  key.split('/')[0]
- chart_stack = f"{key}.png"
+ i = 200
+ chart_stack = f"{i+1}.png"
  plt.savefig(chart_stack, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_stack
