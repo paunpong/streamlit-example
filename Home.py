@@ -417,9 +417,12 @@ if upload_file is not None:
  list_topic_stackbar=[]
  list_stackbar=[]
  list_question = [h for h in upload_df]
+ 
  if ('Times' or 'ประทับเวลา') in list_question[0]:
   list_question.pop(0)
-      
+ else: 
+  continue    
+ 
  for key in list_question:
   column = upload_df[key].values.tolist()
   len_column = len(column)
