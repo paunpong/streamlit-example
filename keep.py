@@ -23,15 +23,8 @@ thai_font_path = os.path.join("THSARABUN BOLD.TTF")
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
 digit = int(2)
-list_pie_chart = {}
-list_boxplot={}
-list_bar_chart_comma={}
-list_bar_chart={}
-list_stack_str={}
-list_stack_num={}
+
 #list_stack_bar={}
-list_str_stack = {}
-list_num_stack = {}
 list_comment={}
 list_time={}
 list_non = {}
@@ -415,77 +408,90 @@ if upload_file is not None:
  elif Color == 'ชุดสีที่ 3':
   plt.rcParams['axes.prop_cycle'] = plt.cycler(color=color_set3)    
  else:
-  plt.rcParams['axes.prop_cycle'] = plt.cycler(color=color_set4)   
-      
- list_topic_stackbar=[]
- list_stackbar=[]
- list_question = [h for h in upload_df]
- if ('Times' or 'ประทับเวลา') in list_question[0]:
-  list_question.pop(0)
-      
- for key in list_question:
-  column = upload_df[key].values.tolist()
-  len_column = len(column)
-  x = Count(column)
-      
-  if all(value == "ไม่ระบุ" for value in column):
-   list_non[key] = True
-   continue   
+  plt.rcParams['axes.prop_cycle'] = plt.cycler(color=color_set4)  
+  
+ def Classify(upload_df):
+  list_pie_chart = {}
+  list_boxplot={}
+  list_bar_chart_comma={}
+  list_bar_chart={}
+  list_stack_str={}
+  list_stack_num={}
+  list_str_stack = {}
+  list_num_stack = {}
+  list_topic_stackbar=[]
+  list_stackbar=[]
+  list_question = [h for h in upload_df]
+  if ('Times' or 'ประทับเวลา') in list_question[0]:
+   list_question.pop(0)
        
-  if 'time' in key:
-   list_time[key] = True
-   continue
-
-  if '[' in key:
-   list_stackbar.append(key)
-   topic = key.split('[')[0]
-   if topic not in list_topic_stackbar:
-    list_topic_stackbar.append(topic)
-   continue
- 
-  if num_check(column) and set(column).issubset({1,2,3,4,5}):
-   list_num_stack[key]={'removenan':True}
-   continue
-
-  if not num_check(column) and set(column).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'}):
-   list_str_stack[key]={'removenan':True}
-   continue
+  for key in list_question:
+   column = upload_df[key].values.tolist()
+   len_column = len(column)
+   x = Count(column)
+       
+   if all(value == "ไม่ระบุ" for value in column):
+    list_non[key] = True
+    continue   
+        
+   if 'time' in key:
+    list_time[key] = True
+    continue
+  
+   if '[' in key:
+    list_stackbar.append(key)
+    topic = key.split('[')[0]
+    if topic not in list_topic_stackbar:
+     list_topic_stackbar.append(topic)
+    continue
+  
+   if num_check(column) and set(column).issubset({1,2,3,4,5}):
+    list_num_stack[key]={'removenan':True}
+    continue
+  
+   if not num_check(column) and set(column).issubset({'มากที่สุด','มาก','ปานกลาง','น้อย','น้อยที่สุด'}):
+    list_str_stack[key]={'removenan':True}
+    continue
+     
+   if check_comma(column):
+    list_bar_chart_comma[key] = {'removenan':True,'orther_number':1,'legend':True}
+    continue
     
-  if check_comma(column):
-   list_bar_chart_comma[key] = {'removenan':True,'orther_number':1,'legend':True}
-   continue
-   
-  if num_check(column):
-   list_boxplot[key] = {'removenan':True,'Aver':True}
-   continue
-   
-  if len(set(column)) < 6:
-   list_pie_chart[key]={'removenan':True}
-  else:
-   list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
- dic_stackbar_str_choosen = dict()
- list_num_set = []
- set_topic = set(list_topic_stackbar)
- for i in set_topic:
-  col = []
-  for n in list_stackbar:
-   if i in n:
-    col.append(n)
-  Column = upload_df[col].values.tolist()
-  sum_Column = sum(Column,[])
-  if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
-   for key in col:
-    list_stack_num[key]={'removenan':True}
-   list_num_set.append(list(set(sum_Column)))
-   list_num_set.sort(reverse=True)
-  else:
-   for key in col:
-    list_stack_str[key]={'removenan':True}
-    dic_stackbar_str_choosen[i]=[col,set(sum_Column)]
+   if num_check(column):
+    list_boxplot[key] = {'removenan':True,'Aver':True}
+    continue
+    
+   if len(set(column)) < 6:
+    list_pie_chart[key]={'removenan':True}
+   else:
+    list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
+  dic_stackbar_str_choosen = dict()
+  list_num_set = []
+  set_topic = set(list_topic_stackbar)
+  for i in set_topic:
+   col = []
+   for n in list_stackbar:
+    if i in n:
+     col.append(n)
+   Column = upload_df[col].values.tolist()
+   sum_Column = sum(Column,[])
+   if num_check(sum_Column)and set(sum_Column).issubset({1,2,3,4,5,'ไม่ระบุ'}):
+    for key in col:
+     list_stack_num[key]={'removenan':True}
+    list_num_set.append(list(set(sum_Column)))
+    list_num_set.sort(reverse=True)
+   else:
+    for key in col:
+     list_stack_str[key]={'removenan':True}
+     dic_stackbar_str_choosen[i]=[col,set(sum_Column)]
+     
+  return [list_num_stack,list_str_stack,list_bar_chart_comma,list_boxplot,list_pie_chart,list_bar_chart,list_stack_num,list_stack_str,dic_stackbar_str_choosen]  
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 dict_str_choosen = dict()
 if upload_file is not None:
+ def_cl = Classify(upload_df)
+ st.write(def_cl)
  list_pie_keys = list(list_pie_chart.keys())
  list_box_keys = list(list_boxplot.keys())
  list_bar_keys = list(list_bar_chart.keys())
