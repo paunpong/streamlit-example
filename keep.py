@@ -486,13 +486,13 @@ if upload_file is not None:
      list_stack_str[key]={'removenan':True}
      dic_stackbar_str_choosen[i]=[col,set(sum_Column)]
      
-  return [list_num_stack,list_str_stack,list_bar_chart_comma,list_boxplot,list_pie_chart,list_bar_chart,list_stack_num,list_stack_str,dic_stackbar_str_choosen]  
+  return list_num_stack,list_str_stack,list_bar_chart_comma,list_boxplot,list_pie_chart,list_bar_chart,list_stack_num,list_stack_str,dic_stackbar_str_choosen  
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 dict_str_choosen = dict()
 if upload_file is not None:
  def_cl = Classify(upload_df)
- st.write(def_cl)
+ st.write(def_cl[list_pie_chart])
  list_pie_keys = list(list_pie_chart.keys())
  list_box_keys = list(list_boxplot.keys())
  list_bar_keys = list(list_bar_chart.keys())
