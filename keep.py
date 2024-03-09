@@ -419,6 +419,7 @@ if upload_file is not None:
   list_stack_num={}
   list_str_stack = {}
   list_num_stack = {}
+  dic_stackbar_str_choosen = dict()
   list_topic_stackbar=[]
   list_stackbar=[]
   list_question = [h for h in upload_df]
@@ -465,7 +466,7 @@ if upload_file is not None:
     list_pie_chart[key]={'removenan':True}
    else:
     list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
-  dic_stackbar_str_choosen = dict()
+  
   list_num_set = []
   set_topic = set(list_topic_stackbar)
   for i in set_topic:
