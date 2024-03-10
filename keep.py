@@ -363,8 +363,11 @@ def bar_chart_new(data,key,legend):
  
 def stacked_bar(data,key):
  fig,ax = plt.subplots()
+ st.write(data,'1')
  name = data.keys()
  data1 = data.values()
+ st.write(name,'2')
+ st.write(data1,'3')
 
  ax.set_yticklabels(name, fontproperties=thai_font_prop, fontsize=16)
  d_f = pd.DataFrame(data1,index=name)
