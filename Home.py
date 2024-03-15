@@ -278,6 +278,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  return 'report.docx'
 
 def pie_chart(data, key):
+ st.write(data,'1')
+ st.write(key)
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots()
