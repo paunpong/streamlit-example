@@ -495,7 +495,7 @@ if upload_file is not None:
 dict_str_choosen = dict()
 if upload_file is not None:
  list_num_stack,list_str_stack,list_bar_chart_comma,list_boxplot,list_pie_chart,list_bar_chart,list_stack_num,list_stack_str,dic_stackbar_str_choosen = Classify(upload_df)
- #st.write(def_cl[0])
+ st.write(list_pie_chart)
  list_pie_keys = list(list_pie_chart.keys())
  list_box_keys = list(list_boxplot.keys())
  list_bar_keys = list(list_bar_chart.keys())
