@@ -290,7 +290,6 @@ def pie_chart(data, key):
  return chart_pie
 
 def boxplot(data,key,removenan=True,Aver=True):
- st.write(data,'111111111')
  if removenan and 'ไม่ระบุ' in data:
   data = [n for n in data if n != 'ไม่ระบุ']
  fig,ax = plt.subplots()
