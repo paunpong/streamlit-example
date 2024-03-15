@@ -342,9 +342,6 @@ def bar_list_count(data,orther_number=1):
  return [labels, values]
 
 def bar_chart_new(data,key,legend):
- st.write(data)
- st.write(key)
- st.write(legend)
  values = data[1]
  fig,ax = plt.subplots()
  if legend == True:
@@ -370,6 +367,8 @@ def bar_chart_new(data,key,legend):
  return chart_bar
  
 def stacked_bar(data,key):
+ st.write(data)
+ st.write(key)
  fig,ax = plt.subplots()
  name = data.keys()
  data1 = data.values()
