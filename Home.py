@@ -367,8 +367,6 @@ def bar_chart_new(data,key,legend):
  return chart_bar
  
 def stacked_bar(data,key):
- st.write(data)
- st.write(key)
  fig,ax = plt.subplots()
  name = data.keys()
  data1 = data.values()
