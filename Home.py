@@ -538,7 +538,7 @@ if upload_file is not None:
    numberitem = numberitem+1
    strnumberitem = str(numberitem)+')'
    head_bulet = strnumberitem + topic[:x]+endtext
-   st.write(head_bulet)
+   #st.write(head_bulet)
    comma = st.radio(head_bulet,['แผนภูมิแท่ง (Bar chart)','ข้อเสนอแนะ (comment)'])
    if comma == 'ข้อเสนอแนะ (comment)':
     list_comment[topic] = {'removenan':True}
