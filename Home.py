@@ -539,7 +539,11 @@ if upload_file is not None:
    strnumberitem = str(numberitem)+')'
    head_bulet = strnumberitem + topic[:x]+endtext
    st.write(head_bulet)
-   #comma = st.radio(head_bulet,['แผนภูมิแท่ง'])
+   comma = st.radio(head_bulet,['แผนภูมิแท่ง (Bar chart)','ข้อเสนอแนะ (comment)'])
+   if comma == 'ข้อเสนอแนะ (comment)':
+    list_comment[topic] = {'removenan':True}
+    if 'orther_number' in list_bar_chart_comma[topic]:
+     del list_bar_chart_comma[topic]
    st.text("")
        
   for topic in list_bar_keys:
