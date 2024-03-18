@@ -513,12 +513,16 @@ if upload_file is not None:
    numberitem = numberitem+1
    strnumberitem = str(numberitem)+')'
    head_bulet = strnumberitem + topic[:x]+endtext
-   p = st.radio(head_bulet, ['แผนภูมิวงกลม (Pie chart)', 'แผนภูมิแท่ง (Bar chart)'])#, horizontal=True
+   p = st.radio(head_bulet, ['แผนภูมิวงกลม (Pie chart)', 'แผนภูมิแท่ง (Bar chart)','ข้อเสนอแนะ (comment)'])#, horizontal=True
    st.text("")
    if p == 'แผนภูมิแท่ง (Bar chart)':
     list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
     del list_pie_chart[topic]
-        
+    continue
+   if p == 'ข้อเสนอแนะ (comment)':
+    list_comment[topic] = {'removenan':True}
+    del list_pie_chart[topic]
+    continue
   if list_pie_keys != list():
    st.markdown("""---""")
        
