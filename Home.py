@@ -220,6 +220,7 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  head.font.size = Pt(16)                                              
 
  for pie in Pie_chart:
+  st.write(Pie_chart)
   #doc.add_picture(pie, height=Cm(10.16))#, width=Cm(15.24), height=Cm(10.16)
   paragraph_pie = doc.add_paragraph()
   run_pie = paragraph_pie.add_run()
