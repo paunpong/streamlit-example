@@ -205,7 +205,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
   doc.add_paragraph(Ment[0])
   for Ment2 in Ment[1:]:
    doc.add_paragraph(f"- {Ment2[0]} \t {Ment2[1]}")
-   
+  doc.add_paragraph('\t')
+  
   #doc.add_paragraph(Ment[0])
   #doc.add_paragraph(f'- {Ment[1:]}')
   #doc.add_paragraph(f"- {item[0]}")
