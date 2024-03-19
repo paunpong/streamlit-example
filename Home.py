@@ -278,21 +278,24 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
      
  doc.save('report.docx')
  return 'report.docx'
-
+pop = 100
 def pie_chart(data, key):
- pop = 100
+ global pop
+ pop += 1
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots()
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop, 'fontsize': 14})
  plt.title(key, fontproperties=thai_font_prop, fontsize=16)
- chart_pie = f"{pop+1}.png"
+ chart_pie = f"{pop}.png"
  plt.savefig(chart_pie, bbox_inches='tight',dpi=300)#, bbox_inches='tight'
  st.pyplot()
  return chart_pie
-
+ 
+pop1 = 1000
 def boxplot(data,key,removenan=True,Aver=True):
- pop1 = 1000
+ global pop1
+ pop1 += 1
  if removenan and 'ไม่ระบุ' in data:
   data = [n for n in data if n != 'ไม่ระบุ']
  fig,ax = plt.subplots()
@@ -344,8 +347,10 @@ def bar_list_count(data,orther_number=1):
   labels.append('ไม่ระบุ')
  return [labels, values]
 
+pop2 = 10000
 def bar_chart_new(data,key,legend):
- pop2 = 10000
+ global pop2
+ pop2 += 1
  values = data[1]
  fig,ax = plt.subplots()
  if legend == True:
@@ -368,9 +373,11 @@ def bar_chart_new(data,key,legend):
  plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_bar
- 
+
+pop3 = 100000
 def stacked_bar(data,key):
- pop3 = 100000
+ global pop3
+ pop3 += 1
  fig,ax = plt.subplots()
  name = data.keys()
  data1 = data.values()
