@@ -435,7 +435,6 @@ if upload_file is not None:
   if ('Times' or 'ประทับเวลา') in key:
    list_question.remove(key)
    continue
-  st.write(list_question) 
       
   if all(value == "ไม่ระบุ" for value in column):
    list_non[key] = True
