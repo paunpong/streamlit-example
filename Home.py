@@ -279,14 +279,17 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  doc.save('report.docx')
  return 'report.docx'
 
+pop = 100
+pop1 = 1000
+pop2 = 10000
+pop3 = 100000
 def pie_chart(data, key):
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots()
  ax.pie(counts, labels=labels, autopct=f'%.{digit}f', textprops={'fontproperties': thai_font_prop, 'fontsize': 14})
  plt.title(key, fontproperties=thai_font_prop, fontsize=16)
- i= 100
- chart_pie = f"{i+1}.png"
+ chart_pie = f"{pop+1}.png"
  plt.savefig(chart_pie, bbox_inches='tight',dpi=300)#, bbox_inches='tight'
  st.pyplot()
  return chart_pie
@@ -325,8 +328,8 @@ def boxplot(data,key,removenan=True,Aver=True):
  if Aver == True:
   plt.text(0.7,average, f'Average: {average:.{digit}f}')
  plt.title(key,fontproperties=thai_font_prop, fontsize = 16)
- i = 1000
- chart_box = f"{i+1}.png"
+ 
+ chart_box = f"{pop1+1}.png"
  plt.savefig(chart_box, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_box
@@ -352,7 +355,7 @@ def bar_chart_new(data,key,legend):
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
   color=plt.rcParams['axes.prop_cycle'].by_key()['color']
   for i in range(len(data[0])):
-   Legend = f'{i + 1}:{data[0][i]}'
+   Legend = f'{pop2 + 1}:{data[0][i]}'
    ax.bar(labels, values, label=Legend,color=color)#,color=color  
   ax.legend(bbox_to_anchor=(1, 0, 0.18, 1),prop=thai_font_prop,handlelength=0, fontsize=14) 
  else:
@@ -362,8 +365,7 @@ def bar_chart_new(data,key,legend):
   ax.yaxis.set_major_locator(plt.MaxNLocator(integer=True))
   ax.bar(Label,values,color=color)
  plt.title(key,fontproperties=thai_font_prop, fontsize=16)
- i = 0
- chart_bar = f"{i+1}.png"
+ chart_bar = f"{pop2+1}.png"
  plt.savefig(chart_bar, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_bar
@@ -378,8 +380,7 @@ def stacked_bar(data,key):
  
  d_f.plot.barh(stacked=True, figsize=(8,3), ax=ax).legend(bbox_to_anchor=(1, 0, 0.19, 1), prop=thai_font_prop, fontsize=16)
  plt.title(key,fontproperties=thai_font_prop, fontsize=16)
- i = 200
- chart_stack = f"{i+1}.png"
+ chart_stack = f"{pop3+1}.png"
  plt.savefig(chart_stack, bbox_inches='tight',dpi=300)
  st.pyplot()
  return chart_stack
