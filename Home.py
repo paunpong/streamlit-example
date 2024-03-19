@@ -279,11 +279,8 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  doc.save('report.docx')
  return 'report.docx'
 
-pop = 100
-pop1 = 1000
-pop2 = 10000
-pop3 = 100000
 def pie_chart(data, key):
+ pop = 100
  labels = [key for key in data]
  counts = [data[key]['percent'] for key in data]
  fig,ax = plt.subplots()
@@ -295,6 +292,7 @@ def pie_chart(data, key):
  return chart_pie
 
 def boxplot(data,key,removenan=True,Aver=True):
+ pop1 = 1000
  if removenan and 'ไม่ระบุ' in data:
   data = [n for n in data if n != 'ไม่ระบุ']
  fig,ax = plt.subplots()
@@ -347,6 +345,7 @@ def bar_list_count(data,orther_number=1):
  return [labels, values]
 
 def bar_chart_new(data,key,legend):
+ pop2 = 10000
  values = data[1]
  fig,ax = plt.subplots()
  if legend == True:
@@ -371,6 +370,7 @@ def bar_chart_new(data,key,legend):
  return chart_bar
  
 def stacked_bar(data,key):
+ pop3 = 100000
  fig,ax = plt.subplots()
  name = data.keys()
  data1 = data.values()
