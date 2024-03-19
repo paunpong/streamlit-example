@@ -203,7 +203,6 @@ def create_word_doc(Pie_chart,Box_chart,Com_bar,Bar_chart,St_str,St_num,Str_st,N
  #doc.add_paragraph(comment)          
  for Ment in comment:
   doc.add_paragraph(Ment[0])
-  st.write(Ment[0])
   for Ment2 in Ment[1:]:
    doc.add_paragraph(f"  - {Ment2[0]} \t {Ment2[1]}")
   doc.add_paragraph('\t')
@@ -1083,7 +1082,7 @@ if upload_file is not None:
   for ment in list_comment:
    Val = Count(upload_df[ment].values.tolist(),list_comment[ment]['removenan'])
    sorted_items = sorted(Val.items(), key=lambda x: x[1], reverse=True)
-   data_comment.append([ment,'จำนวน'])
+   data_comment.append([ment,'(จำนวน)'])
    for ans in sorted_items:
     if ans[1] > 1:   
      data_comment.append([ans[0], f'({ans[1]})'])
