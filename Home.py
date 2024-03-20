@@ -334,9 +334,9 @@ def boxplot(data,key,removenan=True,Aver=True):
  st.pyplot()
  return chart_box
 
-def bar_list_count(data,orther_number=1):
+def bar_list_count(data,orther_number=2):
  values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
- values_orther =  [data[key] for key in data if (data[key] <= orther_number ) and (key != "ไม่ระบุ")]
+ values_orther =  [data[key] for key in data if (data[key] < orther_number ) and (key != "ไม่ระบุ")]
  labels = [key for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
  if len(values_orther)>0:
   values.append(sum(values_orther))
@@ -445,7 +445,7 @@ if upload_file is not None:
    continue
 
   if 'ข้อเสนอแนะ' in key:
-   list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
+   list_bar_chart[key] = {'removenan':True,'orther_number':2,'legend':True}
    continue
    
   if '[' in key:
@@ -464,7 +464,7 @@ if upload_file is not None:
    continue
     
   if check_comma(column):
-   list_bar_chart_comma[key] = {'removenan':True,'orther_number':1,'legend':True}
+   list_bar_chart_comma[key] = {'removenan':True,'orther_number':2,'legend':True}
    continue
    
   if num_check(column):
@@ -474,7 +474,7 @@ if upload_file is not None:
   if len(set(column)) < 6:
    list_pie_chart[key]={'removenan':True}
   else:
-   list_bar_chart[key] = {'removenan':True,'orther_number':1,'legend':True}
+   list_bar_chart[key] = {'removenan':True,'orther_number':2,'legend':True}
  dic_stackbar_str_choosen = dict()
  list_num_set = []
  set_topic = set(list_topic_stackbar)
@@ -526,7 +526,7 @@ if upload_file is not None:
    p = st.radio(head_bulet, ['แผนภูมิวงกลม (Pie chart)', 'แผนภูมิแท่ง (Bar chart)','ข้อเสนอแนะ (comment)'])#, horizontal=True
    st.text("")
    if p == 'แผนภูมิแท่ง (Bar chart)':
-    list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
+    list_bar_chart[topic]={'removenan':True,'orther_number':2,'legend':True}
     del list_pie_chart[topic]
     continue
    if p == 'ข้อเสนอแนะ (comment)':
@@ -543,7 +543,7 @@ if upload_file is not None:
    box = st.radio(head_bulet,['แผนภูมิกล่อง (Boxplot)','แผนภูมิแท่ง (Bar chart)'])
    st.text("")
    if box == 'แผนภูมิแท่ง (Bar chart)':
-    list_bar_chart[topic]={'removenan':True,'orther_number':1,'legend':True}
+    list_bar_chart[topic]={'removenan':True,'orther_number':2,'legend':True}
     del list_boxplot[topic]
   if list_box_keys != list():
    st.markdown("""---""")
@@ -648,7 +648,7 @@ if upload_file is not None:
     continue
     
   if Type == 'แท่ง':
-   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:   
+   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':2,'legend':True}:   
     st.markdown('**:blue[หัวข้อใดที่ต้องการเพิ่มจำนวนของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
    NUM = 0 
    for topic in list_bar_chart_comma:
@@ -661,7 +661,7 @@ if upload_file is not None:
     bar = st.radio(head_bulet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
     list_bar_chart_comma[topic]['removenan'] = True if bar == 'ไม่เพิ่ม' else False 
     
-   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:
+   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':2,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการใช้ลำดับที่แสดงกำกับใต้แท่งแทนชื่อในแผนภูมิ ]**')
    NUM = 0 
    for topic in list_bar_chart_comma:
@@ -671,7 +671,7 @@ if upload_file is not None:
     bar_legend = st.radio(topic[:x]+endtext,['ใช้','ไม่ใช้'], horizontal=True)
     list_bar_chart_comma[topic]['legend'] = True if bar_legend == 'ใช้' else False
     
-   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1,'legend':True}:    
+   if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':2,'legend':True}:    
     st.markdown('**:blue[กำหนดจำนวนความถี่ขั้นต่ำของแต่ละหัวข้อที่ต้องการแสดงแท่งความถี่ในกราฟ (กรณีความถี่ไม่ถึงจะนับรวมในแท่ง อื่น ๆ)]**')
    NUM = 0 
    for topic in list_bar_chart_comma:
@@ -681,10 +681,10 @@ if upload_file is not None:
     A = upload_df[topic].values.tolist()
     a = split_comma(A)
     b = Count(a)   
-    y = st.slider(topic[:x]+endtext, 0, max(b.values()), 1, 1) 
+    y = st.slider(topic[:x]+endtext, 1, max(b.values()), 1, 2) 
     list_bar_chart_comma[topic]['orther_number'] = y
 
-   if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
+   if list_bar_chart != dict() and {'removenan':True,'orther_number':2,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการเพิ่มจำนวนของผู้ไม่ตอบแบบสอบถามในกราฟ]**')
    NB = 0 
    for topic_bar in list_bar_chart:
@@ -695,7 +695,7 @@ if upload_file is not None:
     Bar = st.radio(head_bullet, ['ไม่เพิ่ม', 'เพิ่ม'], horizontal=True)
     list_bar_chart[topic_bar]['removenan'] = True if Bar == 'ไม่เพิ่ม' else False
 
-   if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
+   if list_bar_chart != dict() and {'removenan':True,'orther_number':2,'legend':True}:
     st.markdown('**:blue[หัวข้อใดที่ต้องการใช้ลำดับที่แสดงกำกับใต้แท่งแทนชื่อในแผนภูมิ]**')
    NB = 0 
    for topic_bar in list_bar_chart:
@@ -705,7 +705,7 @@ if upload_file is not None:
     Bar_legend = st.radio(head_bullet, ['ใช้', 'ไม่ใช้'], horizontal=True)
     list_bar_chart[topic_bar]['legend'] = True if Bar_legend == 'ใช้' else False
 
-   if list_bar_chart != dict() and {'removenan':True,'orther_number':1,'legend':True}:
+   if list_bar_chart != dict() and {'removenan':True,'orther_number':2,'legend':True}:
     st.markdown('**:blue[กำหนดจำนวนความถี่ขั้นต่ำของแต่ละหัวข้อที่ต้องการแสดงแท่งความถี่ในกราฟ (กรณีความถี่ไม่ถึงจะนับรวมในแท่ง อื่น ๆ)]**')
    NB = 0 
    for topic_bar in list_bar_chart:
@@ -906,10 +906,10 @@ if upload_file is not None:
    st.table([head_amount,*data_box])
    st.markdown("""---""") 
 
-  if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':1}: 
+  if list_bar_chart_comma != dict() and {'removenan':True,'orther_number':2}: 
    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่ง</h3>', unsafe_allow_html=True)
        
-  elif list_bar_chart != dict() and {'removenan':True,'orther_number':1}:
+  elif list_bar_chart != dict() and {'removenan':True,'orther_number':2}:
    st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่ง</h3>', unsafe_allow_html=True)
 
   table_comma = []
@@ -952,7 +952,7 @@ if upload_file is not None:
    st.table(data_bar)
    data_bar = []
     
-  if list_bar_chart != dict() and {'removenan':True,'orther_number':1}:
+  if list_bar_chart != dict() and {'removenan':True,'orther_number':2}:
    st.markdown("""---""")
 
   st.markdown('<h3 style="color:blue; font-size:18px; text-align:center;">แผนภูมิแท่งแบบต่อกัน</h3>', unsafe_allow_html=True) 
