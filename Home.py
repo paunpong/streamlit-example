@@ -681,7 +681,7 @@ if upload_file is not None:
     A = upload_df[topic].values.tolist()
     a = split_comma(A)
     b = Count(a)   
-    y = st.slider(topic[:x]+endtext, 1, max(b.values()), 1, 2) 
+    y = st.slider(topic[:x]+endtext, 1, max(b.values()), 2, 1) 
     list_bar_chart_comma[topic]['orther_number'] = y
 
    if list_bar_chart != dict() and {'removenan':True,'orther_number':2,'legend':True}:
@@ -713,7 +713,7 @@ if upload_file is not None:
     strnumberitem = str(NB)+')'
     head_bullet = strnumberitem + topic_bar[:x] + endtext   
     c = Count(upload_df[topic_bar].values.tolist())
-    y = st.slider(head_bullet, 0, max(c.values()), 1, 1)
+    y = st.slider(head_bullet, 1, max(c.values()), 2, 1)
     list_bar_chart[topic_bar]['orther_number'] = y
     
   if Type == 'แท่งต่อกัน':
