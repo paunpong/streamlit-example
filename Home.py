@@ -336,7 +336,7 @@ def boxplot(data,key,removenan=True,Aver=True):
 
 def bar_list_count(data,orther_number=2):
  values = [data[key] for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
- values_orther =  [data[key] for key in data if (data[key] < orther_number ) and (key != "ไม่ระบุ")]
+ values_orther =  [data[key] for key in data if (data[key] <= orther_number ) and (key != "ไม่ระบุ")]
  st.write(values_orther)
  labels = [key for key in data if (data[key] > orther_number ) and (key != "ไม่ระบุ")]
  if len(values_orther)>0:
