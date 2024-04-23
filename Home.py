@@ -431,8 +431,7 @@ if upload_file is not None:
   column = upload_df[key].values.tolist()
   len_column = len(column)
   x = Count(column)
-  st.write(list_question)
-
+  
   if ('Times' or 'ประทับเวลา') in key:
    list_question.remove(key)
    continue
@@ -444,6 +443,7 @@ if upload_file is not None:
   if 'time' in key:
    list_time[key] = True
    continue
+  st.write(list_time) 
 
   if 'ข้อเสนอแนะ' in key:
    list_bar_chart[key] = {'removenan':True,'orther_number':2,'legend':True}
