@@ -431,10 +431,14 @@ if upload_file is not None:
   column = upload_df[key].values.tolist()
   len_column = len(column)
   x = Count(column)
-  
-  if ('Times' or 'ประทับเวลา') in key:
-   list_question.remove(key)
+
+  if ('Times' or 'ประทับเวลา') in list_question:
+   list_question.pop(0)
    continue
+  
+  #if ('Times' or 'ประทับเวลา') in key:
+   #list_question.remove(key)
+   #continue
       
   if all(value == "ไม่ระบุ" for value in column):
    list_non[key] = True
@@ -453,8 +457,7 @@ if upload_file is not None:
    topic = key.split('[')[0]
    if topic not in list_topic_stackbar:
     list_topic_stackbar.append(topic)
-   continue
-  st.write(list_stackbar,'list_stackbar') 
+   continue 
  
   if num_check(column) and set(column).issubset({1,2,3,4,5}):
    list_num_stack[key]={'removenan':True}
@@ -476,7 +479,7 @@ if upload_file is not None:
    list_pie_chart[key]={'removenan':True}
   else:
    list_bar_chart[key] = {'removenan':True,'orther_number':2,'legend':True}
-  st.write(list_pie_chart) 
+   
  dic_stackbar_str_choosen = dict()
  list_num_set = []
  set_topic = set(list_topic_stackbar)
