@@ -23,7 +23,7 @@ thai_font_path = os.path.join("THSARABUN BOLD.TTF")
 thai_font_prop = fm.FontProperties(fname=thai_font_path)
 
 digit = int(2)
-list_pie_chart = {}
+list_pie_chart={}
 list_boxplot={}
 list_bar_chart_comma={}
 list_bar_chart={}
@@ -446,8 +446,7 @@ if upload_file is not None:
 
   if 'ข้อเสนอแนะ' in key:
    list_bar_chart[key] = {'removenan':True,'orther_number':2,'legend':True}
-   continue
-  st.write(list_bar_chart) 
+   continue 
    
   if '[' in key:
    list_stackbar.append(key)
@@ -476,6 +475,7 @@ if upload_file is not None:
    list_pie_chart[key]={'removenan':True}
   else:
    list_bar_chart[key] = {'removenan':True,'orther_number':2,'legend':True}
+  st.write(list_pie_chart) 
  dic_stackbar_str_choosen = dict()
  list_num_set = []
  set_topic = set(list_topic_stackbar)
