@@ -432,7 +432,7 @@ if upload_file is not None:
   len_column = len(column)
   x = Count(column)
 
-  if ('Times' or 'ประทับเวลา') in list_question:
+  if ('Times' or 'ประทับเวลา') in list_question[0]:
    list_question.pop(0)
    continue
   
