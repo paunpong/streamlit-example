@@ -497,7 +497,7 @@ if upload_file is not None:
 #--------------------------------------------------------------- ทำปุ่มแสดงเงื่อนไขของแต่ละหัวข้อ
 #pie chart แสดงเพิ่มว่า ใส่ ไม่ระบุ หรือไม่
 dict_str_choosen = dict()
-st.write(list_pie_chart.keys())
+st.write(list_non)
 if upload_file is not None:
  list_pie_keys = list(list_pie_chart.keys())
  list_box_keys = list(list_boxplot.keys())
