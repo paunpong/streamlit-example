@@ -454,6 +454,7 @@ if upload_file is not None:
    if topic not in list_topic_stackbar:
     list_topic_stackbar.append(topic)
    continue
+  st.write(list_stackbar,'list_stackbar') 
  
   if num_check(column) and set(column).issubset({1,2,3,4,5}):
    list_num_stack[key]={'removenan':True}
