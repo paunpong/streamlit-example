@@ -442,12 +442,12 @@ if upload_file is not None:
        
   if 'time' in key:
    list_time[key] = True
-   continue
-  st.write(list_time) 
+   continue 
 
   if 'ข้อเสนอแนะ' in key:
    list_bar_chart[key] = {'removenan':True,'orther_number':2,'legend':True}
    continue
+  st.write(list_bar_chart) 
    
   if '[' in key:
    list_stackbar.append(key)
